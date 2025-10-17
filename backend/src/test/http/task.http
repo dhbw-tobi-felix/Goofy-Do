@@ -1,0 +1,41 @@
+### Alle Tasks abrufen (Response mit listId)
+GET http://localhost:8080/api/v1/tasks
+Accept: application/json
+
+###
+
+### Einzelnen Task abrufen (Response mit listId)
+GET http://localhost:8080/api/v1/tasks/1
+Accept: application/json
+
+###
+
+### Neuen Task erstellen (Request-DTO: name, description, dueDate, completed, listId)
+POST http://localhost:8080/api/v1/tasks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Task-{{$timestamp}}",
+  "description": "Beschreibung-{{$timestamp}}",
+  "dueDate": "2025-12-31T00:00:00",
+  "completed": false,
+  "listId": 1
+}
+
+###
+
+### Task teilweise aktualisieren
+PATCH http://localhost:8080/api/v1/tasks/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "completed": false
+}
+
+###
+
+### Task löschen
+DELETE http://localhost:8080/api/v1/tasks/1
+Accept: application/json
