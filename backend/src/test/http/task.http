@@ -4,7 +4,7 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type = password &
 client_id = todo-dev &
-username = demo &
+username = demo@demo.de &
 password = demo &
 scope = openid
 

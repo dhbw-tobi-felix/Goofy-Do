@@ -36,3 +36,4 @@ bin/
 **/dist/
 **/.env*
 **/coverage/
+**/tsconfig.tsbuildinfo
