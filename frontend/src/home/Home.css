@@ -1,0 +1,126 @@
+.home-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.card-grid {
+    width: 870px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.topbar {
+    width: 870px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    position: relative;
+    gap: 12px;
+}
+
+.home-header {
+    font-size: 2.5em;
+    margin: 0;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.home-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 6px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    background: transparent;
+    height: 48px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.add-button-icon {
+    width: 40px;
+    height: 40px;
+    background: #333333;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: white;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    font-size: 32px;
+}
+
+.add-button-icon:hover {
+    background: #444444;
+}
+
+.add-button-icon b {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-2px);
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 17px;
+    align-items: flex-start;
+}
+
+.card-col {
+    float: none;
+    padding: 0 10px;
+    box-sizing: border-box;
+    flex: 0 0 270px;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #333;
+    width: 270px;
+    border-radius: 27px;
+}
+
+.card:hover {
+    background-color: #444;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: whitesmoke;
+}
+
+.card-task {
+    color: whitesmoke;
+}
+
+.card-date {
+    color: lightgray;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
