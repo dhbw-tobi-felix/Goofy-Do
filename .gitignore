@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+build/
+
+# Kotlin / Quarkus
+.quarkus/
+.certs/
+.env
+.kotlin/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+bin/
+.vscode/
+.factorypath
+
+# macOS
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+# Patch files
+*.orig
+*.rej
+
+# Node / React frontend
+**/node_modules/
+**/dist/
+**/.env*
+**/coverage/
