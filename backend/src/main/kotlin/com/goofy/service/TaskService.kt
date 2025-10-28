@@ -17,14 +17,17 @@ class TaskService @Inject constructor(
     private val listRepo: ListRepository,
 ) {
     @Transactional(Transactional.TxType.SUPPORTS)
-    fun getAll(): List<TaskEntity> = repo.findAll().list()
+    fun getAll(owner: String): List<TaskEntity> = repo.listByOwner(owner)
 
     @Transactional(Transactional.TxType.SUPPORTS)
-    fun getById(id: Long): TaskEntity =
-        repo.findById(id) ?: throw WebApplicationException("task with id $id not found", Response.Status.NOT_FOUND)
+    fun getById(id: Long, owner: String): TaskEntity =
+        repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException(
+            "task with id $id not found",
+            Response.Status.NOT_FOUND
+        )
 
     @Transactional(Transactional.TxType.SUPPORTS)
-    fun getByListId(listId: Long): List<TaskEntity> = repo.findByListId(listId)
+    fun getByListId(listId: Long, owner: String): List<TaskEntity> = repo.findByListIdWithOwner(listId, owner)
 
     @Transactional
     fun create(
@@ -32,15 +35,20 @@ class TaskService @Inject constructor(
         description: String?,
         dueDate: LocalDateTime?,
         completed: Boolean,
-        listId: Long
+        listId: Long,
+        owner: String
     ): TaskEntity {
-        val listEntity = listRepo.findById(listId) ?: throw WebApplicationException(
+        val listEntity = listRepo.findByIdWithOwner(listId, owner) ?: throw WebApplicationException(
             "list with id $listId not found",
             Response.Status.NOT_FOUND
         )
         val entity = TaskEntity().apply {
-            this.name = name.trim(); this.description = description?.trim(); this.dueDate = dueDate; this.completed =
-            completed; this.list = listEntity
+            this.name = name.trim()
+            this.description = description?.trim()
+            this.dueDate = dueDate
+            this.completed = completed
+            this.list = listEntity
+            this.ownerId = owner
         }
         try {
             repo.persistAndFlush(entity)
@@ -57,20 +65,25 @@ class TaskService @Inject constructor(
         description: String?,
         dueDate: LocalDateTime?,
         completed: Boolean?,
-        listId: Long?
+        listId: Long?,
+        owner: String
     ): TaskEntity {
-        val entity = repo.findById(id) ?: throw WebApplicationException("task not found", Response.Status.NOT_FOUND)
+        val entity = repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException(
+            "task not found",
+            Response.Status.NOT_FOUND
+        )
 
         name?.let { entity.name = it.trim() }
         description?.let { entity.description = it }
         dueDate?.let { entity.dueDate = it }
         completed?.let { entity.completed = it }
         listId?.let {
-            entity.list = listRepo.findById(it) ?: throw WebApplicationException(
+            entity.list = listRepo.findByIdWithOwner(it, owner) ?: throw WebApplicationException(
                 "list with id $it not found",
                 Response.Status.NOT_FOUND
             )
         }
+        entity.ownerId = owner
 
         try {
             repo.persistAndFlush(entity)
@@ -81,8 +94,11 @@ class TaskService @Inject constructor(
     }
 
     @Transactional
-    fun delete(id: Long) {
-        val entity = repo.findById(id) ?: throw WebApplicationException("task not found", Response.Status.NOT_FOUND)
+    fun delete(id: Long, owner: String) {
+        val entity = repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException(
+            "task not found",
+            Response.Status.NOT_FOUND
+        )
         repo.delete(entity)
         repo.flush()
     }

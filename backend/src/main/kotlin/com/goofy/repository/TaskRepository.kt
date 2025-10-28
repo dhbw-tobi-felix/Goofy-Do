@@ -6,6 +6,12 @@ import jakarta.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
 class TaskRepository : PanacheRepository<TaskEntity> {
-    fun findByListId(listId: Long): List<TaskEntity> =
-        list("list.id", listId)
+    fun findByIdWithOwner(id: Long, owner: String): TaskEntity? =
+        find("id = ?1 and ownerId = ?2", id, owner).firstResult()
+
+    fun listByOwner(owner: String): List<TaskEntity> =
+        list("ownerId", owner)
+
+    fun findByListIdWithOwner(listId: Long, owner: String): List<TaskEntity> =
+        list("list.id = ?1 and ownerId = ?2", listId, owner)
 }

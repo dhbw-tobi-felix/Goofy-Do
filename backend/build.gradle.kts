@@ -30,6 +30,8 @@ dependencies {
 
     implementation("io.quarkus:quarkus-smallrye-openapi")
     implementation("io.quarkus:quarkus-swagger-ui")
+    implementation("io.quarkus:quarkus-keycloak-authorization")
+    implementation("io.quarkus:quarkus-oidc")
 
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")

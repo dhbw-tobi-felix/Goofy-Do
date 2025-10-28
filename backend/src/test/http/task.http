@@ -1,19 +1,32 @@
+### Token holen
+POST http://localhost:8180/realms/todo/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type = password &
+client_id = todo-dev &
+username = demo &
+password = demo &
+scope = openid
+
+> {%
+    client.global.set("token", response.body.access_token);
+%}
+
 ### Alle Tasks abrufen (Response mit listId)
 GET http://localhost:8080/api/v1/tasks
 Accept: application/json
-
-###
+Authorization: Bearer {{token}}
 
 ### Einzelnen Task abrufen (Response mit listId)
 GET http://localhost:8080/api/v1/tasks/1
 Accept: application/json
-
-###
+Authorization: Bearer {{token}}
 
 ### Neuen Task erstellen (Request-DTO: name, description, dueDate, completed, listId)
 POST http://localhost:8080/api/v1/tasks
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Task-{{$timestamp}}",
@@ -23,19 +36,17 @@ Accept: application/json
   "listId": 1
 }
 
-###
-
 ### Task teilweise aktualisieren
 PATCH http://localhost:8080/api/v1/tasks/1
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer {{token}}
 
 {
-  "completed": false
+  "completed": true
 }
-
-###
 
 ### Task löschen
 DELETE http://localhost:8080/api/v1/tasks/1
 Accept: application/json
+Authorization: Bearer {{token}}

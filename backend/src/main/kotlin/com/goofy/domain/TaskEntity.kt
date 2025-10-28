@@ -23,9 +23,11 @@ class TaskEntity : PanacheEntity() {
     @Column
     var completed: Boolean = false
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "list_id", nullable = false)
     lateinit var list: ListEntity
+
+    @Column(nullable = false)
+    lateinit var ownerId: String
 }
 
