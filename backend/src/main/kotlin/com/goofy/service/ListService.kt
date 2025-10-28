@@ -14,26 +14,30 @@ class ListService @Inject constructor(
     private val repo: ListRepository
 ) {
     @Transactional(Transactional.TxType.SUPPORTS)
-    fun getAll(): List<ListEntity> = repo.findAll().list()
+    fun getAll(owner: String): List<ListEntity> = repo.listByOwner(owner)
 
     @Transactional(Transactional.TxType.SUPPORTS)
-    fun getById(id: Long): ListEntity =
-        repo.findById(id) ?: throw WebApplicationException("list not found", Response.Status.NOT_FOUND)
+    fun getById(id: Long, owner: String): ListEntity =
+        repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException("list not found", Response.Status.NOT_FOUND)
 
     @Transactional
-    fun create(name: String, description: String?): ListEntity {
-        val entity = ListEntity().apply { this.name = name.trim(); this.description = description?.trim() }
+    fun create(name: String, description: String?, owner: String): ListEntity {
+        val entity =
+            ListEntity().apply { this.name = name.trim(); this.description = description?.trim(); this.ownerId = owner }
         try {
             repo.persistAndFlush(entity)
             return entity
         } catch (_: PersistenceException) {
-            throw WebApplicationException("task already exists", Response.Status.CONFLICT)
+            throw WebApplicationException("list already exists", Response.Status.CONFLICT)
         }
     }
 
     @Transactional
-    fun update(id: Long, name: String?, description: String?): ListEntity {
-        val entity = repo.findById(id) ?: throw WebApplicationException("list not found", Response.Status.NOT_FOUND)
+    fun update(id: Long, name: String?, description: String?, owner: String): ListEntity {
+        val entity = repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException(
+            "list not found",
+            Response.Status.NOT_FOUND
+        )
 
         name?.let { entity.name = it.trim() }
         description?.let { entity.description = it }
@@ -47,8 +51,11 @@ class ListService @Inject constructor(
     }
 
     @Transactional
-    fun delete(id: Long) {
-        val entity = repo.findById(id) ?: throw WebApplicationException("list not found", Response.Status.NOT_FOUND)
+    fun delete(id: Long, owner: String) {
+        val entity = repo.findByIdWithOwner(id, owner) ?: throw WebApplicationException(
+            "list not found",
+            Response.Status.NOT_FOUND
+        )
         repo.delete(entity)
         repo.flush()
     }
