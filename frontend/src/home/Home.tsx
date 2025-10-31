@@ -1,9 +1,10 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Button} from "../components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from "../components/ui/card";
 import {Badge} from "../components/ui/badge";
 import {Progress} from "../components/ui/progress";
 import {Plus, CalendarClock} from "lucide-react";
+import {useCallback} from "react";
 
 // Types
 type Task = {
@@ -111,6 +112,30 @@ export default function Home() {
         },
     ];
 
+    const navigate = useNavigate();
+
+    const createNewList = useCallback(async () => {
+        const name = prompt("Name der neuen Liste:");
+        if (!name || !name.trim()) return;
+        try {
+            const resp = await fetch("http://localhost:8080/api/v1/lists", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name.trim() })
+            });
+            if (!resp.ok) {
+                const txt = await resp.text();
+                throw new Error(`Server error: ${resp.status} ${txt}`);
+            }
+            const data = await resp.json(); // erwartet { id, name, description }
+            // Optional: Übergibt initialen state an List-Seite
+            navigate(`/list/${data.id}`, { state: { list: { id: data.id, title: data.name, tasks: [] } } });
+        } catch (e) {
+            console.error("Fehler beim Anlegen der Liste:", e);
+            alert("Konnte Liste nicht anlegen.");
+        }
+    }, [navigate]);
+
     return (
         <main className="min-h-screen">
             {/* Content wrapper accounts for navbar + sidebar */}
@@ -120,11 +145,11 @@ export default function Home() {
                     <h1 className="text-center text-3xl font-semibold tracking-tight text-zinc-100 sm:text-4xl">
                         Your Lists
                     </h1>
-                    <Link to="/list" className="absolute right-0">
-                        <Button className="h-10 rounded-xl">
+                    <div className="absolute right-0">
+                        <Button onClick={createNewList} className="h-10 rounded-xl">
                             <Plus className="mr-2 size-4"/> Neu
                         </Button>
-                    </Link>
+                    </div>
                 </div>
 
                 {/* Grid */}
