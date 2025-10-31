@@ -3,7 +3,7 @@ import {Button} from "../components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from "../components/ui/card";
 import {Badge} from "../components/ui/badge";
 import {Progress} from "../components/ui/progress";
-import {Plus, CalendarClock} from "lucide-react";
+import {CalendarClock, Plus} from "lucide-react";
 import {useCallback} from "react";
 
 // Types
@@ -117,19 +117,32 @@ export default function Home() {
     const createNewList = useCallback(async () => {
         const name = prompt("Name der neuen Liste:");
         if (!name || !name.trim()) return;
+
         try {
             const resp = await fetch("http://localhost:8080/api/v1/lists", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: name.trim() })
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({name: name.trim(), description: ""})
+                // falls Cookies/Session: credentials: "include"
             });
+
             if (!resp.ok) {
-                const txt = await resp.text();
+                const txt = await resp.text().catch(() => "");
                 throw new Error(`Server error: ${resp.status} ${txt}`);
             }
-            const data = await resp.json(); // erwartet { id, name, description }
-            // Optional: Übergibt initialen state an List-Seite
-            navigate(`/list/${data.id}`, { state: { list: { id: data.id, title: data.name, tasks: [] } } });
+
+            const text = await resp.text();                 // 201 kann leer sein
+            const data = text ? JSON.parse(text) : null;
+            const loc = resp.headers.get("Location");
+            const id = data?.id ?? (loc ? loc.split("/").pop() : null);
+            if (!id) throw new Error("Keine ID erhalten");
+
+            navigate(`/list/${encodeURIComponent(String(id))}`, {
+                state: {list: {id, title: data?.name ?? name.trim(), tasks: []}}
+            });
         } catch (e) {
             console.error("Fehler beim Anlegen der Liste:", e);
             alert("Konnte Liste nicht anlegen.");
@@ -157,7 +170,7 @@ export default function Home() {
                     {lists.map((list) => {
                         const {total, done, pct} = pctDone(list.tasks);
                         return (
-                            <Link key={list.id} to={`/List`} className="group">
+                            <Link key={list.id} to={`/list/${encodeURIComponent(String(list.id))}`} className="group">
                                 <Card
                                     className="rounded-3xl border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-900/60 shadow-lg transition-colors hover:from-zinc-900/90 hover:to-zinc-800/60">
                                     <CardHeader>

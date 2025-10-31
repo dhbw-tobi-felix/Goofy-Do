@@ -1,6 +1,6 @@
 import {StrictMode, Suspense} from 'react'
 import {createRoot} from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import './index.css'
 import Layout from "./layout/Layout.tsx";
 import Home from './home/Home.tsx'
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             { index: true, element: <Home /> },
-            { path: "list", element: <List /> },
+            {path: "list/:id", element: <List/>},
         ],
     },
 ]);
