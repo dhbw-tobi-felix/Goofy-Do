@@ -46,6 +46,10 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
+          config: |
+            paths-ignore:
+              - backend/build.gradle.kts
+              - backend/settings.gradle.kts
           build-mode: ${{ matrix.build_mode }}
           queries: +security-and-quality
 
