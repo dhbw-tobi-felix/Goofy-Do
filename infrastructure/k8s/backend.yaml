@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-secret
+  namespace: goofydo
+type: Opaque
+data:
+  # base64("app")
+  QUARKUS_DATASOURCE_USERNAME: YXBw
+  # base64("secret")
+  QUARKUS_DATASOURCE_PASSWORD: c2VjcmV0
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: goofydo
+data:
+  QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres.goofydo.svc.cluster.local:5432/appdb
+  QUARKUS_OIDC_AUTH_SERVER_URL: http://keycloak.goofydo.svc.cluster.local:8080/auth/realms/todo
+  QUARKUS_SMALLRYE_OPENAPI_OIDC_OPEN_ID_CONNECT_URL: http://keycloak.goofydo.svc.cluster.local:8080/auth/realms/todo/.well-known/openid-configuration
+  QUARKUS_SWAGGER_UI_OAUTH_CLIENT_ID: todo-swagger
+  QUARKUS_SWAGGER_UI_OAUTH2_REDIRECT_URL: http://goofydo.local/api/v1/swagger/oauth2-redirect.html
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: goofydo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: ghcr-cred
+      containers:
+        - name: backend
+          image: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: goofydo
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+    - port: 8080
+      targetPort: 8080

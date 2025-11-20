@@ -1,4 +1,5 @@
--- User zuerst
+-- nur für lokale Entwicklung
+
 DO
 $$
     BEGIN
@@ -6,8 +7,17 @@ $$
             CREATE USER app WITH PASSWORD 'secret';
         END IF;
     END
-$$;
+$$ LANGUAGE plpgsql;
 
--- DBs dem richtigen Owner geben
-CREATE DATABASE appdb OWNER app;
-CREATE DATABASE keycloakdb OWNER root;
+DO
+$$
+    BEGIN
+        IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'appdb') THEN
+            CREATE DATABASE appdb OWNER app;
+        END IF;
+
+        IF NOT EXISTS (SELECT FROM pg_database WHERE datname = 'keycloakdb') THEN
+            CREATE DATABASE keycloakdb OWNER root;
+        END IF;
+    END
+$$ LANGUAGE plpgsql;
