@@ -37,3 +37,7 @@ bin/
 **/.env*
 **/coverage/
 **/tsconfig.tsbuildinfo
+
+*.pem
+*.key
+*.crt
