@@ -36,3 +36,7 @@ bin/
 **/dist/
 **/.env*
 **/coverage/
+
+*.pem
+*.key
+*.crt
