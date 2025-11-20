@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      serviceAccountName: keycloak-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      initContainers:
+        - name: wait-for-postgres
+          image: busybox:1.36
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Postgres..."
+              until nc -z postgres.goofydo.svc.cluster.local 5432; do
+                echo "Postgres not ready yet, sleeping 2s..."
+                sleep 2
+              done
+              echo "Postgres is ready"
+      imagePullSecrets:
+        - name: ghcr-cred
+      containers:
+        - name: keycloak
+          image: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-keycloak:latest
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: KEYCLOAK_ADMIN
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-admin-secret
+                  key: KEYCLOAK_ADMIN
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-admin-secret
+                  key: KEYCLOAK_ADMIN_PASSWORD
+            - name: KC_DB
+              value: postgres
+            - name: KC_DB_URL
+              value: jdbc:postgresql://postgres.goofydo.svc.cluster.local:5432/keycloakdb
+            - name: KC_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db-secret
+                  key: KC_DB_USERNAME
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db-secret
+                  key: KC_DB_PASSWORD
+            - name: KC_HOSTNAME
+              value: goofydo.local
+            - name: KC_HOSTNAME_STRICT
+              value: "false"
+            - name: KC_PROXY_HEADERS
+              value: xforwarded
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: KC_HTTP_RELATIVE_PATH
+              value: /auth
+            - name: KC_PROXY
+              value: edge
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: keycloak-data
+              mountPath: /opt/keycloak/data
+            - name: keycloak-import
+              mountPath: /opt/keycloak/data/import
+            - name: tmp-volume
+              mountPath: /tmp
+      volumes:
+        - name: keycloak-data
+          emptyDir: { }
+        - name: keycloak-import
+          configMap:
+            name: keycloak-realm-import
+        - name: tmp-volume
+          emptyDir: { }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+spec:
+  type: ClusterIP
+  selector:
+    app: keycloak
+  ports:
+    - port: 8080
+      targetPort: 8080
