@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      serviceAccountName: frontend-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      initContainers:
+        - name: wait-for-keycloak
+          image: curlimages/curl:8.8.0
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Keycloak..."
+              until curl -k -s -o /dev/null -w "%{http_code}" \
+                http://keycloak:8080/auth/realms/todo/.well-known/openid-configuration \
+                | grep -q '^200$'; do
+                echo "Keycloak not ready yet, sleeping 5s..."
+                sleep 5
+              done
+              echo "Keycloak is up"
+        - name: wait-for-backend
+          image: curlimages/curl:8.8.0
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Backend..."
+              # Prüft auf HTTP Status 2xx, 3xx oder 4xx (Server antwortet)
+              until curl -s -o /dev/null -w "%{http_code}" http://backend:8080 | grep -q '^[234]'; do
+                echo "Backend not ready yet, sleeping 5s..."
+                sleep 5
+              done
+              echo "Backend is up"
+      imagePullSecrets:
+        - name: ghcr-cred
+      containers:
+        - name: frontend
+          image: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: nginx-run
+              mountPath: /var/run
+            - name: nginx-tmp
+              mountPath: /tmp
+      volumes:
+        - name: nginx-cache
+          emptyDir: { }
+        - name: nginx-run
+          emptyDir: { }
+        - name: nginx-tmp
+          emptyDir: { }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80

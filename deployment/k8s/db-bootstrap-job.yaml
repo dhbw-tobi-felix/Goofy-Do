@@ -1,0 +1,84 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-bootstrap
+  namespace: goofydo
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      serviceAccountName: db-bootstrap-sa
+      restartPolicy: OnFailure
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        runAsGroup: 999
+      initContainers:
+        - name: wait-for-postgres
+          image: busybox:1.36
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Postgres..."
+              until nc -z postgres.goofydo.svc.cluster.local 5432; do
+                echo "Postgres not ready yet, sleeping 2s..."
+                sleep 2
+              done
+              echo "Postgres is ready"
+      containers:
+        - name: db-bootstrap
+          image: postgres:16
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: keycloak-db-secret
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              psql "host=postgres.goofydo.svc.cluster.local port=5432 dbname=postgres user=$POSTGRES_USER password=$POSTGRES_PASSWORD" <<EOF
+              DROP ROLE IF EXISTS "$QUARKUS_DATASOURCE_USERNAME";
+              CREATE ROLE "$QUARKUS_DATASOURCE_USERNAME" LOGIN PASSWORD '$QUARKUS_DATASOURCE_PASSWORD';
+
+              DROP ROLE IF EXISTS "$KC_DB_USERNAME";
+              CREATE ROLE "$KC_DB_USERNAME" LOGIN PASSWORD '$KC_DB_PASSWORD';
+
+              ALTER DATABASE appdb OWNER TO "$QUARKUS_DATASOURCE_USERNAME";
+              ALTER DATABASE keycloakdb OWNER TO "$KC_DB_USERNAME";
+
+              REVOKE CONNECT ON DATABASE appdb FROM PUBLIC;
+              REVOKE CONNECT ON DATABASE keycloakdb FROM PUBLIC;
+
+              GRANT CONNECT ON DATABASE appdb TO "$QUARKUS_DATASOURCE_USERNAME";
+              GRANT CONNECT ON DATABASE keycloakdb TO "$KC_DB_USERNAME";
+
+              \connect appdb
+              ALTER SCHEMA public OWNER TO "$QUARKUS_DATASOURCE_USERNAME";
+              REVOKE ALL ON SCHEMA public FROM PUBLIC;
+              GRANT ALL ON SCHEMA public TO "$QUARKUS_DATASOURCE_USERNAME";
+
+              \connect keycloakdb
+              ALTER SCHEMA public OWNER TO "$KC_DB_USERNAME";
+              REVOKE ALL ON SCHEMA public FROM PUBLIC;
+              GRANT ALL ON SCHEMA public TO "$KC_DB_USERNAME";
+              EOF
