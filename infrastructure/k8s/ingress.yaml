@@ -5,6 +5,10 @@ metadata:
   namespace: goofydo
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - goofydo.local
+      secretName: goofydo-tls
   rules:
     - host: goofydo.local
       http:
@@ -28,5 +32,19 @@ spec:
             backend:
               service:
                 name: keycloak
+                port:
+                  number: 8080
+          - path: /swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 8080
+          - path: /openapi
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
                 port:
                   number: 8080

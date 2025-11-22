@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-bootstrap
+  namespace: goofydo
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: db-bootstrap
+          image: postgres:16
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+            - secretRef:
+                name: backend-secret
+            - secretRef:
+                name: keycloak-db-secret
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              psql "host=postgres.goofydo.svc.cluster.local port=5432 dbname=postgres user=$POSTGRES_USER password=$POSTGRES_PASSWORD" <<EOF
+              -- Rollen aus Secrets anlegen/aktualisieren
+              DROP ROLE IF EXISTS "$QUARKUS_DATASOURCE_USERNAME";
+              CREATE ROLE "$QUARKUS_DATASOURCE_USERNAME" LOGIN PASSWORD '$QUARKUS_DATASOURCE_PASSWORD';
+
+              DROP ROLE IF EXISTS "$KC_DB_USERNAME";
+              CREATE ROLE "$KC_DB_USERNAME" LOGIN PASSWORD '$KC_DB_PASSWORD';
+
+              -- DB-Owner an App-/Keycloak-User hängen
+              ALTER DATABASE appdb OWNER TO "$QUARKUS_DATASOURCE_USERNAME";
+              ALTER DATABASE keycloakdb OWNER TO "$KC_DB_USERNAME";
+
+              -- Schema-Besitz und Rechte in appdb
+              \connect appdb
+              ALTER SCHEMA public OWNER TO "$QUARKUS_DATASOURCE_USERNAME";
+              GRANT ALL ON SCHEMA public TO "$QUARKUS_DATASOURCE_USERNAME";
+
+              -- Schema-Besitz und Rechte in keycloakdb
+              \connect keycloakdb
+              ALTER SCHEMA public OWNER TO "$KC_DB_USERNAME";
+              GRANT ALL ON SCHEMA public TO "$KC_DB_USERNAME";
+              EOF

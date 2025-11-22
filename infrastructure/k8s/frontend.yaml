@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: frontend-config
 data:
-  API_BASE_URL: http://goofydo.local/api/v1
+  API_BASE_URL: https://goofydo.local/api/v1
 ---
 apiVersion: apps/v1
 kind: Deployment

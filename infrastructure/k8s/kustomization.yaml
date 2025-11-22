@@ -10,6 +10,7 @@ resources:
   - backend.yaml
   - frontend.yaml
   - ingress.yaml
+  - db-bootstrap-job.yaml
 
 configMapGenerator:
   - name: postgres-init-sql
