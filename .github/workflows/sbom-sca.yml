@@ -26,7 +26,6 @@ jobs:
         with:
           cache-read-only: ${{ github.event_name == 'pull_request' }}
 
-      # --- Tools ---
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
         with:
@@ -41,7 +40,6 @@ jobs:
           wget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz
           sudo mv trivy /usr/local/bin/
 
-      # ---------- Builds ----------
       - name: Build backend (Quarkus)
         working-directory: backend
         run: ./gradlew quarkusBuild --no-daemon --quiet
@@ -50,7 +48,6 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      # ---------- SBOMs ----------
       - name: Backend Project SBOM (CycloneDX, via Trivy)
         run: |
           set -euxo pipefail
@@ -82,7 +79,6 @@ jobs:
             sbom-backend-runtime.spdx.json
             sbom-frontend.cdx.json
 
-      # ---------- SCA ----------
       - name: SCA (backend via SBOM)
         run: |
           set -euxo pipefail
@@ -123,7 +119,6 @@ jobs:
           ' sca-frontend.json \
           || { echo "SCA gate failed (frontend): HIGH/CRITICAL oder CVSS>=7"; exit 1; }
 
-      # ---------- SARIF ----------
       - name: Prepare reports dir
         if: always()
         run: mkdir -p reports
@@ -157,7 +152,6 @@ jobs:
           ls -la
           ls -la reports || true
 
-      # --- upload to Security tab ---
       - name: Upload SARIF (backend)
         if: always()
         uses: github/codeql-action/upload-sarif@v3
