@@ -1,17 +1,16 @@
+// File: frontend/src/list/List.tsx
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Checkbox } from "../components/ui/checkbox";
 import { ScrollArea } from "../components/ui/scroll-area";
-import { Separator } from "../components/ui/separator";
 import { Progress } from "../components/ui/progress";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
-import { CalendarClock, ChevronLeft, Plus, Trash2 } from "lucide-react";
+import { TooltipProvider } from "../components/ui/tooltip";
+import { ChevronLeft, Plus, Trash2 } from "lucide-react";
 
 // Types
 export type Task = {
@@ -29,9 +28,20 @@ export type TodoList = {
     date?: string; // optionale Anzeige
 };
 
-function uid(prefix = "id") {
-    return `${prefix}_${Math.random().toString(36).slice(2, 9)}`;
-}
+type ServerTask = {
+    id: number | string;
+    name: string;
+    description?: string | null;
+    dueDate?: string | null;
+    completed?: boolean;
+    listId?: number | string;
+};
+
+type ServerList = {
+    id: number | string;
+    name: string;
+    description?: string | null;
+};
 
 function formatDate(iso?: string) {
     if (!iso) return "Kein Datum";
@@ -45,76 +55,189 @@ function pctDone(tasks: Task[]) {
     return { total, done, pct: total === 0 ? 0 : Math.round((done / total) * 100) };
 }
 
-// Optionale LocalStorage-Persistenz
-const STORAGE_KEY = "todo_lists";
-
-function loadListsFromStorage(): TodoList[] | null {
-    try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? (JSON.parse(raw) as TodoList[]) : null;
-    } catch {
-        return null;
-    }
-}
-
-function saveListsToStorage(lists: TodoList[]) {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(lists));
-    } catch {}
-}
-
 // Komponente
 export default function ListDetail() {
     const { id } = useParams();
     const location = useLocation() as { state?: { list?: TodoList } };
+    const navigate = useNavigate();
 
-    const [list, setList] = useState<TodoList | null>(null);
+    const [list, setList] = useState<TodoList | null>(location.state?.list ?? null);
+    const [saving, setSaving] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    // Initial-Daten finden
-    useEffect(() => {
-        if (location.state?.list) {
-            setList(location.state.list);
-            return;
-        }
-
-        const stored = loadListsFromStorage();
-        if (stored && id) {
-            const found = stored.find((l) => String(l.id) === String(id)) || null;
-            setList(found);
-            return;
-        }
-
-        // Fallback
-        const fallback: TodoList = {
-            id: id || "list_fallback",
-            title: "Liste",
-            date: new Date().toLocaleDateString(),
-            tasks: [
-                { id: uid("task"), name: "Beispiel-Task", description: "Beschreibung", dueDate: new Date().toISOString().slice(0, 10), completed: false },
-                { id: uid("task"), name: "Noch ein Task", description: "Optionaler Text", dueDate: undefined, completed: true },
-            ],
+    // Helper: map ServerTask -> Task
+    function mapTask(st: ServerTask): Task {
+        return {
+            id: String(st.id),
+            name: st.name,
+            description: st.description ?? undefined,
+            dueDate: st.dueDate ?? undefined,
+            completed: !!st.completed,
         };
-        setList(fallback);
-    }, [id, location.state]);
-
-    // Persistiere bei Änderungen (nur wenn die Liste aus Storage stammt)
-    useEffect(() => {
-        if (!list) return;
-        const all = loadListsFromStorage();
-        if (!all) return; // keine globale Sammlung vorhanden -> nicht speichern
-        const updated = all.map((l) => (String(l.id) === String(list.id) ? list : l));
-        saveListsToStorage(updated);
-    }, [list]);
-
-    function addTask(task: Omit<Task, "id" | "completed">) {
-        if (!list) return;
-        const newTask: Task = { id: uid("task"), completed: false, ...task };
-        setList({ ...list, tasks: [newTask, ...list.tasks] });
     }
 
-    function deleteTask(taskId: string) {
+    async function fetchListMeta(listId: string | number): Promise<ServerList> {
+        const res = await fetch(`http://localhost:8080/api/v1/lists/${encodeURIComponent(String(listId))}`, {
+            headers: { Accept: "application/json" },
+            credentials: "same-origin",
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return (await res.json()) as ServerList;
+    }
+
+    // Nur Tasks für eine Liste holen und in state setzen
+    async function fetchTasksForList(listId: string | number): Promise<ServerTask[]> {
+        // WICHTIG: korrekter Endpoint für tasks einer Liste
+        const res = await fetch(
+            `http://localhost:8080/api/v1/lists/${encodeURIComponent(String(listId))}/tasks`,
+            {
+                headers: { Accept: "application/json" },
+                credentials: "same-origin",
+            }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return (await res.json()) as ServerTask[];
+    }
+
+    // Liste und ihre Tasks vom Server laden
+    async function fetchListAndTasks(listId: string | number) {
+        setLoading(true);
+        setError(null);
+        try {
+            const [meta, tasks] = await Promise.all([fetchListMeta(listId), fetchTasksForList(listId)]);
+            const mapped: Task[] = tasks.map(mapTask);
+            setList({
+                id: meta.id,
+                title: meta.name,
+                tasks: mapped,
+                date:     undefined,       });
+        } catch (e) {
+            console.error(e);
+            setError("Fehler beim Laden der Liste.");
+            setList(null);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        let aborted = false;
+        if (!id) return;
+        // priorisiere Server-Daten; falls state vorhanden wird es ignoriert — wir wollen DB-Daten
+        (async () => {
+            if (aborted) return;
+            await fetchListAndTasks(id);
+        })();
+        return () => {
+            aborted = true;
+        };
+    }, [id, location.state]);
+
+    async function deleteList() {
+        if (!id) return;
+        const confirmed = window.confirm("Liste wirklich löschen? Alle Tasks gehen verloren.");
+        if (!confirmed) return;
+
+        setLoading(true);
+        try {
+            const res = await fetch(`http://localhost:8080/api/v1/lists/${encodeURIComponent(String(id))}`, {
+                method: "DELETE",
+                headers: { Accept: "application/json" },
+                credentials: "same-origin",
+            });
+            if (!res.ok) {
+                const txt = await res.text().catch(() => "");
+                throw new Error(`Server error: ${res.status} ${txt}`);
+            }
+            // auf Startseite zurück
+            navigate("/");
+        } catch (e) {
+            console.error("Fehler beim Löschen der Liste:", e);
+            alert("Konnte Liste nicht löschen.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Speichere neuen Task in DB (optimistisch)
+    async function addTask(task: Omit<Task, "id" | "completed">) {
         if (!list) return;
+        const tempId = `temp_${Date.now()}`;
+        const tempTask: Task = { id: tempId, completed: false, ...task };
+
+        // Optimistisches UI: sofort anzeigen
+        setList((prev) => (prev ? { ...prev, tasks: [tempTask, ...prev.tasks] } : prev));
+        setSaving(true);
+
+        try {
+            const body = {
+                name: task.name,
+                description: task.description ?? null,
+                dueDate: task.dueDate ? new Date(task.dueDate).toISOString() : null,
+                listId: list.id,
+            };
+            const resp = await fetch("http://localhost:8080/api/v1/tasks", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                credentials: "same-origin",
+                body: JSON.stringify(body),
+            });
+            if (!resp.ok) {
+                const txt = await resp.text().catch(() => "");
+                throw new Error(`Server error: ${resp.status} ${txt}`);
+            }
+
+            // Server sollte die erstellte Task zurückgeben
+            const created: ServerTask | null = await resp.json().catch(() => null);
+            if (created && created.id != null) {
+                const createdTask = mapTask(created);
+                setList((prev) =>
+                    prev ? { ...prev, tasks: prev.tasks.map((t) => (t.id === tempId ? createdTask : t)) } : prev
+                );
+            } else {
+                // Fallback: neu vom Server laden
+                await fetchTasksForList(list.id);
+            }
+        } catch (e) {
+            console.error("Fehler beim Anlegen des Tasks:", e);
+            // entferne temporären Task bei Fehler
+            setList((prev) => (prev ? { ...prev, tasks: prev.tasks.filter((t) => t.id !== tempId) } : prev));
+            // optional: rethrow oder setError
+            setError("Konnte Task nicht speichern.");
+        } finally {
+            setSaving(false);
+        }
+    }
+
+    async function deleteTask(taskId: string) {
+        if (!list) return;
+        const prevTasks = list.tasks;
+        // Optimistisch entfernen
         setList({ ...list, tasks: list.tasks.filter((t) => t.id !== taskId) });
+
+        try {
+            const res = await fetch(
+                `http://localhost:8080/api/v1/tasks/${encodeURIComponent(String(taskId))}`,
+                {
+                    method: "DELETE",
+                    credentials: "same-origin",
+                }
+            );
+            if (!res.ok) {
+                // restore
+                setList((l) => (l ? { ...l, tasks: prevTasks } : l));
+                const txt = await res.text().catch(() => "");
+                console.error("Delete failed:", res.status, txt);
+                alert("Konnte Task nicht löschen.");
+            }
+            // bei Erfolg: nothing to do (Task bereits entfernt)
+        } catch (e) {
+            console.error("Fehler beim Löschen des Tasks:", e);
+            // restore
+            setList((l) => (l ? { ...l, tasks: prevTasks } : l));
+            alert("Konnte Task nicht löschen.");
+        }
     }
 
     function toggleTask(taskId: string, value: boolean) {
@@ -123,134 +246,102 @@ export default function ListDetail() {
             ...list,
             tasks: list.tasks.map((t) => (t.id === taskId ? { ...t, completed: value } : t)),
         });
+        // Optional: PATCH an API zum Aktualisieren des Tasks (nicht implementiert)
     }
 
     const progress = useMemo(() => pctDone(list?.tasks || []), [list]);
 
+    if (!list && loading) return <div>Lade Liste…</div>;
+    if (!list && error) return <div className="text-red-400">{error}</div>;
     if (!list) return null;
 
     return (
         <TooltipProvider>
             <main className="min-h-screen w-full">
-                <div className="mx-auto max-w-5xl p-4 sm:p-6">
-                    {/* Header */}
-                    <div className="mb-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <Link to={"/"}>
-                                <Button variant="ghost" className="gap-2">
-                                    <ChevronLeft className="h-4 w-4" /> Zurück
-                                </Button>
-                            </Link>
-                            <h1 className="text-2xl font-semibold tracking-tight text-zinc-100 sm:text-3xl">
-                                {list.title}
-                            </h1>
-                        </div>
-                        {list.date && (
-                            <Badge variant="secondary" className="bg-zinc-800 text-zinc-300">
-                                {list.date}
-                            </Badge>
-                        )}
+                <div className="mb-6 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <Link to="/" aria-label="Zurück">
+                            <Button variant="ghost" size="icon">
+                                <ChevronLeft />
+                            </Button>
+                        </Link>
+                        <h1 className="text-2xl font-semibold">{list.title}</h1>
                     </div>
-
-                    <Separator className="my-4 border-zinc-800" />
-
-                    {/* Cards */}
-                    <Card className="rounded-3xl border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-900/60 shadow-lg">
-                        <CardHeader>
-                            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                                <CardTitle className="text-zinc-100">Übersicht</CardTitle>
-                                <div className="w-full sm:w-64">
-                                    <div className="mb-1 flex items-center justify-between text-xs text-zinc-300">
-                    <span>
-                      {progress.done}/{progress.total} erledigt
-                    </span>
-                                        <span>{progress.pct}%</span>
-                                    </div>
-                                    <Progress value={progress.pct} className="h-2 bg-zinc-800" />
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            {/* Add Task */}
-                            <AddTaskForm onAdd={addTask} />
-
-                            {/* Taskliste */}
-                            <ScrollArea className="max-h-[70vh] pr-2">
-                                <ul className="space-y-2">
-                                    <AnimatePresence>
-                                        {list.tasks.length === 0 && (
-                                            <li className="text-sm text-zinc-400">Noch keine Tasks – leg los! ✨</li>
-                                        )}
-
-                                        {list.tasks.map((task) => (
-                                            <motion.li
-                                                key={task.id}
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: -10 }}
-                                                transition={{ duration: 0.15 }}
-                                            >
-                                                <div className="flex items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3 transition-colors hover:bg-zinc-900">
-                                                    <Checkbox
-                                                        checked={task.completed}
-                                                        onCheckedChange={(v) => toggleTask(task.id, Boolean(v))}
-                                                        className="mt-1"
-                                                        aria-label={task.completed ? "Als offen markieren" : "Als erledigt markieren"}
-                                                    />
-
-                                                    <div className="grow">
-                                                        <div className="flex flex-wrap items-center gap-2">
-                              <span className={task.completed ? "font-medium line-through opacity-75" : "font-medium text-zinc-100"}>
-                                {task.name}
-                              </span>
-                                                            <span className="inline-flex items-center gap-1 text-xs text-zinc-400">
-                                <CalendarClock className="h-3.5 w-3.5" /> {formatDate(task.dueDate)}
-                              </span>
-                                                        </div>
-                                                        {task.description && (
-                                                            <p className={task.completed ? "mt-1 text-sm line-through text-zinc-400" : "mt-1 text-sm text-zinc-200"}>
-                                                                {task.description}
-                                                            </p>
-                                                        )}
-                                                    </div>
-
-                                                    <Tooltip>
-                                                        <TooltipTrigger asChild>
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="icon"
-                                                                aria-label="Task löschen"
-                                                                className="opacity-75 hover:opacity-100"
-                                                                onClick={() => deleteTask(task.id)}
-                                                            >
-                                                                <Trash2 className="h-4 w-4" />
-                                                            </Button>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent>Task löschen</TooltipContent>
-                                                    </Tooltip>
-                                                </div>
-                                            </motion.li>
-                                        ))}
-                                    </AnimatePresence>
-                                </ul>
-                            </ScrollArea>
-                        </CardContent>
-                    </Card>
+                    <div className="flex items-center gap-2">
+                        <Badge>{formatDate(list.date)}</Badge>
+                    </div>
                 </div>
+
+                <div className="mb-4">
+                    <Progress value={progress.pct} className="h-2" />
+                    <div className="text-sm text-zinc-300 mt-2">
+                        {progress.done}/{progress.total} erledigt • {progress.pct}%
+                    </div>
+                    <div>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={deleteList}
+                            disabled={loading}
+                            aria-label="Liste löschen"
+                            title="Liste löschen"
+                        >
+                            <Trash2 className="h-4 w-4 text-red-400" />
+                        </Button>
+                    </div>
+                </div>
+
+
+
+                <div className="mb-4">
+                    <AddTaskForm onAdd={addTask} saving={saving} />
+                </div>
+
+                <ScrollArea className="h-[60vh] rounded-lg border border-zinc-800 p-3">
+                    <AnimatePresence>
+                        {list.tasks.map((t) => (
+                            <motion.div
+                                key={t.id}
+                                initial={{ opacity: 0, y: -6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -6 }}
+                                className="mb-2 flex items-center justify-between rounded-lg bg-zinc-900/40 p-3"
+                            >
+                                <div className="flex items-start gap-3">
+                                    <Checkbox
+                                        checked={t.completed}
+                                        onCheckedChange={(v) => toggleTask(t.id, !!v)}
+                                        aria-label={`Markiere ${t.name}`}
+                                    />
+                                    <div>
+                                        <div className="font-medium">{t.name}</div>
+                                        <div className="text-xs text-zinc-400">{t.description}</div>
+                                        {t.dueDate && <div className="text-xs text-zinc-400">{formatDate(t.dueDate)}</div>}
+                                    </div>
+                                </div>
+                                <div>
+                                    <Button variant="ghost" size="icon" onClick={() => deleteTask(t.id)} aria-label="Löschen">
+                                        <Trash2 />
+                                    </Button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </ScrollArea>
             </main>
         </TooltipProvider>
     );
 }
 
 // Subcomponent: AddTaskForm
-function AddTaskForm({ onAdd }: { onAdd: (t: Omit<Task, "id" | "completed">) => void }) {
+function AddTaskForm({ onAdd, saving }: { onAdd: (t: Omit<Task, "id" | "completed">) => Promise<void> | void; saving?: boolean }) {
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
     const [due, setDue] = useState<string>("");
 
-    function submit() {
+    async function submit() {
         if (!name.trim()) return;
-        onAdd({ name: name.trim(), description: desc.trim() || undefined, dueDate: due || undefined });
+        await onAdd({ name: name.trim(), description: desc.trim() || undefined, dueDate: due || undefined });
         setName("");
         setDesc("");
         setDue("");
@@ -280,8 +371,8 @@ function AddTaskForm({ onAdd }: { onAdd: (t: Omit<Task, "id" | "completed">) => 
                     aria-label="Beschreibung"
                     className="md:col-span-1 min-h-[42px] bg-zinc-950/60 border-zinc-800 text-zinc-100 placeholder:text-zinc-500"
                 />
-                <Button onClick={submit} className="md:col-span-1 gap-2 rounded-xl">
-                    <Plus className="h-4 w-4" /> Hinzufügen
+                <Button onClick={submit} className="md:col-span-1 gap-2 rounded-xl" disabled={saving}>
+                    <Plus className="h-4 w-4" /> {saving ? "Speichere..." : "Hinzufügen"}
                 </Button>
             </div>
         </div>
