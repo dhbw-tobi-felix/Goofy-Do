@@ -1,11 +1,12 @@
-// typescript
-import { useCallback, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
-import { Progress } from "../components/ui/progress";
-import { CalendarClock, Plus } from "lucide-react";
+import {useCallback, useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {Button} from "../components/ui/button";
+import {Card, CardContent, CardHeader, CardTitle} from "../components/ui/card";
+import {Badge} from "../components/ui/badge";
+import {Progress} from "../components/ui/progress";
+import {Plus} from "lucide-react";
+// 1. Keycloak importieren
+import {keycloak} from "../main";
 
 type Task = {
     id: string;
@@ -14,13 +15,7 @@ type Task = {
     dueDate?: string;
 };
 
-type TodoList = {
-    id: number | string;
-    title: string;
-    tasks: Task[];
-    date?: string;
-};
-
+// ... (Andere Typen bleiben gleich, habe sie zur Übersicht gekürzt) ...
 type ListDto = {
     id: number | string;
     name?: string;
@@ -30,18 +25,6 @@ type ListDto = {
     modifiedAt?: string;
     createdAt?: string;
 };
-
-function pctDone(tasks: Task[]) {
-    const total = tasks.length;
-    const done = tasks.filter((t) => t.completed).length;
-    return { total, done, pct: total === 0 ? 0 : Math.round((done / total) * 100) };
-}
-
-function formatDate(iso?: string) {
-    if (!iso) return "Kein Datum";
-    const d = new Date(iso);
-    return d.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" });
-}
 
 export default function Home() {
     const [lists, setLists] = useState<ListDto[]>([]);
@@ -54,12 +37,26 @@ export default function Home() {
         async function load() {
             setLoading(true);
             setError(null);
+
             try {
+                // 2. Token aktualisieren (falls alt)
+                if (keycloak.authenticated) {
+                    await keycloak.updateToken(30);
+                }
+
+                // 3. Request MIT Token
                 const res = await fetch("http://localhost:8080/api/v1/lists", {
-                    headers: { Accept: "application/json" },
-                    credentials: "same-origin",
+                    headers: {
+                        "Accept": "application/json",
+                        "Authorization": `Bearer ${keycloak.token}` // <--- HIER IST DER TOKEN
+                    }
                 });
+
+                if (res.status === 401) {
+                    throw new Error("Nicht autorisiert (401) - Token ungültig?");
+                }
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
                 const data: ListDto[] = await res.json();
 
                 const getTime = (l: ListDto) => {
@@ -89,11 +86,19 @@ export default function Home() {
         const name = prompt("Name der neuen Liste:");
         if (!name || !name.trim()) return;
         try {
+            // Auch beim POST Request Token aktualisieren und mitschicken
+            if (keycloak.authenticated) {
+                await keycloak.updateToken(30);
+            }
+
             const resp = await fetch("http://localhost:8080/api/v1/lists", {
                 method: "POST",
-                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${keycloak.token}` // <--- TOKEN
+                },
                 body: JSON.stringify({ name: name.trim(), description: "" }),
-                credentials: "same-origin",
             });
 
             if (!resp.ok) {
@@ -101,7 +106,6 @@ export default function Home() {
                 throw new Error(`Server error: ${resp.status} ${txt}`);
             }
 
-            // Server kann Location-Header oder JSON mit id zurückgeben
             const text = await resp.text().catch(() => "");
             const data = text ? JSON.parse(text) : null;
             const loc = resp.headers.get("Location");
@@ -137,6 +141,7 @@ export default function Home() {
                 {!loading && !error && (
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                         {lists.map((l) => {
+                            // Platzhalterlogik
                             const total = 0;
                             const done = 0;
                             const pct = 0;
@@ -176,7 +181,6 @@ export default function Home() {
                             );
                         })}
 
-                        {/* Platzhalter wenn < 6 */}
                         {Array.from({ length: Math.max(0, 6 - lists.length) }).map((_, i) => (
                             <div key={`ph-${i}`} className="group">
                                 <Card className="rounded-3xl border-zinc-800 bg-gradient-to-b from-zinc-900/30 to-zinc-900/20 shadow-sm">
