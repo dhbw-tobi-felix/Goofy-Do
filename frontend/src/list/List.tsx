@@ -1,379 +1,324 @@
-// File: frontend/src/list/List.tsx
-import { useEffect, useMemo, useState } from "react";
-import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "../components/ui/button";
-import { Badge } from "../components/ui/badge";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
-import { Checkbox } from "../components/ui/checkbox";
-import { ScrollArea } from "../components/ui/scroll-area";
-import { Progress } from "../components/ui/progress";
-import { TooltipProvider } from "../components/ui/tooltip";
-import { ChevronLeft, Plus, Trash2 } from "lucide-react";
+import {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {apiRequest, type ListDto, type TaskDto} from "../lib/api";
+import {keycloak} from "../main";
+import {ArrowLeft, Pencil, Plus, Save, Trash2, X} from "lucide-react";
+import {useToast} from "../context/ToastContext.tsx";
+import {Modal} from "../components/Modal.tsx";
+import {TaskItem} from "../components/TaskItem.tsx";
 
-// Types
-export type Task = {
-    id: string;
-    name: string;
-    description?: string;
-    dueDate?: string; // ISO
-    completed: boolean;
+const formatDateForInput = (isoDate?: string | null) => {
+    if (!isoDate) return "";
+    return new Date(isoDate).toISOString().split('T')[0];
 };
 
-export type TodoList = {
-    id: string | number;
-    title: string; // entspricht name
-    tasks: Task[];
-    date?: string; // optionale Anzeige
-};
-
-type ServerTask = {
-    id: number | string;
-    name: string;
-    description?: string | null;
-    dueDate?: string | null;
-    completed?: boolean;
-    listId?: number | string;
-};
-
-type ServerList = {
-    id: number | string;
-    name: string;
-    description?: string | null;
-};
-
-function formatDate(iso?: string) {
-    if (!iso) return "Kein Datum";
-    const d = new Date(iso);
-    return d.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" });
-}
-
-function pctDone(tasks: Task[]) {
-    const total = tasks.length;
-    const done = tasks.filter((t) => t.completed).length;
-    return { total, done, pct: total === 0 ? 0 : Math.round((done / total) * 100) };
-}
-
-// Komponente
 export default function ListDetail() {
-    const { id } = useParams();
-    const location = useLocation() as { state?: { list?: TodoList } };
+    const {id} = useParams();
     const navigate = useNavigate();
+    const authenticated = keycloak.authenticated;
+    const {addToast} = useToast();
 
-    const [list, setList] = useState<TodoList | null>(location.state?.list ?? null);
-    const [saving, setSaving] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [listMeta, setListMeta] = useState<ListDto | null>(null);
+    const [tasks, setTasks] = useState<TaskDto[]>([]);
 
-    // Helper: map ServerTask -> Task
-    function mapTask(st: ServerTask): Task {
-        return {
-            id: String(st.id),
-            name: st.name,
-            description: st.description ?? undefined,
-            dueDate: st.dueDate ?? undefined,
-            completed: !!st.completed,
-        };
-    }
+    const [isEditingList, setIsEditingList] = useState(false);
+    const [editListName, setEditListName] = useState("");
+    const [editListDesc, setEditListDesc] = useState("");
+    const [isSavingList, setIsSavingList] = useState(false);
 
-    async function fetchListMeta(listId: string | number): Promise<ServerList> {
-        const res = await fetch(`http://localhost:8080/api/v1/lists/${encodeURIComponent(String(listId))}`, {
-            headers: { Accept: "application/json" },
-            credentials: "same-origin",
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return (await res.json()) as ServerList;
-    }
+    const [isDeletingList, setIsDeletingList] = useState(false);
+    const [showDeleteListModal, setShowDeleteListModal] = useState(false);
+    const [taskToDelete, setTaskToDelete] = useState<TaskDto | null>(null);
 
-    // Nur Tasks für eine Liste holen und in state setzen
-    async function fetchTasksForList(listId: string | number): Promise<ServerTask[]> {
-        // WICHTIG: korrekter Endpoint für tasks einer Liste
-        const res = await fetch(
-            `http://localhost:8080/api/v1/lists/${encodeURIComponent(String(listId))}/tasks`,
-            {
-                headers: { Accept: "application/json" },
-                credentials: "same-origin",
-            }
-        );
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return (await res.json()) as ServerTask[];
-    }
+    const [newTaskName, setNewTaskName] = useState("");
+    const [newTaskDesc, setNewTaskDesc] = useState("");
+    const [newTaskDate, setNewTaskDate] = useState("");
 
-    // Liste und ihre Tasks vom Server laden
-    async function fetchListAndTasks(listId: string | number) {
-        setLoading(true);
-        setError(null);
-        try {
-            const [meta, tasks] = await Promise.all([fetchListMeta(listId), fetchTasksForList(listId)]);
-            const mapped: Task[] = tasks.map(mapTask);
-            setList({
-                id: meta.id,
-                title: meta.name,
-                tasks: mapped,
-                date:     undefined,       });
-        } catch (e) {
-            console.error(e);
-            setError("Fehler beim Laden der Liste.");
-            setList(null);
-        } finally {
-            setLoading(false);
-        }
-    }
+    const [editingTask, setEditingTask] = useState<TaskDto | null>(null);
+    const [editTaskName, setEditTaskName] = useState("");
+    const [editTaskDesc, setEditTaskDesc] = useState("");
+    const [editTaskDate, setEditTaskDate] = useState("");
 
     useEffect(() => {
-        let aborted = false;
-        if (!id) return;
-        // priorisiere Server-Daten; falls state vorhanden wird es ignoriert — wir wollen DB-Daten
-        (async () => {
-            if (aborted) return;
-            await fetchListAndTasks(id);
-        })();
-        return () => {
-            aborted = true;
+        if (!authenticated || !id) return;
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const [metaRes, tasksRes] = await Promise.all([
+                    apiRequest(`/lists/${id}`),
+                    apiRequest(`/lists/${id}/tasks`)
+                ]);
+                const metaData = await metaRes.json();
+                setListMeta(metaData);
+                setEditListName(metaData.name);
+                setEditListDesc(metaData.description || "");
+                setTasks(await tasksRes.json());
+            } catch (e: any) {
+                if (e.status === 404) addToast("Liste nicht gefunden", "error");
+                else addToast("Laden fehlgeschlagen", "error");
+                navigate("/");
+            } finally {
+                setLoading(false);
+            }
         };
-    }, [id, location.state]);
+        fetchData();
+    }, [id, navigate, authenticated, addToast]);
 
-    async function deleteList() {
-        if (!id) return;
-        const confirmed = window.confirm("Liste wirklich löschen? Alle Tasks gehen verloren.");
-        if (!confirmed) return;
+    if (!authenticated) return <div className="text-center py-20">Bitte einloggen.</div>;
 
-        setLoading(true);
+    const handleUpdateList = async () => {
+        if (!listMeta || !editListName.trim()) {
+            addToast("Name darf nicht leer sein", "error");
+            return;
+        }
+        setIsSavingList(true);
         try {
-            const res = await fetch(`http://localhost:8080/api/v1/lists/${encodeURIComponent(String(id))}`, {
-                method: "DELETE",
-                headers: { Accept: "application/json" },
-                credentials: "same-origin",
+            await apiRequest(`/lists/${listMeta.id}`, {
+                method: "PATCH",
+                body: JSON.stringify({name: editListName.trim(), description: editListDesc.trim() || null})
             });
-            if (!res.ok) {
-                const txt = await res.text().catch(() => "");
-                throw new Error(`Server error: ${res.status} ${txt}`);
-            }
-            // auf Startseite zurück
+            setListMeta({...listMeta, name: editListName.trim(), description: editListDesc.trim() || undefined});
+            setIsEditingList(false);
+            addToast("Liste aktualisiert", "success");
+        } catch (e: any) {
+            addToast(e.message || "Speichern fehlgeschlagen", "error");
+        } finally {
+            setIsSavingList(false);
+        }
+    };
+
+    const deleteEntireList = async () => {
+        if (!listMeta) return;
+        setIsDeletingList(true);
+        try {
+            await apiRequest(`/lists/${listMeta.id}`, {method: "DELETE"});
+            addToast("Liste wurde gelöscht", "info");
             navigate("/");
-        } catch (e) {
-            console.error("Fehler beim Löschen der Liste:", e);
-            alert("Konnte Liste nicht löschen.");
-        } finally {
-            setLoading(false);
+        } catch (e: any) {
+            addToast(e.message || "Fehler beim Löschen", "error");
+            setIsDeletingList(false);
+            setShowDeleteListModal(false);
         }
-    }
+    };
 
-    // Speichere neuen Task in DB (optimistisch)
-    async function addTask(task: Omit<Task, "id" | "completed">) {
-        if (!list) return;
-        const tempId = `temp_${Date.now()}`;
-        const tempTask: Task = { id: tempId, completed: false, ...task };
+    const handleAddTask = async () => {
+        if (!newTaskName.trim() || !listMeta) return;
+        const payload = {
+            name: newTaskName,
+            completed: false,
+            listId: listMeta.id,
+            description: newTaskDesc.trim() || null,
+            dueDate: newTaskDate ? new Date(newTaskDate).toISOString().slice(0, 19) : null
+        };
+        try {
+            await apiRequest("/tasks", {method: "POST", body: JSON.stringify(payload)});
+            setNewTaskName("");
+            setNewTaskDesc("");
+            setNewTaskDate("");
+            const refresh = await apiRequest(`/lists/${listMeta.id}/tasks`);
+            setTasks(await refresh.json());
+            addToast("Aufgabe hinzugefügt", "success");
+        } catch (e: any) {
+            addToast(e.message || "Aufgabe konnte nicht erstellt werden", "error");
+        }
+    };
 
-        // Optimistisches UI: sofort anzeigen
-        setList((prev) => (prev ? { ...prev, tasks: [tempTask, ...prev.tasks] } : prev));
-        setSaving(true);
+    const toggleTask = async (taskId: number, currentStatus: boolean) => {
+        setTasks(prev => prev.map(t => t.id === taskId ? {...t, completed: !currentStatus} : t));
+        try {
+            await apiRequest(`/tasks/${taskId}`, {method: "PATCH", body: JSON.stringify({completed: !currentStatus})});
+        } catch (e) {
+            setTasks(prev => prev.map(t => t.id === taskId ? {...t, completed: currentStatus} : t));
+            addToast("Status Fehler", "error");
+        }
+    };
+
+    const openEditTaskModal = (task: TaskDto) => {
+        setEditingTask(task);
+        setEditTaskName(task.name);
+        setEditTaskDesc(task.description || "");
+        setEditTaskDate(formatDateForInput(task.dueDate));
+    };
+
+    const handleUpdateTaskDetails = async () => {
+        if (!editingTask || !editTaskName.trim()) {
+            addToast("Name erforderlich", "error");
+            return;
+        }
+        const updatedTask = {
+            ...editingTask,
+            name: editTaskName.trim(),
+            description: editTaskDesc.trim() || null,
+            dueDate: editTaskDate ? new Date(editTaskDate).toISOString().slice(0, 19) : null
+        };
+
+        setTasks(prev => prev.map(t => t.id === editingTask.id ? updatedTask : t));
+        setEditingTask(null);
 
         try {
-            const body = {
-                name: task.name,
-                description: task.description ?? null,
-                dueDate: task.dueDate ? new Date(task.dueDate).toISOString() : null,
-                listId: list.id,
-            };
-            const resp = await fetch("http://localhost:8080/api/v1/tasks", {
-                method: "POST",
-                headers: { "Content-Type": "application/json", Accept: "application/json" },
-                credentials: "same-origin",
-                body: JSON.stringify(body),
+            await apiRequest(`/tasks/${editingTask.id}`, {
+                method: "PATCH",
+                body: JSON.stringify({name: updatedTask.name, description: updatedTask.description, dueDate: updatedTask.dueDate})
             });
-            if (!resp.ok) {
-                const txt = await resp.text().catch(() => "");
-                throw new Error(`Server error: ${resp.status} ${txt}`);
-            }
-
-            // Server sollte die erstellte Task zurückgeben
-            const created: ServerTask | null = await resp.json().catch(() => null);
-            if (created && created.id != null) {
-                const createdTask = mapTask(created);
-                setList((prev) =>
-                    prev ? { ...prev, tasks: prev.tasks.map((t) => (t.id === tempId ? createdTask : t)) } : prev
-                );
-            } else {
-                // Fallback: neu vom Server laden
-                await fetchTasksForList(list.id);
-            }
-        } catch (e) {
-            console.error("Fehler beim Anlegen des Tasks:", e);
-            // entferne temporären Task bei Fehler
-            setList((prev) => (prev ? { ...prev, tasks: prev.tasks.filter((t) => t.id !== tempId) } : prev));
-            // optional: rethrow oder setError
-            setError("Konnte Task nicht speichern.");
-        } finally {
-            setSaving(false);
+            addToast("Aufgabe gespeichert", "success");
+        } catch (e: any) {
+            addToast(e.message || "Fehler beim Speichern", "error");
+            const refresh = await apiRequest(`/lists/${listMeta!.id}/tasks`);
+            setTasks(await refresh.json());
         }
-    }
+    };
 
-    async function deleteTask(taskId: string) {
-        if (!list) return;
-        const prevTasks = list.tasks;
-        // Optimistisch entfernen
-        setList({ ...list, tasks: list.tasks.filter((t) => t.id !== taskId) });
-
+    const confirmDeleteTask = async () => {
+        if (!taskToDelete) return;
+        const backup = [...tasks];
+        setTasks(prev => prev.filter(t => t.id !== taskToDelete.id));
+        setTaskToDelete(null);
         try {
-            const res = await fetch(
-                `http://localhost:8080/api/v1/tasks/${encodeURIComponent(String(taskId))}`,
-                {
-                    method: "DELETE",
-                    credentials: "same-origin",
-                }
-            );
-            if (!res.ok) {
-                // restore
-                setList((l) => (l ? { ...l, tasks: prevTasks } : l));
-                const txt = await res.text().catch(() => "");
-                console.error("Delete failed:", res.status, txt);
-                alert("Konnte Task nicht löschen.");
-            }
-            // bei Erfolg: nothing to do (Task bereits entfernt)
-        } catch (e) {
-            console.error("Fehler beim Löschen des Tasks:", e);
-            // restore
-            setList((l) => (l ? { ...l, tasks: prevTasks } : l));
-            alert("Konnte Task nicht löschen.");
+            await apiRequest(`/tasks/${taskToDelete.id}`, {method: "DELETE"});
+            addToast("Aufgabe gelöscht", "info");
+        } catch {
+            setTasks(backup);
+            addToast("Löschen fehlgeschlagen", "error");
         }
-    }
+    };
 
-    function toggleTask(taskId: string, value: boolean) {
-        if (!list) return;
-        setList({
-            ...list,
-            tasks: list.tasks.map((t) => (t.id === taskId ? { ...t, completed: value } : t)),
-        });
-        // Optional: PATCH an API zum Aktualisieren des Tasks (nicht implementiert)
-    }
+    if (loading) return <div className="text-zinc-500 animate-pulse mt-10">Lade Liste...</div>;
+    if (!listMeta) return <div className="text-red-400 mt-10">Liste nicht gefunden.</div>;
 
-    const progress = useMemo(() => pctDone(list?.tasks || []), [list]);
-
-    if (!list && loading) return <div>Lade Liste…</div>;
-    if (!list && error) return <div className="text-red-400">{error}</div>;
-    if (!list) return null;
+    const done = tasks.filter(t => t.completed).length;
+    const total = tasks.length;
+    const percentage = total === 0 ? 0 : Math.round((done / total) * 100);
 
     return (
-        <TooltipProvider>
-            <main className="min-h-screen w-full">
-                <div className="mb-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <Link to="/" aria-label="Zurück">
-                            <Button variant="ghost" size="icon">
-                                <ChevronLeft />
-                            </Button>
-                        </Link>
-                        <h1 className="text-2xl font-semibold">{list.title}</h1>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Badge>{formatDate(list.date)}</Badge>
-                    </div>
-                </div>
+        <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
+            <Modal
+                isOpen={showDeleteListModal}
+                onClose={() => setShowDeleteListModal(false)}
+                title="Liste komplett löschen?"
+                footer={
+                    <>
+                        <button onClick={() => setShowDeleteListModal(false)} className="px-4 py-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Abbrechen</button>
+                        <button onClick={deleteEntireList} disabled={isDeletingList} className="px-5 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-xl shadow-lg">Löschen</button>
+                    </>
+                }
+            >
+                <p className="text-zinc-600 dark:text-zinc-300">Möchtest du <span className="font-bold text-zinc-900 dark:text-white">"{listMeta.name}"</span> wirklich löschen?</p>
+            </Modal>
 
-                <div className="mb-4">
-                    <Progress value={progress.pct} className="h-2" />
-                    <div className="text-sm text-zinc-300 mt-2">
-                        {progress.done}/{progress.total} erledigt • {progress.pct}%
+            <Modal
+                isOpen={!!taskToDelete}
+                onClose={() => setTaskToDelete(null)}
+                title="Aufgabe löschen?"
+                footer={
+                    <>
+                        <button onClick={() => setTaskToDelete(null)} className="px-4 py-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Abbrechen</button>
+                        <button onClick={confirmDeleteTask} className="px-5 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold rounded-xl shadow-lg">Löschen</button>
+                    </>
+                }
+            >
+                <p className="text-zinc-600 dark:text-zinc-300">Aufgabe <span className="font-bold text-zinc-900 dark:text-white">"{taskToDelete?.name}"</span> löschen?</p>
+            </Modal>
+
+            <Modal
+                isOpen={!!editingTask}
+                onClose={() => setEditingTask(null)}
+                title="Aufgabe bearbeiten"
+                footer={
+                    <>
+                        <button onClick={() => setEditingTask(null)} className="px-4 py-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Abbrechen</button>
+                        <button onClick={handleUpdateTaskDetails} disabled={!editTaskName.trim()} className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-xl disabled:opacity-50">Speichern</button>
+                    </>
+                }
+            >
+                <div className="space-y-4">
+                    <div>
+                        <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1 uppercase">Name</label>
+                        <input value={editTaskName} onChange={e => setEditTaskName(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleUpdateTaskDetails()} className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-200 focus:border-blue-500 outline-none"/>
                     </div>
                     <div>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={deleteList}
-                            disabled={loading}
-                            aria-label="Liste löschen"
-                            title="Liste löschen"
-                        >
-                            <Trash2 className="h-4 w-4 text-red-400" />
-                        </Button>
+                        <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1 uppercase">Beschreibung</label>
+                        <textarea rows={3} value={editTaskDesc} onChange={e => setEditTaskDesc(e.target.value)} className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-200 focus:border-blue-500 outline-none resize-none"/>
+                    </div>
+                    <div>
+                        <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1 uppercase">Fälligkeitsdatum</label>
+                        <input type="date" value={editTaskDate} onChange={e => setEditTaskDate(e.target.value)} className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-zinc-900 dark:text-zinc-400 focus:border-blue-500 outline-none"/>
+                    </div>
+                </div>
+            </Modal>
+
+            <div className="flex flex-col gap-4 mb-8 border-b border-zinc-200 dark:border-zinc-800/50 pb-6">
+                <div className="flex items-center justify-between">
+                    <Link to="/" className="text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors flex items-center gap-1 text-sm group">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform"/> Zurück
+                    </Link>
+
+                    <div className="flex gap-2">
+                        {!isEditingList && (
+                            <button onClick={() => setIsEditingList(true)} className="p-2 text-zinc-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/20 rounded-lg transition-colors">
+                                <Pencil size={18}/>
+                            </button>
+                        )}
+                        <button onClick={() => setShowDeleteListModal(true)} disabled={isDeletingList} className="p-2 text-zinc-500 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg transition-colors disabled:opacity-50">
+                            <Trash2 size={18}/>
+                        </button>
                     </div>
                 </div>
 
+                {isEditingList ? (
+                    <div className="bg-white dark:bg-zinc-900/50 p-4 rounded-xl border border-blue-500/30">
+                        <div className="space-y-3">
+                            <input value={editListName} onChange={(e) => setEditListName(e.target.value)} className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-lg font-bold text-zinc-900 dark:text-white focus:border-blue-500 outline-none" placeholder="Listenname"/>
+                            <textarea value={editListDesc} onChange={(e) => setEditListDesc(e.target.value)} rows={2} className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-700 dark:text-zinc-300 focus:border-blue-500 outline-none resize-none" placeholder="Beschreibung"/>
+                            <div className="flex gap-2 pt-1">
+                                <button onClick={handleUpdateList} disabled={isSavingList} className="flex items-center gap-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium"><Save size={16}/> Speichern</button>
+                                <button onClick={() => setIsEditingList(false)} className="flex items-center gap-2 px-4 py-1.5 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg text-sm font-medium"><X size={16}/> Abbrechen</button>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="space-y-1 px-1 animate-in slide-in-from-left-2 duration-300">
+                        <h1 className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">{listMeta.name}</h1>
+                        <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed whitespace-pre-line">{listMeta.description || <span className="text-zinc-400 dark:text-zinc-600 italic text-sm">Keine Beschreibung</span>}</p>
+                    </div>
+                )}
+            </div>
 
-
-                <div className="mb-4">
-                    <AddTaskForm onAdd={addTask} saving={saving} />
+            <div className="mb-8 p-1">
+                <div className="flex justify-between text-xs font-bold text-zinc-500 mb-2 uppercase tracking-wider">
+                    <span>Fortschritt</span><span>{percentage}%</span>
                 </div>
+                <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-500 transition-all duration-700 ease-out" style={{width: `${percentage}%`}}/>
+                </div>
+            </div>
 
-                <ScrollArea className="h-[60vh] rounded-lg border border-zinc-800 p-3">
-                    <AnimatePresence>
-                        {list.tasks.map((t) => (
-                            <motion.div
-                                key={t.id}
-                                initial={{ opacity: 0, y: -6 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -6 }}
-                                className="mb-2 flex items-center justify-between rounded-lg bg-zinc-900/40 p-3"
-                            >
-                                <div className="flex items-start gap-3">
-                                    <Checkbox
-                                        checked={t.completed}
-                                        onCheckedChange={(v) => toggleTask(t.id, !!v)}
-                                        aria-label={`Markiere ${t.name}`}
-                                    />
-                                    <div>
-                                        <div className="font-medium">{t.name}</div>
-                                        <div className="text-xs text-zinc-400">{t.description}</div>
-                                        {t.dueDate && <div className="text-xs text-zinc-400">{formatDate(t.dueDate)}</div>}
-                                    </div>
-                                </div>
-                                <div>
-                                    <Button variant="ghost" size="icon" onClick={() => deleteTask(t.id)} aria-label="Löschen">
-                                        <Trash2 />
-                                    </Button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </ScrollArea>
-            </main>
-        </TooltipProvider>
-    );
-}
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 mb-8 shadow-xl focus-within:border-blue-500/50 transition-colors">
+                <div className="flex flex-col gap-3">
+                    <div className="flex gap-3">
+                        <div className="p-2.5 bg-zinc-100 dark:bg-zinc-800 rounded-lg h-fit"><Plus size={20} className="text-zinc-400"/></div>
+                        <input type="text" className="flex-1 bg-transparent border-b border-zinc-200 dark:border-zinc-800 focus:border-blue-500 outline-none text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 pb-1 text-lg font-medium transition-all" placeholder="Was ist zu tun?" value={newTaskName} onChange={e => setNewTaskName(e.target.value)} onKeyDown={e => e.key === "Enter" && handleAddTask()}/>
+                    </div>
+                    <div className="flex flex-wrap gap-2 pl-12">
+                        <input type="text" placeholder="Notiz..." value={newTaskDesc} onChange={e => setNewTaskDesc(e.target.value)} className="flex-1 min-w-[200px] bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-1.5 text-sm text-zinc-700 dark:text-zinc-300 focus:border-blue-500 outline-none" onKeyDown={e => e.key === "Enter" && handleAddTask()}/>
+                        <input type="date" className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 text-sm rounded-lg px-3 py-1.5 outline-none focus:border-blue-500" value={newTaskDate} onChange={e => setNewTaskDate(e.target.value)}/>
+                        <button onClick={handleAddTask} disabled={!newTaskName.trim()} className="px-4 py-1.5 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-blue-500 disabled:opacity-50 transition-colors">Hinzufügen</button>
+                    </div>
+                </div>
+            </div>
 
-// Subcomponent: AddTaskForm
-function AddTaskForm({ onAdd, saving }: { onAdd: (t: Omit<Task, "id" | "completed">) => Promise<void> | void; saving?: boolean }) {
-    const [name, setName] = useState("");
-    const [desc, setDesc] = useState("");
-    const [due, setDue] = useState<string>("");
+            <div className="space-y-3 pb-24">
+                {tasks.length === 0 && <div className="text-center py-12 text-zinc-400 italic">Keine Aufgaben.</div>}
 
-    async function submit() {
-        if (!name.trim()) return;
-        await onAdd({ name: name.trim(), description: desc.trim() || undefined, dueDate: due || undefined });
-        setName("");
-        setDesc("");
-        setDue("");
-    }
-
-    return (
-        <div className="rounded-2xl bg-zinc-900/50 p-3 ring-1 ring-zinc-800">
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-5">
-                <Input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Task-Name"
-                    aria-label="Task-Name"
-                    className="md:col-span-2 bg-zinc-950/60 border-zinc-800 text-zinc-100 placeholder:text-zinc-500"
-                />
-                <Input
-                    type="date"
-                    value={due}
-                    onChange={(e) => setDue(e.target.value)}
-                    aria-label="Fälligkeitsdatum"
-                    className="md:col-span-1 bg-zinc-950/60 border-zinc-800 text-zinc-100 placeholder:text-zinc-500"
-                />
-                <Textarea
-                    value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
-                    placeholder="Beschreibung (optional)"
-                    aria-label="Beschreibung"
-                    className="md:col-span-1 min-h-[42px] bg-zinc-950/60 border-zinc-800 text-zinc-100 placeholder:text-zinc-500"
-                />
-                <Button onClick={submit} className="md:col-span-1 gap-2 rounded-xl" disabled={saving}>
-                    <Plus className="h-4 w-4" /> {saving ? "Speichere..." : "Hinzufügen"}
-                </Button>
+                {tasks.sort((a, b) => Number(a.completed) - Number(b.completed)).map((task) => (
+                    <TaskItem
+                        key={task.id}
+                        task={task}
+                        onToggle={toggleTask}
+                        onEdit={openEditTaskModal}
+                        onDelete={(t) => setTaskToDelete(t)}
+                    />
+                ))}
             </div>
         </div>
     );
