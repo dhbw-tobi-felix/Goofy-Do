@@ -1,6 +1,7 @@
 import {keycloak} from "../main";
+import config from "@/config.ts";
 
-const BASE_URL = "http://localhost:8080/api/v1";
+const BASE_URL = config.backendUrl;
 
 export class ApiError extends Error {
     // @ts-ignore
@@ -25,13 +26,14 @@ export type TaskDto = {
 
 export async function apiRequest(endpoint: string, options: RequestInit = {}) {
     if (!keycloak.authenticated) {
-        throw new Error("Nicht eingeloggt");
+        return Promise.reject(new Error("Nicht eingeloggt"));
     }
 
     try {
         await keycloak.updateToken(30);
     } catch {
         await keycloak.login();
+        return Promise.reject(new Error("Token ungültig, Login erforderlich"));
     }
 
     const headers = {
@@ -43,25 +45,21 @@ export async function apiRequest(endpoint: string, options: RequestInit = {}) {
 
     const url = `${BASE_URL}${endpoint}`;
 
-    try {
-        const response = await fetch(url, {...options, headers});
+    const response = await fetch(url, {...options, headers}).catch(() => null);
 
-        if (!response.ok) {
-            let errorMessage = `Fehler: ${response.statusText}`;
-            try {
-                const errorBody = await response.json();
-                if (errorBody && errorBody.message) {
-                    errorMessage = errorBody.message;
-                }
-            } catch {
-                // ignore
-            }
-            throw new ApiError(response.status, errorMessage);
-        }
-
-        return response;
-    } catch (error) {
-        if (error instanceof ApiError) throw error;
-        throw new Error("Netzwerkfehler oder Server nicht erreichbar");
+    if (!response) {
+        return Promise.reject(new Error("Netzwerkfehler oder Server nicht erreichbar"));
     }
+
+    if (!response.ok) {
+        let message = response.statusText;
+        try {
+            const body = await response.json();
+            if (body?.message) message = body.message;
+        } catch {}
+
+        return Promise.reject(new ApiError(response.status, message));
+    }
+
+    return response;
 }
