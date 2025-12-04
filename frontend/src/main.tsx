@@ -11,10 +11,12 @@ import Layout from "./layout/Layout.tsx";
 import Home from './home/Home.tsx';
 import ListDetail from "./list/List.tsx";
 
+import config from "./config.ts"
+
 export const keycloak = new Keycloak({
-    url: "http://localhost:8180",
-    realm: "todo",
-    clientId: "todo-frontend"
+    url: config.keycloakUrl,
+    realm: config.keycloakRealm,
+    clientId: config.keycloakClientId
 });
 
 const router = createBrowserRouter([
@@ -37,7 +39,10 @@ const initApp = async () => {
         });
 
         const container = document.getElementById("root");
-        if (!container) throw new Error("Root element not found");
+        if (!container) {
+            console.error("Critical: Root element not found");
+            return;
+        }
 
         const root = createRoot(container);
 
