@@ -29,7 +29,9 @@ spec:
         - name: ghcr-cred
       containers:
         - name: frontend
-          image: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest
+          #image: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest
+          image: goofydo-frontend:local
+          imagePullPolicy: Never
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
