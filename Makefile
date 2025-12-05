@@ -1,7 +1,7 @@
 # Variables
 NAMESPACE := goofydo
 DOMAIN := goofydo.local
-K8S_PATH := k8s
+K8S_PATH := deployment/k8s
 OS := $(shell uname -s)
 MINIKUBE_IP := $(shell minikube ip 2>/dev/null)
 
