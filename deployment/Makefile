@@ -1,14 +1,14 @@
 # Variables
 NAMESPACE := goofydo
 DOMAIN := goofydo.local
-K8S_PATH := infrastructure/k8s
+K8S_PATH := k8s
 OS := $(shell uname -s)
 MINIKUBE_IP := $(shell minikube ip 2>/dev/null)
 
 # Shell setup
 SHELL := /bin/bash
 
-.PHONY: help up down stop start suspend resume undeploy destroy restart secrets ghcr-secret tls-secret deploy logs tunnel check-prereqs
+.PHONY: help up down stop start suspend resume undeploy destroy restart secrets tls-secret deploy logs tunnel check-prereqs
 
 help: ## Display this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -18,7 +18,6 @@ help: ## Display this help message
 up: check-prereqs cluster-start ns secrets tls-secret deploy ## Start everything (Idempotent: Can be run multiple times)
 	@echo ""
 	@echo "✅ Cluster setup initialized."
-	@echo "⚠️  Ensure you have created the GHCR secret: 'make ghcr-secret USER=... PAT=...'"
 	@echo "🚀 App available at https://$(DOMAIN)"
 	@echo "ℹ️  Run 'make tunnel' in a separate terminal."
 
@@ -103,18 +102,6 @@ secrets: ns
 		--from-literal=KC_DB_PASSWORD="$$(openssl rand -base64 32)")
 
 	@echo "✅ Secrets ready."
-
-ghcr-secret: ns
-	@test $(USER) || (echo "❌ Error: USER required. Usage: make ghcr-secret USER=... PAT=..." && exit 1)
-	@test $(PAT) || (echo "❌ Error: PAT required. Usage: make ghcr-secret USER=... PAT=..." && exit 1)
-	@kubectl create secret docker-registry ghcr-cred \
-		--docker-server=ghcr.io \
-		--docker-username=$(USER) \
-		--docker-password=$(PAT) \
-		--docker-email=$(USER)@users.noreply.github.com \
-		-n $(NAMESPACE) \
-		--dry-run=client -o yaml | kubectl apply -f -
-	@echo "✅ GHCR Secret created/updated."
 
 tls-secret: ns
 	@echo "🔐 Checking TLS certificates..."

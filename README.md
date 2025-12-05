@@ -15,32 +15,23 @@
 Der folgende Befehl fährt Minikube hoch, generiert zufällige Passwörter, erstellt Zertifikate und deployt die Anwendung.
 
 ```bash
+cd deployment
 make up
 ```
 
-### 2. Image-Zugriff konfigurieren (WICHTIG!)
-
-Da die signierten Images in der GitHub Container Registry (GHCR) liegen, wird ein Pull-Secret benötigt.
-
-Einmal ausführen:
-```bash
-make ghcr-secret USER=<DeinGithubUser> PAT=<DeinPersonalAccessToken>
-```
-
-*(Token Scope Anforderung: `read:packages`)*
-
-### 3. Tunnel starten & Hosts Konfiguration
+### 2. Tunnel starten & Hosts Konfiguration
 
 Führe diesen Befehl aus, um zu sehen, was für dein System (macOS vs. Linux) zu tun ist:
 
 ```bash
+cd deployment
 make tunnel
 ```
 
 *   **macOS:** Der Befehl fragt nach dem sudo-Passwort und **muss offen bleiben**, damit die URL erreichbar ist.
 *   **Linux:** Der Befehl zeigt dir nur deine Minikube-IP an. Du brauchst **kein** offenes Terminal.
 
-### 4. Hosts-Datei Eintrag (WICHTIG)
+### 3. Hosts-Datei Eintrag (WICHTIG)
 
 Damit `https://goofydo.local` funktioniert, muss die Domain in `/etc/hosts` eingetragen werden:
 
@@ -53,7 +44,7 @@ echo '127.0.0.1 goofydo.local' | sudo tee -a /etc/hosts > /dev/null
 Ersetze `MINIKUBE_IP` mit der IP, die `make tunnel` (oder `minikube ip`) dir angezeigt hat (oft `192.168.49.2`).
 
 ```bash
-# Syntax: echo 'IP-ADRESSE goofydo.local' | sudo tee -a /etc/hosts
+# echo 'IP-ADRESSE goofydo.local' | sudo tee -a /etc/hosts
 echo '192.168.49.2 goofydo.local' | sudo tee -a /etc/hosts > /dev/null
 ```
 

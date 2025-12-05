@@ -27,7 +27,7 @@ services:
       - KC_DB_USERNAME=root
       - KC_DB_PASSWORD=secret
     volumes:
-      - ./keycloak/import:/opt/keycloak/data/import
+      - ./keycloak-import:/opt/keycloak/data/import
     command:
       - start-dev
       - --import-realm
