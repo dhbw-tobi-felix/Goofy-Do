@@ -15,7 +15,6 @@
 Der folgende Befehl fährt Minikube hoch, generiert zufällige Passwörter, erstellt Zertifikate und deployt die Anwendung.
 
 ```bash
-cd deployment
 make up
 ```
 
@@ -24,7 +23,6 @@ make up
 Führe diesen Befehl aus, um zu sehen, was für dein System (macOS vs. Linux) zu tun ist:
 
 ```bash
-cd deployment
 make tunnel
 ```
 
