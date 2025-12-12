@@ -10,7 +10,7 @@ Passwörter müssen mit einem salt und hash verschlüsselt in der Datenbank gesp
 
 ## SEC-03
 ### Anforderung
-Nach 15 Minuten Inaktivität muss die Session automatisch ablaufen und der Benutzer wird abgemeldet.
+Nach 30 Minuten Inaktivität muss die Session automatisch ablaufen und der Benutzer wird abgemeldet.
 
 ## SEC-04
 ### Anforderung
