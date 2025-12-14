@@ -1,0 +1,18 @@
+﻿2025-12-14T15:03:00.2775345Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:00.2775663Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:00.2775912Z [36;1mtrivy fs frontend \[0m
+2025-12-14T15:03:00.2776130Z [36;1m  --format cyclonedx \[0m
+2025-12-14T15:03:00.2776376Z [36;1m  --output sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:00.2776733Z [36;1m  --skip-dirs frontend/node_modules[0m
+2025-12-14T15:03:00.2809276Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:00.2809498Z env:
+2025-12-14T15:03:00.2809766Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.2810366Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.2810746Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:00.2811004Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:00.2811235Z ##[endgroup]
+2025-12-14T15:03:00.2863119Z + trivy fs frontend --format cyclonedx --output sbom-frontend.cdx.json --skip-dirs frontend/node_modules
+2025-12-14T15:03:00.3426903Z 2025-12-14T15:03:00Z	INFO	"--format cyclonedx" disables security scanning. Specify "--scanners vuln" explicitly if you want to include vulnerabilities in the "cyclonedx" report.
+2025-12-14T15:03:00.3432219Z 2025-12-14T15:03:00Z	INFO	[npm] To collect the license information of packages, "npm install" needs to be performed beforehand	dir="node_modules"
+2025-12-14T15:03:00.3672549Z 2025-12-14T15:03:00Z	INFO	Suppressing dependencies for development and testing. To display them, try the '--include-dev-deps' flag.
+2025-12-14T15:03:00.3673294Z 2025-12-14T15:03:00Z	INFO	Number of language-specific files	num=1

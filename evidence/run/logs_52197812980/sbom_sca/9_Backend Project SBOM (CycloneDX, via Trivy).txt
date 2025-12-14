@@ -1,0 +1,16 @@
+﻿2025-12-14T15:02:57.1091692Z ##[group]Run set -euxo pipefail
+2025-12-14T15:02:57.1091977Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:02:57.1092192Z [36;1mtrivy fs backend \[0m
+2025-12-14T15:02:57.1092397Z [36;1m  --format cyclonedx \[0m
+2025-12-14T15:02:57.1092662Z [36;1m  --output sbom-backend-project.cdx.json \[0m
+2025-12-14T15:02:57.1092941Z [36;1m  --skip-dirs backend/build[0m
+2025-12-14T15:02:57.1128917Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:02:57.1129140Z env:
+2025-12-14T15:02:57.1129423Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1129876Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1130247Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:02:57.1130506Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:02:57.1130751Z ##[endgroup]
+2025-12-14T15:02:57.1180159Z + trivy fs backend --format cyclonedx --output sbom-backend-project.cdx.json --skip-dirs backend/build
+2025-12-14T15:02:57.1731872Z 2025-12-14T15:02:57Z	INFO	"--format cyclonedx" disables security scanning. Specify "--scanners vuln" explicitly if you want to include vulnerabilities in the "cyclonedx" report.
+2025-12-14T15:02:57.1744442Z 2025-12-14T15:02:57Z	INFO	Number of language-specific files	num=0

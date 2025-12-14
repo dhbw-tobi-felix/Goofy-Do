@@ -1,0 +1,32 @@
+﻿2025-12-14T15:00:46.9515609Z Current runner version: '2.329.0'
+2025-12-14T15:00:46.9541168Z ##[group]Runner Image Provisioner
+2025-12-14T15:00:46.9542009Z Hosted Compute Agent
+2025-12-14T15:00:46.9542542Z Version: 20251202.455
+2025-12-14T15:00:46.9543223Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-14T15:00:46.9544260Z Build Date: 2025-12-02T15:56:59Z
+2025-12-14T15:00:46.9544941Z Worker ID: {be26b6e9-45b3-4441-9ef4-0df48cf48bf4}
+2025-12-14T15:00:46.9545726Z ##[endgroup]
+2025-12-14T15:00:46.9546238Z ##[group]Operating System
+2025-12-14T15:00:46.9546793Z Ubuntu
+2025-12-14T15:00:46.9547303Z 24.04.3
+2025-12-14T15:00:46.9547742Z LTS
+2025-12-14T15:00:46.9548202Z ##[endgroup]
+2025-12-14T15:00:46.9548679Z ##[group]Runner Image
+2025-12-14T15:00:46.9549311Z Image: ubuntu-24.04
+2025-12-14T15:00:46.9549830Z Version: 20251208.163.1
+2025-12-14T15:00:46.9550836Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-14T15:00:46.9552303Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-14T15:00:46.9553778Z ##[endgroup]
+2025-12-14T15:00:46.9554976Z ##[group]GITHUB_TOKEN Permissions
+2025-12-14T15:00:46.9557475Z Contents: read
+2025-12-14T15:00:46.9558192Z Metadata: read
+2025-12-14T15:00:46.9558717Z SecurityEvents: write
+2025-12-14T15:00:46.9559251Z ##[endgroup]
+2025-12-14T15:00:46.9561408Z Secret source: Actions
+2025-12-14T15:00:46.9562570Z Prepare workflow directory
+2025-12-14T15:00:46.9910659Z Prepare all required actions
+2025-12-14T15:00:46.9951009Z Getting action download info
+2025-12-14T15:00:47.3749469Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-14T15:00:47.9018669Z Download action repository 'github/codeql-action@v3' (SHA:f47c8e6a9bd05ef3ee422fc8d8663be7fe4bdc61)
+2025-12-14T15:00:48.6179857Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-14T15:00:48.9539530Z Complete job name: gitleaks

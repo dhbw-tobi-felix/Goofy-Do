@@ -1,0 +1,23 @@
+﻿2025-12-14T15:00:50.5200501Z ##[group]Run set -eux
+2025-12-14T15:00:50.5200798Z [36;1mset -eux[0m
+2025-12-14T15:00:50.5200999Z [36;1mmkdir -p reports[0m
+2025-12-14T15:00:50.5201237Z [36;1mgitleaks detect --source . --redact \[0m
+2025-12-14T15:00:50.5201564Z [36;1m  --report-format sarif \[0m
+2025-12-14T15:00:50.5201843Z [36;1m  --report-path reports/gitleaks.sarif \[0m
+2025-12-14T15:00:50.5202100Z [36;1m  --exit-code 1[0m
+2025-12-14T15:00:50.5234114Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.5234364Z env:
+2025-12-14T15:00:50.5234713Z   GITLEAKS_LICENSE: ***
+2025-12-14T15:00:50.5234917Z ##[endgroup]
+2025-12-14T15:00:50.5281294Z + mkdir -p reports
+2025-12-14T15:00:50.5294374Z + gitleaks detect --source . --redact --report-format sarif --report-path reports/gitleaks.sarif --exit-code 1
+2025-12-14T15:00:50.5312310Z 
+2025-12-14T15:00:50.5312964Z     ○
+2025-12-14T15:00:50.5313783Z     │╲
+2025-12-14T15:00:50.5314750Z     │ ○
+2025-12-14T15:00:50.5315016Z     ○ ░
+2025-12-14T15:00:50.5315224Z     ░    gitleaks
+2025-12-14T15:00:50.5315503Z 
+2025-12-14T15:00:50.6694193Z [90m3:00PM[0m [32mINF[0m 24 commits scanned.
+2025-12-14T15:00:50.6695009Z [90m3:00PM[0m [32mINF[0m scan completed in 121ms
+2025-12-14T15:00:50.6695616Z [90m3:00PM[0m [32mINF[0m no leaks found

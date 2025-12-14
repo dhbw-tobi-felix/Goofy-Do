@@ -1,0 +1,34 @@
+﻿2025-12-14T15:03:10.3288440Z ##[group]Run github/codeql-action/upload-sarif@v3
+2025-12-14T15:03:10.3288734Z with:
+2025-12-14T15:03:10.3288919Z   sarif_file: reports/sca-frontend.sarif
+2025-12-14T15:03:10.3289171Z   category: trivy-frontend
+2025-12-14T15:03:10.3289388Z   wait-for-processing: true
+2025-12-14T15:03:10.3289637Z   checkout_path: /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:10.3290012Z   token: ***
+2025-12-14T15:03:10.3290184Z   matrix: null
+2025-12-14T15:03:10.3290353Z env:
+2025-12-14T15:03:10.3290613Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:10.3291054Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:10.3291582Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:10.3291844Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:10.3292107Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:03:10.3292368Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:03:10.3292621Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:03:10.3292897Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:03:10.3293146Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:03:10.3293397Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:03:10.3293746Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/sbom-sca.yml:sbom_sca
+2025-12-14T15:03:10.3294140Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:03:04.263Z
+2025-12-14T15:03:10.3294529Z   CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY
+2025-12-14T15:03:10.3295100Z ##[endgroup]
+2025-12-14T15:03:10.6598714Z Post-processing sarif files: ["reports/sca-frontend.sarif"]
+2025-12-14T15:03:10.6602125Z Validating reports/sca-frontend.sarif
+2025-12-14T15:03:10.6840824Z Adding fingerprints to SARIF file. See https://docs.github.com/en/enterprise-cloud@latest/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#providing-data-to-track-code-scanning-alerts-across-runs for more information.
+2025-12-14T15:03:10.6843775Z ##[group]Uploading code scanning results
+2025-12-14T15:03:10.6978178Z Uploading results
+2025-12-14T15:03:11.3346039Z Successfully uploaded results
+2025-12-14T15:03:11.3347153Z ##[endgroup]
+2025-12-14T15:03:11.3352104Z ##[group]Waiting for processing to finish
+2025-12-14T15:03:11.4937028Z Analysis upload status is pending.
+2025-12-14T15:03:16.6339574Z Analysis upload status is complete.
+2025-12-14T15:03:16.6343181Z ##[endgroup]

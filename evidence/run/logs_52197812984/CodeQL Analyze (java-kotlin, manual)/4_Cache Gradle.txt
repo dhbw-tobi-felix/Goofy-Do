@@ -1,0 +1,24 @@
+﻿2025-12-14T15:00:50.2417935Z ##[group]Run actions/cache@v4
+2025-12-14T15:00:50.2418282Z with:
+2025-12-14T15:00:50.2418536Z   path: ~/.gradle/caches
+~/.gradle/wrapper
+
+2025-12-14T15:00:50.2419006Z   key: Linux-gradle-c1747d029b63f4a7a91cda7682b73578ca8403b1064886d1b344c67311b50f7e
+2025-12-14T15:00:50.2419475Z   restore-keys: Linux-gradle-
+
+2025-12-14T15:00:50.2419760Z   enableCrossOsArchive: false
+2025-12-14T15:00:50.2420039Z   fail-on-cache-miss: false
+2025-12-14T15:00:50.2420289Z   lookup-only: false
+2025-12-14T15:00:50.2420529Z   save-always: false
+2025-12-14T15:00:50.2420747Z env:
+2025-12-14T15:00:50.2421054Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:50.2421998Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:50.2422398Z ##[endgroup]
+2025-12-14T15:00:50.5284245Z Cache hit for: Linux-gradle-c1747d029b63f4a7a91cda7682b73578ca8403b1064886d1b344c67311b50f7e
+2025-12-14T15:00:51.5797127Z Received 176160768 of 509006235 (34.6%), 167.7 MBs/sec
+2025-12-14T15:00:52.5799705Z Received 402653184 of 509006235 (79.1%), 191.8 MBs/sec
+2025-12-14T15:00:53.0097896Z Received 509006235 of 509006235 (100.0%), 199.6 MBs/sec
+2025-12-14T15:00:53.0100101Z Cache Size: ~485 MB (509006235 B)
+2025-12-14T15:00:53.0144061Z [command]/usr/bin/tar -xf /home/runner/work/_temp/55568165-0bd5-4a08-bf0e-760564246718/cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --use-compress-program unzstd
+2025-12-14T15:00:57.5749985Z Cache restored successfully
+2025-12-14T15:00:57.6764717Z Cache restored from key: Linux-gradle-c1747d029b63f4a7a91cda7682b73578ca8403b1064886d1b344c67311b50f7e

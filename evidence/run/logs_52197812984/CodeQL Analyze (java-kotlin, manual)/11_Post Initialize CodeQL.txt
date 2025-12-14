@@ -1,0 +1,4 @@
+﻿2025-12-14T15:06:07.5815698Z Post job cleanup.
+2025-12-14T15:06:08.4785939Z CodeQL job status was success.
+2025-12-14T15:06:08.4795124Z Sending status report for init-post step.
+2025-12-14T15:06:08.6909634Z Status report sent for init-post step.

@@ -1,0 +1,13 @@
+﻿2025-12-14T15:02:57.1810395Z ##[group]Run set -euxo pipefail
+2025-12-14T15:02:57.1810690Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:02:57.1811099Z [36;1msyft scan dir:backend/build/quarkus-app/lib -o spdx-json=sbom-backend-runtime.spdx.json[0m
+2025-12-14T15:02:57.1811566Z [36;1mtest -s sbom-backend-runtime.spdx.json[0m
+2025-12-14T15:02:57.1843799Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:02:57.1844018Z env:
+2025-12-14T15:02:57.1844300Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1844761Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1845385Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:02:57.1845692Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:02:57.1845927Z ##[endgroup]
+2025-12-14T15:02:57.1904528Z + syft scan dir:backend/build/quarkus-app/lib -o spdx-json=sbom-backend-runtime.spdx.json
+2025-12-14T15:03:00.2750208Z + test -s sbom-backend-runtime.spdx.json

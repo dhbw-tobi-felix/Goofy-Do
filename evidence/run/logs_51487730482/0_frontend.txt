@@ -1,0 +1,1296 @@
+﻿2025-12-05T00:16:05.6234317Z Current runner version: '2.329.0'
+2025-12-05T00:16:05.6273802Z ##[group]Runner Image Provisioner
+2025-12-05T00:16:05.6275244Z Hosted Compute Agent
+2025-12-05T00:16:05.6276336Z Version: 20251124.448
+2025-12-05T00:16:05.6277364Z Commit: fda5086b43ec66ade217e5fcd18146c879571177
+2025-12-05T00:16:05.6278551Z Build Date: 2025-11-24T21:16:26Z
+2025-12-05T00:16:05.6279655Z ##[endgroup]
+2025-12-05T00:16:05.6280552Z ##[group]Operating System
+2025-12-05T00:16:05.6281414Z Ubuntu
+2025-12-05T00:16:05.6282289Z 24.04.3
+2025-12-05T00:16:05.6283026Z LTS
+2025-12-05T00:16:05.6283821Z ##[endgroup]
+2025-12-05T00:16:05.6284972Z ##[group]Runner Image
+2025-12-05T00:16:05.6285872Z Image: ubuntu-24.04
+2025-12-05T00:16:05.6286654Z Version: 20251126.144.1
+2025-12-05T00:16:05.6288456Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251126.144/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-05T00:16:05.6291259Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251126.144
+2025-12-05T00:16:05.6293165Z ##[endgroup]
+2025-12-05T00:16:05.6295377Z ##[group]GITHUB_TOKEN Permissions
+2025-12-05T00:16:05.6298038Z Contents: read
+2025-12-05T00:16:05.6298858Z Metadata: read
+2025-12-05T00:16:05.6299853Z Packages: write
+2025-12-05T00:16:05.6300611Z ##[endgroup]
+2025-12-05T00:16:05.6304177Z Secret source: Actions
+2025-12-05T00:16:05.6305918Z Prepare workflow directory
+2025-12-05T00:16:05.6885171Z Prepare all required actions
+2025-12-05T00:16:05.6943742Z Getting action download info
+2025-12-05T00:16:06.0103866Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-05T00:16:06.3089710Z Download action repository 'docker/setup-buildx-action@v3' (SHA:e468171a9de216ec08956ac3ada2f0791b6bd435)
+2025-12-05T00:16:06.5917161Z Download action repository 'docker/build-push-action@v6' (SHA:263435318d21b8e681c14492fe198d362a7d2c83)
+2025-12-05T00:16:06.9007894Z Download action repository 'docker/login-action@v3' (SHA:5e57cd118135c172c3672efd75eb46360885c0ef)
+2025-12-05T00:16:07.1916506Z Download action repository 'sigstore/cosign-installer@v3' (SHA:398d4b0eeef1380460a10c8013a76f728fb906ac)
+2025-12-05T00:16:07.3308619Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-05T00:16:07.6317994Z Complete job name: frontend
+2025-12-05T00:16:07.7193426Z ##[group]Run actions/checkout@v4
+2025-12-05T00:16:07.7195199Z with:
+2025-12-05T00:16:07.7196086Z   fetch-depth: 0
+2025-12-05T00:16:07.7197001Z   repository: dhbw-tobi-felix/Goofy-Do
+2025-12-05T00:16:07.7198513Z   token: ***
+2025-12-05T00:16:07.7199376Z   ssh-strict: true
+2025-12-05T00:16:07.7200251Z   ssh-user: git
+2025-12-05T00:16:07.7201092Z   persist-credentials: true
+2025-12-05T00:16:07.7202170Z   clean: true
+2025-12-05T00:16:07.7203061Z   sparse-checkout-cone-mode: true
+2025-12-05T00:16:07.7204203Z   fetch-tags: false
+2025-12-05T00:16:07.7205310Z   show-progress: true
+2025-12-05T00:16:07.7206170Z   lfs: false
+2025-12-05T00:16:07.7206981Z   submodules: false
+2025-12-05T00:16:07.7207963Z   set-safe-directory: true
+2025-12-05T00:16:07.7209247Z env:
+2025-12-05T00:16:07.7210270Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:16:07.7211656Z ##[endgroup]
+2025-12-05T00:16:07.8441930Z Syncing repository: dhbw-tobi-felix/Goofy-Do
+2025-12-05T00:16:07.8444909Z ##[group]Getting Git version info
+2025-12-05T00:16:07.8446179Z Working directory is '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-05T00:16:07.8447968Z [command]/usr/bin/git version
+2025-12-05T00:16:07.8448903Z git version 2.52.0
+2025-12-05T00:16:07.8461836Z ##[endgroup]
+2025-12-05T00:16:07.8478062Z Temporarily overriding HOME='/home/runner/work/_temp/f54564ce-4a13-469f-99cf-c8173999efe6' before making global git config changes
+2025-12-05T00:16:07.8481064Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-05T00:16:07.8491222Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-05T00:16:07.8533197Z Deleting the contents of '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-05T00:16:07.8536880Z ##[group]Initializing the repository
+2025-12-05T00:16:07.8541219Z [command]/usr/bin/git init /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-05T00:16:07.8654317Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-05T00:16:07.8656921Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-05T00:16:07.8659149Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-05T00:16:07.8660477Z hint: call:
+2025-12-05T00:16:07.8661165Z hint:
+2025-12-05T00:16:07.8662080Z hint: 	git config --global init.defaultBranch <name>
+2025-12-05T00:16:07.8663361Z hint:
+2025-12-05T00:16:07.8665237Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-05T00:16:07.8667474Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-05T00:16:07.8668787Z hint:
+2025-12-05T00:16:07.8669763Z hint: 	git branch -m <name>
+2025-12-05T00:16:07.8671155Z hint:
+2025-12-05T00:16:07.8672933Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-05T00:16:07.8675368Z Initialized empty Git repository in /home/runner/work/Goofy-Do/Goofy-Do/.git/
+2025-12-05T00:16:07.8678472Z [command]/usr/bin/git remote add origin https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-05T00:16:07.8709541Z ##[endgroup]
+2025-12-05T00:16:07.8714641Z ##[group]Disabling automatic garbage collection
+2025-12-05T00:16:07.8715848Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-05T00:16:07.8744142Z ##[endgroup]
+2025-12-05T00:16:07.8745390Z ##[group]Setting up auth
+2025-12-05T00:16:07.8751174Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-05T00:16:07.8781597Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-05T00:16:07.9137147Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-05T00:16:07.9170316Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-05T00:16:07.9402842Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-05T00:16:07.9437921Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-05T00:16:07.9673463Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-05T00:16:07.9710947Z ##[endgroup]
+2025-12-05T00:16:07.9720111Z ##[group]Fetching the repository
+2025-12-05T00:16:07.9722340Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-12-05T00:16:08.1842292Z From https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-05T00:16:08.1844693Z  * [new branch]      dev-deployment -> origin/dev-deployment
+2025-12-05T00:16:08.1846013Z  * [new branch]      main           -> origin/main
+2025-12-05T00:16:08.1887547Z [command]/usr/bin/git branch --list --remote origin/main
+2025-12-05T00:16:08.1913119Z   origin/main
+2025-12-05T00:16:08.1922467Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2025-12-05T00:16:08.1944990Z 9316d6a621a87fbcdbf7b6f90c8a687aca7628c0
+2025-12-05T00:16:08.1950633Z ##[endgroup]
+2025-12-05T00:16:08.1952857Z ##[group]Determining the checkout info
+2025-12-05T00:16:08.1955599Z ##[endgroup]
+2025-12-05T00:16:08.1957290Z [command]/usr/bin/git sparse-checkout disable
+2025-12-05T00:16:08.2001036Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-05T00:16:08.2028930Z ##[group]Checking out the ref
+2025-12-05T00:16:08.2034829Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-05T00:16:08.2140441Z Switched to a new branch 'main'
+2025-12-05T00:16:08.2142254Z branch 'main' set up to track 'origin/main'.
+2025-12-05T00:16:08.2150243Z ##[endgroup]
+2025-12-05T00:16:08.2190615Z [command]/usr/bin/git log -1 --format=%H
+2025-12-05T00:16:08.2215533Z 9316d6a621a87fbcdbf7b6f90c8a687aca7628c0
+2025-12-05T00:16:08.2490710Z ##[group]Run docker/setup-buildx-action@v3
+2025-12-05T00:16:08.2491745Z with:
+2025-12-05T00:16:08.2492459Z   driver: docker-container
+2025-12-05T00:16:08.2493297Z   install: false
+2025-12-05T00:16:08.2494501Z   use: true
+2025-12-05T00:16:08.2495375Z   keep-state: false
+2025-12-05T00:16:08.2496145Z   cache-binary: true
+2025-12-05T00:16:08.2496912Z   cleanup: true
+2025-12-05T00:16:08.2497626Z env:
+2025-12-05T00:16:08.2498533Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:16:08.2499690Z ##[endgroup]
+2025-12-05T00:16:08.5480881Z ##[group]Docker info
+2025-12-05T00:16:08.5507867Z [command]/usr/bin/docker version
+2025-12-05T00:16:08.6426291Z Client: Docker Engine - Community
+2025-12-05T00:16:08.6428665Z  Version:           28.0.4
+2025-12-05T00:16:08.6430601Z  API version:       1.48
+2025-12-05T00:16:08.6432125Z  Go version:        go1.23.7
+2025-12-05T00:16:08.6433630Z  Git commit:        b8034c0
+2025-12-05T00:16:08.6435661Z  Built:             Tue Mar 25 15:07:16 2025
+2025-12-05T00:16:08.6437472Z  OS/Arch:           linux/amd64
+2025-12-05T00:16:08.6439119Z  Context:           default
+2025-12-05T00:16:08.6440094Z 
+2025-12-05T00:16:08.6440739Z Server: Docker Engine - Community
+2025-12-05T00:16:08.6442476Z  Engine:
+2025-12-05T00:16:08.6443667Z   Version:          28.0.4
+2025-12-05T00:16:08.6445514Z   API version:      1.48 (minimum version 1.24)
+2025-12-05T00:16:08.6447349Z   Go version:       go1.23.7
+2025-12-05T00:16:08.6448861Z   Git commit:       6430e49
+2025-12-05T00:16:08.6450417Z   Built:            Tue Mar 25 15:07:16 2025
+2025-12-05T00:16:08.6452133Z   OS/Arch:          linux/amd64
+2025-12-05T00:16:08.6454262Z   Experimental:     false
+2025-12-05T00:16:08.6455795Z  containerd:
+2025-12-05T00:16:08.6457096Z   Version:          v2.1.5
+2025-12-05T00:16:08.6458867Z   GitCommit:        fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-05T00:16:08.6460939Z  runc:
+2025-12-05T00:16:08.6462170Z   Version:          1.3.3
+2025-12-05T00:16:08.6463707Z   GitCommit:        v1.3.3-0-gd842d771
+2025-12-05T00:16:08.6465570Z  docker-init:
+2025-12-05T00:16:08.6466895Z   Version:          0.19.0
+2025-12-05T00:16:08.6468349Z   GitCommit:        de40ad0
+2025-12-05T00:16:08.6482658Z [command]/usr/bin/docker info
+2025-12-05T00:16:08.9462992Z Client: Docker Engine - Community
+2025-12-05T00:16:08.9465064Z  Version:    28.0.4
+2025-12-05T00:16:08.9466351Z  Context:    default
+2025-12-05T00:16:08.9467628Z  Debug Mode: false
+2025-12-05T00:16:08.9468821Z  Plugins:
+2025-12-05T00:16:08.9470051Z   buildx: Docker Buildx (Docker Inc.)
+2025-12-05T00:16:08.9471555Z     Version:  v0.30.1
+2025-12-05T00:16:08.9473068Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-12-05T00:16:08.9475382Z   compose: Docker Compose (Docker Inc.)
+2025-12-05T00:16:08.9476929Z     Version:  v2.38.2
+2025-12-05T00:16:08.9478330Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-12-05T00:16:08.9479275Z 
+2025-12-05T00:16:08.9479573Z Server:
+2025-12-05T00:16:08.9480239Z  Containers: 0
+2025-12-05T00:16:08.9481001Z   Running: 0
+2025-12-05T00:16:08.9481719Z   Paused: 0
+2025-12-05T00:16:08.9482399Z   Stopped: 0
+2025-12-05T00:16:08.9483478Z  Images: 0
+2025-12-05T00:16:08.9484929Z  Server Version: 28.0.4
+2025-12-05T00:16:08.9486189Z  Storage Driver: overlay2
+2025-12-05T00:16:08.9487056Z   Backing Filesystem: extfs
+2025-12-05T00:16:08.9487912Z   Supports d_type: true
+2025-12-05T00:16:08.9488859Z   Using metacopy: false
+2025-12-05T00:16:08.9489733Z   Native Overlay Diff: false
+2025-12-05T00:16:08.9490815Z   userxattr: false
+2025-12-05T00:16:08.9491755Z  Logging Driver: json-file
+2025-12-05T00:16:08.9492757Z  Cgroup Driver: systemd
+2025-12-05T00:16:08.9493654Z  Cgroup Version: 2
+2025-12-05T00:16:08.9495266Z  Plugins:
+2025-12-05T00:16:08.9496046Z   Volume: local
+2025-12-05T00:16:08.9496998Z   Network: bridge host ipvlan macvlan null overlay
+2025-12-05T00:16:08.9498614Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-12-05T00:16:08.9500215Z  Swarm: inactive
+2025-12-05T00:16:08.9501378Z  Runtimes: io.containerd.runc.v2 runc
+2025-12-05T00:16:08.9502990Z  Default Runtime: runc
+2025-12-05T00:16:08.9504926Z  Init Binary: docker-init
+2025-12-05T00:16:08.9506719Z  containerd version: fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-05T00:16:08.9508052Z  runc version: v1.3.3-0-gd842d771
+2025-12-05T00:16:08.9509078Z  init version: de40ad0
+2025-12-05T00:16:08.9509980Z  Security Options:
+2025-12-05T00:16:08.9510807Z   apparmor
+2025-12-05T00:16:08.9511589Z   seccomp
+2025-12-05T00:16:08.9512375Z    Profile: builtin
+2025-12-05T00:16:08.9513175Z   cgroupns
+2025-12-05T00:16:08.9514257Z  Kernel Version: 6.11.0-1018-azure
+2025-12-05T00:16:08.9515326Z  Operating System: Ubuntu 24.04.3 LTS
+2025-12-05T00:16:08.9516283Z  OSType: linux
+2025-12-05T00:16:08.9517127Z  Architecture: x86_64
+2025-12-05T00:16:08.9518082Z  CPUs: 4
+2025-12-05T00:16:08.9518760Z  Total Memory: 15.62GiB
+2025-12-05T00:16:08.9519541Z  Name: runnervmoqczp
+2025-12-05T00:16:08.9520364Z  ID: 4ce6fa60-2f23-4ac2-b56a-0440c85af90a
+2025-12-05T00:16:08.9521368Z  Docker Root Dir: /var/lib/docker
+2025-12-05T00:16:08.9522242Z  Debug Mode: false
+2025-12-05T00:16:08.9523001Z  Username: githubactions
+2025-12-05T00:16:08.9523807Z  Experimental: false
+2025-12-05T00:16:08.9524964Z  Insecure Registries:
+2025-12-05T00:16:08.9529033Z   ::1/128
+2025-12-05T00:16:08.9529729Z   127.0.0.0/8
+2025-12-05T00:16:08.9530467Z  Live Restore Enabled: false
+2025-12-05T00:16:08.9531029Z 
+2025-12-05T00:16:08.9532041Z ##[endgroup]
+2025-12-05T00:16:09.0534355Z ##[group]Buildx version
+2025-12-05T00:16:09.0555123Z [command]/usr/bin/docker buildx version
+2025-12-05T00:16:09.1207673Z github.com/docker/buildx v0.30.1 9e66234aa13328a5e75b75aa5574e1ca6d6d9c01
+2025-12-05T00:16:09.1240930Z ##[endgroup]
+2025-12-05T00:16:09.1405768Z ##[group]Inspecting default docker context
+2025-12-05T00:16:09.1559023Z [
+2025-12-05T00:16:09.1559863Z   {
+2025-12-05T00:16:09.1560611Z     "Name": "default",
+2025-12-05T00:16:09.1561604Z     "Metadata": {},
+2025-12-05T00:16:09.1562361Z     "Endpoints": {
+2025-12-05T00:16:09.1563327Z       "docker": {
+2025-12-05T00:16:09.1564506Z         "Host": "unix:///var/run/docker.sock",
+2025-12-05T00:16:09.1565846Z         "SkipTLSVerify": false
+2025-12-05T00:16:09.1566905Z       }
+2025-12-05T00:16:09.1567721Z     },
+2025-12-05T00:16:09.1568589Z     "TLSMaterial": {},
+2025-12-05T00:16:09.1569493Z     "Storage": {
+2025-12-05T00:16:09.1570925Z       "MetadataPath": "<IN MEMORY>",
+2025-12-05T00:16:09.1572255Z       "TLSPath": "<IN MEMORY>"
+2025-12-05T00:16:09.1573225Z     }
+2025-12-05T00:16:09.1574377Z   }
+2025-12-05T00:16:09.1575162Z ]
+2025-12-05T00:16:09.1576746Z ##[endgroup]
+2025-12-05T00:16:09.1578361Z ##[group]Creating a new builder instance
+2025-12-05T00:16:09.3248523Z [command]/usr/bin/docker buildx create --name builder-59ddaa74-6e33-498b-9810-a873df3cbc7a --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2025-12-05T00:16:09.4052733Z builder-59ddaa74-6e33-498b-9810-a873df3cbc7a
+2025-12-05T00:16:09.4090256Z ##[endgroup]
+2025-12-05T00:16:09.4091177Z ##[group]Booting builder
+2025-12-05T00:16:09.4121067Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-59ddaa74-6e33-498b-9810-a873df3cbc7a
+2025-12-05T00:16:09.4673713Z #1 [internal] booting buildkit
+2025-12-05T00:16:09.6178089Z #1 pulling image moby/buildkit:buildx-stable-1
+2025-12-05T00:16:13.8035540Z #1 pulling image moby/buildkit:buildx-stable-1 4.3s done
+2025-12-05T00:16:13.9538941Z #1 creating container buildx_buildkit_builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0
+2025-12-05T00:16:14.2565885Z #1 creating container buildx_buildkit_builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0 0.5s done
+2025-12-05T00:16:14.2582029Z #1 DONE 4.8s
+2025-12-05T00:16:14.2897789Z Name:          builder-59ddaa74-6e33-498b-9810-a873df3cbc7a
+2025-12-05T00:16:14.2898634Z Driver:        docker-container
+2025-12-05T00:16:14.2899153Z Last Activity: 2025-12-05 00:16:09 +0000 UTC
+2025-12-05T00:16:14.2899514Z 
+2025-12-05T00:16:14.2899657Z Nodes:
+2025-12-05T00:16:14.2905919Z Name:                  builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0
+2025-12-05T00:16:14.2906591Z Endpoint:              unix:///var/run/docker.sock
+2025-12-05T00:16:14.2907082Z Status:                running
+2025-12-05T00:16:14.2907937Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2025-12-05T00:16:14.2908828Z BuildKit version:      v0.26.2
+2025-12-05T00:16:14.2910293Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+2025-12-05T00:16:14.2910978Z Labels:
+2025-12-05T00:16:14.2911418Z  org.mobyproject.buildkit.worker.executor:         oci
+2025-12-05T00:16:14.2913191Z  org.mobyproject.buildkit.worker.hostname:         42a777742560
+2025-12-05T00:16:14.2914123Z  org.mobyproject.buildkit.worker.network:          host
+2025-12-05T00:16:14.2914852Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2025-12-05T00:16:14.2915612Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2025-12-05T00:16:14.2916399Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2025-12-05T00:16:14.2917169Z GC Policy rule#0:
+2025-12-05T00:16:14.2917512Z  All:            false
+2025-12-05T00:16:14.2918094Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+2025-12-05T00:16:14.2918723Z  Keep Duration:  48h0m0s
+2025-12-05T00:16:14.2919620Z  Max Used Space: 488.3MiB
+2025-12-05T00:16:14.2919983Z GC Policy rule#1:
+2025-12-05T00:16:14.2920335Z  All:            false
+2025-12-05T00:16:14.2920759Z  Keep Duration:  1440h0m0s
+2025-12-05T00:16:14.2921157Z  Reserved Space: 7.451GiB
+2025-12-05T00:16:14.2921569Z  Max Used Space: 54.02GiB
+2025-12-05T00:16:14.2921926Z  Min Free Space: 13.97GiB
+2025-12-05T00:16:14.2922323Z GC Policy rule#2:
+2025-12-05T00:16:14.2922646Z  All:            false
+2025-12-05T00:16:14.2922993Z  Reserved Space: 7.451GiB
+2025-12-05T00:16:14.2923358Z  Max Used Space: 54.02GiB
+2025-12-05T00:16:14.2923722Z  Min Free Space: 13.97GiB
+2025-12-05T00:16:14.2924325Z GC Policy rule#3:
+2025-12-05T00:16:14.2924938Z  All:            true
+2025-12-05T00:16:14.2927144Z  Reserved Space: 7.451GiB
+2025-12-05T00:16:14.2927872Z  Max Used Space: 54.02GiB
+2025-12-05T00:16:14.2928634Z  Min Free Space: 13.97GiB
+2025-12-05T00:16:14.2968346Z ##[endgroup]
+2025-12-05T00:16:14.3923427Z ##[group]Inspect builder
+2025-12-05T00:16:14.3925582Z {
+2025-12-05T00:16:14.3925892Z   "nodes": [
+2025-12-05T00:16:14.3926172Z     {
+2025-12-05T00:16:14.3926530Z       "name": "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0",
+2025-12-05T00:16:14.3927048Z       "endpoint": "unix:///var/run/docker.sock",
+2025-12-05T00:16:14.3927524Z       "status": "running",
+2025-12-05T00:16:14.3928057Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2025-12-05T00:16:14.3928905Z       "buildkit": "v0.26.2",
+2025-12-05T00:16:14.3929424Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2025-12-05T00:16:14.3929967Z       "features": {
+2025-12-05T00:16:14.3930467Z         "Automatically load images to the Docker Engine image store": true,
+2025-12-05T00:16:14.3931119Z         "Cache export": true,
+2025-12-05T00:16:14.3931380Z         "Direct push": true,
+2025-12-05T00:16:14.3931611Z         "Docker exporter": true,
+2025-12-05T00:16:14.3931963Z         "Multi-platform build": true,
+2025-12-05T00:16:14.3932204Z         "OCI exporter": true
+2025-12-05T00:16:14.3932403Z       },
+2025-12-05T00:16:14.3932563Z       "labels": {
+2025-12-05T00:16:14.3932801Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2025-12-05T00:16:14.3933173Z         "org.mobyproject.buildkit.worker.hostname": "42a777742560",
+2025-12-05T00:16:14.3933529Z         "org.mobyproject.buildkit.worker.network": "host",
+2025-12-05T00:16:14.3935083Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2025-12-05T00:16:14.3935514Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2025-12-05T00:16:14.3936087Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2025-12-05T00:16:14.3936406Z       },
+2025-12-05T00:16:14.3936568Z       "gcPolicy": [
+2025-12-05T00:16:14.3936745Z         {
+2025-12-05T00:16:14.3936897Z           "all": false,
+2025-12-05T00:16:14.3937087Z           "filter": [
+2025-12-05T00:16:14.3937276Z             "type==source.local",
+2025-12-05T00:16:14.3937513Z             "type==exec.cachemount",
+2025-12-05T00:16:14.3937754Z             "type==source.git.checkout"
+2025-12-05T00:16:14.3937982Z           ],
+2025-12-05T00:16:14.3938155Z           "keepDuration": "48h0m0s",
+2025-12-05T00:16:14.3938381Z           "maxUsedSpace": "488.3MiB"
+2025-12-05T00:16:14.3938581Z         },
+2025-12-05T00:16:14.3938740Z         {
+2025-12-05T00:16:14.3938903Z           "all": false,
+2025-12-05T00:16:14.3939095Z           "keepDuration": "1440h0m0s",
+2025-12-05T00:16:14.3939331Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:14.3939554Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:14.3939781Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:14.3939988Z         },
+2025-12-05T00:16:14.3940137Z         {
+2025-12-05T00:16:14.3940282Z           "all": false,
+2025-12-05T00:16:14.3940482Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:14.3940720Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:14.3940950Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:14.3941168Z         },
+2025-12-05T00:16:14.3941317Z         {
+2025-12-05T00:16:14.3941474Z           "all": true,
+2025-12-05T00:16:14.3941664Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:14.3941903Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:14.3942133Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:14.3942341Z         }
+2025-12-05T00:16:14.3942492Z       ]
+2025-12-05T00:16:14.3942641Z     }
+2025-12-05T00:16:14.3942784Z   ],
+2025-12-05T00:16:14.3943004Z   "name": "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a",
+2025-12-05T00:16:14.3943296Z   "driver": "docker-container",
+2025-12-05T00:16:14.3943543Z   "lastActivity": "2025-12-05T00:16:09.000Z"
+2025-12-05T00:16:14.3943776Z }
+2025-12-05T00:16:14.3944377Z ##[endgroup]
+2025-12-05T00:16:14.3944722Z ##[group]BuildKit version
+2025-12-05T00:16:14.3945137Z builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0: v0.26.2
+2025-12-05T00:16:14.3945589Z ##[endgroup]
+2025-12-05T00:16:14.4092606Z ##[group]Run docker/login-action@v3
+2025-12-05T00:16:14.4092892Z with:
+2025-12-05T00:16:14.4093056Z   registry: ghcr.io
+2025-12-05T00:16:14.4093252Z   username: fpuhlig
+2025-12-05T00:16:14.4093772Z   password: ***
+2025-12-05T00:16:14.4094208Z   logout: true
+2025-12-05T00:16:14.4094405Z env:
+2025-12-05T00:16:14.4094663Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:16:14.4094988Z ##[endgroup]
+2025-12-05T00:16:14.7183748Z Logging into ghcr.io...
+2025-12-05T00:16:14.8450470Z Login Succeeded!
+2025-12-05T00:16:14.8594359Z ##[group]Run SHA_TAG=${GITHUB_SHA::12}
+2025-12-05T00:16:14.8594724Z [36;1mSHA_TAG=${GITHUB_SHA::12}[0m
+2025-12-05T00:16:14.8595372Z [36;1mecho "tags=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:${SHA_TAG}" >> $GITHUB_OUTPUT[0m
+2025-12-05T00:16:14.8596172Z [36;1mecho "primary_tag=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest" >> $GITHUB_OUTPUT[0m
+2025-12-05T00:16:14.8633770Z shell: /usr/bin/bash -e {0}
+2025-12-05T00:16:14.8634298Z env:
+2025-12-05T00:16:14.8634592Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:16:14.8634912Z ##[endgroup]
+2025-12-05T00:16:14.8817351Z ##[group]Run docker/build-push-action@v6
+2025-12-05T00:16:14.8817663Z with:
+2025-12-05T00:16:14.8817839Z   context: frontend
+2025-12-05T00:16:14.8818038Z   file: frontend/Dockerfile
+2025-12-05T00:16:14.8818454Z   push: true
+2025-12-05T00:16:14.8818937Z   tags: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8
+2025-12-05T00:16:14.8819458Z   platforms: linux/amd64,linux/arm64
+2025-12-05T00:16:14.8819876Z   cache-from: type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:buildcache
+2025-12-05T00:16:14.8820448Z   cache-to: type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:buildcache,mode=max
+2025-12-05T00:16:14.8820887Z   build-args: NODE_ENV=production
+
+2025-12-05T00:16:14.8821130Z   load: false
+2025-12-05T00:16:14.8821301Z   no-cache: false
+2025-12-05T00:16:14.8821486Z   pull: false
+2025-12-05T00:16:14.8821806Z   github-token: ***
+2025-12-05T00:16:14.8821986Z env:
+2025-12-05T00:16:14.8822254Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:16:14.8822562Z ##[endgroup]
+2025-12-05T00:16:15.1701036Z ##[group]GitHub Actions runtime token ACs
+2025-12-05T00:16:15.1711848Z refs/heads/main: read/write
+2025-12-05T00:16:15.1713507Z ##[endgroup]
+2025-12-05T00:16:15.1714379Z ##[group]Docker info
+2025-12-05T00:16:15.1760817Z [command]/usr/bin/docker version
+2025-12-05T00:16:15.1955032Z Client: Docker Engine - Community
+2025-12-05T00:16:15.1955540Z  Version:           28.0.4
+2025-12-05T00:16:15.1955905Z  API version:       1.48
+2025-12-05T00:16:15.1956229Z  Go version:        go1.23.7
+2025-12-05T00:16:15.1956590Z  Git commit:        b8034c0
+2025-12-05T00:16:15.1956973Z  Built:             Tue Mar 25 15:07:16 2025
+2025-12-05T00:16:15.1957403Z  OS/Arch:           linux/amd64
+2025-12-05T00:16:15.1957791Z  Context:           default
+2025-12-05T00:16:15.1958032Z 
+2025-12-05T00:16:15.1958182Z Server: Docker Engine - Community
+2025-12-05T00:16:15.1958421Z  Engine:
+2025-12-05T00:16:15.1958696Z   Version:          28.0.4
+2025-12-05T00:16:15.1958935Z   API version:      1.48 (minimum version 1.24)
+2025-12-05T00:16:15.1959208Z   Go version:       go1.23.7
+2025-12-05T00:16:15.1959438Z   Git commit:       6430e49
+2025-12-05T00:16:15.1959679Z   Built:            Tue Mar 25 15:07:16 2025
+2025-12-05T00:16:15.1959927Z   OS/Arch:          linux/amd64
+2025-12-05T00:16:15.1960149Z   Experimental:     false
+2025-12-05T00:16:15.1960348Z  containerd:
+2025-12-05T00:16:15.1960526Z   Version:          v2.1.5
+2025-12-05T00:16:15.1960787Z   GitCommit:        fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-05T00:16:15.1961079Z  runc:
+2025-12-05T00:16:15.1961240Z   Version:          1.3.3
+2025-12-05T00:16:15.1961456Z   GitCommit:        v1.3.3-0-gd842d771
+2025-12-05T00:16:15.1961693Z  docker-init:
+2025-12-05T00:16:15.1961874Z   Version:          0.19.0
+2025-12-05T00:16:15.1962083Z   GitCommit:        de40ad0
+2025-12-05T00:16:15.2003082Z [command]/usr/bin/docker info
+2025-12-05T00:16:15.2534808Z Client: Docker Engine - Community
+2025-12-05T00:16:15.2535328Z  Version:    28.0.4
+2025-12-05T00:16:15.2535635Z  Context:    default
+2025-12-05T00:16:15.2535932Z  Debug Mode: false
+2025-12-05T00:16:15.2536222Z  Plugins:
+2025-12-05T00:16:15.2536552Z   buildx: Docker Buildx (Docker Inc.)
+2025-12-05T00:16:15.2536961Z     Version:  v0.30.1
+2025-12-05T00:16:15.2537405Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-12-05T00:16:15.2537926Z   compose: Docker Compose (Docker Inc.)
+2025-12-05T00:16:15.2538344Z     Version:  v2.38.2
+2025-12-05T00:16:15.2538748Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-12-05T00:16:15.2539108Z 
+2025-12-05T00:16:15.2539215Z Server:
+2025-12-05T00:16:15.2539475Z  Containers: 1
+2025-12-05T00:16:15.2539748Z   Running: 1
+2025-12-05T00:16:15.2540011Z   Paused: 0
+2025-12-05T00:16:15.2540263Z   Stopped: 0
+2025-12-05T00:16:15.2540519Z  Images: 1
+2025-12-05T00:16:15.2540775Z  Server Version: 28.0.4
+2025-12-05T00:16:15.2541084Z  Storage Driver: overlay2
+2025-12-05T00:16:15.2541847Z   Backing Filesystem: extfs
+2025-12-05T00:16:15.2542198Z   Supports d_type: true
+2025-12-05T00:16:15.2542593Z   Using metacopy: false
+2025-12-05T00:16:15.2542913Z   Native Overlay Diff: false
+2025-12-05T00:16:15.2543439Z   userxattr: false
+2025-12-05T00:16:15.2543770Z  Logging Driver: json-file
+2025-12-05T00:16:15.2544628Z  Cgroup Driver: systemd
+2025-12-05T00:16:15.2544945Z  Cgroup Version: 2
+2025-12-05T00:16:15.2545226Z  Plugins:
+2025-12-05T00:16:15.2545483Z   Volume: local
+2025-12-05T00:16:15.2545831Z   Network: bridge host ipvlan macvlan null overlay
+2025-12-05T00:16:15.2546442Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-12-05T00:16:15.2546999Z  Swarm: inactive
+2025-12-05T00:16:15.2547314Z  Runtimes: io.containerd.runc.v2 runc
+2025-12-05T00:16:15.2547708Z  Default Runtime: runc
+2025-12-05T00:16:15.2548018Z  Init Binary: docker-init
+2025-12-05T00:16:15.2548466Z  containerd version: fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-05T00:16:15.2548981Z  runc version: v1.3.3-0-gd842d771
+2025-12-05T00:16:15.2549345Z  init version: de40ad0
+2025-12-05T00:16:15.2549644Z  Security Options:
+2025-12-05T00:16:15.2549920Z   apparmor
+2025-12-05T00:16:15.2550179Z   seccomp
+2025-12-05T00:16:15.2550447Z    Profile: builtin
+2025-12-05T00:16:15.2550736Z   cgroupns
+2025-12-05T00:16:15.2551012Z  Kernel Version: 6.11.0-1018-azure
+2025-12-05T00:16:15.2551412Z  Operating System: Ubuntu 24.04.3 LTS
+2025-12-05T00:16:15.2551792Z  OSType: linux
+2025-12-05T00:16:15.2552082Z  Architecture: x86_64
+2025-12-05T00:16:15.2552378Z  CPUs: 4
+2025-12-05T00:16:15.2552644Z  Total Memory: 15.62GiB
+2025-12-05T00:16:15.2552962Z  Name: runnervmoqczp
+2025-12-05T00:16:15.2553289Z  ID: 4ce6fa60-2f23-4ac2-b56a-0440c85af90a
+2025-12-05T00:16:15.2553677Z  Docker Root Dir: /var/lib/docker
+2025-12-05T00:16:15.2554177Z  Debug Mode: false
+2025-12-05T00:16:15.2554496Z  Username: githubactions
+2025-12-05T00:16:15.2554783Z  Experimental: false
+2025-12-05T00:16:15.2554982Z  Insecure Registries:
+2025-12-05T00:16:15.2555214Z   ::1/128
+2025-12-05T00:16:15.2555369Z   127.0.0.0/8
+2025-12-05T00:16:15.2555540Z  Live Restore Enabled: false
+2025-12-05T00:16:15.2555693Z 
+2025-12-05T00:16:15.2559246Z ##[endgroup]
+2025-12-05T00:16:15.2559603Z ##[group]Proxy configuration
+2025-12-05T00:16:15.2562797Z No proxy configuration found
+2025-12-05T00:16:15.2563371Z ##[endgroup]
+2025-12-05T00:16:15.3167417Z ##[group]Buildx version
+2025-12-05T00:16:15.3190998Z [command]/usr/bin/docker buildx version
+2025-12-05T00:16:15.3703829Z github.com/docker/buildx v0.30.1 9e66234aa13328a5e75b75aa5574e1ca6d6d9c01
+2025-12-05T00:16:15.3738579Z ##[endgroup]
+2025-12-05T00:16:15.3739286Z ##[group]Builder info
+2025-12-05T00:16:15.4625174Z {
+2025-12-05T00:16:15.4625413Z   "nodes": [
+2025-12-05T00:16:15.4625602Z     {
+2025-12-05T00:16:15.4625853Z       "name": "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0",
+2025-12-05T00:16:15.4626193Z       "endpoint": "unix:///var/run/docker.sock",
+2025-12-05T00:16:15.4626471Z       "status": "running",
+2025-12-05T00:16:15.4626981Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2025-12-05T00:16:15.4627493Z       "buildkit": "v0.26.2",
+2025-12-05T00:16:15.4627804Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2025-12-05T00:16:15.4628130Z       "features": {
+2025-12-05T00:16:15.4628417Z         "Automatically load images to the Docker Engine image store": true,
+2025-12-05T00:16:15.4628746Z         "Cache export": true,
+2025-12-05T00:16:15.4628963Z         "Direct push": true,
+2025-12-05T00:16:15.4629171Z         "Docker exporter": true,
+2025-12-05T00:16:15.4629402Z         "Multi-platform build": true,
+2025-12-05T00:16:15.4629633Z         "OCI exporter": true
+2025-12-05T00:16:15.4629829Z       },
+2025-12-05T00:16:15.4629979Z       "labels": {
+2025-12-05T00:16:15.4630218Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2025-12-05T00:16:15.4630584Z         "org.mobyproject.buildkit.worker.hostname": "42a777742560",
+2025-12-05T00:16:15.4631218Z         "org.mobyproject.buildkit.worker.network": "host",
+2025-12-05T00:16:15.4631605Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2025-12-05T00:16:15.4632010Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2025-12-05T00:16:15.4632544Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2025-12-05T00:16:15.4632838Z       },
+2025-12-05T00:16:15.4632997Z       "gcPolicy": [
+2025-12-05T00:16:15.4633168Z         {
+2025-12-05T00:16:15.4633332Z           "all": false,
+2025-12-05T00:16:15.4633521Z           "filter": [
+2025-12-05T00:16:15.4633708Z             "type==source.local",
+2025-12-05T00:16:15.4634471Z             "type==exec.cachemount",
+2025-12-05T00:16:15.4634855Z             "type==source.git.checkout"
+2025-12-05T00:16:15.4635088Z           ],
+2025-12-05T00:16:15.4635263Z           "keepDuration": "48h0m0s",
+2025-12-05T00:16:15.4635495Z           "maxUsedSpace": "488.3MiB"
+2025-12-05T00:16:15.4635695Z         },
+2025-12-05T00:16:15.4635859Z         {
+2025-12-05T00:16:15.4636010Z           "all": false,
+2025-12-05T00:16:15.4636215Z           "keepDuration": "1440h0m0s",
+2025-12-05T00:16:15.4636449Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:15.4636682Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:15.4636911Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:15.4637112Z         },
+2025-12-05T00:16:15.4637263Z         {
+2025-12-05T00:16:15.4637413Z           "all": false,
+2025-12-05T00:16:15.4637608Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:15.4637830Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:15.4638054Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:15.4638262Z         },
+2025-12-05T00:16:15.4638415Z         {
+2025-12-05T00:16:15.4638566Z           "all": true,
+2025-12-05T00:16:15.4638762Z           "reservedSpace": "7.451GiB",
+2025-12-05T00:16:15.4638992Z           "maxUsedSpace": "54.02GiB",
+2025-12-05T00:16:15.4639209Z           "minFreeSpace": "13.97GiB"
+2025-12-05T00:16:15.4639421Z         }
+2025-12-05T00:16:15.4639566Z       ]
+2025-12-05T00:16:15.4639713Z     }
+2025-12-05T00:16:15.4639853Z   ],
+2025-12-05T00:16:15.4640068Z   "name": "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a",
+2025-12-05T00:16:15.4640363Z   "driver": "docker-container",
+2025-12-05T00:16:15.4640603Z   "lastActivity": "2025-12-05T00:16:09.000Z"
+2025-12-05T00:16:15.4640831Z }
+2025-12-05T00:16:15.4641373Z ##[endgroup]
+2025-12-05T00:16:15.6269178Z [command]/usr/bin/docker buildx build --build-arg NODE_ENV=production --cache-from type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:buildcache --cache-to type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:buildcache,mode=max --file frontend/Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-0hLktD/build-iidfile-59d9d5496b.txt --platform linux/amd64,linux/arm64 --attest type=provenance,mode=max,builder-id=https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19948213218/attempts/1 --tag ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest --tag ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8 --metadata-file /home/runner/work/_temp/docker-actions-toolkit-0hLktD/build-metadata-a1a74e0d04.json --push frontend
+2025-12-05T00:16:15.9818847Z #0 building with "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a" instance using docker-container driver
+2025-12-05T00:16:15.9819597Z 
+2025-12-05T00:16:15.9819806Z #1 [internal] load build definition from Dockerfile
+2025-12-05T00:16:15.9820181Z #1 transferring dockerfile: 312B done
+2025-12-05T00:16:15.9820489Z #1 DONE 0.0s
+2025-12-05T00:16:15.9820617Z 
+2025-12-05T00:16:15.9820789Z #2 [auth] library/node:pull token for registry-1.docker.io
+2025-12-05T00:16:15.9821159Z #2 DONE 0.0s
+2025-12-05T00:16:15.9821281Z 
+2025-12-05T00:16:15.9821448Z #3 [auth] library/nginx:pull token for registry-1.docker.io
+2025-12-05T00:16:15.9821790Z #3 DONE 0.0s
+2025-12-05T00:16:15.9821915Z 
+2025-12-05T00:16:15.9822414Z #4 [linux/arm64 internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-12-05T00:16:16.0821972Z #4 ...
+2025-12-05T00:16:16.0822258Z 
+2025-12-05T00:16:16.0822600Z #5 [linux/amd64 internal] load metadata for docker.io/library/node:22-alpine
+2025-12-05T00:16:16.0823273Z #5 DONE 0.3s
+2025-12-05T00:16:16.3201593Z 
+2025-12-05T00:16:16.3202328Z #6 [linux/amd64 internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-12-05T00:16:16.3203064Z #6 DONE 0.3s
+2025-12-05T00:16:16.3203254Z 
+2025-12-05T00:16:16.3203579Z #7 [linux/arm64 internal] load metadata for docker.io/library/node:22-alpine
+2025-12-05T00:16:16.3204277Z #7 DONE 0.3s
+2025-12-05T00:16:16.3204412Z 
+2025-12-05T00:16:16.3204521Z #8 [internal] load .dockerignore
+2025-12-05T00:16:16.3204835Z #8 transferring context: 123B done
+2025-12-05T00:16:16.3205117Z #8 DONE 0.0s
+2025-12-05T00:16:16.3205240Z 
+2025-12-05T00:16:16.3205501Z #4 [linux/arm64 internal] load metadata for docker.io/library/nginx:stable-alpine
+2025-12-05T00:16:16.3205940Z #4 DONE 0.3s
+2025-12-05T00:16:16.3206059Z 
+2025-12-05T00:16:16.3206190Z #9 [internal] load build context
+2025-12-05T00:16:16.3206449Z #9 DONE 0.0s
+2025-12-05T00:16:16.3206571Z 
+2025-12-05T00:16:16.3207052Z #10 [linux/amd64 build 1/6] FROM docker.io/library/node:22-alpine@sha256:bc6133ef720f70c5d7484458dfc890c45d8c393cb8284c3f8fa87fec25dd7ecd
+2025-12-05T00:16:16.3208060Z #10 resolve docker.io/library/node:22-alpine@sha256:bc6133ef720f70c5d7484458dfc890c45d8c393cb8284c3f8fa87fec25dd7ecd 0.0s done
+2025-12-05T00:16:16.3208657Z #10 DONE 0.0s
+2025-12-05T00:16:16.3208773Z 
+2025-12-05T00:16:16.3209266Z #11 [linux/arm64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:16:16.3210270Z #11 resolve docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+2025-12-05T00:16:16.3210884Z #11 DONE 0.0s
+2025-12-05T00:16:16.3211002Z 
+2025-12-05T00:16:16.3211501Z #12 [linux/amd64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:16:16.3212510Z #12 resolve docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+2025-12-05T00:16:16.3213132Z #12 DONE 0.0s
+2025-12-05T00:16:16.3213248Z 
+2025-12-05T00:16:16.3213675Z #13 [linux/arm64 build 1/6] FROM docker.io/library/node:22-alpine@sha256:bc6133ef720f70c5d7484458dfc890c45d8c393cb8284c3f8fa87fec25dd7ecd
+2025-12-05T00:16:16.3214751Z #13 resolve docker.io/library/node:22-alpine@sha256:bc6133ef720f70c5d7484458dfc890c45d8c393cb8284c3f8fa87fec25dd7ecd 0.0s done
+2025-12-05T00:16:16.3215336Z #13 DONE 0.0s
+2025-12-05T00:16:16.3215450Z 
+2025-12-05T00:16:16.3215665Z #14 [auth] dhbw-tobi-felix/goofy-do/goofydo-frontend:pull token for ghcr.io
+2025-12-05T00:16:16.3216059Z #14 DONE 0.0s
+2025-12-05T00:16:16.3216171Z 
+2025-12-05T00:16:16.3216452Z #15 importing cache manifest from ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:buildcache
+2025-12-05T00:16:16.6158940Z #15 inferred cache manifest type: application/vnd.oci.image.manifest.v1+json done
+2025-12-05T00:16:16.7865780Z #15 DONE 0.6s
+2025-12-05T00:16:16.8885205Z 
+2025-12-05T00:16:17.5155599Z #9 [internal] load build context
+2025-12-05T00:16:17.5156418Z #9 transferring context: 317.58kB 0.0s done
+2025-12-05T00:16:17.5156862Z #9 DONE 0.0s
+2025-12-05T00:16:17.5157050Z 
+2025-12-05T00:16:17.5157206Z #16 [linux/arm64 build 2/6] WORKDIR /app
+2025-12-05T00:16:17.5157631Z #16 CACHED
+2025-12-05T00:16:17.5157794Z 
+2025-12-05T00:16:17.5158007Z #17 [linux/arm64 build 3/6] COPY package*.json ./
+2025-12-05T00:16:17.5158485Z #17 CACHED
+2025-12-05T00:16:17.5158653Z 
+2025-12-05T00:16:17.5158804Z #18 [linux/amd64 build 2/6] WORKDIR /app
+2025-12-05T00:16:17.5159251Z #18 CACHED
+2025-12-05T00:16:17.5159409Z 
+2025-12-05T00:16:17.5159571Z #19 [linux/amd64 build 3/6] COPY package*.json ./
+2025-12-05T00:16:17.5160016Z #19 CACHED
+2025-12-05T00:16:17.5160174Z 
+2025-12-05T00:16:17.5160678Z #20 [linux/arm64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:17.5161176Z #20 CACHED
+2025-12-05T00:16:17.5161333Z 
+2025-12-05T00:16:17.5161556Z #21 [linux/amd64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:17.5162350Z #21 sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 0B / 53.60MB 0.2s
+2025-12-05T00:16:17.6656513Z #21 sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 8.39MB / 53.60MB 0.3s
+2025-12-05T00:16:17.6657808Z #21 sha256:b9b992ae23a0421147ed82b168cabeb8aae5a9b2773a11d9bb440975d64d8da6 446B / 446B 0.2s done
+2025-12-05T00:16:17.7929063Z #21 ...
+2025-12-05T00:16:17.7931279Z 
+2025-12-05T00:16:17.7931638Z #20 [linux/arm64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:17.7932604Z #20 sha256:3ce565c0cad547365b3e9680d6126245312325a01087284ba4ad7bfd9a074c2c 52.63MB / 52.63MB 0.6s done
+2025-12-05T00:16:17.7933799Z #20 sha256:d445fd079fe0983d38eefcee8fa05e5e362c5e48896453357b83f9aa1287875a 36.45kB / 36.45kB 0.3s done
+2025-12-05T00:16:17.7935399Z #20 sha256:edd9b3c3f67bd274900e8c9aa7063304886a8867741d71e3871ad466b565047c 93B / 93B 0.1s done
+2025-12-05T00:16:17.7936488Z #20 sha256:169d474d9109cbe75a379922cbbb825a4821125183fe0881366118f2919165de 446B / 446B 0.2s done
+2025-12-05T00:16:17.7938015Z #20 sha256:9edfed6021ca7e3b68cbb9f1fbd044f7766b02134b866035d51f7a8eef1941aa 1.26MB / 1.26MB 0.3s done
+2025-12-05T00:16:17.7939441Z #20 sha256:32503a79e432a2ed60411e2c7eaff80e850acb33e5b1587a9f97cbbb460b99eb 52.24MB / 52.24MB 0.7s done
+2025-12-05T00:16:17.7940627Z #20 sha256:0bd713040ebbdef7247f70b0753f8fb2f410e8eb358e95af409a8412b9847d78 4.20MB / 4.20MB 0.2s done
+2025-12-05T00:16:17.7941916Z #20 extracting sha256:0bd713040ebbdef7247f70b0753f8fb2f410e8eb358e95af409a8412b9847d78 0.1s done
+2025-12-05T00:16:17.7942680Z #20 DONE 1.0s
+2025-12-05T00:16:17.7942863Z 
+2025-12-05T00:16:17.7943100Z #21 [linux/amd64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:17.7944117Z #21 sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 26.21MB / 53.60MB 0.5s
+2025-12-05T00:16:17.7945628Z #21 sha256:4745102427f1b0f32bbb42b1342f3aec192e0a029641fec018ff18aa1bd8177f 1.26MB / 1.26MB 0.2s done
+2025-12-05T00:16:17.7946787Z #21 sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 3.86MB / 3.86MB 0.2s done
+2025-12-05T00:16:17.7947843Z #21 extracting sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53
+2025-12-05T00:16:17.8989375Z #21 sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 41.94MB / 53.60MB 0.6s
+2025-12-05T00:16:17.8991028Z #21 extracting sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 0.1s done
+2025-12-05T00:16:17.8992003Z #21 sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760 0B / 51.60MB 0.2s
+2025-12-05T00:16:18.0032664Z #21 sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 53.60MB / 53.60MB 0.7s done
+2025-12-05T00:16:18.1275149Z #21 sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760 51.60MB / 51.60MB 0.4s done
+2025-12-05T00:16:18.1276805Z #21 DONE 1.3s
+2025-12-05T00:16:18.1277588Z 
+2025-12-05T00:16:18.1278292Z #20 [linux/arm64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:18.1279586Z #20 extracting sha256:32503a79e432a2ed60411e2c7eaff80e850acb33e5b1587a9f97cbbb460b99eb
+2025-12-05T00:16:19.1134176Z #20 extracting sha256:32503a79e432a2ed60411e2c7eaff80e850acb33e5b1587a9f97cbbb460b99eb 1.3s done
+2025-12-05T00:16:19.1136636Z #20 DONE 2.3s
+2025-12-05T00:16:19.1136833Z 
+2025-12-05T00:16:19.1138001Z #21 [linux/amd64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:19.1138784Z #21 extracting sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760
+2025-12-05T00:16:19.4402447Z #21 extracting sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760 1.3s done
+2025-12-05T00:16:19.4403460Z #21 DONE 2.6s
+2025-12-05T00:16:19.4403803Z 
+2025-12-05T00:16:19.4405108Z #20 [linux/arm64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:19.4406292Z #20 extracting sha256:9edfed6021ca7e3b68cbb9f1fbd044f7766b02134b866035d51f7a8eef1941aa 0.0s done
+2025-12-05T00:16:19.4407477Z #20 extracting sha256:169d474d9109cbe75a379922cbbb825a4821125183fe0881366118f2919165de 0.0s done
+2025-12-05T00:16:19.4408466Z #20 extracting sha256:edd9b3c3f67bd274900e8c9aa7063304886a8867741d71e3871ad466b565047c done
+2025-12-05T00:16:19.4409640Z #20 extracting sha256:d445fd079fe0983d38eefcee8fa05e5e362c5e48896453357b83f9aa1287875a done
+2025-12-05T00:16:19.4410661Z #20 extracting sha256:3ce565c0cad547365b3e9680d6126245312325a01087284ba4ad7bfd9a074c2c
+2025-12-05T00:16:22.0740695Z #20 extracting sha256:3ce565c0cad547365b3e9680d6126245312325a01087284ba4ad7bfd9a074c2c 2.9s done
+2025-12-05T00:16:22.0741625Z #20 DONE 5.3s
+2025-12-05T00:16:22.0741813Z 
+2025-12-05T00:16:22.0742062Z #21 [linux/amd64 build 4/6] RUN npm ci --no-audit --no-fund
+2025-12-05T00:16:22.0742929Z #21 extracting sha256:4745102427f1b0f32bbb42b1342f3aec192e0a029641fec018ff18aa1bd8177f 0.0s done
+2025-12-05T00:16:22.0744243Z #21 extracting sha256:b9b992ae23a0421147ed82b168cabeb8aae5a9b2773a11d9bb440975d64d8da6 done
+2025-12-05T00:16:22.0745282Z #21 extracting sha256:edd9b3c3f67bd274900e8c9aa7063304886a8867741d71e3871ad466b565047c done
+2025-12-05T00:16:22.0746318Z #21 extracting sha256:d445fd079fe0983d38eefcee8fa05e5e362c5e48896453357b83f9aa1287875a done
+2025-12-05T00:16:22.0747325Z #21 extracting sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5
+2025-12-05T00:16:22.5951805Z #21 extracting sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 3.1s done
+2025-12-05T00:16:22.5952714Z #21 DONE 5.8s
+2025-12-05T00:16:22.5952885Z 
+2025-12-05T00:16:22.5953021Z #22 [linux/arm64 build 5/6] COPY . .
+2025-12-05T00:16:23.7437548Z #22 ...
+2025-12-05T00:16:23.7440730Z 
+2025-12-05T00:16:23.7441865Z #23 [linux/amd64 build 5/6] COPY . .
+2025-12-05T00:16:23.7442363Z #23 DONE 1.2s
+2025-12-05T00:16:23.8969940Z 
+2025-12-05T00:16:23.8970814Z #22 [linux/arm64 build 5/6] COPY . .
+2025-12-05T00:16:23.8971745Z #22 DONE 1.7s
+2025-12-05T00:16:23.8972292Z 
+2025-12-05T00:16:23.8972820Z #24 [linux/arm64 build 6/6] RUN npm run build
+2025-12-05T00:16:27.7067307Z #24 3.960 
+2025-12-05T00:16:27.7067694Z #24 3.960 > frontend@0.0.0 build
+2025-12-05T00:16:27.7068142Z #24 3.960 > tsc -b && vite build
+2025-12-05T00:16:27.7068545Z #24 3.960 
+2025-12-05T00:16:31.3361785Z #24 ...
+2025-12-05T00:16:31.3362305Z 
+2025-12-05T00:16:31.3362527Z #25 [linux/amd64 build 6/6] RUN npm run build
+2025-12-05T00:16:31.3362977Z #25 0.219 
+2025-12-05T00:16:31.3363279Z #25 0.219 > frontend@0.0.0 build
+2025-12-05T00:16:31.3363666Z #25 0.219 > tsc -b && vite build
+2025-12-05T00:16:31.3364434Z #25 0.219 
+2025-12-05T00:16:31.3364866Z #25 4.462 vite v7.2.4 building client environment for production...
+2025-12-05T00:16:31.3365409Z #25 4.890 transforming...
+2025-12-05T00:16:32.5672569Z #25 8.821 ✓ 1695 modules transformed.
+2025-12-05T00:16:32.8946953Z #25 9.148 rendering chunks...
+2025-12-05T00:16:33.0719332Z #25 9.161 computing gzip size...
+2025-12-05T00:16:33.0720825Z #25 9.174 dist/index.html                   0.44 kB │ gzip:   0.29 kB
+2025-12-05T00:16:33.0722022Z #25 9.174 dist/assets/index-C1kacD1N.css   38.32 kB │ gzip:   6.83 kB
+2025-12-05T00:16:33.0723777Z #25 9.174 dist/assets/index-CrhvpBcL.js   339.85 kB │ gzip: 105.46 kB
+2025-12-05T00:16:33.0724613Z #25 9.176 ✓ built in 4.68s
+2025-12-05T00:16:33.0877023Z #25 DONE 9.3s
+2025-12-05T00:16:33.0877289Z 
+2025-12-05T00:16:33.0877483Z #24 [linux/arm64 build 6/6] RUN npm run build
+2025-12-05T00:16:33.3348013Z #24 ...
+2025-12-05T00:16:33.3350890Z 
+2025-12-05T00:16:33.3351756Z #12 [linux/amd64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:16:33.3352826Z #12 DONE 0.0s
+2025-12-05T00:16:33.4395156Z 
+2025-12-05T00:16:33.4396557Z #12 [linux/amd64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:16:33.4408633Z #12 sha256:bc1d7488b05ed88bc5975378fd4ef0f1ea4b6114d13fa5cbeec6a572588e0c00 1.40kB / 1.40kB 0.0s done
+2025-12-05T00:16:33.4409809Z #12 sha256:e6918dcfd20da0647335265f4647268123ce772646f9dea11cae650f26be0276 404B / 404B 0.0s done
+2025-12-05T00:16:33.5398507Z #12 sha256:c4fca37af7b3b885e76d1a14e76d630444c2868b27ff67848e077142d9771faa 1.21kB / 1.21kB 0.1s done
+2025-12-05T00:16:33.5400442Z #12 sha256:8e049f0fd1511eaabb03da73d0582501fd3a012ddb00620ff653b1a13b646310 627B / 627B 0.0s done
+2025-12-05T00:16:33.5401799Z #12 sha256:71a39d0d04b2893246ec57f9cf1b074a63fd0f094098a8b1741d0e625f4009c1 955B / 955B 0.1s done
+2025-12-05T00:16:33.5403456Z #12 sha256:b8554c5f1ad0265d1dc3a5f23b3b52e93fa1cdeda0c6b54618d3f9168e6ed01b 1.79MB / 1.79MB 0.1s done
+2025-12-05T00:16:33.7566665Z #12 sha256:3e300a7cb18c79c3ddadf170ae2c540c8feafdf7fcdc6cd5d5a3cd229fb0cada 15.55MB / 15.55MB 0.2s done
+2025-12-05T00:16:33.7567929Z #12 sha256:f637881d1138581d892d9eb942c56e0ccc7758fe3bdc0f1e6cd66059fdfd8185 3.64MB / 3.64MB 0.1s done
+2025-12-05T00:16:33.7569016Z #12 extracting sha256:f637881d1138581d892d9eb942c56e0ccc7758fe3bdc0f1e6cd66059fdfd8185
+2025-12-05T00:16:33.7687375Z #12 extracting sha256:f637881d1138581d892d9eb942c56e0ccc7758fe3bdc0f1e6cd66059fdfd8185 0.2s done
+2025-12-05T00:16:33.7689099Z #12 extracting sha256:b8554c5f1ad0265d1dc3a5f23b3b52e93fa1cdeda0c6b54618d3f9168e6ed01b
+2025-12-05T00:16:33.9089558Z #12 extracting sha256:b8554c5f1ad0265d1dc3a5f23b3b52e93fa1cdeda0c6b54618d3f9168e6ed01b 0.1s done
+2025-12-05T00:16:33.9090410Z #12 DONE 0.6s
+2025-12-05T00:16:33.9090585Z 
+2025-12-05T00:16:33.9090752Z #24 [linux/arm64 build 6/6] RUN npm run build
+2025-12-05T00:16:34.0869982Z #24 ...
+2025-12-05T00:16:34.0870228Z 
+2025-12-05T00:16:34.0871041Z #12 [linux/amd64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:16:34.0872383Z #12 extracting sha256:8e049f0fd1511eaabb03da73d0582501fd3a012ddb00620ff653b1a13b646310 done
+2025-12-05T00:16:34.0873447Z #12 extracting sha256:71a39d0d04b2893246ec57f9cf1b074a63fd0f094098a8b1741d0e625f4009c1 done
+2025-12-05T00:16:34.0874644Z #12 extracting sha256:e6918dcfd20da0647335265f4647268123ce772646f9dea11cae650f26be0276 done
+2025-12-05T00:16:34.0875644Z #12 extracting sha256:c4fca37af7b3b885e76d1a14e76d630444c2868b27ff67848e077142d9771faa done
+2025-12-05T00:16:34.0876680Z #12 extracting sha256:bc1d7488b05ed88bc5975378fd4ef0f1ea4b6114d13fa5cbeec6a572588e0c00 done
+2025-12-05T00:16:34.0877676Z #12 extracting sha256:3e300a7cb18c79c3ddadf170ae2c540c8feafdf7fcdc6cd5d5a3cd229fb0cada
+2025-12-05T00:16:34.3949841Z #12 extracting sha256:3e300a7cb18c79c3ddadf170ae2c540c8feafdf7fcdc6cd5d5a3cd229fb0cada 0.5s done
+2025-12-05T00:16:34.3952142Z #12 DONE 1.1s
+2025-12-05T00:16:34.3953076Z 
+2025-12-05T00:16:34.3953480Z #24 [linux/arm64 build 6/6] RUN npm run build
+2025-12-05T00:16:34.6019229Z #24 ...
+2025-12-05T00:16:34.6020092Z 
+2025-12-05T00:16:34.6020911Z #26 [linux/amd64 production 2/2] COPY --from=build /app/dist /usr/share/nginx/html
+2025-12-05T00:16:34.6022541Z #26 DONE 0.1s
+2025-12-05T00:16:34.7510852Z 
+2025-12-05T00:16:34.7511545Z #24 [linux/arm64 build 6/6] RUN npm run build
+2025-12-05T00:17:12.2653203Z #24 48.52 vite v7.2.4 building client environment for production...
+2025-12-05T00:17:15.6275687Z #24 51.88 transforming...
+2025-12-05T00:17:48.5201431Z #24 84.77 ✓ 1695 modules transformed.
+2025-12-05T00:17:50.7678394Z #24 87.02 rendering chunks...
+2025-12-05T00:17:50.8758249Z #24 87.13 computing gzip size...
+2025-12-05T00:17:50.9787816Z #24 87.23 dist/index.html                   0.44 kB │ gzip:   0.29 kB
+2025-12-05T00:17:51.1382722Z #24 87.23 dist/assets/index-C1kacD1N.css   38.32 kB │ gzip:   6.83 kB
+2025-12-05T00:17:51.1383620Z #24 87.23 dist/assets/index-CrhvpBcL.js   339.85 kB │ gzip: 105.46 kB
+2025-12-05T00:17:51.1384414Z #24 87.24 ✓ built in 38.47s
+2025-12-05T00:17:51.2362189Z #24 DONE 87.5s
+2025-12-05T00:17:51.3996423Z 
+2025-12-05T00:17:51.3997528Z #11 [linux/arm64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:17:51.3998750Z #11 DONE 0.0s
+2025-12-05T00:17:51.5676317Z 
+2025-12-05T00:17:51.5679176Z #11 [linux/arm64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:17:51.5681174Z #11 sha256:a0758cbe9d05315581dd3d4bd237636a2dba151678766235eb71805aa1c7eea4 403B / 403B 0.1s done
+2025-12-05T00:17:51.7233240Z #11 sha256:8cf803132b551abfc9140e3ae8b047edb8f19216239e131cd96352844a0667a3 1.40kB / 1.40kB 0.1s done
+2025-12-05T00:17:51.7234919Z #11 sha256:1a330f762070768538bd31e1956316de88caf4d87a6148749a5482bcb1442d63 1.21kB / 1.21kB 0.1s done
+2025-12-05T00:17:51.7236195Z #11 sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef 1.05MB / 16.05MB 0.2s
+2025-12-05T00:17:51.7237326Z #11 sha256:f75955c831fea904d11c6a5975dbd4d0ca0181eb9c9908186675b0cf99fdffca 955B / 955B 0.0s done
+2025-12-05T00:17:51.7238405Z #11 sha256:a71a558a48478f790729c9b8c77049b95f6b818e252ad6e71c922bfb0d9bf7a1 629B / 629B 0.0s done
+2025-12-05T00:17:51.7239564Z #11 sha256:6ad5ac8f8cf55b8c0c82be0a300d298fc22b9758efa86180f462ceb53853d8e6 1.79MB / 1.79MB 0.0s done
+2025-12-05T00:17:51.7240655Z #11 sha256:c2fe130f4aabc917e559e7eed7d37b0e21ba13b44520101696887ca892e8c63f 3.99MB / 3.99MB 0.1s done
+2025-12-05T00:17:51.9024454Z #11 sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef 16.05MB / 16.05MB 0.3s done
+2025-12-05T00:17:51.9025884Z #11 extracting sha256:c2fe130f4aabc917e559e7eed7d37b0e21ba13b44520101696887ca892e8c63f 0.1s done
+2025-12-05T00:17:51.9027173Z #11 extracting sha256:6ad5ac8f8cf55b8c0c82be0a300d298fc22b9758efa86180f462ceb53853d8e6 0.1s done
+2025-12-05T00:17:51.9027657Z #11 DONE 0.5s
+2025-12-05T00:17:52.0780257Z 
+2025-12-05T00:17:52.0781425Z #11 [linux/arm64 production 1/2] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+2025-12-05T00:17:52.0782646Z #11 extracting sha256:a71a558a48478f790729c9b8c77049b95f6b818e252ad6e71c922bfb0d9bf7a1 done
+2025-12-05T00:17:52.0783432Z #11 extracting sha256:f75955c831fea904d11c6a5975dbd4d0ca0181eb9c9908186675b0cf99fdffca done
+2025-12-05T00:17:52.0784312Z #11 extracting sha256:a0758cbe9d05315581dd3d4bd237636a2dba151678766235eb71805aa1c7eea4 done
+2025-12-05T00:17:52.0785262Z #11 extracting sha256:1a330f762070768538bd31e1956316de88caf4d87a6148749a5482bcb1442d63 done
+2025-12-05T00:17:52.0785814Z #11 extracting sha256:8cf803132b551abfc9140e3ae8b047edb8f19216239e131cd96352844a0667a3 done
+2025-12-05T00:17:52.0786809Z #11 extracting sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef
+2025-12-05T00:17:52.1932668Z #11 extracting sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef 0.3s done
+2025-12-05T00:17:52.1933499Z #11 DONE 0.8s
+2025-12-05T00:17:52.3032992Z 
+2025-12-05T00:17:52.3034697Z #27 [linux/arm64 production 2/2] COPY --from=build /app/dist /usr/share/nginx/html
+2025-12-05T00:17:52.3035367Z #27 DONE 0.1s
+2025-12-05T00:17:52.3035496Z 
+2025-12-05T00:17:52.3035587Z #28 exporting to image
+2025-12-05T00:17:52.3035870Z #28 exporting layers 0.1s done
+2025-12-05T00:17:52.5110332Z #28 ...
+2025-12-05T00:17:52.5110568Z 
+2025-12-05T00:17:52.5110992Z #29 [auth] dhbw-tobi-felix/goofy-do/goofydo-frontend:pull,push token for ghcr.io
+2025-12-05T00:17:52.5111487Z #29 DONE 0.0s
+2025-12-05T00:17:52.5111616Z 
+2025-12-05T00:17:52.5111703Z #28 exporting to image
+2025-12-05T00:17:52.5112194Z #28 exporting manifest sha256:f338db2e6db637c54d6a9916a1b13e78fbfd1882d63063f08fb8cde57fa057a2 done
+2025-12-05T00:17:52.5112946Z #28 exporting config sha256:f1d2088583214210d80dc927af790f9b261c48e051a8425553fb7b4f607370a5 done
+2025-12-05T00:17:52.5113755Z #28 exporting attestation manifest sha256:e06a062764dcc75c5ecaa78b19b1fda9954e0717206578f05aba92164b283c8d done
+2025-12-05T00:17:52.5114849Z #28 exporting manifest sha256:e2d419720c57d195da21b6dd3fe1473118d0325da8aa0496f41cd1a029b2ed43 done
+2025-12-05T00:17:52.5115609Z #28 exporting config sha256:23818307a2bfd6b5aa2dfba9dabe3b034979db6a2937f4d3f91386a9773e058a done
+2025-12-05T00:17:52.5116800Z #28 exporting attestation manifest sha256:2c1ef053de082635106b82bee1697519826a3d875dd239ef9b32e4af32417b67 done
+2025-12-05T00:17:52.5117629Z #28 exporting manifest list sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0 done
+2025-12-05T00:17:52.5118334Z #28 pushing layers
+2025-12-05T00:17:54.5209586Z #28 pushing layers 2.2s done
+2025-12-05T00:17:54.5210600Z #28 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest@sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0
+2025-12-05T00:17:56.2844629Z #28 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest@sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0 1.8s done
+2025-12-05T00:17:56.8086249Z #28 pushing layers 0.5s done
+2025-12-05T00:17:56.8087517Z #28 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8@sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0
+2025-12-05T00:17:57.5192950Z #28 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8@sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0 0.7s done
+2025-12-05T00:17:57.5194687Z #28 DONE 5.3s
+2025-12-05T00:17:57.5195053Z 
+2025-12-05T00:17:57.5195204Z #30 exporting cache to registry
+2025-12-05T00:17:57.5195669Z #30 preparing build cache for export
+2025-12-05T00:17:57.9914095Z #30 writing layer sha256:00a50a2195f87d96b5cb98261640cfc726d19703bd71c511d929833aafef3d9e
+2025-12-05T00:17:59.0448722Z #30 writing layer sha256:00a50a2195f87d96b5cb98261640cfc726d19703bd71c511d929833aafef3d9e 1.1s done
+2025-12-05T00:17:59.0450016Z #30 writing layer sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53
+2025-12-05T00:17:59.2116110Z #30 writing layer sha256:014e56e613968f73cce0858124ca5fbc601d7888099969a4eea69f31dcd71a53 0.1s done
+2025-12-05T00:17:59.2117113Z #30 writing layer sha256:0bd713040ebbdef7247f70b0753f8fb2f410e8eb358e95af409a8412b9847d78 0.1s done
+2025-12-05T00:17:59.2117951Z #30 writing layer sha256:169d474d9109cbe75a379922cbbb825a4821125183fe0881366118f2919165de
+2025-12-05T00:17:59.3857043Z #30 writing layer sha256:169d474d9109cbe75a379922cbbb825a4821125183fe0881366118f2919165de 0.1s done
+2025-12-05T00:17:59.3857971Z #30 writing layer sha256:1a330f762070768538bd31e1956316de88caf4d87a6148749a5482bcb1442d63 0.1s done
+2025-12-05T00:17:59.3858765Z #30 writing layer sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760
+2025-12-05T00:17:59.5491381Z #30 writing layer sha256:2e4fafc9c573e8168a7430607ae67549589fb2387ba7cd514a4e9c266c1a9760 0.1s done
+2025-12-05T00:17:59.5492401Z #30 writing layer sha256:32503a79e432a2ed60411e2c7eaff80e850acb33e5b1587a9f97cbbb460b99eb 0.1s done
+2025-12-05T00:17:59.5493293Z #30 writing layer sha256:36dd758d466bb0e3513e83bcd76e88b54198de212cacb53ba334d98c5d17b039
+2025-12-05T00:17:59.7247051Z #30 writing layer sha256:36dd758d466bb0e3513e83bcd76e88b54198de212cacb53ba334d98c5d17b039 0.1s done
+2025-12-05T00:17:59.7248111Z #30 writing layer sha256:3ce565c0cad547365b3e9680d6126245312325a01087284ba4ad7bfd9a074c2c 0.1s done
+2025-12-05T00:17:59.7248835Z #30 writing layer sha256:3e300a7cb18c79c3ddadf170ae2c540c8feafdf7fcdc6cd5d5a3cd229fb0cada
+2025-12-05T00:17:59.8884880Z #30 writing layer sha256:3e300a7cb18c79c3ddadf170ae2c540c8feafdf7fcdc6cd5d5a3cd229fb0cada 0.1s done
+2025-12-05T00:17:59.8886252Z #30 writing layer sha256:4745102427f1b0f32bbb42b1342f3aec192e0a029641fec018ff18aa1bd8177f 0.1s done
+2025-12-05T00:17:59.8887357Z #30 writing layer sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef
+2025-12-05T00:18:00.0652638Z #30 writing layer sha256:571ef1bf4ef06d7663f89f9d0989efac6253b916ceddf390ab3b4430ec2b3eef 0.1s done
+2025-12-05T00:18:00.0654165Z #30 writing layer sha256:622b660c55953cd35dab601fc926d596407f8bb4b06c6ecfe6b5dd7639ce13d5 0.1s done
+2025-12-05T00:18:00.0655403Z #30 writing layer sha256:6ad5ac8f8cf55b8c0c82be0a300d298fc22b9758efa86180f462ceb53853d8e6
+2025-12-05T00:18:00.2825479Z #30 writing layer sha256:6ad5ac8f8cf55b8c0c82be0a300d298fc22b9758efa86180f462ceb53853d8e6 0.1s done
+2025-12-05T00:18:00.2826469Z #30 writing layer sha256:6fe3ee6a2f30169c4cc85158e88f18d59aef21418f715badd8ab2dd5f0a2455a
+2025-12-05T00:18:01.0964901Z #30 writing layer sha256:6fe3ee6a2f30169c4cc85158e88f18d59aef21418f715badd8ab2dd5f0a2455a done
+2025-12-05T00:18:01.0966269Z #30 writing layer sha256:71a39d0d04b2893246ec57f9cf1b074a63fd0f094098a8b1741d0e625f4009c1
+2025-12-05T00:18:01.2690561Z #30 writing layer sha256:71a39d0d04b2893246ec57f9cf1b074a63fd0f094098a8b1741d0e625f4009c1 0.1s done
+2025-12-05T00:18:01.2691903Z #30 writing layer sha256:8cf803132b551abfc9140e3ae8b047edb8f19216239e131cd96352844a0667a3 0.1s done
+2025-12-05T00:18:01.2692998Z #30 writing layer sha256:8e049f0fd1511eaabb03da73d0582501fd3a012ddb00620ff653b1a13b646310
+2025-12-05T00:18:01.4336723Z #30 writing layer sha256:8e049f0fd1511eaabb03da73d0582501fd3a012ddb00620ff653b1a13b646310 0.1s done
+2025-12-05T00:18:01.4337714Z #30 writing layer sha256:9edfed6021ca7e3b68cbb9f1fbd044f7766b02134b866035d51f7a8eef1941aa 0.1s done
+2025-12-05T00:18:01.4338528Z #30 writing layer sha256:a0758cbe9d05315581dd3d4bd237636a2dba151678766235eb71805aa1c7eea4
+2025-12-05T00:18:01.6018969Z #30 writing layer sha256:a0758cbe9d05315581dd3d4bd237636a2dba151678766235eb71805aa1c7eea4 0.1s done
+2025-12-05T00:18:01.6020239Z #30 writing layer sha256:a71a558a48478f790729c9b8c77049b95f6b818e252ad6e71c922bfb0d9bf7a1 0.1s done
+2025-12-05T00:18:01.6021005Z #30 writing layer sha256:b8554c5f1ad0265d1dc3a5f23b3b52e93fa1cdeda0c6b54618d3f9168e6ed01b
+2025-12-05T00:18:01.7638847Z #30 writing layer sha256:b8554c5f1ad0265d1dc3a5f23b3b52e93fa1cdeda0c6b54618d3f9168e6ed01b 0.1s done
+2025-12-05T00:18:01.7640028Z #30 writing layer sha256:b9b992ae23a0421147ed82b168cabeb8aae5a9b2773a11d9bb440975d64d8da6 0.1s done
+2025-12-05T00:18:01.7640888Z #30 writing layer sha256:bc1d7488b05ed88bc5975378fd4ef0f1ea4b6114d13fa5cbeec6a572588e0c00
+2025-12-05T00:18:01.9511799Z #30 writing layer sha256:bc1d7488b05ed88bc5975378fd4ef0f1ea4b6114d13fa5cbeec6a572588e0c00 0.1s done
+2025-12-05T00:18:01.9513179Z #30 writing layer sha256:c2fe130f4aabc917e559e7eed7d37b0e21ba13b44520101696887ca892e8c63f 0.1s done
+2025-12-05T00:18:01.9514274Z #30 writing layer sha256:c4fca37af7b3b885e76d1a14e76d630444c2868b27ff67848e077142d9771faa
+2025-12-05T00:18:02.1237773Z #30 writing layer sha256:c4fca37af7b3b885e76d1a14e76d630444c2868b27ff67848e077142d9771faa 0.1s done
+2025-12-05T00:18:02.1238610Z #30 writing layer sha256:d445fd079fe0983d38eefcee8fa05e5e362c5e48896453357b83f9aa1287875a done
+2025-12-05T00:18:02.1239312Z #30 writing layer sha256:dff02c566895ac93a4bcc861e6fdacd3b2aca1ca07c37bca73052151d67bf88d
+2025-12-05T00:18:02.2875512Z #30 writing layer sha256:dff02c566895ac93a4bcc861e6fdacd3b2aca1ca07c37bca73052151d67bf88d 0.1s done
+2025-12-05T00:18:02.2877020Z #30 writing layer sha256:e6918dcfd20da0647335265f4647268123ce772646f9dea11cae650f26be0276 0.1s done
+2025-12-05T00:18:02.2877886Z #30 writing layer sha256:ecefa9d1277f8eef01e87fb7e505b4facb98cc2b03bd51ff544c99c7c2d77fa1
+2025-12-05T00:18:03.2896468Z #30 writing layer sha256:ecefa9d1277f8eef01e87fb7e505b4facb98cc2b03bd51ff544c99c7c2d77fa1 1.0s done
+2025-12-05T00:18:03.2897428Z #30 writing layer sha256:edd9b3c3f67bd274900e8c9aa7063304886a8867741d71e3871ad466b565047c
+2025-12-05T00:18:03.4312670Z #30 writing layer sha256:edd9b3c3f67bd274900e8c9aa7063304886a8867741d71e3871ad466b565047c done
+2025-12-05T00:18:03.4313737Z #30 writing layer sha256:f637881d1138581d892d9eb942c56e0ccc7758fe3bdc0f1e6cd66059fdfd8185 0.1s done
+2025-12-05T00:18:03.4314681Z #30 writing layer sha256:f75955c831fea904d11c6a5975dbd4d0ca0181eb9c9908186675b0cf99fdffca
+2025-12-05T00:18:03.6660226Z #30 writing layer sha256:f75955c831fea904d11c6a5975dbd4d0ca0181eb9c9908186675b0cf99fdffca 0.1s done
+2025-12-05T00:18:03.6661015Z #30 writing config sha256:05267f6a15ab7d3df283ad5013d9bb1e28f554a3d96bee8cb2e84190fcb4492b
+2025-12-05T00:18:04.4791371Z #30 writing config sha256:05267f6a15ab7d3df283ad5013d9bb1e28f554a3d96bee8cb2e84190fcb4492b 1.0s done
+2025-12-05T00:18:04.6299888Z #30 writing cache image manifest sha256:cba0095e721dceed1679e3fe15b19c46e95d7ce0edb2aed78ef0e043dd0bc383
+2025-12-05T00:18:04.9115289Z #30 preparing build cache for export 7.4s done
+2025-12-05T00:18:04.9116475Z #30 writing cache image manifest sha256:cba0095e721dceed1679e3fe15b19c46e95d7ce0edb2aed78ef0e043dd0bc383 0.4s done
+2025-12-05T00:18:04.9117729Z #30 DONE 7.4s
+2025-12-05T00:18:04.9468669Z 
+2025-12-05T00:18:04.9469168Z #31 resolving provenance for metadata file
+2025-12-05T00:18:04.9469641Z #31 DONE 0.0s
+2025-12-05T00:18:04.9546385Z ##[group]ImageID
+2025-12-05T00:18:04.9547034Z sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0
+2025-12-05T00:18:04.9548171Z ##[endgroup]
+2025-12-05T00:18:04.9549605Z ##[group]Digest
+2025-12-05T00:18:04.9550349Z sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0
+2025-12-05T00:18:04.9551430Z ##[endgroup]
+2025-12-05T00:18:04.9551973Z ##[group]Metadata
+2025-12-05T00:18:04.9552298Z {
+2025-12-05T00:18:04.9553258Z   "buildx.build.ref": "builder-59ddaa74-6e33-498b-9810-a873df3cbc7a/builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0/pxjicam7bc3yzmlhj91ezmx7c",
+2025-12-05T00:18:04.9555579Z   "cache.manifest": "{\"mediaType\":\"application/vnd.oci.image.manifest.v1+json\",\"digest\":\"sha256:cba0095e721dceed1679e3fe15b19c46e95d7ce0edb2aed78ef0e043dd0bc383\",\"size\":12101}",
+2025-12-05T00:18:04.9556944Z   "containerimage.descriptor": {
+2025-12-05T00:18:04.9557493Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-12-05T00:18:04.9558274Z     "digest": "sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0",
+2025-12-05T00:18:04.9558960Z     "size": 1609
+2025-12-05T00:18:04.9559245Z   },
+2025-12-05T00:18:04.9559883Z   "containerimage.digest": "sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0",
+2025-12-05T00:18:04.9561141Z   "image.name": "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8"
+2025-12-05T00:18:04.9562043Z }
+2025-12-05T00:18:04.9562610Z ##[endgroup]
+2025-12-05T00:18:04.9563144Z ##[group]Reference
+2025-12-05T00:18:04.9564216Z builder-59ddaa74-6e33-498b-9810-a873df3cbc7a/builder-59ddaa74-6e33-498b-9810-a873df3cbc7a0/pxjicam7bc3yzmlhj91ezmx7c
+2025-12-05T00:18:04.9565414Z ##[endgroup]
+2025-12-05T00:18:04.9567765Z ##[group]Check build summary support
+2025-12-05T00:18:04.9568370Z Build summary supported!
+2025-12-05T00:18:04.9568716Z ##[endgroup]
+2025-12-05T00:18:04.9756904Z ##[group]Run sigstore/cosign-installer@v3
+2025-12-05T00:18:04.9757190Z with:
+2025-12-05T00:18:04.9757366Z   cosign-release: v2.5.2
+2025-12-05T00:18:04.9757582Z   install-dir: $HOME/.cosign
+2025-12-05T00:18:04.9757795Z   use-sudo: false
+2025-12-05T00:18:04.9757960Z env:
+2025-12-05T00:18:04.9758202Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:04.9758507Z ##[endgroup]
+2025-12-05T00:18:04.9837745Z ##[group]Run #!/bin/bash
+2025-12-05T00:18:04.9838392Z [36;1m#!/bin/bash[0m
+2025-12-05T00:18:04.9838603Z [36;1m# cosign install script[0m
+2025-12-05T00:18:04.9838846Z [36;1mshopt -s expand_aliases[0m
+2025-12-05T00:18:04.9839073Z [36;1mif [ -z "$NO_COLOR" ]; then[0m
+2025-12-05T00:18:04.9839368Z [36;1m  alias log_info="echo -e \"\033[1;32mINFO\033[0m:\""[0m
+2025-12-05T00:18:04.9839721Z [36;1m  alias log_error="echo -e \"\033[1;31mERROR\033[0m:\""[0m
+2025-12-05T00:18:04.9839998Z [36;1melse[0m
+2025-12-05T00:18:04.9840234Z [36;1m  alias log_info="echo \"INFO:\""[0m
+2025-12-05T00:18:04.9840487Z [36;1m  alias log_error="echo \"ERROR:\""[0m
+2025-12-05T00:18:04.9840724Z [36;1mfi[0m
+2025-12-05T00:18:04.9840882Z [36;1mset -e[0m
+2025-12-05T00:18:04.9841054Z [36;1m[0m
+2025-12-05T00:18:04.9841225Z [36;1mmkdir -p $HOME/.cosign[0m
+2025-12-05T00:18:04.9841445Z [36;1m[0m
+2025-12-05T00:18:04.9841618Z [36;1mif [[ v2.5.2 == "main" ]]; then[0m
+2025-12-05T00:18:04.9841951Z [36;1m  log_info "installing cosign via 'go install' from its main version"[0m
+2025-12-05T00:18:04.9842296Z [36;1m  GOBIN=$(go env GOPATH)/bin[0m
+2025-12-05T00:18:04.9842592Z [36;1m  go install github.com/sigstore/cosign/v2/cmd/cosign@main[0m
+2025-12-05T00:18:04.9842925Z [36;1m  ln -s $GOBIN/cosign $HOME/.cosign/cosign[0m
+2025-12-05T00:18:04.9843171Z [36;1m  exit 0[0m
+2025-12-05T00:18:04.9843342Z [36;1mfi[0m
+2025-12-05T00:18:04.9843701Z [36;1m[0m
+2025-12-05T00:18:04.9843855Z [36;1mshaprog() {[0m
+2025-12-05T00:18:04.9844185Z [36;1m  case Linux in[0m
+2025-12-05T00:18:04.9844388Z [36;1m    Linux|linux)[0m
+2025-12-05T00:18:04.9844607Z [36;1m      sha256sum $1 | cut -d' ' -f1[0m
+2025-12-05T00:18:04.9844836Z [36;1m      ;;[0m
+2025-12-05T00:18:04.9845007Z [36;1m    macOS|macos)[0m
+2025-12-05T00:18:04.9845219Z [36;1m      shasum -a256 $1 | cut -d' ' -f1[0m
+2025-12-05T00:18:04.9845449Z [36;1m      ;;[0m
+2025-12-05T00:18:04.9845623Z [36;1m    Windows|windows)[0m
+2025-12-05T00:18:04.9846063Z [36;1m      powershell -command "(Get-FileHash $1 -Algorithm SHA256 | Select-Object -ExpandProperty Hash).ToLower()"[0m
+2025-12-05T00:18:04.9846513Z [36;1m      ;;[0m
+2025-12-05T00:18:04.9846670Z [36;1m    *)[0m
+2025-12-05T00:18:04.9846864Z [36;1m      log_error "unsupported OS Linux"[0m
+2025-12-05T00:18:04.9847105Z [36;1m      exit 1[0m
+2025-12-05T00:18:04.9847283Z [36;1m      ;;[0m
+2025-12-05T00:18:04.9847447Z [36;1m  esac[0m
+2025-12-05T00:18:04.9847609Z [36;1m}[0m
+2025-12-05T00:18:04.9847759Z [36;1m[0m
+2025-12-05T00:18:04.9847935Z [36;1mbootstrap_version='v2.5.2'[0m
+2025-12-05T00:18:04.9848370Z [36;1mbootstrap_linux_amd64_sha='bcfeae05557a9f313ee4392d2f335d0ff69ebbfd232019e3736fb04999fe1734'[0m
+2025-12-05T00:18:04.9848993Z [36;1mbootstrap_linux_arm_sha='ecb5b9d8b6d7c8cec98363f0827456fa3207279e5f4690db6b4e6c77b10e45f9'[0m
+2025-12-05T00:18:04.9849603Z [36;1mbootstrap_linux_arm64_sha='2cbcea1873ad76274c3f241ef175d204654e3aac3e73e6ec4504e5227015cb0a'[0m
+2025-12-05T00:18:04.9850223Z [36;1mbootstrap_darwin_amd64_sha='0681abe20a482f4b9b3ed65b3debb8c6346591f2dc484b6bfa79609ff1318de4'[0m
+2025-12-05T00:18:04.9850852Z [36;1mbootstrap_darwin_arm64_sha='51fdc6d8da8310d72df10065a52247b6bebfe990d4c946dd9f71e17588256011'[0m
+2025-12-05T00:18:04.9851480Z [36;1mbootstrap_windows_amd64_sha='fef1c4731da9112d4cf2f6d93ae2a1551c73116a4f73fab7b0c15b38e95ff688'[0m
+2025-12-05T00:18:04.9851926Z [36;1mcosign_executable_name=cosign[0m
+2025-12-05T00:18:04.9852161Z [36;1m[0m
+2025-12-05T00:18:04.9852328Z [36;1mtrap "popd >/dev/null" EXIT[0m
+2025-12-05T00:18:04.9852717Z [36;1m[0m
+2025-12-05T00:18:04.9852894Z [36;1mpushd $HOME/.cosign > /dev/null[0m
+2025-12-05T00:18:04.9853116Z [36;1m[0m
+2025-12-05T00:18:04.9853272Z [36;1mcase Linux in[0m
+2025-12-05T00:18:04.9853462Z [36;1m  Linux|linux)[0m
+2025-12-05T00:18:04.9853655Z [36;1m    case X64 in[0m
+2025-12-05T00:18:04.9853843Z [36;1m      X64|amd64)[0m
+2025-12-05T00:18:04.9854189Z [36;1m        bootstrap_filename='cosign-linux-amd64'[0m
+2025-12-05T00:18:04.9854496Z [36;1m        bootstrap_sha=${bootstrap_linux_amd64_sha}[0m
+2025-12-05T00:18:04.9854816Z [36;1m        desired_cosign_filename='cosign-linux-amd64'[0m
+2025-12-05T00:18:04.9855188Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-05T00:18:04.9855533Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9855862Z [36;1m          desired_cosign_filename='cosign_linux_amd64_0.6.0_linux_amd64'[0m
+2025-12-05T00:18:04.9856309Z [36;1m          desired_cosign_v060_signature='cosign_linux_amd64_0.6.0_linux_amd64.sig'[0m
+2025-12-05T00:18:04.9856650Z [36;1m        fi[0m
+2025-12-05T00:18:04.9856827Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9856990Z [36;1m[0m
+2025-12-05T00:18:04.9857149Z [36;1m      ARM|arm)[0m
+2025-12-05T00:18:04.9857373Z [36;1m        bootstrap_filename='cosign-linux-arm'[0m
+2025-12-05T00:18:04.9857671Z [36;1m        bootstrap_sha=${bootstrap_linux_arm_sha}[0m
+2025-12-05T00:18:04.9857971Z [36;1m        desired_cosign_filename='cosign-linux-arm'[0m
+2025-12-05T00:18:04.9858250Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9858538Z [36;1m          log_error "linux-arm build not available at v0.6.0"[0m
+2025-12-05T00:18:04.9858820Z [36;1m          exit 1[0m
+2025-12-05T00:18:04.9859010Z [36;1m        fi[0m
+2025-12-05T00:18:04.9859174Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9859476Z [36;1m[0m
+2025-12-05T00:18:04.9859633Z [36;1m      ARM64|arm64)[0m
+2025-12-05T00:18:04.9859872Z [36;1m        bootstrap_filename='cosign-linux-arm64'[0m
+2025-12-05T00:18:04.9860179Z [36;1m        bootstrap_sha=${bootstrap_linux_arm64_sha}[0m
+2025-12-05T00:18:04.9860491Z [36;1m        desired_cosign_filename='cosign-linux-arm64'[0m
+2025-12-05T00:18:04.9860773Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9861063Z [36;1m          log_error "linux-arm64 build not available at v0.6.0"[0m
+2025-12-05T00:18:04.9861355Z [36;1m          exit 1[0m
+2025-12-05T00:18:04.9861535Z [36;1m        fi[0m
+2025-12-05T00:18:04.9861703Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9861864Z [36;1m[0m
+2025-12-05T00:18:04.9862015Z [36;1m      *)[0m
+2025-12-05T00:18:04.9862218Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-05T00:18:04.9862484Z [36;1m        exit 1[0m
+2025-12-05T00:18:04.9862699Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9862874Z [36;1m    esac[0m
+2025-12-05T00:18:04.9863041Z [36;1m    ;;[0m
+2025-12-05T00:18:04.9863205Z [36;1m[0m
+2025-12-05T00:18:04.9863368Z [36;1m  macOS|macos)[0m
+2025-12-05T00:18:04.9863567Z [36;1m    case X64 in[0m
+2025-12-05T00:18:04.9863752Z [36;1m      X64|amd64)[0m
+2025-12-05T00:18:04.9864149Z [36;1m        bootstrap_filename='cosign-darwin-amd64'[0m
+2025-12-05T00:18:04.9864453Z [36;1m        bootstrap_sha=${bootstrap_darwin_amd64_sha}[0m
+2025-12-05T00:18:04.9864772Z [36;1m        desired_cosign_filename='cosign-darwin-amd64'[0m
+2025-12-05T00:18:04.9865136Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-05T00:18:04.9865466Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9865792Z [36;1m          desired_cosign_filename='cosign_darwin_amd64_0.6.0_darwin_amd64'[0m
+2025-12-05T00:18:04.9866234Z [36;1m          desired_cosign_v060_signature='cosign_darwin_amd64_0.6.0_darwin_amd64.sig'[0m
+2025-12-05T00:18:04.9866582Z [36;1m        fi[0m
+2025-12-05T00:18:04.9866760Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9866922Z [36;1m[0m
+2025-12-05T00:18:04.9867083Z [36;1m      ARM64|arm64)[0m
+2025-12-05T00:18:04.9867457Z [36;1m        bootstrap_filename='cosign-darwin-arm64'[0m
+2025-12-05T00:18:04.9867768Z [36;1m        bootstrap_sha=${bootstrap_darwin_arm64_sha}[0m
+2025-12-05T00:18:04.9868080Z [36;1m        desired_cosign_filename='cosign-darwin-arm64'[0m
+2025-12-05T00:18:04.9868441Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-05T00:18:04.9868767Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9869101Z [36;1m          desired_cosign_filename='cosign_darwin_arm64_0.6.0_darwin_arm64'[0m
+2025-12-05T00:18:04.9869555Z [36;1m          desired_cosign_v060_signature='cosign_darwin_arm64_0.6.0_darwin_arm64.sig'[0m
+2025-12-05T00:18:04.9869904Z [36;1m        fi[0m
+2025-12-05T00:18:04.9870083Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9870254Z [36;1m[0m
+2025-12-05T00:18:04.9870416Z [36;1m      *)[0m
+2025-12-05T00:18:04.9870630Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-05T00:18:04.9870888Z [36;1m        exit 1[0m
+2025-12-05T00:18:04.9871080Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9871245Z [36;1m    esac[0m
+2025-12-05T00:18:04.9871411Z [36;1m    ;;[0m
+2025-12-05T00:18:04.9871572Z [36;1m[0m
+2025-12-05T00:18:04.9871736Z [36;1m  Windows|windows)[0m
+2025-12-05T00:18:04.9871936Z [36;1m    case X64 in[0m
+2025-12-05T00:18:04.9872126Z [36;1m      X64|amd64)[0m
+2025-12-05T00:18:04.9872372Z [36;1m        bootstrap_filename='cosign-windows-amd64.exe'[0m
+2025-12-05T00:18:04.9872698Z [36;1m        bootstrap_sha=${bootstrap_windows_amd64_sha}[0m
+2025-12-05T00:18:04.9873038Z [36;1m        desired_cosign_filename='cosign-windows-amd64.exe'[0m
+2025-12-05T00:18:04.9873351Z [36;1m        cosign_executable_name=cosign.exe[0m
+2025-12-05T00:18:04.9873688Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-05T00:18:04.9874299Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9874652Z [36;1m          desired_cosign_filename='cosign_windows_amd64_0.6.0_windows_amd64.exe'[0m
+2025-12-05T00:18:04.9875136Z [36;1m          desired_cosign_v060_signature='cosign_windows_amd64_0.6.0_windows_amd64.exe.sig'[0m
+2025-12-05T00:18:04.9875497Z [36;1m        fi[0m
+2025-12-05T00:18:04.9875669Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9875833Z [36;1m      *)[0m
+2025-12-05T00:18:04.9876044Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-05T00:18:04.9876299Z [36;1m        exit 1[0m
+2025-12-05T00:18:04.9876485Z [36;1m        ;;[0m
+2025-12-05T00:18:04.9876648Z [36;1m    esac[0m
+2025-12-05T00:18:04.9876812Z [36;1m    ;;[0m
+2025-12-05T00:18:04.9876975Z [36;1m  *)[0m
+2025-12-05T00:18:04.9877159Z [36;1m    log_error "unsupported os Linux"[0m
+2025-12-05T00:18:04.9877401Z [36;1m    exit 1[0m
+2025-12-05T00:18:04.9877564Z [36;1m    ;;[0m
+2025-12-05T00:18:04.9877729Z [36;1mesac[0m
+2025-12-05T00:18:04.9877889Z [36;1m[0m
+2025-12-05T00:18:04.9878046Z [36;1mSUDO=[0m
+2025-12-05T00:18:04.9878284Z [36;1mif [[ "false" == "true" ]] && command -v sudo >/dev/null; then[0m
+2025-12-05T00:18:04.9878578Z [36;1m  SUDO=sudo[0m
+2025-12-05T00:18:04.9878752Z [36;1mfi[0m
+2025-12-05T00:18:04.9878912Z [36;1m[0m
+2025-12-05T00:18:04.9879134Z [36;1mexpected_bootstrap_version_digest=${bootstrap_sha}[0m
+2025-12-05T00:18:04.9879979Z [36;1mlog_info "Downloading bootstrap version '${bootstrap_version}' of cosign to verify version to be installed...\n      https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename}"[0m
+2025-12-05T00:18:04.9881107Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename} -o ${cosign_executable_name}[0m
+2025-12-05T00:18:04.9881779Z [36;1mshaBootstrap=$(shaprog ${cosign_executable_name});[0m
+2025-12-05T00:18:04.9882161Z [36;1mif [[ $shaBootstrap != ${expected_bootstrap_version_digest} ]]; then[0m
+2025-12-05T00:18:04.9882570Z [36;1m  log_error "Unable to validate cosign version: 'v2.5.2'"[0m
+2025-12-05T00:18:04.9882977Z [36;1m  exit 1[0m
+2025-12-05T00:18:04.9883150Z [36;1mfi[0m
+2025-12-05T00:18:04.9883335Z [36;1m$SUDO chmod +x ${cosign_executable_name}[0m
+2025-12-05T00:18:04.9883582Z [36;1m[0m
+2025-12-05T00:18:04.9883858Z [36;1m# If the bootstrap and specified `cosign` releases are the same, we're done.[0m
+2025-12-05T00:18:04.9884345Z [36;1mif [[ v2.5.2 == ${bootstrap_version} ]]; then[0m
+2025-12-05T00:18:04.9884816Z [36;1m  log_info "bootstrap version successfully verified and matches requested version so nothing else to do"[0m
+2025-12-05T00:18:04.9885243Z [36;1m  exit 0[0m
+2025-12-05T00:18:04.9885409Z [36;1mfi[0m
+2025-12-05T00:18:04.9885558Z [36;1m[0m
+2025-12-05T00:18:04.9885772Z [36;1msemver='^v([0-9]+\.){0,2}(\*|[0-9]+)(-?r?c?)(\.[0-9]+)$'[0m
+2025-12-05T00:18:04.9886056Z [36;1mif [[ v2.5.2 =~ $semver ]]; then[0m
+2025-12-05T00:18:04.9886344Z [36;1m  log_info "Custom cosign version 'v2.5.2' requested"[0m
+2025-12-05T00:18:04.9886614Z [36;1melse[0m
+2025-12-05T00:18:04.9886873Z [36;1m  log_error "Unable to validate requested cosign version: 'v2.5.2'"[0m
+2025-12-05T00:18:04.9887187Z [36;1m  exit 1[0m
+2025-12-05T00:18:04.9887346Z [36;1mfi[0m
+2025-12-05T00:18:04.9887501Z [36;1m[0m
+2025-12-05T00:18:04.9887662Z [36;1m# Download custom cosign[0m
+2025-12-05T00:18:04.9888280Z [36;1mlog_info "Downloading platform-specific version 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}"[0m
+2025-12-05T00:18:04.9889155Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename} -o cosign_v2.5.2[0m
+2025-12-05T00:18:04.9889667Z [36;1mshaCustom=$(shaprog cosign_v2.5.2);[0m
+2025-12-05T00:18:04.9889903Z [36;1m[0m
+2025-12-05T00:18:04.9890085Z [36;1m# same hash means it is the same release[0m
+2025-12-05T00:18:04.9890368Z [36;1mif [[ $shaCustom != $shaBootstrap ]]; then[0m
+2025-12-05T00:18:04.9890784Z [36;1m  if [[ v2.5.2 == 'v0.6.0' && Linux == 'Linux' ]]; then[0m
+2025-12-05T00:18:04.9891120Z [36;1m    # v0.6.0's linux release has a dependency on `libpcsclite1`[0m
+2025-12-05T00:18:04.9891501Z [36;1m    log_info "Installing libpcsclite1 package if necessary..."[0m
+2025-12-05T00:18:04.9891798Z [36;1m    set +e[0m
+2025-12-05T00:18:04.9891996Z [36;1m    sudo dpkg -s libpcsclite1[0m
+2025-12-05T00:18:04.9892230Z [36;1m    if [ $? -eq 0 ]; then[0m
+2025-12-05T00:18:04.9892510Z [36;1m        log_info "libpcsclite1 package is already installed"[0m
+2025-12-05T00:18:04.9892790Z [36;1m    else[0m
+2025-12-05T00:18:04.9893067Z [36;1m         log_info "libpcsclite1 package is not installed, installing it now."[0m
+2025-12-05T00:18:04.9893424Z [36;1m         sudo apt-get update -q -q[0m
+2025-12-05T00:18:04.9893698Z [36;1m         sudo apt-get install -yq libpcsclite1[0m
+2025-12-05T00:18:04.9894047Z [36;1m    fi[0m
+2025-12-05T00:18:04.9894221Z [36;1m    set -e[0m
+2025-12-05T00:18:04.9894396Z [36;1m  fi[0m
+2025-12-05T00:18:04.9894557Z [36;1m[0m
+2025-12-05T00:18:04.9894732Z [36;1m  if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9895411Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_v060_signature}"[0m
+2025-12-05T00:18:04.9896411Z [36;1m    $SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_v060_signature} -o ${desired_cosign_filename}.sig[0m
+2025-12-05T00:18:04.9896967Z [36;1m  else[0m
+2025-12-05T00:18:04.9897565Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}.sig"[0m
+2025-12-05T00:18:04.9898450Z [36;1m    $SUDO curl -fsLO https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}.sig[0m
+2025-12-05T00:18:04.9898908Z [36;1m  fi[0m
+2025-12-05T00:18:04.9899065Z [36;1m[0m
+2025-12-05T00:18:04.9899385Z [36;1m  if [[ v2.5.2 < 'v0.6.0' ]]; then[0m
+2025-12-05T00:18:04.9899973Z [36;1m    log_info "Downloading cosign public key 'v2.5.2' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/.github/workflows/cosign.pub"[0m
+2025-12-05T00:18:04.9900810Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/.github/workflows/cosign.pub[0m
+2025-12-05T00:18:04.9901472Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='4aa4bd19530a4929d758a9896255aef2c82f1a3a9f4b000034c6df4307c14f9e'[0m
+2025-12-05T00:18:04.9901886Z [36;1m  else[0m
+2025-12-05T00:18:04.9902385Z [36;1m    log_info "Downloading cosign public key 'v2.5.2' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/release/release-cosign.pub"[0m
+2025-12-05T00:18:04.9903180Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/release/release-cosign.pub[0m
+2025-12-05T00:18:04.9903828Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='f4cea466e5e887a45da5031757fa1d32655d83420639dc1758749b744179f126'[0m
+2025-12-05T00:18:04.9904383Z [36;1m  fi[0m
+2025-12-05T00:18:04.9904544Z [36;1m[0m
+2025-12-05T00:18:04.9904770Z [36;1m  log_info "Verifying public key matches expected value"[0m
+2025-12-05T00:18:04.9905127Z [36;1m  $SUDO curl -fsL $RELEASE_COSIGN_PUB_KEY -o public.key[0m
+2025-12-05T00:18:04.9905439Z [36;1m  sha_fetched_key=$(shaprog public.key)[0m
+2025-12-05T00:18:04.9905760Z [36;1m  if [[ $sha_fetched_key != $RELEASE_COSIGN_PUB_KEY_SHA ]]; then[0m
+2025-12-05T00:18:04.9906164Z [36;1m    log_error "Fetched public key does not match expected digest, exiting"[0m
+2025-12-05T00:18:04.9906497Z [36;1m    exit 1[0m
+2025-12-05T00:18:04.9906673Z [36;1m  fi[0m
+2025-12-05T00:18:04.9906827Z [36;1m[0m
+2025-12-05T00:18:04.9907119Z [36;1m  log_info "Using bootstrap cosign to verify signature of desired cosign version"[0m
+2025-12-05T00:18:04.9907795Z [36;1m  ./cosign verify-blob --key public.key --signature ${desired_cosign_filename}.sig cosign_v2.5.2[0m
+2025-12-05T00:18:04.9908200Z [36;1m[0m
+2025-12-05T00:18:04.9908361Z [36;1m  $SUDO rm cosign[0m
+2025-12-05T00:18:04.9908610Z [36;1m  $SUDO mv cosign_v2.5.2 ${cosign_executable_name}[0m
+2025-12-05T00:18:04.9908907Z [36;1m  $SUDO chmod +x ${cosign_executable_name}[0m
+2025-12-05T00:18:04.9909177Z [36;1m  log_info "Installation complete!"[0m
+2025-12-05T00:18:04.9909419Z [36;1mfi[0m
+2025-12-05T00:18:04.9944618Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-05T00:18:04.9944936Z env:
+2025-12-05T00:18:04.9945195Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:04.9945499Z ##[endgroup]
+2025-12-05T00:18:05.0017690Z [1;32mINFO[0m: Downloading bootstrap version 'v2.5.2' of cosign to verify version to be installed...
+2025-12-05T00:18:05.0018398Z       https://github.com/sigstore/cosign/releases/download/v2.5.2/cosign-linux-amd64
+2025-12-05T00:18:05.7112207Z [1;32mINFO[0m: bootstrap version successfully verified and matches requested version so nothing else to do
+2025-12-05T00:18:05.7150318Z ##[group]Run echo "$HOME/.cosign" >> $GITHUB_PATH
+2025-12-05T00:18:05.7150661Z [36;1mecho "$HOME/.cosign" >> $GITHUB_PATH[0m
+2025-12-05T00:18:05.7183024Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-05T00:18:05.7183332Z env:
+2025-12-05T00:18:05.7183585Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:05.7183886Z ##[endgroup]
+2025-12-05T00:18:05.7279104Z ##[group]Run DIGEST="sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0"
+2025-12-05T00:18:05.7279748Z [36;1mDIGEST="sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0"[0m
+2025-12-05T00:18:05.7280495Z [36;1mIFS=',' read -ra TAGS <<< "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:9316d6a621a8"[0m
+2025-12-05T00:18:05.7281147Z [36;1mfor T in "${TAGS[@]}"; do cosign sign "${T%@*}@${DIGEST}"; done[0m
+2025-12-05T00:18:05.7315717Z shell: /usr/bin/bash -e {0}
+2025-12-05T00:18:05.7315959Z env:
+2025-12-05T00:18:05.7316220Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:05.7316558Z   COSIGN_EXPERIMENTAL: true
+2025-12-05T00:18:05.7316766Z   COSIGN_YES: true
+2025-12-05T00:18:05.7316940Z ##[endgroup]
+2025-12-05T00:18:05.9471760Z Generating ephemeral keys...
+2025-12-05T00:18:06.0008852Z Retrieving signed certificate...
+2025-12-05T00:18:06.1852485Z Successfully verified SCT...
+2025-12-05T00:18:06.3522281Z 
+2025-12-05T00:18:06.3524125Z 	The sigstore service, hosted by sigstore a Series of LF Projects, LLC, is provided pursuant to the Hosted Project Tools Terms of Use, available at https://lfprojects.org/policies/hosted-project-tools-terms-of-use/.
+2025-12-05T00:18:06.3525805Z 	Note that if your submission includes personal data associated with this signed artifact, it will be part of an immutable record.
+2025-12-05T00:18:06.3526894Z 	This may include the email address associated with the account with which you authenticate your contractual Agreement.
+2025-12-05T00:18:06.3528764Z 	This information will be used for signing this artifact and will be stored in public transparency logs and cannot be removed later, and is subject to the Immutable Record notice at https://lfprojects.org/policies/hosted-project-tools-immutable-records/.
+2025-12-05T00:18:06.3529876Z 
+2025-12-05T00:18:06.3530503Z By typing 'y', you attest that (1) you are not submitting the personal data of any other person; and (2) you understand and agree to the statement and the Agreement terms at the URLs listed above.
+2025-12-05T00:18:06.8198524Z tlog entry created with index: 742190568
+2025-12-05T00:18:06.8199419Z Pushing signature to: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:08.5987243Z Generating ephemeral keys...
+2025-12-05T00:18:08.6416791Z Retrieving signed certificate...
+2025-12-05T00:18:08.7680155Z Successfully verified SCT...
+2025-12-05T00:18:08.9467661Z 
+2025-12-05T00:18:08.9469409Z 	The sigstore service, hosted by sigstore a Series of LF Projects, LLC, is provided pursuant to the Hosted Project Tools Terms of Use, available at https://lfprojects.org/policies/hosted-project-tools-terms-of-use/.
+2025-12-05T00:18:08.9471598Z 	Note that if your submission includes personal data associated with this signed artifact, it will be part of an immutable record.
+2025-12-05T00:18:08.9473419Z 	This may include the email address associated with the account with which you authenticate your contractual Agreement.
+2025-12-05T00:18:08.9475829Z 	This information will be used for signing this artifact and will be stored in public transparency logs and cannot be removed later, and is subject to the Immutable Record notice at https://lfprojects.org/policies/hosted-project-tools-immutable-records/.
+2025-12-05T00:18:08.9477332Z 
+2025-12-05T00:18:08.9477997Z By typing 'y', you attest that (1) you are not submitting the personal data of any other person; and (2) you understand and agree to the statement and the Agreement terms at the URLs listed above.
+2025-12-05T00:18:09.3998025Z tlog entry created with index: 742190696
+2025-12-05T00:18:09.3998828Z Pushing signature to: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:11.3780538Z ##[group]Run echo "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest" > image-ref.txt
+2025-12-05T00:18:11.3781166Z [36;1mecho "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend:latest" > image-ref.txt[0m
+2025-12-05T00:18:11.3781756Z [36;1mecho "sha256:8eaa8a694bf4789de0d72025d46f37344567e3a2d2b6f1499d8cecd8ff148eb0" > digest.txt[0m
+2025-12-05T00:18:11.3814273Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-05T00:18:11.3814578Z env:
+2025-12-05T00:18:11.3814823Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:11.3815124Z ##[endgroup]
+2025-12-05T00:18:11.3904296Z ##[group]Run actions/upload-artifact@v4
+2025-12-05T00:18:11.3904589Z with:
+2025-12-05T00:18:11.3904811Z   name: frontend-image-refs
+2025-12-05T00:18:11.3905062Z   path: image-ref.txt
+digest.txt
+2025-12-05T00:18:11.3905323Z   if-no-files-found: warn
+2025-12-05T00:18:11.3905565Z   compression-level: 6
+2025-12-05T00:18:11.3905752Z   overwrite: false
+2025-12-05T00:18:11.3905940Z   include-hidden-files: false
+2025-12-05T00:18:11.3906147Z env:
+2025-12-05T00:18:11.3906376Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-frontend
+2025-12-05T00:18:11.3906678Z ##[endgroup]
+2025-12-05T00:18:11.6055442Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-12-05T00:18:11.6059337Z The least common ancestor is /home/runner/work/Goofy-Do/Goofy-Do. This will be the root directory of the artifact
+2025-12-05T00:18:11.6060353Z With the provided path, there will be 2 files uploaded
+2025-12-05T00:18:11.6066385Z Artifact name is valid!
+2025-12-05T00:18:11.6067679Z Root directory input is valid!
+2025-12-05T00:18:11.7210911Z Beginning upload of artifact content to blob storage
+2025-12-05T00:18:11.7867154Z Uploaded bytes 368
+2025-12-05T00:18:11.8099066Z Finished uploading artifact content to blob storage!
+2025-12-05T00:18:11.8101929Z SHA256 digest of uploaded artifact zip is 128c5851b48de344ab98ef542d7fa3f9b82a1b5c9215024f28c27f488213c5ee
+2025-12-05T00:18:11.8103508Z Finalizing artifact upload
+2025-12-05T00:18:11.8963063Z Artifact frontend-image-refs.zip successfully finalized. Artifact ID 4771520642
+2025-12-05T00:18:11.8964491Z Artifact frontend-image-refs has been successfully uploaded! Final size is 368 bytes. Artifact ID is 4771520642
+2025-12-05T00:18:11.8971106Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19948213218/artifacts/4771520642
+2025-12-05T00:18:11.9092617Z Post job cleanup.
+2025-12-05T00:18:12.1800243Z ##[group]Generating build summary
+2025-12-05T00:18:12.1805689Z exporting build record to /home/runner/work/_temp/docker-actions-toolkit-L854un/export
+2025-12-05T00:18:12.3746973Z [command]/usr/bin/docker buildx history export --builder builder-59ddaa74-6e33-498b-9810-a873df3cbc7a --output /home/runner/work/_temp/docker-actions-toolkit-L854un/export/dhbw-tobi-felix~Goofy-Do~PXJICA.dockerbuild pxjicam7bc3yzmlhj91ezmx7c --finalize
+2025-12-05T00:18:12.7232902Z Build record written to /home/runner/work/_temp/docker-actions-toolkit-L854un/export/dhbw-tobi-felix~Goofy-Do~PXJICA.dockerbuild (97.29 KB)
+2025-12-05T00:18:12.7259829Z Uploading dhbw-tobi-felix~Goofy-Do~PXJICA.dockerbuild to blob storage
+2025-12-05T00:18:12.7956497Z Beginning upload of artifact content to blob storage
+2025-12-05T00:18:12.8059422Z Uploaded bytes 65536
+2025-12-05T00:18:12.8061429Z Uploaded bytes 99623
+2025-12-05T00:18:12.8658339Z Finished uploading artifact content to blob storage!
+2025-12-05T00:18:12.8664665Z SHA256 hash of uploaded artifact is 9ac520596d3e7c5d9720ab97899442b57a035874a70240727f458b3d6f3dba66
+2025-12-05T00:18:12.8666680Z Finalizing artifact upload
+2025-12-05T00:18:12.9790627Z Artifact successfully finalized (4771520797)
+2025-12-05T00:18:12.9792192Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19948213218/artifacts/4771520797
+2025-12-05T00:18:12.9819473Z Writing summary
+2025-12-05T00:18:12.9832874Z ##[endgroup]
+2025-12-05T00:18:12.9833755Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-0hLktD
+2025-12-05T00:18:12.9843500Z ##[endgroup]
+2025-12-05T00:18:12.9844335Z ##[group]Post cache
+2025-12-05T00:18:12.9845701Z State not set
+2025-12-05T00:18:12.9846330Z ##[endgroup]
+2025-12-05T00:18:12.9971711Z Post job cleanup.
+2025-12-05T00:18:13.2958476Z [command]/usr/bin/docker logout ghcr.io
+2025-12-05T00:18:13.3087257Z Removing login credentials for ghcr.io
+2025-12-05T00:18:13.3120817Z ##[group]Post cache
+2025-12-05T00:18:13.3122506Z State not set
+2025-12-05T00:18:13.3123754Z ##[endgroup]
+2025-12-05T00:18:13.3246678Z Post job cleanup.
+2025-12-05T00:18:13.6023517Z ##[group]Removing builder
+2025-12-05T00:18:13.7016496Z [command]/usr/bin/docker buildx rm builder-59ddaa74-6e33-498b-9810-a873df3cbc7a
+2025-12-05T00:18:15.0532669Z builder-59ddaa74-6e33-498b-9810-a873df3cbc7a removed
+2025-12-05T00:18:15.0572619Z ##[endgroup]
+2025-12-05T00:18:15.0574185Z ##[group]Cleaning up certificates
+2025-12-05T00:18:15.0580988Z ##[endgroup]
+2025-12-05T00:18:15.0581569Z ##[group]Post cache
+2025-12-05T00:18:15.0583858Z State not set
+2025-12-05T00:18:15.0585455Z ##[endgroup]
+2025-12-05T00:18:15.0716900Z Post job cleanup.
+2025-12-05T00:18:15.1664481Z [command]/usr/bin/git version
+2025-12-05T00:18:15.1700632Z git version 2.52.0
+2025-12-05T00:18:15.1744515Z Temporarily overriding HOME='/home/runner/work/_temp/0a0c0827-0024-40b0-91bb-1393347220c9' before making global git config changes
+2025-12-05T00:18:15.1745819Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-05T00:18:15.1757858Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-05T00:18:15.1794213Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-05T00:18:15.1826908Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-05T00:18:15.2054970Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-05T00:18:15.2076196Z http.https://github.com/.extraheader
+2025-12-05T00:18:15.2088989Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-05T00:18:15.2119554Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-05T00:18:15.2342600Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-05T00:18:15.2376050Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-05T00:18:15.2702690Z Cleaning up orphan processes
