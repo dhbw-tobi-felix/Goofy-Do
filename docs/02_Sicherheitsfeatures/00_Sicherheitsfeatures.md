@@ -189,3 +189,27 @@ Applikations-Repositories, verpflichtende Reviews für Workflow-Änderungen, bra
 zur Durchsetzung von Freigabeprozessen. Obwohl im Projekt bereits Sicherheitsprüfungen in der Pipeline 
 (SBOM, SAST, SCA, Secret Scanning) sowie restriktive Token-Rechte integriert sind, wurde die umfassende Governance für
 CI/CD-Änderungen nicht vollumfänglich umgesetzt, da dies über den vorgesehenen Implementierungsumfang hinausgeht.
+## 7 Datenfluss zwischen CI/CD-Pipeline und Kubernetes
+### CK01 Spoofing - Implementiert
+Die Umsetzung erfolgt durch die Nutzung sicherer Authentifizierungsmechanismen (z. B. TLS-Zertifikate, 
+Image-Signatur) für die Kommunikation zwischen der CI/CD-Pipeline und dem Kubernetes-Cluster, wodurch die
+Authentizität der beteiligten Komponenten sichergestellt wird.
+### CK02 Tampering - Implementiert
+Die Umsetzung erfolgt durch die Nutzung signierter Container-Images, die in der CI/CD-Pipeline erstellt und in das 
+Kubernetes-Cluster ausgerollt werden, sowie durch die Absicherung der Pipeline mittels SBOM, SAST, SCA und Secret 
+Scanning, um Manipulationen an Artefakten frühzeitig zu erkennen und zu verhindern.
+### CK03 Repudiation - Implementiert
+Die Umsetzung erfolgt durch die Protokollierung von Deployment-Aktionen in der CI/CD-Pipeline. Dadurch wird nachvollziehbar,
+welche Versionen der Anwendung wann und durch wen in das Kubernetes-Cluster ausgerollt wurden.
+### CK04 Information Disclosure - Implementiert
+Die Umsetzung erfolgt durch striktes Secret-Management in der CI/CD-Pipeline, sodass sensible Informationen wie Zugangsdaten und Tokens
+sicher gespeichert und nur bei Bedarf in die Pipeline injiziert werden. Zusätzlich werden Artefakte und Logs gescannt, um
+die unbeabsichtigte Offenlegung sensibler Daten zu verhindern.
+### CK05 Denial of Service - Implementiert
+Die Umsetzung erfolgt durch die Implementierung von Quality Gates in der CI/CD-Pipeline, die sicherstellen, dass nur 
+geprüfte und sichere Artefakte in das Kubernetes-Cluster ausgerollt werden. Dadurch wird die Stabilität und 
+Verfügbarkeit der Anwendung im Cluster geschützt.
+### CK06 Elevation of Privilege - Implementiert
+Die Umsetzung erfolgt durch die Nutzung von rollenbasierten Zugriffskontrollen (RBAC) im Kubernetes-Cluster, 
+sodass die CI/CD-Pipeline nur die minimal erforderlichen Berechtigungen besitzt, um Deployments durchzuführen. Dadurch 
+wird das Risiko einer Privilegieneskalation im Cluster reduziert.
