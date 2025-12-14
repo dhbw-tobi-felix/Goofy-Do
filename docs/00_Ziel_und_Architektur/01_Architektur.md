@@ -16,7 +16,7 @@ woraufhin eine CI-Pipeline angestoßen wird. Diese erzeugt zunächst ein Softwar
 anschließend statische Codeanalyse (SAST), Dependency-Scans (SCA) sowie Secret-Scanning durch. Nur bei erfolgreichem
 Durchlauf wird das Container-Image gebaut, über ein Quality Gate geprüft und in ein Image-Repository übertragen. Von
 dort aus wird das geprüfte Image in das Kubernetes-Cluster ausgerollt, sodass ausschließlich durch den definierten
-Sicherheitsprozess geprüfte Versionen der Web-Application produktiv betrieben werden.
+Sicherheitsprozess geprüfte Versionen der Web-Applikation produktiv betrieben werden.
 
 ## 2 Softwareumgebung
 

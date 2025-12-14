@@ -1,4 +1,4 @@
-# Lesson learned
+# Lessons learned
 Im Laufe dieses Projekts konnten wir sowohl unsere theoretischen Kenntnisse als auch unsere praktischen Fähigkeiten im 
 Bereich Secure Software Engineering deutlich erweitern. Insbesondere wurde uns klar, dass Sicherheit nicht als 
 nachträgliche Ergänzung verstanden werden darf, sondern von Beginn an ein durchgängiger Bestandteil von Design, 
