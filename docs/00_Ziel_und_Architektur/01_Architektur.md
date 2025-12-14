@@ -33,18 +33,32 @@ Die in Abbildung 1 dargestellte Übersicht visualisiert die beschriebene System-
 Anwendung. Das Diagramm zeigt sowohl die Interaktionen der Laufzeitkomponenten als auch die Anbindung der CI/CD-Pipeline
 über GitHub Actions und das Container-Image-Repository.  
   
-![Architekturdiagramm](../05_Files/Architektur.png)  
+![Architekturdiagramm](../05_Files/Architektur_v1.png)  
 *Abbildung 1: Architekturdiagramm der Web-Applikation*
 
 ## 4 Data-Flow-Diagramm
-Das in Abbildung 2 dargestellte Data-Flow-Diagramm beschreibt die wesentlichen Datenflüsse sowie die zugehörigen 
-Vertrauensgrenzen der Anwendung vom Entwicklungsprozess bis zur Nutzung durch die Endanwender. Auf der linken Seite ist 
-der Weg des Quellcodes von der lokalen Entwicklerumgebung über das GitHub-Code-Repository in die automatisierte 
-CI-Pipeline mit GitHub Actions und das anschließende Ablegen der erzeugten Container-Images im Image-Repository 
-dargestellt. Auf der rechten Seite wird die Laufzeitumgebung im Kubernetes-Cluster dargestellt. Der Browser der 
-Nutzer kommuniziert mit dem Frontend-Pod, welcher Access-Tokens vom Keycloak-Pod bezieht und REST-Anfragen an den 
-Backend-Pod stellt. Dieser greift lesend und schreibend auf den Datenbank-Pod zu, in dem sowohl die Anwendungsdaten 
-als auch die Keycloak-spezifischen Daten gespeichert werden.  
+Das in Abbildung 2 dargestellte Data-Flow-Diagramm beschreibt die drei wesentlichen Datenflüsse sowie die zugehörigen 
+Vertrauensgrenzen der Anwendung vom Entwicklungsprozess bis zur Nutzung durch die Endanwender. 
+- **Prozess A** beschreibt den Weg des Quellcodes von der lokalen Entwicklerumgebung über das GitHub-Code-Repository in die automatisierte
+CI-Pipeline mit GitHub Actions und das anschließende Ablegen der erzeugten Container-Images im Image-Repository.  
+- **Prozess B** bildet den Anmelde- bzw. Registrierungsprozess der Nutzer über den Identity Provider Keycloak ab. Der 
+Browser der Nutzer kommuniziert mit dem Frontend-Pod, welcher Access-Tokens über den Keycloak-Pod bezieht, welcher die 
+Nutzeridentitäten in der Keycloak-DB verwaltet.
+- **Prozess C** stellt die Interaktionen der Nutzer mit der Web-Applikation dar, inklusive der Kommunikation zwischen
+Frontend, Backend und Datenbank. Das Backend validiert dabei die Access-Tokens über den Keycloak-Pod, die das Frontend 
+bei jeder Anfrage mitsendet und greift auf die PostgreSQL-Datenbank zu, um persistente Daten zu verwalten.
   
-![Data-Flow-Diagramm](../05_Files/DFD.png)  
+![Data-Flow-Diagramm](../05_Files/DFD_v2.1.png)  
 *Abbildung 2: Data-Flow-Diagramm der Web-Applikation*
+
+Das in Abbildung 3 dargestellte Data-Flow-Diagramm vertieft den Deployment-Prozess innerhalb des Kubernetes-Clusters.
+Der Entwickler übergibt dem Kubernetes API Server ein Deployment-Manifest, das vom API Server validiert und im 
+gewünschten Zielzustand in etcd gespeichert wird. Die Controller erkennen die Änderung und erzeugen bzw. aktualisieren 
+daraus die notwendigen Pod-Objekte, woraufhin der Scheduler die Pods einem Worker Node zuweist. Auf dem ausgewählten 
+Node zieht der kubelet die Pod-Spezifikation, beauftragt containerd mit dem Start und containerd prüft zunächst den 
+lokalen Image-Cache. Fehlt das Image, wird es aus dem Image Repository samt Manifest und Layern heruntergeladen. 
+Anschließend startet runC den Container, und Kubernetes aktualisiert Services/Endpoints, sodass der neue Pod über die 
+vorgesehenen Netzwerkpfade erreichbar ist.
+
+![Kubernetes-Deployment-DFD](../05_Files/DFD_v1.1.png)
+*Abbildung 3: Data-Flow-Diagramm des Kubernetes-Deployments*
