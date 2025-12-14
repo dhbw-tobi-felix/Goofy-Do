@@ -1,0 +1,686 @@
+﻿2025-12-14T15:00:46.5519615Z Current runner version: '2.329.0'
+2025-12-14T15:00:46.5547697Z ##[group]Runner Image Provisioner
+2025-12-14T15:00:46.5548471Z Hosted Compute Agent
+2025-12-14T15:00:46.5548987Z Version: 20251202.455
+2025-12-14T15:00:46.5549675Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-14T15:00:46.5550360Z Build Date: 2025-12-02T15:56:59Z
+2025-12-14T15:00:46.5550964Z Worker ID: {6c0d90b0-5921-4a1d-afe6-05bf812efec6}
+2025-12-14T15:00:46.5551714Z ##[endgroup]
+2025-12-14T15:00:46.5552207Z ##[group]Operating System
+2025-12-14T15:00:46.5552752Z Ubuntu
+2025-12-14T15:00:46.5553229Z 24.04.3
+2025-12-14T15:00:46.5553693Z LTS
+2025-12-14T15:00:46.5554102Z ##[endgroup]
+2025-12-14T15:00:46.5554677Z ##[group]Runner Image
+2025-12-14T15:00:46.5555383Z Image: ubuntu-24.04
+2025-12-14T15:00:46.5555849Z Version: 20251208.163.1
+2025-12-14T15:00:46.5556933Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-14T15:00:46.5558425Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-14T15:00:46.5559481Z ##[endgroup]
+2025-12-14T15:00:46.5560565Z ##[group]GITHUB_TOKEN Permissions
+2025-12-14T15:00:46.5562951Z Contents: read
+2025-12-14T15:00:46.5563537Z Metadata: read
+2025-12-14T15:00:46.5564008Z SecurityEvents: write
+2025-12-14T15:00:46.5564608Z ##[endgroup]
+2025-12-14T15:00:46.5567044Z Secret source: Actions
+2025-12-14T15:00:46.5568066Z Prepare workflow directory
+2025-12-14T15:00:46.5882538Z Prepare all required actions
+2025-12-14T15:00:46.5920595Z Getting action download info
+2025-12-14T15:00:46.9674199Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-14T15:00:47.0914230Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2025-12-14T15:00:47.3911916Z Download action repository 'gradle/gradle-build-action@v2' (SHA:a8f75513eafdebd8141bd1cd4e30fcd194af8dfa)
+2025-12-14T15:00:47.6818504Z Download action repository 'anchore/sbom-action@v0' (SHA:43a17d6e7add2b5535efe4dcae9952337c479a93)
+2025-12-14T15:00:48.0814391Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-14T15:00:48.1891817Z Download action repository 'github/codeql-action@v3' (SHA:f47c8e6a9bd05ef3ee422fc8d8663be7fe4bdc61)
+2025-12-14T15:00:48.8769104Z Complete job name: sbom_sca
+2025-12-14T15:00:48.9718688Z ##[group]Run actions/checkout@v4
+2025-12-14T15:00:48.9719983Z with:
+2025-12-14T15:00:48.9720762Z   repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:48.9722067Z   token: ***
+2025-12-14T15:00:48.9722806Z   ssh-strict: true
+2025-12-14T15:00:48.9723554Z   ssh-user: git
+2025-12-14T15:00:48.9724339Z   persist-credentials: true
+2025-12-14T15:00:48.9725407Z   clean: true
+2025-12-14T15:00:48.9726219Z   sparse-checkout-cone-mode: true
+2025-12-14T15:00:48.9727146Z   fetch-depth: 1
+2025-12-14T15:00:48.9727896Z   fetch-tags: false
+2025-12-14T15:00:48.9728658Z   show-progress: true
+2025-12-14T15:00:48.9729436Z   lfs: false
+2025-12-14T15:00:48.9730192Z   submodules: false
+2025-12-14T15:00:48.9730987Z   set-safe-directory: true
+2025-12-14T15:00:48.9732105Z ##[endgroup]
+2025-12-14T15:00:49.0814684Z Syncing repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.0818403Z ##[group]Getting Git version info
+2025-12-14T15:00:49.0820434Z Working directory is '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:49.0822713Z [command]/usr/bin/git version
+2025-12-14T15:00:49.0893256Z git version 2.52.0
+2025-12-14T15:00:49.0920362Z ##[endgroup]
+2025-12-14T15:00:49.0941523Z Temporarily overriding HOME='/home/runner/work/_temp/62b15d8d-eca4-4e8b-977a-fe42b01c03c8' before making global git config changes
+2025-12-14T15:00:49.0944152Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-14T15:00:49.0946815Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:49.0985066Z Deleting the contents of '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:49.0988475Z ##[group]Initializing the repository
+2025-12-14T15:00:49.0992339Z [command]/usr/bin/git init /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:49.1099514Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-14T15:00:49.1101730Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-14T15:00:49.1104715Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-14T15:00:49.1107045Z hint: call:
+2025-12-14T15:00:49.1107743Z hint:
+2025-12-14T15:00:49.1108615Z hint: 	git config --global init.defaultBranch <name>
+2025-12-14T15:00:49.1109678Z hint:
+2025-12-14T15:00:49.1111094Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-14T15:00:49.1113052Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-14T15:00:49.1114377Z hint:
+2025-12-14T15:00:49.1115321Z hint: 	git branch -m <name>
+2025-12-14T15:00:49.1116534Z hint:
+2025-12-14T15:00:49.1117860Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-14T15:00:49.1119666Z Initialized empty Git repository in /home/runner/work/Goofy-Do/Goofy-Do/.git/
+2025-12-14T15:00:49.1122615Z [command]/usr/bin/git remote add origin https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.1154550Z ##[endgroup]
+2025-12-14T15:00:49.1157235Z ##[group]Disabling automatic garbage collection
+2025-12-14T15:00:49.1159435Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-14T15:00:49.1187958Z ##[endgroup]
+2025-12-14T15:00:49.1190204Z ##[group]Setting up auth
+2025-12-14T15:00:49.1195534Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-14T15:00:49.1227551Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-14T15:00:49.1568051Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-14T15:00:49.1595768Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-14T15:00:49.1809769Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-14T15:00:49.1839033Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-14T15:00:49.2055304Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-14T15:00:49.2087899Z ##[endgroup]
+2025-12-14T15:00:49.2090291Z ##[group]Fetching the repository
+2025-12-14T15:00:49.2097611Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9ce0e33c1e3f4230c0647678e31de658ccf80292:refs/remotes/origin/main
+2025-12-14T15:00:49.3969775Z From https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.3971351Z  * [new ref]         9ce0e33c1e3f4230c0647678e31de658ccf80292 -> origin/main
+2025-12-14T15:00:49.4000930Z ##[endgroup]
+2025-12-14T15:00:49.4002352Z ##[group]Determining the checkout info
+2025-12-14T15:00:49.4003818Z ##[endgroup]
+2025-12-14T15:00:49.4009377Z [command]/usr/bin/git sparse-checkout disable
+2025-12-14T15:00:49.4048476Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-14T15:00:49.4073375Z ##[group]Checking out the ref
+2025-12-14T15:00:49.4075835Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-14T15:00:49.4225449Z Switched to a new branch 'main'
+2025-12-14T15:00:49.4228415Z branch 'main' set up to track 'origin/main'.
+2025-12-14T15:00:49.4237341Z ##[endgroup]
+2025-12-14T15:00:49.4267575Z [command]/usr/bin/git log -1 --format=%H
+2025-12-14T15:00:49.4287796Z 9ce0e33c1e3f4230c0647678e31de658ccf80292
+2025-12-14T15:00:49.4591433Z ##[group]Run actions/setup-java@v4
+2025-12-14T15:00:49.4592553Z with:
+2025-12-14T15:00:49.4593241Z   distribution: temurin
+2025-12-14T15:00:49.4594026Z   java-version: 21
+2025-12-14T15:00:49.4594769Z   java-package: jdk
+2025-12-14T15:00:49.4595650Z   check-latest: false
+2025-12-14T15:00:49.4596416Z   server-id: github
+2025-12-14T15:00:49.4597187Z   server-username: GITHUB_ACTOR
+2025-12-14T15:00:49.4598092Z   server-password: GITHUB_TOKEN
+2025-12-14T15:00:49.4598986Z   overwrite-settings: true
+2025-12-14T15:00:49.4599811Z   job-status: success
+2025-12-14T15:00:49.4600800Z   token: ***
+2025-12-14T15:00:49.4601494Z ##[endgroup]
+2025-12-14T15:00:49.6693901Z ##[group]Installed distributions
+2025-12-14T15:00:49.6946767Z Resolved Java 21.0.9+10 from tool-cache
+2025-12-14T15:00:49.6948663Z Setting Java 21.0.9+10 as the default
+2025-12-14T15:00:49.6961259Z Creating toolchains.xml for JDK version 21 from temurin
+2025-12-14T15:00:49.7036339Z Writing to /home/runner/.m2/toolchains.xml
+2025-12-14T15:00:49.7037925Z 
+2025-12-14T15:00:49.7038568Z Java configuration:
+2025-12-14T15:00:49.7040137Z   Distribution: temurin
+2025-12-14T15:00:49.7041734Z   Version: 21.0.9+10
+2025-12-14T15:00:49.7043668Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:49.7045508Z 
+2025-12-14T15:00:49.7046865Z ##[endgroup]
+2025-12-14T15:00:49.7059734Z Creating settings.xml with server-id: github
+2025-12-14T15:00:49.7061560Z Writing to /home/runner/.m2/settings.xml
+2025-12-14T15:00:49.7308375Z ##[group]Run gradle/gradle-build-action@v2
+2025-12-14T15:00:49.7309371Z with:
+2025-12-14T15:00:49.7310060Z   cache-read-only: false
+2025-12-14T15:00:49.7310870Z   cache-disabled: false
+2025-12-14T15:00:49.7311680Z   cache-write-only: false
+2025-12-14T15:00:49.7312539Z   cache-overwrite-existing: false
+2025-12-14T15:00:49.7313590Z   gradle-home-cache-includes: caches
+notifications
+
+2025-12-14T15:00:49.7314708Z   gradle-home-cache-cleanup: false
+2025-12-14T15:00:49.7315785Z   generate-job-summary: true
+2025-12-14T15:00:49.7316648Z   dependency-graph: disabled
+2025-12-14T15:00:49.7317584Z   gradle-home-cache-strict-match: false
+2025-12-14T15:00:49.7318570Z   workflow-job-context: null
+2025-12-14T15:00:49.7319736Z   github-token: ***
+2025-12-14T15:00:49.7320452Z env:
+2025-12-14T15:00:49.7321454Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:49.7323091Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:49.7324403Z ##[endgroup]
+2025-12-14T15:00:50.9731162Z ##[group]Restore Gradle state from cache
+2025-12-14T15:00:51.0876519Z ##[warning]Failed to restore v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292: Error: Cache service responded with 400
+2025-12-14T15:00:51.0904642Z Gradle User Home cache not found. Will initialize empty.
+2025-12-14T15:00:51.0905655Z ##[endgroup]
+2025-12-14T15:00:51.1019544Z ##[group]Run anchore/sbom-action/download-syft@v0
+2025-12-14T15:00:51.1019848Z with:
+2025-12-14T15:00:51.1020023Z   syft-version: v1.16.0
+2025-12-14T15:00:51.1020238Z env:
+2025-12-14T15:00:51.1020506Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:51.1020952Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:51.1021324Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:00:51.1021592Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:00:51.1021829Z ##[endgroup]
+2025-12-14T15:00:51.3949547Z [command]/usr/bin/sh /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475 -d -b /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475_syft v1.16.0
+2025-12-14T15:00:51.4000675Z [info] checking github for release tag='v1.16.0' 
+2025-12-14T15:00:51.4039420Z [debug] http_download(url=https://github.com/anchore/syft/releases/v1.16.0) 
+2025-12-14T15:00:51.5774314Z [info] fetching release script for tag='v1.16.0' 
+2025-12-14T15:00:51.5800564Z [debug] http_download(url=https://get.anchore.io/syft/v1.16.0/install.sh) 
+2025-12-14T15:00:51.8979202Z [info] checking github for release tag='v1.16.0' 
+2025-12-14T15:00:51.9016096Z [debug] http_download(url=https://github.com/anchore/syft/releases/v1.16.0) 
+2025-12-14T15:00:51.9563301Z [info] using release tag='v1.16.0' version='1.16.0' os='linux' arch='amd64' 
+2025-12-14T15:00:51.9584438Z [debug] downloading files into /tmp/tmp.0F5aDFU4Rm 
+2025-12-14T15:00:51.9621006Z [debug] http_download(url=https://github.com/anchore/syft/releases/download/v1.16.0/syft_1.16.0_checksums.txt) 
+2025-12-14T15:00:52.1117836Z [debug] http_download(url=https://github.com/anchore/syft/releases/download/v1.16.0/syft_1.16.0_linux_amd64.tar.gz) 
+2025-12-14T15:00:53.0068405Z [info] installed /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475_syft/syft 
+2025-12-14T15:00:53.0709486Z ##[group]Run set -euxo pipefail
+2025-12-14T15:00:53.0709824Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:00:53.0710060Z [36;1msudo apt-get update -y[0m
+2025-12-14T15:00:53.0710328Z [36;1msudo apt-get install -y wget jq[0m
+2025-12-14T15:00:53.0710612Z [36;1mTRIVY_VERSION=0.56.1[0m
+2025-12-14T15:00:53.0711236Z [36;1mwget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz[0m
+2025-12-14T15:00:53.0711824Z [36;1msudo mv trivy /usr/local/bin/[0m
+2025-12-14T15:00:53.0747762Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:53.0748002Z env:
+2025-12-14T15:00:53.0748287Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:53.0748731Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:53.0749092Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:00:53.0749351Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:00:53.0749624Z ##[endgroup]
+2025-12-14T15:00:53.0821367Z + sudo apt-get update -y
+2025-12-14T15:00:53.2619047Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-12-14T15:00:53.3016225Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-12-14T15:00:53.3033444Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-12-14T15:00:53.3105245Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-12-14T15:00:53.3170663Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-12-14T15:00:53.4742381Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1675 kB]
+2025-12-14T15:00:53.4951432Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [309 kB]
+2025-12-14T15:00:53.4978544Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-12-14T15:00:53.4998832Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.8 kB]
+2025-12-14T15:00:53.5046347Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1501 kB]
+2025-12-14T15:00:53.5138380Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [304 kB]
+2025-12-14T15:00:53.5171689Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-12-14T15:00:53.5204695Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-12-14T15:00:53.5215398Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2404 kB]
+2025-12-14T15:00:53.5417256Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [549 kB]
+2025-12-14T15:00:53.5827847Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-12-14T15:00:53.5836889Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-12-14T15:00:53.5853997Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7140 B]
+2025-12-14T15:00:53.5866172Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-12-14T15:00:53.5874104Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-12-14T15:00:53.5885653Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-12-14T15:00:53.6005752Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1378 kB]
+2025-12-14T15:00:53.6017528Z Get:34 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2025-12-14T15:00:53.6078267Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [224 kB]
+2025-12-14T15:00:53.6097844Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-12-14T15:00:53.6146344Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9488 B]
+2025-12-14T15:00:53.6148340Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [916 kB]
+2025-12-14T15:00:53.6178623Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [207 kB]
+2025-12-14T15:00:53.6199790Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [71.5 kB]
+2025-12-14T15:00:53.6216910Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-12-14T15:00:53.6669181Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2266 kB]
+2025-12-14T15:00:53.6755241Z Get:35 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-12-14T15:00:53.6802200Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [518 kB]
+2025-12-14T15:00:53.6823090Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2025-12-14T15:00:53.6829401Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B]
+2025-12-14T15:00:53.7522262Z Get:36 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [1884 B]
+2025-12-14T15:00:53.8781002Z Get:37 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [75.5 kB]
+2025-12-14T15:00:54.0616030Z Get:38 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.4 kB]
+2025-12-14T15:00:54.1392008Z Get:39 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [56.9 kB]
+2025-12-14T15:01:04.5253671Z Fetched 13.5 MB in 2s (8410 kB/s)
+2025-12-14T15:01:05.2630987Z Reading package lists...
+2025-12-14T15:01:05.2733239Z + sudo apt-get install -y wget jq
+2025-12-14T15:01:05.2954168Z Reading package lists...
+2025-12-14T15:01:05.4586666Z Building dependency tree...
+2025-12-14T15:01:05.4594138Z Reading state information...
+2025-12-14T15:01:05.6388274Z wget is already the newest version (1.21.4-1ubuntu4.1).
+2025-12-14T15:01:05.6388909Z jq is already the newest version (1.7.1-3ubuntu0.24.04.1).
+2025-12-14T15:01:05.6389501Z 0 upgraded, 0 newly installed, 0 to remove and 54 not upgraded.
+2025-12-14T15:01:05.6405871Z + TRIVY_VERSION=0.56.1
+2025-12-14T15:01:05.6409071Z + wget -qO- https://github.com/aquasecurity/trivy/releases/download/v0.56.1/trivy_0.56.1_Linux-64bit.tar.gz
+2025-12-14T15:01:05.6410171Z + tar xz
+2025-12-14T15:01:06.6193860Z + sudo mv trivy /usr/local/bin/
+2025-12-14T15:01:06.6300739Z ##[group]Run ./gradlew quarkusBuild --no-daemon --quiet
+2025-12-14T15:01:06.6301132Z [36;1m./gradlew quarkusBuild --no-daemon --quiet[0m
+2025-12-14T15:01:06.6333453Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:01:06.6333674Z env:
+2025-12-14T15:01:06.6333955Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:06.6334389Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:06.6334749Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:01:06.6335126Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:01:06.6335371Z ##[endgroup]
+2025-12-14T15:01:07.0377120Z Downloading https://services.gradle.org/distributions/gradle-9.1.0-all.zip
+2025-12-14T15:01:09.7287966Z ......................10%......................20%......................30%......................40%......................50%.......................60%......................70%......................80%......................90%......................100%
+2025-12-14T15:02:52.9179874Z ##[group]Run npm ci
+2025-12-14T15:02:52.9180266Z [36;1mnpm ci[0m
+2025-12-14T15:02:52.9218223Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:02:52.9218449Z env:
+2025-12-14T15:02:52.9218731Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:52.9219172Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:52.9219527Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:02:52.9219780Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:02:52.9220010Z ##[endgroup]
+2025-12-14T15:02:57.0861010Z 
+2025-12-14T15:02:57.0861772Z added 276 packages, and audited 277 packages in 4s
+2025-12-14T15:02:57.0862051Z 
+2025-12-14T15:02:57.0862180Z 71 packages are looking for funding
+2025-12-14T15:02:57.0862457Z   run `npm fund` for details
+2025-12-14T15:02:57.0871457Z 
+2025-12-14T15:02:57.0871599Z found 0 vulnerabilities
+2025-12-14T15:02:57.1091701Z ##[group]Run set -euxo pipefail
+2025-12-14T15:02:57.1091980Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:02:57.1092194Z [36;1mtrivy fs backend \[0m
+2025-12-14T15:02:57.1092399Z [36;1m  --format cyclonedx \[0m
+2025-12-14T15:02:57.1092664Z [36;1m  --output sbom-backend-project.cdx.json \[0m
+2025-12-14T15:02:57.1092944Z [36;1m  --skip-dirs backend/build[0m
+2025-12-14T15:02:57.1128929Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:02:57.1129142Z env:
+2025-12-14T15:02:57.1129426Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1129878Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1130250Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:02:57.1130508Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:02:57.1130753Z ##[endgroup]
+2025-12-14T15:02:57.1180175Z + trivy fs backend --format cyclonedx --output sbom-backend-project.cdx.json --skip-dirs backend/build
+2025-12-14T15:02:57.1732015Z 2025-12-14T15:02:57Z	INFO	"--format cyclonedx" disables security scanning. Specify "--scanners vuln" explicitly if you want to include vulnerabilities in the "cyclonedx" report.
+2025-12-14T15:02:57.1744447Z 2025-12-14T15:02:57Z	INFO	Number of language-specific files	num=0
+2025-12-14T15:02:57.1810403Z ##[group]Run set -euxo pipefail
+2025-12-14T15:02:57.1810693Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:02:57.1811102Z [36;1msyft scan dir:backend/build/quarkus-app/lib -o spdx-json=sbom-backend-runtime.spdx.json[0m
+2025-12-14T15:02:57.1811568Z [36;1mtest -s sbom-backend-runtime.spdx.json[0m
+2025-12-14T15:02:57.1843805Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:02:57.1844021Z env:
+2025-12-14T15:02:57.1844303Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1844764Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:02:57.1845396Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:02:57.1845694Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:02:57.1845930Z ##[endgroup]
+2025-12-14T15:02:57.1904542Z + syft scan dir:backend/build/quarkus-app/lib -o spdx-json=sbom-backend-runtime.spdx.json
+2025-12-14T15:03:00.2750249Z + test -s sbom-backend-runtime.spdx.json
+2025-12-14T15:03:00.2775355Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:00.2775666Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:00.2775914Z [36;1mtrivy fs frontend \[0m
+2025-12-14T15:03:00.2776132Z [36;1m  --format cyclonedx \[0m
+2025-12-14T15:03:00.2776379Z [36;1m  --output sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:00.2776735Z [36;1m  --skip-dirs frontend/node_modules[0m
+2025-12-14T15:03:00.2809284Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:00.2809501Z env:
+2025-12-14T15:03:00.2809775Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.2810370Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.2810748Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:00.2811007Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:00.2811237Z ##[endgroup]
+2025-12-14T15:03:00.2863132Z + trivy fs frontend --format cyclonedx --output sbom-frontend.cdx.json --skip-dirs frontend/node_modules
+2025-12-14T15:03:00.3427008Z 2025-12-14T15:03:00Z	INFO	"--format cyclonedx" disables security scanning. Specify "--scanners vuln" explicitly if you want to include vulnerabilities in the "cyclonedx" report.
+2025-12-14T15:03:00.3432229Z 2025-12-14T15:03:00Z	INFO	[npm] To collect the license information of packages, "npm install" needs to be performed beforehand	dir="node_modules"
+2025-12-14T15:03:00.3672592Z 2025-12-14T15:03:00Z	INFO	Suppressing dependencies for development and testing. To display them, try the '--include-dev-deps' flag.
+2025-12-14T15:03:00.3673297Z 2025-12-14T15:03:00Z	INFO	Number of language-specific files	num=1
+2025-12-14T15:03:00.3770526Z ##[group]Run actions/upload-artifact@v4
+2025-12-14T15:03:00.3770800Z with:
+2025-12-14T15:03:00.3770959Z   name: sbom
+2025-12-14T15:03:00.3771313Z   path: sbom-backend-project.cdx.json
+sbom-backend-runtime.spdx.json
+sbom-frontend.cdx.json
+
+2025-12-14T15:03:00.3771726Z   if-no-files-found: warn
+2025-12-14T15:03:00.3771931Z   compression-level: 6
+2025-12-14T15:03:00.3772118Z   overwrite: false
+2025-12-14T15:03:00.3772299Z   include-hidden-files: false
+2025-12-14T15:03:00.3772499Z env:
+2025-12-14T15:03:00.3772758Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.3773191Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.3773547Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:00.3773806Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:00.3774031Z ##[endgroup]
+2025-12-14T15:03:00.5993768Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-12-14T15:03:00.5999802Z The least common ancestor is /home/runner/work/Goofy-Do/Goofy-Do. This will be the root directory of the artifact
+2025-12-14T15:03:00.6000904Z With the provided path, there will be 3 files uploaded
+2025-12-14T15:03:00.6008411Z Artifact name is valid!
+2025-12-14T15:03:00.6008863Z Root directory input is valid!
+2025-12-14T15:03:00.6752136Z Beginning upload of artifact content to blob storage
+2025-12-14T15:03:00.7738510Z Uploaded bytes 74220
+2025-12-14T15:03:00.7926274Z Finished uploading artifact content to blob storage!
+2025-12-14T15:03:00.7929828Z SHA256 digest of uploaded artifact zip is 8c5d14165577339384bcf5abdfc952e3b462e2f30a8e20e38798cc2fb63af9ed
+2025-12-14T15:03:00.7931983Z Finalizing artifact upload
+2025-12-14T15:03:00.8680588Z Artifact sbom.zip successfully finalized. Artifact ID 4864162534
+2025-12-14T15:03:00.8681755Z Artifact sbom has been successfully uploaded! Final size is 74220 bytes. Artifact ID is 4864162534
+2025-12-14T15:03:00.8689363Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/20209777401/artifacts/4864162534
+2025-12-14T15:03:00.8798172Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:00.8798686Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:00.8799167Z [36;1mtrivy sbom sbom-backend-runtime.spdx.json \[0m
+2025-12-14T15:03:00.8799679Z [36;1m  --format json \[0m
+2025-12-14T15:03:00.8800084Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:00.8800518Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:00.8800911Z [36;1m  -o sca-backend.json[0m
+2025-12-14T15:03:00.8801287Z [36;1mjq -e '[0m
+2025-12-14T15:03:00.8801562Z [36;1m  [[0m
+2025-12-14T15:03:00.8801899Z [36;1m    .Results[]?.Vulnerabilities[]?[0m
+2025-12-14T15:03:00.8802323Z [36;1m    | select([0m
+2025-12-14T15:03:00.8802673Z [36;1m        (.Severity=="HIGH") or[0m
+2025-12-14T15:03:00.8803123Z [36;1m        (.Severity=="CRITICAL") or[0m
+2025-12-14T15:03:00.8803773Z [36;1m        ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)[0m
+2025-12-14T15:03:00.8804709Z [36;1m      )[0m
+2025-12-14T15:03:00.8805444Z [36;1m  ] | length == 0[0m
+2025-12-14T15:03:00.8805807Z [36;1m' sca-backend.json \[0m
+2025-12-14T15:03:00.8806363Z [36;1m|| { echo "SCA gate failed (backend): HIGH/CRITICAL oder CVSS>=7"; exit 1; }[0m
+2025-12-14T15:03:00.8853020Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:00.8853399Z env:
+2025-12-14T15:03:00.8853869Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.8854672Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.8855394Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:00.8855693Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:00.8855938Z ##[endgroup]
+2025-12-14T15:03:00.8909349Z + trivy sbom sbom-backend-runtime.spdx.json --format json --ignore-unfixed --exit-code 0 -o sca-backend.json
+2025-12-14T15:03:00.9462919Z 2025-12-14T15:03:00Z	INFO	[vulndb] Need to update DB
+2025-12-14T15:03:00.9463456Z 2025-12-14T15:03:00Z	INFO	[vulndb] Downloading vulnerability DB...
+2025-12-14T15:03:00.9463956Z 2025-12-14T15:03:00Z	INFO	[vulndb] Downloading artifact...	repo="ghcr.io/aquasecurity/trivy-db:2"
+2025-12-14T15:03:03.5809526Z 63.46 MiB / 77.82 MiB [------------------------------------------------->___________] 81.55% ? p/s ?77.82 MiB / 77.82 MiB [----------------------------------------------------------->] 100.00% ? p/s ?77.82 MiB / 77.82 MiB [----------------------------------------------------------->] 100.00% ? p/s ?77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [-------------------------------------------------] 100.00% 33.61 MiB p/s 2.5s2025-12-14T15:03:03Z	INFO	[vulndb] Artifact successfully downloaded	repo="ghcr.io/aquasecurity/trivy-db:2"
+2025-12-14T15:03:03.5813982Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.6166005Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="spdx-json"
+2025-12-14T15:03:03.6894123Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=1
+2025-12-14T15:03:03.6894985Z 2025-12-14T15:03:03Z	INFO	[jar] Detecting vulnerabilities...
+2025-12-14T15:03:03.6997298Z + jq -e '
+2025-12-14T15:03:03.6999994Z   [
+2025-12-14T15:03:03.7000646Z     .Results[]?.Vulnerabilities[]?
+2025-12-14T15:03:03.7001058Z     | select(
+2025-12-14T15:03:03.7001359Z         (.Severity=="HIGH") or
+2025-12-14T15:03:03.7001739Z         (.Severity=="CRITICAL") or
+2025-12-14T15:03:03.7002318Z         ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+2025-12-14T15:03:03.7002894Z       )
+2025-12-14T15:03:03.7003142Z   ] | length == 0
+2025-12-14T15:03:03.7003443Z ' sca-backend.json
+2025-12-14T15:03:03.7032854Z true
+2025-12-14T15:03:03.7082537Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:03.7083043Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:03.7083487Z [36;1mtrivy sbom sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:03.7083950Z [36;1m  --format json \[0m
+2025-12-14T15:03:03.7084343Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:03.7084724Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:03.7085314Z [36;1m  -o sca-frontend.json[0m
+2025-12-14T15:03:03.7085976Z [36;1mjq -e '[0m
+2025-12-14T15:03:03.7086289Z [36;1m  [[0m
+2025-12-14T15:03:03.7086627Z [36;1m    .Results[]?.Vulnerabilities[]?[0m
+2025-12-14T15:03:03.7087068Z [36;1m    | select([0m
+2025-12-14T15:03:03.7087422Z [36;1m        (.Severity=="HIGH") or[0m
+2025-12-14T15:03:03.7087874Z [36;1m        (.Severity=="CRITICAL") or[0m
+2025-12-14T15:03:03.7088551Z [36;1m        ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)[0m
+2025-12-14T15:03:03.7089177Z [36;1m      )[0m
+2025-12-14T15:03:03.7090611Z [36;1m  ] | length == 0[0m
+2025-12-14T15:03:03.7091039Z [36;1m' sca-frontend.json \[0m
+2025-12-14T15:03:03.7091612Z [36;1m|| { echo "SCA gate failed (frontend): HIGH/CRITICAL oder CVSS>=7"; exit 1; }[0m
+2025-12-14T15:03:03.7138362Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:03.7138722Z env:
+2025-12-14T15:03:03.7139184Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.7139969Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.7140612Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:03.7141070Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:03.7141492Z ##[endgroup]
+2025-12-14T15:03:03.7211527Z + trivy sbom sbom-frontend.cdx.json --format json --ignore-unfixed --exit-code 0 -o sca-frontend.json
+2025-12-14T15:03:03.7840860Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.7846996Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="cyclonedx-json"
+2025-12-14T15:03:03.7937633Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=2
+2025-12-14T15:03:03.7938766Z 2025-12-14T15:03:03Z	INFO	[npm] Detecting vulnerabilities...
+2025-12-14T15:03:03.7940640Z 2025-12-14T15:03:03Z	INFO	[node-pkg] Detecting vulnerabilities...
+2025-12-14T15:03:03.8005680Z + jq -e '
+2025-12-14T15:03:03.8005947Z   [
+2025-12-14T15:03:03.8006218Z     .Results[]?.Vulnerabilities[]?
+2025-12-14T15:03:03.8006604Z     | select(
+2025-12-14T15:03:03.8006893Z         (.Severity=="HIGH") or
+2025-12-14T15:03:03.8007251Z         (.Severity=="CRITICAL") or
+2025-12-14T15:03:03.8007811Z         ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+2025-12-14T15:03:03.8008364Z       )
+2025-12-14T15:03:03.8008608Z   ] | length == 0
+2025-12-14T15:03:03.8008900Z ' sca-frontend.json
+2025-12-14T15:03:03.8032300Z true
+2025-12-14T15:03:03.8069063Z ##[group]Run mkdir -p reports
+2025-12-14T15:03:03.8069479Z [36;1mmkdir -p reports[0m
+2025-12-14T15:03:03.8111085Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:03.8111420Z env:
+2025-12-14T15:03:03.8111855Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8112596Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8113189Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:03.8113620Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:03.8114022Z ##[endgroup]
+2025-12-14T15:03:03.8213716Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:03.8214131Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:03.8214569Z [36;1mtrivy sbom sbom-backend-runtime.spdx.json \[0m
+2025-12-14T15:03:03.8215309Z [36;1m  --format sarif \[0m
+2025-12-14T15:03:03.8215692Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:03.8216035Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:03.8216408Z [36;1m  -o reports/sca-backend.sarif[0m
+2025-12-14T15:03:03.8216835Z [36;1mtest -s reports/sca-backend.sarif[0m
+2025-12-14T15:03:03.8254272Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:03.8254618Z env:
+2025-12-14T15:03:03.8255254Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8255988Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8256590Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:03.8257028Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:03.8257612Z ##[endgroup]
+2025-12-14T15:03:03.8316104Z + trivy sbom sbom-backend-runtime.spdx.json --format sarif --ignore-unfixed --exit-code 0 -o reports/sca-backend.sarif
+2025-12-14T15:03:03.8956725Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.9264066Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="spdx-json"
+2025-12-14T15:03:03.9999414Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=1
+2025-12-14T15:03:04.0000119Z 2025-12-14T15:03:03Z	INFO	[jar] Detecting vulnerabilities...
+2025-12-14T15:03:04.0101833Z + test -s reports/sca-backend.sarif
+2025-12-14T15:03:04.0126783Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:04.0127077Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:04.0127340Z [36;1mtrivy sbom sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:04.0127612Z [36;1m  --format sarif \[0m
+2025-12-14T15:03:04.0127826Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:04.0128039Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:04.0128271Z [36;1m  -o reports/sca-frontend.sarif[0m
+2025-12-14T15:03:04.0128555Z [36;1mtest -s reports/sca-frontend.sarif[0m
+2025-12-14T15:03:04.0161377Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:04.0161600Z env:
+2025-12-14T15:03:04.0161874Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.0162324Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.0162691Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.0162952Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.0163186Z ##[endgroup]
+2025-12-14T15:03:04.0214158Z + trivy sbom sbom-frontend.cdx.json --format sarif --ignore-unfixed --exit-code 0 -o reports/sca-frontend.sarif
+2025-12-14T15:03:04.0832018Z 2025-12-14T15:03:04Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:04.0843368Z 2025-12-14T15:03:04Z	INFO	Detected SBOM format	format="cyclonedx-json"
+2025-12-14T15:03:04.0952319Z 2025-12-14T15:03:04Z	INFO	Number of language-specific files	num=2
+2025-12-14T15:03:04.0953023Z 2025-12-14T15:03:04Z	INFO	[npm] Detecting vulnerabilities...
+2025-12-14T15:03:04.0956614Z 2025-12-14T15:03:04Z	INFO	[node-pkg] Detecting vulnerabilities...
+2025-12-14T15:03:04.1013967Z + test -s reports/sca-frontend.sarif
+2025-12-14T15:03:04.1039232Z ##[group]Run pwd
+2025-12-14T15:03:04.1039461Z [36;1mpwd[0m
+2025-12-14T15:03:04.1039635Z [36;1mls -la[0m
+2025-12-14T15:03:04.1039830Z [36;1mls -la reports || true[0m
+2025-12-14T15:03:04.1073171Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:04.1073399Z env:
+2025-12-14T15:03:04.1073674Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1074125Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1074483Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.1074741Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.1075252Z ##[endgroup]
+2025-12-14T15:03:04.1127013Z /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:04.1141840Z total 1104
+2025-12-14T15:03:04.1142413Z drwxr-xr-x 13 runner runner   4096 Dec 14 15:03 .
+2025-12-14T15:03:04.1143077Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 ..
+2025-12-14T15:03:04.1144076Z drwxr-xr-x  7 runner runner   4096 Dec 14 15:00 .git
+2025-12-14T15:03:04.1145014Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 .github
+2025-12-14T15:03:04.1146443Z -rw-r--r--  1 runner runner    349 Dec 14 15:00 .gitignore
+2025-12-14T15:03:04.1147185Z -rw-r--r--  1 runner runner  11357 Oct  3  2024 LICENSE
+2025-12-14T15:03:04.1149566Z -rw-r--r--  1 runner runner   6005 Dec 14 15:00 Makefile
+2025-12-14T15:03:04.1150124Z -rw-r--r--  1 runner runner   5808 Oct  3  2024 README.md
+2025-12-14T15:03:04.1150667Z drwxr-xr-x  7 runner runner   4096 Dec 14 15:02 backend
+2025-12-14T15:03:04.1151177Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:01 contrib
+2025-12-14T15:03:04.1151714Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 deployment
+2025-12-14T15:03:04.1152276Z drwxr-xr-x  4 runner runner   4096 Dec 14 15:00 development
+2025-12-14T15:03:04.1153061Z drwxr-xr-x  8 runner runner   4096 Dec 14 15:00 docs
+2025-12-14T15:03:04.1153580Z drwxr-xr-x  5 runner runner   4096 Dec 14 15:02 frontend
+2025-12-14T15:03:04.1154142Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:00 keycloak
+2025-12-14T15:03:04.1154694Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:03 reports
+2025-12-14T15:03:04.1155552Z -rw-r--r--  1 runner runner    886 Dec 14 15:02 sbom-backend-project.cdx.json
+2025-12-14T15:03:04.1156308Z -rw-r--r--  1 runner runner 953203 Dec 14 15:03 sbom-backend-runtime.spdx.json
+2025-12-14T15:03:04.1157031Z -rw-r--r--  1 runner runner  69961 Dec 14 15:03 sbom-frontend.cdx.json
+2025-12-14T15:03:04.1157682Z -rw-r--r--  1 runner runner   4847 Dec 14 15:03 sca-backend.json
+2025-12-14T15:03:04.1158289Z -rw-r--r--  1 runner runner    581 Dec 14 15:03 sca-frontend.json
+2025-12-14T15:03:04.1158868Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:00 scripts
+2025-12-14T15:03:04.1159637Z total 20
+2025-12-14T15:03:04.1160108Z drwxr-xr-x  2 runner runner 4096 Dec 14 15:03 .
+2025-12-14T15:03:04.1160704Z drwxr-xr-x 13 runner runner 4096 Dec 14 15:03 ..
+2025-12-14T15:03:04.1161328Z -rw-r--r--  1 runner runner 7204 Dec 14 15:03 sca-backend.sarif
+2025-12-14T15:03:04.1162083Z -rw-r--r--  1 runner runner  584 Dec 14 15:03 sca-frontend.sarif
+2025-12-14T15:03:04.1204153Z ##[group]Run github/codeql-action/upload-sarif@v3
+2025-12-14T15:03:04.1204449Z with:
+2025-12-14T15:03:04.1204638Z   sarif_file: reports/sca-backend.sarif
+2025-12-14T15:03:04.1205185Z   category: trivy-backend
+2025-12-14T15:03:04.1205413Z   wait-for-processing: true
+2025-12-14T15:03:04.1205671Z   checkout_path: /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:04.1206143Z   token: ***
+2025-12-14T15:03:04.1206342Z   matrix: null
+2025-12-14T15:03:04.1206512Z env:
+2025-12-14T15:03:04.1206780Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1207228Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1207605Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.1207870Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.1208108Z ##[endgroup]
+2025-12-14T15:03:04.2694675Z ##[warning]CodeQL Action v3 will be deprecated in December 2026. Please update all occurrences of the CodeQL Action in your workflow files to v4. For more information, see https://github.blog/changelog/2025-10-28-upcoming-deprecation-of-codeql-action-v3/
+2025-12-14T15:03:04.6358482Z Post-processing sarif files: ["reports/sca-backend.sarif"]
+2025-12-14T15:03:04.6362316Z Validating reports/sca-backend.sarif
+2025-12-14T15:03:04.6756519Z Adding fingerprints to SARIF file. See https://docs.github.com/en/enterprise-cloud@latest/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#providing-data-to-track-code-scanning-alerts-across-runs for more information.
+2025-12-14T15:03:04.6762069Z ##[group]Uploading code scanning results
+2025-12-14T15:03:04.6871183Z Uploading results
+2025-12-14T15:03:04.9301164Z Successfully uploaded results
+2025-12-14T15:03:04.9302306Z ##[endgroup]
+2025-12-14T15:03:04.9306209Z ##[group]Waiting for processing to finish
+2025-12-14T15:03:05.0538164Z Analysis upload status is pending.
+2025-12-14T15:03:10.1909532Z Analysis upload status is complete.
+2025-12-14T15:03:10.1910290Z ##[endgroup]
+2025-12-14T15:03:10.3288451Z ##[group]Run github/codeql-action/upload-sarif@v3
+2025-12-14T15:03:10.3288737Z with:
+2025-12-14T15:03:10.3288922Z   sarif_file: reports/sca-frontend.sarif
+2025-12-14T15:03:10.3289174Z   category: trivy-frontend
+2025-12-14T15:03:10.3289390Z   wait-for-processing: true
+2025-12-14T15:03:10.3289640Z   checkout_path: /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:10.3290014Z   token: ***
+2025-12-14T15:03:10.3290186Z   matrix: null
+2025-12-14T15:03:10.3290355Z env:
+2025-12-14T15:03:10.3290616Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:10.3291056Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:10.3291585Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:10.3291845Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:10.3292109Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:03:10.3292370Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:03:10.3292642Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:03:10.3292899Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:03:10.3293148Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:03:10.3293399Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:03:10.3293748Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/sbom-sca.yml:sbom_sca
+2025-12-14T15:03:10.3294142Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:03:04.263Z
+2025-12-14T15:03:10.3294531Z   CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY
+2025-12-14T15:03:10.3295103Z ##[endgroup]
+2025-12-14T15:03:10.6598756Z Post-processing sarif files: ["reports/sca-frontend.sarif"]
+2025-12-14T15:03:10.6602146Z Validating reports/sca-frontend.sarif
+2025-12-14T15:03:10.6840870Z Adding fingerprints to SARIF file. See https://docs.github.com/en/enterprise-cloud@latest/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#providing-data-to-track-code-scanning-alerts-across-runs for more information.
+2025-12-14T15:03:10.6843781Z ##[group]Uploading code scanning results
+2025-12-14T15:03:10.6978199Z Uploading results
+2025-12-14T15:03:11.3346065Z Successfully uploaded results
+2025-12-14T15:03:11.3347162Z ##[endgroup]
+2025-12-14T15:03:11.3352174Z ##[group]Waiting for processing to finish
+2025-12-14T15:03:11.4937043Z Analysis upload status is pending.
+2025-12-14T15:03:16.6339619Z Analysis upload status is complete.
+2025-12-14T15:03:16.6343192Z ##[endgroup]
+2025-12-14T15:03:16.7730035Z ##[group]Run actions/upload-artifact@v4
+2025-12-14T15:03:16.7730304Z with:
+2025-12-14T15:03:16.7730473Z   name: sca-reports
+2025-12-14T15:03:16.7730704Z   path: sca-backend.json
+sca-frontend.json
+reports
+2025-12-14T15:03:16.7730996Z   if-no-files-found: warn
+2025-12-14T15:03:16.7731197Z   compression-level: 6
+2025-12-14T15:03:16.7731393Z   overwrite: false
+2025-12-14T15:03:16.7731583Z   include-hidden-files: false
+2025-12-14T15:03:16.7731784Z env:
+2025-12-14T15:03:16.7732055Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:16.7732491Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:16.7732852Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:16.7733110Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:16.7733372Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:03:16.7733630Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:03:16.7733910Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:03:16.7734162Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:03:16.7734406Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:03:16.7734653Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:03:16.7735238Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/sbom-sca.yml:sbom_sca
+2025-12-14T15:03:16.7735584Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:03:04.263Z
+2025-12-14T15:03:16.7735970Z   CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY
+2025-12-14T15:03:16.7736456Z   CODEQL_UPLOAD_SARIF_TRIVY_FRONTEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_FRONTEND__TRIVY
+2025-12-14T15:03:16.7736811Z ##[endgroup]
+2025-12-14T15:03:16.9855419Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-12-14T15:03:16.9858779Z The least common ancestor is /home/runner/work/Goofy-Do/Goofy-Do. This will be the root directory of the artifact
+2025-12-14T15:03:16.9859599Z With the provided path, there will be 4 files uploaded
+2025-12-14T15:03:16.9864202Z Artifact name is valid!
+2025-12-14T15:03:16.9865612Z Root directory input is valid!
+2025-12-14T15:03:17.0811269Z Beginning upload of artifact content to blob storage
+2025-12-14T15:03:17.1491478Z Uploaded bytes 3932
+2025-12-14T15:03:17.1674020Z Finished uploading artifact content to blob storage!
+2025-12-14T15:03:17.1677984Z SHA256 digest of uploaded artifact zip is adf521432b811d2f187d91f505441ce8f4891cbe01e7f11a307d77e15756485b
+2025-12-14T15:03:17.1680491Z Finalizing artifact upload
+2025-12-14T15:03:17.2716487Z Artifact sca-reports.zip successfully finalized. Artifact ID 4864163414
+2025-12-14T15:03:17.2717546Z Artifact sca-reports has been successfully uploaded! Final size is 3932 bytes. Artifact ID is 4864163414
+2025-12-14T15:03:17.2724454Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/20209777401/artifacts/4864163414
+2025-12-14T15:03:17.2859857Z Post job cleanup.
+2025-12-14T15:03:17.4682157Z ##[group]Uploading combined SARIF debug artifact
+2025-12-14T15:03:17.4684661Z ##[endgroup]
+2025-12-14T15:03:17.4796541Z Post job cleanup.
+2025-12-14T15:03:17.6618618Z ##[group]Uploading combined SARIF debug artifact
+2025-12-14T15:03:17.6620665Z ##[endgroup]
+2025-12-14T15:03:17.6732674Z Post job cleanup.
+2025-12-14T15:03:17.8335174Z In final post-action step, saving state and writing summary
+2025-12-14T15:03:17.8343203Z Stopping all Gradle daemons before saving Gradle User Home state
+2025-12-14T15:03:17.8344173Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0
+2025-12-14T15:03:17.8362170Z [command]/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0/bin/gradle --stop
+2025-12-14T15:03:18.3993773Z 
+2025-12-14T15:03:18.3994649Z Welcome to Gradle 9.1.0!
+2025-12-14T15:03:18.3995371Z 
+2025-12-14T15:03:18.3995582Z Here are the highlights of this release:
+2025-12-14T15:03:18.3996035Z  - Full Java 25 support
+2025-12-14T15:03:18.3996415Z  - Native task graph visualization
+2025-12-14T15:03:18.3996698Z  - Enhanced console output
+2025-12-14T15:03:18.3996848Z 
+2025-12-14T15:03:18.3997046Z For more details see https://docs.gradle.org/9.1.0/release-notes.html
+2025-12-14T15:03:18.3997379Z 
+2025-12-14T15:03:18.4259414Z No Gradle daemons are running.
+2025-12-14T15:03:18.4367337Z ##[group]Caching Gradle state
+2025-12-14T15:03:18.4468224Z Caching generated-gradle-jars with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar' and cache key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3
+2025-12-14T15:03:18.4498657Z Caching wrapper-zips with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9' and cache key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2
+2025-12-14T15:03:18.4689739Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:18.4727558Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.4361212Z Caching dependencies with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and cache key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff
+2025-12-14T15:03:19.4511061Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*' and cache key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b
+2025-12-14T15:03:19.4792527Z Caching kotlin-dsl with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*' and cache key: kotlin-dsl-40559b115203537db5626e8e35a2bc91
+2025-12-14T15:03:19.5040777Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar,zstd-without-long,1.0' and key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAAAeSjwwnoOgSLoWFLmDe8OzUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:19.5471800Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.5625944Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.5754544Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*,zstd-without-long,1.0' and key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAAAd9OKGff4aS737HxzmNQxbUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:19.6328814Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*,zstd-without-long,1.0' and key: kotlin-dsl-40559b115203537db5626e8e35a2bc91: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAADwBYVCz2MISrPcnrp+EWx2UEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:20.2795195Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:21.1932072Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*,zstd-without-long,1.0' and key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0udE+aQAAAAD9+a17EsrTT5gJcdf3qHFGUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:21.4474757Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9,zstd-without-long,1.0' and key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0udE+aQAAAACgC52pLVojRKg7VAbALHurUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:22.5098278Z Caching Gradle User Home with cache key: v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292
+2025-12-14T15:03:22.5183137Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:23.1157549Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.gradle-build-action,zstd-without-long,1.0' and key: v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0u9E+aQAAAACQE/Hrd1VrTKNYHr3g1piOUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:23.1160725Z ##[endgroup]
+2025-12-14T15:03:23.1160959Z Writing job summary
+2025-12-14T15:03:23.1390975Z Post job cleanup.
+2025-12-14T15:03:23.3139856Z Post job cleanup.
+2025-12-14T15:03:23.4079238Z [command]/usr/bin/git version
+2025-12-14T15:03:23.4115863Z git version 2.52.0
+2025-12-14T15:03:23.4159495Z Temporarily overriding HOME='/home/runner/work/_temp/2e280185-b786-4632-a517-4839fdaf0a7e' before making global git config changes
+2025-12-14T15:03:23.4160800Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-14T15:03:23.4166188Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:23.4206146Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-14T15:03:23.4239341Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-14T15:03:23.4464571Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-14T15:03:23.4484718Z http.https://github.com/.extraheader
+2025-12-14T15:03:23.4497687Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-14T15:03:23.4527779Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-14T15:03:23.4742449Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-14T15:03:23.4771794Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-14T15:03:23.5099352Z Cleaning up orphan processes

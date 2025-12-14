@@ -1,0 +1,219 @@
+﻿2025-12-14T15:00:46.9516549Z Current runner version: '2.329.0'
+2025-12-14T15:00:46.9541192Z ##[group]Runner Image Provisioner
+2025-12-14T15:00:46.9542014Z Hosted Compute Agent
+2025-12-14T15:00:46.9542545Z Version: 20251202.455
+2025-12-14T15:00:46.9543227Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-14T15:00:46.9544306Z Build Date: 2025-12-02T15:56:59Z
+2025-12-14T15:00:46.9544946Z Worker ID: {be26b6e9-45b3-4441-9ef4-0df48cf48bf4}
+2025-12-14T15:00:46.9545730Z ##[endgroup]
+2025-12-14T15:00:46.9546242Z ##[group]Operating System
+2025-12-14T15:00:46.9546797Z Ubuntu
+2025-12-14T15:00:46.9547307Z 24.04.3
+2025-12-14T15:00:46.9547746Z LTS
+2025-12-14T15:00:46.9548206Z ##[endgroup]
+2025-12-14T15:00:46.9548682Z ##[group]Runner Image
+2025-12-14T15:00:46.9549314Z Image: ubuntu-24.04
+2025-12-14T15:00:46.9549834Z Version: 20251208.163.1
+2025-12-14T15:00:46.9550841Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-14T15:00:46.9552490Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-14T15:00:46.9553789Z ##[endgroup]
+2025-12-14T15:00:46.9554981Z ##[group]GITHUB_TOKEN Permissions
+2025-12-14T15:00:46.9557497Z Contents: read
+2025-12-14T15:00:46.9558197Z Metadata: read
+2025-12-14T15:00:46.9558721Z SecurityEvents: write
+2025-12-14T15:00:46.9559254Z ##[endgroup]
+2025-12-14T15:00:46.9561432Z Secret source: Actions
+2025-12-14T15:00:46.9562577Z Prepare workflow directory
+2025-12-14T15:00:46.9910707Z Prepare all required actions
+2025-12-14T15:00:46.9951042Z Getting action download info
+2025-12-14T15:00:47.3749516Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-14T15:00:47.9018703Z Download action repository 'github/codeql-action@v3' (SHA:f47c8e6a9bd05ef3ee422fc8d8663be7fe4bdc61)
+2025-12-14T15:00:48.6179905Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-14T15:00:48.9539581Z Complete job name: gitleaks
+2025-12-14T15:00:49.0214590Z ##[group]Run actions/checkout@v4
+2025-12-14T15:00:49.0215251Z with:
+2025-12-14T15:00:49.0215493Z   fetch-depth: 0
+2025-12-14T15:00:49.0215756Z   repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.0216207Z   token: ***
+2025-12-14T15:00:49.0216435Z   ssh-strict: true
+2025-12-14T15:00:49.0216679Z   ssh-user: git
+2025-12-14T15:00:49.0216923Z   persist-credentials: true
+2025-12-14T15:00:49.0217184Z   clean: true
+2025-12-14T15:00:49.0217434Z   sparse-checkout-cone-mode: true
+2025-12-14T15:00:49.0217724Z   fetch-tags: false
+2025-12-14T15:00:49.0217968Z   show-progress: true
+2025-12-14T15:00:49.0218208Z   lfs: false
+2025-12-14T15:00:49.0218420Z   submodules: false
+2025-12-14T15:00:49.0218662Z   set-safe-directory: true
+2025-12-14T15:00:49.0219128Z ##[endgroup]
+2025-12-14T15:00:49.1280269Z Syncing repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.1281652Z ##[group]Getting Git version info
+2025-12-14T15:00:49.1282094Z Working directory is '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:49.1282793Z [command]/usr/bin/git version
+2025-12-14T15:00:49.2727027Z git version 2.52.0
+2025-12-14T15:00:49.2755470Z ##[endgroup]
+2025-12-14T15:00:49.2778594Z Temporarily overriding HOME='/home/runner/work/_temp/d2917590-3aee-4679-b837-9a5a3fd93ea1' before making global git config changes
+2025-12-14T15:00:49.2779440Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-14T15:00:49.2783395Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:49.2882858Z Deleting the contents of '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:49.2886955Z ##[group]Initializing the repository
+2025-12-14T15:00:49.2891833Z [command]/usr/bin/git init /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:49.3672334Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-14T15:00:49.3673861Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-14T15:00:49.3674992Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-14T15:00:49.3675551Z hint: call:
+2025-12-14T15:00:49.3675785Z hint:
+2025-12-14T15:00:49.3676173Z hint: 	git config --global init.defaultBranch <name>
+2025-12-14T15:00:49.3676550Z hint:
+2025-12-14T15:00:49.3676894Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-14T15:00:49.3677466Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-14T15:00:49.3677914Z hint:
+2025-12-14T15:00:49.3678157Z hint: 	git branch -m <name>
+2025-12-14T15:00:49.3678437Z hint:
+2025-12-14T15:00:49.3678808Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-14T15:00:49.3731406Z Initialized empty Git repository in /home/runner/work/Goofy-Do/Goofy-Do/.git/
+2025-12-14T15:00:49.3745320Z [command]/usr/bin/git remote add origin https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:49.3848317Z ##[endgroup]
+2025-12-14T15:00:49.3848903Z ##[group]Disabling automatic garbage collection
+2025-12-14T15:00:49.3852907Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-14T15:00:49.3880257Z ##[endgroup]
+2025-12-14T15:00:49.3880791Z ##[group]Setting up auth
+2025-12-14T15:00:49.3887720Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-14T15:00:49.3916259Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-14T15:00:49.6016575Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-14T15:00:49.6050682Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-14T15:00:49.6295230Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-14T15:00:49.6331217Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-14T15:00:49.6585817Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-14T15:00:49.6622229Z ##[endgroup]
+2025-12-14T15:00:49.6623028Z ##[group]Fetching the repository
+2025-12-14T15:00:49.6632991Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-12-14T15:00:50.1326974Z From https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:50.1327831Z  * [new branch]      Wieedie-patch-1 -> origin/Wieedie-patch-1
+2025-12-14T15:00:50.1328570Z  * [new branch]      main            -> origin/main
+2025-12-14T15:00:50.1434262Z [command]/usr/bin/git branch --list --remote origin/main
+2025-12-14T15:00:50.1458125Z   origin/main
+2025-12-14T15:00:50.1468023Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2025-12-14T15:00:50.1486662Z 9ce0e33c1e3f4230c0647678e31de658ccf80292
+2025-12-14T15:00:50.1491037Z ##[endgroup]
+2025-12-14T15:00:50.1491395Z ##[group]Determining the checkout info
+2025-12-14T15:00:50.1492534Z ##[endgroup]
+2025-12-14T15:00:50.1497001Z [command]/usr/bin/git sparse-checkout disable
+2025-12-14T15:00:50.1601269Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-14T15:00:50.1626586Z ##[group]Checking out the ref
+2025-12-14T15:00:50.1631361Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-14T15:00:50.1843850Z Switched to a new branch 'main'
+2025-12-14T15:00:50.1845734Z branch 'main' set up to track 'origin/main'.
+2025-12-14T15:00:50.1853060Z ##[endgroup]
+2025-12-14T15:00:50.1889959Z [command]/usr/bin/git log -1 --format=%H
+2025-12-14T15:00:50.1911900Z 9ce0e33c1e3f4230c0647678e31de658ccf80292
+2025-12-14T15:00:50.2079808Z ##[group]Run set -eux
+2025-12-14T15:00:50.2080118Z [36;1mset -eux[0m
+2025-12-14T15:00:50.2080516Z [36;1mver=8.18.4[0m
+2025-12-14T15:00:50.2081031Z [36;1mcurl -sL https://github.com/gitleaks/gitleaks/releases/download/v${ver}/gitleaks_${ver}_linux_x64.tar.gz | tar xz[0m
+2025-12-14T15:00:50.2081563Z [36;1msudo mv gitleaks /usr/local/bin/[0m
+2025-12-14T15:00:50.2081816Z [36;1mgitleaks version[0m
+2025-12-14T15:00:50.2117272Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.2117531Z ##[endgroup]
+2025-12-14T15:00:50.2184604Z + ver=8.18.4
+2025-12-14T15:00:50.2187825Z + curl -sL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz
+2025-12-14T15:00:50.2188967Z + tar xz
+2025-12-14T15:00:50.5051907Z + sudo mv gitleaks /usr/local/bin/
+2025-12-14T15:00:50.5130203Z + gitleaks version
+2025-12-14T15:00:50.5149491Z 8.18.4
+2025-12-14T15:00:50.5200519Z ##[group]Run set -eux
+2025-12-14T15:00:50.5200801Z [36;1mset -eux[0m
+2025-12-14T15:00:50.5201002Z [36;1mmkdir -p reports[0m
+2025-12-14T15:00:50.5201241Z [36;1mgitleaks detect --source . --redact \[0m
+2025-12-14T15:00:50.5201568Z [36;1m  --report-format sarif \[0m
+2025-12-14T15:00:50.5201846Z [36;1m  --report-path reports/gitleaks.sarif \[0m
+2025-12-14T15:00:50.5202103Z [36;1m  --exit-code 1[0m
+2025-12-14T15:00:50.5234128Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.5234368Z env:
+2025-12-14T15:00:50.5234716Z   GITLEAKS_LICENSE: ***
+2025-12-14T15:00:50.5234920Z ##[endgroup]
+2025-12-14T15:00:50.5281315Z + mkdir -p reports
+2025-12-14T15:00:50.5294389Z + gitleaks detect --source . --redact --report-format sarif --report-path reports/gitleaks.sarif --exit-code 1
+2025-12-14T15:00:50.5312363Z 
+2025-12-14T15:00:50.5312979Z     ○
+2025-12-14T15:00:50.5313795Z     │╲
+2025-12-14T15:00:50.5314770Z     │ ○
+2025-12-14T15:00:50.5315020Z     ○ ░
+2025-12-14T15:00:50.5315288Z     ░    gitleaks
+2025-12-14T15:00:50.5315511Z 
+2025-12-14T15:00:50.6694249Z [90m3:00PM[0m [32mINF[0m 24 commits scanned.
+2025-12-14T15:00:50.6695021Z [90m3:00PM[0m [32mINF[0m scan completed in 121ms
+2025-12-14T15:00:50.6695629Z [90m3:00PM[0m [32mINF[0m no leaks found
+2025-12-14T15:00:50.6748041Z ##[group]Run test -s reports/gitleaks.sarif || { echo "no SARIF"; ls -la reports || true; exit 1; }
+2025-12-14T15:00:50.6748682Z [36;1mtest -s reports/gitleaks.sarif || { echo "no SARIF"; ls -la reports || true; exit 1; }[0m
+2025-12-14T15:00:50.6780757Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.6780997Z ##[endgroup]
+2025-12-14T15:00:50.6968700Z ##[group]Run github/codeql-action/upload-sarif@v3
+2025-12-14T15:00:50.6969031Z with:
+2025-12-14T15:00:50.6969233Z   sarif_file: reports/gitleaks.sarif
+2025-12-14T15:00:50.6969461Z   category: gitleaks
+2025-12-14T15:00:50.6969662Z   wait-for-processing: true
+2025-12-14T15:00:50.6969915Z   checkout_path: /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:50.6970326Z   token: ***
+2025-12-14T15:00:50.6970515Z   matrix: null
+2025-12-14T15:00:50.6970689Z ##[endgroup]
+2025-12-14T15:00:50.8485860Z ##[warning]CodeQL Action v3 will be deprecated in December 2026. Please update all occurrences of the CodeQL Action in your workflow files to v4. For more information, see https://github.blog/changelog/2025-10-28-upcoming-deprecation-of-codeql-action-v3/
+2025-12-14T15:00:51.3752530Z Post-processing sarif files: ["reports/gitleaks.sarif"]
+2025-12-14T15:00:51.3758307Z Validating reports/gitleaks.sarif
+2025-12-14T15:00:51.4653916Z Adding fingerprints to SARIF file. See https://docs.github.com/en/enterprise-cloud@latest/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#providing-data-to-track-code-scanning-alerts-across-runs for more information.
+2025-12-14T15:00:51.4656735Z ##[group]Uploading code scanning results
+2025-12-14T15:00:51.4773020Z Uploading results
+2025-12-14T15:00:51.7020476Z Successfully uploaded results
+2025-12-14T15:00:51.7021269Z ##[endgroup]
+2025-12-14T15:00:51.7026831Z ##[group]Waiting for processing to finish
+2025-12-14T15:00:51.8686048Z Analysis upload status is pending.
+2025-12-14T15:00:57.0367435Z Analysis upload status is complete.
+2025-12-14T15:00:57.0368761Z ##[endgroup]
+2025-12-14T15:00:57.1802829Z ##[group]Run actions/upload-artifact@v4
+2025-12-14T15:00:57.1803139Z with:
+2025-12-14T15:00:57.1803313Z   name: secret-scan
+2025-12-14T15:00:57.1803755Z   path: reports/gitleaks.sarif
+2025-12-14T15:00:57.1804007Z   if-no-files-found: warn
+2025-12-14T15:00:57.1804217Z   compression-level: 6
+2025-12-14T15:00:57.1804401Z   overwrite: false
+2025-12-14T15:00:57.1804592Z   include-hidden-files: false
+2025-12-14T15:00:57.1804798Z env:
+2025-12-14T15:00:57.1804977Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:00:57.1805242Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:00:57.1805491Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:00:57.1805747Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:00:57.1805991Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:00:57.1806230Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:00:57.1806586Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/secret-scan.yml:gitleaks
+2025-12-14T15:00:57.1806992Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:00:50.840Z
+2025-12-14T15:00:57.1807380Z   CODEQL_UPLOAD_SARIF_GITLEAKS__GITLEAKS: CODEQL_UPLOAD_SARIF_GITLEAKS__GITLEAKS
+2025-12-14T15:00:57.1807747Z ##[endgroup]
+2025-12-14T15:00:57.3994398Z With the provided path, there will be 1 file uploaded
+2025-12-14T15:00:57.3997294Z Artifact name is valid!
+2025-12-14T15:00:57.3998667Z Root directory input is valid!
+2025-12-14T15:00:57.5214747Z Beginning upload of artifact content to blob storage
+2025-12-14T15:00:57.6669023Z Uploaded bytes 9202
+2025-12-14T15:00:57.7092024Z Finished uploading artifact content to blob storage!
+2025-12-14T15:00:57.7096003Z SHA256 digest of uploaded artifact zip is 2cabc558114feae813cd86806acc993ac75d763dbaf8237651918fff0c312fab
+2025-12-14T15:00:57.7097982Z Finalizing artifact upload
+2025-12-14T15:00:57.7934608Z Artifact secret-scan.zip successfully finalized. Artifact ID 4864156333
+2025-12-14T15:00:57.7935971Z Artifact secret-scan has been successfully uploaded! Final size is 9202 bytes. Artifact ID is 4864156333
+2025-12-14T15:00:57.7943801Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/20209777407/artifacts/4864156333
+2025-12-14T15:00:57.8062957Z Post job cleanup.
+2025-12-14T15:00:57.9915576Z ##[group]Uploading combined SARIF debug artifact
+2025-12-14T15:00:57.9917160Z ##[endgroup]
+2025-12-14T15:00:58.0030571Z Post job cleanup.
+2025-12-14T15:00:58.0959951Z [command]/usr/bin/git version
+2025-12-14T15:00:58.0996473Z git version 2.52.0
+2025-12-14T15:00:58.1041693Z Temporarily overriding HOME='/home/runner/work/_temp/0f23b0fa-d034-419c-bc88-45e4989c8e43' before making global git config changes
+2025-12-14T15:00:58.1042975Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-14T15:00:58.1049055Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:58.1098891Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-14T15:00:58.1139393Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-14T15:00:58.1451372Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-14T15:00:58.1472243Z http.https://github.com/.extraheader
+2025-12-14T15:00:58.1485524Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-14T15:00:58.1515750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-14T15:00:58.1740805Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-14T15:00:58.1771629Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-14T15:00:58.2181142Z Cleaning up orphan processes

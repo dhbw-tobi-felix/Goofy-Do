@@ -1,0 +1,14 @@
+﻿2025-12-14T15:00:50.2079784Z ##[group]Run set -eux
+2025-12-14T15:00:50.2080113Z [36;1mset -eux[0m
+2025-12-14T15:00:50.2080511Z [36;1mver=8.18.4[0m
+2025-12-14T15:00:50.2081027Z [36;1mcurl -sL https://github.com/gitleaks/gitleaks/releases/download/v${ver}/gitleaks_${ver}_linux_x64.tar.gz | tar xz[0m
+2025-12-14T15:00:50.2081559Z [36;1msudo mv gitleaks /usr/local/bin/[0m
+2025-12-14T15:00:50.2081813Z [36;1mgitleaks version[0m
+2025-12-14T15:00:50.2117253Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.2117527Z ##[endgroup]
+2025-12-14T15:00:50.2184583Z + ver=8.18.4
+2025-12-14T15:00:50.2187797Z + curl -sL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz
+2025-12-14T15:00:50.2188958Z + tar xz
+2025-12-14T15:00:50.5051831Z + sudo mv gitleaks /usr/local/bin/
+2025-12-14T15:00:50.5130180Z + gitleaks version
+2025-12-14T15:00:50.5149467Z 8.18.4

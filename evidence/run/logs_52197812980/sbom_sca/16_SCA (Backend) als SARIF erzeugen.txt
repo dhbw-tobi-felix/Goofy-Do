@@ -1,0 +1,21 @@
+﻿2025-12-14T15:03:03.8213707Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:03.8214127Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:03.8214565Z [36;1mtrivy sbom sbom-backend-runtime.spdx.json \[0m
+2025-12-14T15:03:03.8215305Z [36;1m  --format sarif \[0m
+2025-12-14T15:03:03.8215688Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:03.8216032Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:03.8216404Z [36;1m  -o reports/sca-backend.sarif[0m
+2025-12-14T15:03:03.8216832Z [36;1mtest -s reports/sca-backend.sarif[0m
+2025-12-14T15:03:03.8254266Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:03.8254614Z env:
+2025-12-14T15:03:03.8255243Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8255984Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.8256587Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:03.8257025Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:03.8257608Z ##[endgroup]
+2025-12-14T15:03:03.8316063Z + trivy sbom sbom-backend-runtime.spdx.json --format sarif --ignore-unfixed --exit-code 0 -o reports/sca-backend.sarif
+2025-12-14T15:03:03.8956692Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.9264051Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="spdx-json"
+2025-12-14T15:03:03.9999369Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=1
+2025-12-14T15:03:04.0000112Z 2025-12-14T15:03:03Z	INFO	[jar] Detecting vulnerabilities...
+2025-12-14T15:03:04.0101814Z + test -s reports/sca-backend.sarif

@@ -1,0 +1,77 @@
+﻿2025-12-14T15:01:15.1408509Z ##[group]Run ./gradlew build -x test --no-daemon --stacktrace
+2025-12-14T15:01:15.1409018Z [36;1m./gradlew build -x test --no-daemon --stacktrace[0m
+2025-12-14T15:01:15.1446299Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:01:15.1446564Z env:
+2025-12-14T15:01:15.1446858Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:15.1447326Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:15.1447712Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:01:15.1447993Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:01:15.1448256Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:01:15.1448536Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:01:15.1448789Z   CODEQL_ACTION_VERSION: 4.31.8
+2025-12-14T15:01:15.1449047Z   JOB_RUN_UUID: 211bb9df-0bbc-4a49-84d7-2adf83ad2940
+2025-12-14T15:01:15.1449331Z   CODEQL_ACTION_INIT_HAS_RUN: true
+2025-12-14T15:01:15.1449632Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/sast.yml:codeql
+2025-12-14T15:01:15.1450011Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:00:57.853Z
+2025-12-14T15:01:15.1450278Z   CODEQL_RAM: 14581
+2025-12-14T15:01:15.1450460Z   CODEQL_THREADS: 4
+2025-12-14T15:01:15.1450728Z   CODEQL_SCRATCH_DIR: /home/runner/work/_temp/codeql_databases/working
+2025-12-14T15:01:15.1451058Z   CODEQL_VERBOSITY: warnings
+2025-12-14T15:01:15.1451329Z   CODEQL_DIST: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql
+2025-12-14T15:01:15.1451882Z   CODEQL_PLATFORM: linux64
+2025-12-14T15:01:15.1452120Z   CODEQL_PLATFORM_DLL_EXTENSION: .so
+2025-12-14T15:01:15.1452484Z   CODEQL_JAVA_HOME: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/java
+2025-12-14T15:01:15.1452967Z   CODEQL_EXTRACTOR_JAVA_ROOT: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/java
+2025-12-14T15:01:15.1453434Z   CODEQL_EXTRACTOR_JAVA_WIP_DATABASE: /home/runner/work/_temp/codeql_databases/java
+2025-12-14T15:01:15.1454010Z   CODEQL_EXTRACTOR_JAVA_DIAGNOSTIC_DIR: /home/runner/work/_temp/codeql_databases/java/diagnostic/extractors/java
+2025-12-14T15:01:15.1454582Z   CODEQL_EXTRACTOR_JAVA_LOG_DIR: /home/runner/work/_temp/codeql_databases/java/log
+2025-12-14T15:01:15.1455076Z   CODEQL_EXTRACTOR_JAVA_SCRATCH_DIR: /home/runner/work/_temp/codeql_databases/java/working
+2025-12-14T15:01:15.1455588Z   CODEQL_EXTRACTOR_JAVA_TRAP_DIR: /home/runner/work/_temp/codeql_databases/java/trap/java
+2025-12-14T15:01:15.1456114Z   CODEQL_EXTRACTOR_JAVA_SOURCE_ARCHIVE_DIR: /home/runner/work/_temp/codeql_databases/java/src
+2025-12-14T15:01:15.1456521Z   CODEQL_EXTRACTOR_JAVA_BUILD_MODE: manual
+2025-12-14T15:01:15.1456779Z   CODEQL_EXTRACTOR_JAVA_THREADS: 4
+2025-12-14T15:01:15.1457012Z   CODEQL_EXTRACTOR_JAVA_RAM: 14581
+2025-12-14T15:01:15.1457542Z   LGTM_INDEX_EXCLUDE: backend/build.gradle.kts
+backend/settings.gradle.kts
+2025-12-14T15:01:15.1458059Z   LGTM_INDEX_FILTERS: exclude:backend/build.gradle.kts
+exclude:backend/settings.gradle.kts
+2025-12-14T15:01:15.1458568Z   CODEQL_TRACER_LOG: /home/runner/work/_temp/codeql_databases/log/build-tracer.log
+2025-12-14T15:01:15.1459083Z   CODEQL_TRACER_DIAGNOSTICS_DIR: /home/runner/work/_temp/codeql_databases/diagnostic/tracer
+2025-12-14T15:01:15.1459480Z   CODEQL_TRACER_LANGUAGES: java
+2025-12-14T15:01:15.1459945Z   SEMMLE_PRELOAD_libtrace: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/${LIB}_${PLATFORM}_trace.so
+2025-12-14T15:01:15.1460629Z   SEMMLE_PRELOAD_libtrace32: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/lib32trace.so
+2025-12-14T15:01:15.1461256Z   SEMMLE_PRELOAD_libtrace64: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/lib64trace.so
+2025-12-14T15:01:15.1461924Z   CODEQL_RUNNER: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/runner
+2025-12-14T15:01:15.1462480Z   LD_PRELOAD: /opt/hostedtoolcache/CodeQL/2.23.6/x64/codeql/tools/linux64/${LIB}_${PLATFORM}_trace.so
+2025-12-14T15:01:15.1462888Z ##[endgroup]
+2025-12-14T15:01:18.2313408Z 
+2025-12-14T15:01:18.2315197Z Welcome to Gradle 9.1.0!
+2025-12-14T15:01:18.2315779Z 
+2025-12-14T15:01:18.2325029Z Here are the highlights of this release:
+2025-12-14T15:01:18.2337519Z  - Full Java 25 support
+2025-12-14T15:01:18.2337990Z  - Native task graph visualization
+2025-12-14T15:01:18.2338465Z  - Enhanced console output
+2025-12-14T15:01:18.2338729Z 
+2025-12-14T15:01:18.2339081Z For more details see https://docs.gradle.org/9.1.0/release-notes.html
+2025-12-14T15:01:18.2339555Z 
+2025-12-14T15:01:18.5307905Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.1.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2025-12-14T15:01:19.9305839Z Daemon will be stopped at the end of the build 
+2025-12-14T15:01:28.5330448Z > Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+2025-12-14T15:01:28.7314782Z > Task :processResources
+2025-12-14T15:01:29.4312939Z > Task :quarkusGenerateAppModel
+2025-12-14T15:01:31.0307537Z > Task :quarkusGenerateCode
+2025-12-14T15:01:31.7305736Z > Task :check
+2025-12-14T15:02:01.0304976Z > Task :compileKotlin
+2025-12-14T15:05:01.8317330Z > Task :compileJava NO-SOURCE
+2025-12-14T15:05:01.8321491Z > Task :classes
+2025-12-14T15:05:01.8322645Z > Task :jar
+2025-12-14T15:05:01.9315778Z > Task :quarkusBuildAppModel
+2025-12-14T15:05:06.6315328Z > Task :quarkusAppPartsBuild
+2025-12-14T15:05:06.8304271Z > Task :quarkusDependenciesBuild
+2025-12-14T15:05:07.3304365Z > Task :quarkusBuild
+2025-12-14T15:05:07.3307020Z > Task :assemble
+2025-12-14T15:05:07.3308824Z > Task :build
+2025-12-14T15:05:07.3310563Z 
+2025-12-14T15:05:07.3311036Z BUILD SUCCESSFUL in 3m 50s
+2025-12-14T15:05:07.3311481Z 9 actionable tasks: 9 executed
+2025-12-14T15:05:07.3312707Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.1.0/userguide/configuration_cache_enabling.html

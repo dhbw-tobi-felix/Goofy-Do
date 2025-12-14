@@ -1,0 +1,120 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2025-12-14T15:03:03.695007415Z",
+  "ArtifactName": "sbom-backend-runtime.spdx.json",
+  "ArtifactType": "spdx",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-11965",
+          "PkgID": "io.vertx:vertx-web:4.5.21",
+          "PkgName": "io.vertx:vertx-web",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/io.vertx/vertx-web@4.5.21",
+            "UID": "a7c1b7350c49c4e0"
+          },
+          "InstalledVersion": "4.5.21",
+          "FixedVersion": "4.5.22, 5.0.5",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-11965",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "io.vertx/vertx-core: Eclipse Vert.x Access Control Flaw",
+          "Description": "In Eclipse Vert.x versions [4.0.0, 4.5.21] and [5.0.0, 5.0.4], a StaticHandler configuration for restricting access to hidden files fails to restrict access to hidden directories, allowing unauthorized users to retrieve files within them (e.g. '.git/config').",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-552"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-11965",
+            "https://github.com/vert-x3/vertx-web",
+            "https://github.com/vert-x3/vertx-web/security/advisories/GHSA-h5fg-jpgr-rv9c",
+            "https://gitlab.eclipse.org/security/vulnerability-reports/-/issues/304",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-11965",
+            "https://www.cve.org/CVERecord?id=CVE-2025-11965"
+          ],
+          "PublishedDate": "2025-10-22T15:15:31.59Z",
+          "LastModifiedDate": "2025-10-22T21:12:48.953Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-11966",
+          "PkgID": "io.vertx:vertx-web:4.5.21",
+          "PkgName": "io.vertx:vertx-web",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/io.vertx/vertx-web@4.5.21",
+            "UID": "a7c1b7350c49c4e0"
+          },
+          "InstalledVersion": "4.5.21",
+          "FixedVersion": "4.5.22, 5.0.5",
+          "Status": "fixed",
+          "Layer": {},
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-11966",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "io.vertx/vertx-web: Eclipse Vert.x cross site scripting",
+          "Description": "In Eclipse Vert.x versions [4.0.0, 4.5.21] and [5.0.0, 5.0.4], when \"directory listing\" is enabled, file and directory names are inserted into generated HTML without proper escaping in the href, title, and link attributes. An attacker who can create or rename files or directories within a served path can craft filenames containing malicious script or HTML content, leading to stored cross-site scripting (XSS) that executes in the context of users viewing the affected directory listing.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-79",
+            "CWE-80"
+          ],
+          "VendorSeverity": {
+            "ghsa": 1,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 4.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-11966",
+            "https://github.com/vert-x3/vertx-web",
+            "https://github.com/vert-x3/vertx-web/security/advisories/GHSA-45p5-v273-3qqr",
+            "https://gitlab.eclipse.org/security/vulnerability-reports/-/issues/303",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-11966",
+            "https://www.cve.org/CVERecord?id=CVE-2025-11966"
+          ],
+          "PublishedDate": "2025-10-22T15:15:31.73Z",
+          "LastModifiedDate": "2025-10-22T21:12:48.953Z"
+        }
+      ]
+    }
+  ]
+}

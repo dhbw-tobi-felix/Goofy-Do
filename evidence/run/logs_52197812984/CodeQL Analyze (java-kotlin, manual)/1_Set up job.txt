@@ -1,0 +1,33 @@
+﻿2025-12-14T15:00:47.4317037Z Current runner version: '2.329.0'
+2025-12-14T15:00:47.4341418Z ##[group]Runner Image Provisioner
+2025-12-14T15:00:47.4342542Z Hosted Compute Agent
+2025-12-14T15:00:47.4343053Z Version: 20251202.455
+2025-12-14T15:00:47.4343651Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-14T15:00:47.4344389Z Build Date: 2025-12-02T15:56:59Z
+2025-12-14T15:00:47.4345008Z Worker ID: {eb6ca86b-5873-45c8-ac7a-2473e00296cd}
+2025-12-14T15:00:47.4345700Z ##[endgroup]
+2025-12-14T15:00:47.4346218Z ##[group]Operating System
+2025-12-14T15:00:47.4346799Z Ubuntu
+2025-12-14T15:00:47.4347224Z 24.04.3
+2025-12-14T15:00:47.4347718Z LTS
+2025-12-14T15:00:47.4348127Z ##[endgroup]
+2025-12-14T15:00:47.4348641Z ##[group]Runner Image
+2025-12-14T15:00:47.4349217Z Image: ubuntu-24.04
+2025-12-14T15:00:47.4349686Z Version: 20251208.163.1
+2025-12-14T15:00:47.4350657Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-14T15:00:47.4352517Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-14T15:00:47.4353731Z ##[endgroup]
+2025-12-14T15:00:47.4354808Z ##[group]GITHUB_TOKEN Permissions
+2025-12-14T15:00:47.4357025Z Contents: read
+2025-12-14T15:00:47.4357570Z Metadata: read
+2025-12-14T15:00:47.4358079Z SecurityEvents: write
+2025-12-14T15:00:47.4358553Z ##[endgroup]
+2025-12-14T15:00:47.4360931Z Secret source: Actions
+2025-12-14T15:00:47.4362189Z Prepare workflow directory
+2025-12-14T15:00:47.4674310Z Prepare all required actions
+2025-12-14T15:00:47.4711528Z Getting action download info
+2025-12-14T15:00:47.7529448Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-14T15:00:48.0598202Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2025-12-14T15:00:48.3624928Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2025-12-14T15:00:48.5231974Z Download action repository 'github/codeql-action@v4' (SHA:1b168cd39490f61582a9beae412bb7057a6b2c4e)
+2025-12-14T15:00:49.3562290Z Complete job name: CodeQL Analyze (java-kotlin, manual)

@@ -1,0 +1,72 @@
+﻿2025-12-14T15:00:48.1996014Z ##[group]Run actions/checkout@v4
+2025-12-14T15:00:48.1997023Z with:
+2025-12-14T15:00:48.1997513Z   repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:48.1998294Z   token: ***
+2025-12-14T15:00:48.1998747Z   ssh-strict: true
+2025-12-14T15:00:48.1999222Z   ssh-user: git
+2025-12-14T15:00:48.1999687Z   persist-credentials: true
+2025-12-14T15:00:48.2000211Z   clean: true
+2025-12-14T15:00:48.2000679Z   sparse-checkout-cone-mode: true
+2025-12-14T15:00:48.2001223Z   fetch-depth: 1
+2025-12-14T15:00:48.2001671Z   fetch-tags: false
+2025-12-14T15:00:48.2002127Z   show-progress: true
+2025-12-14T15:00:48.2002609Z   lfs: false
+2025-12-14T15:00:48.2003038Z   submodules: false
+2025-12-14T15:00:48.2003537Z   set-safe-directory: true
+2025-12-14T15:00:48.2004281Z ##[endgroup]
+2025-12-14T15:00:48.3098306Z Syncing repository: dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:48.3100357Z ##[group]Getting Git version info
+2025-12-14T15:00:48.3101178Z Working directory is '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:48.3102447Z [command]/usr/bin/git version
+2025-12-14T15:00:48.3187858Z git version 2.52.0
+2025-12-14T15:00:48.3215574Z ##[endgroup]
+2025-12-14T15:00:48.3232551Z Temporarily overriding HOME='/home/runner/work/_temp/f8acea1a-892e-47e6-9fa9-f1956ffbfa99' before making global git config changes
+2025-12-14T15:00:48.3235266Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-14T15:00:48.3247957Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:48.3289061Z Deleting the contents of '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-14T15:00:48.3293142Z ##[group]Initializing the repository
+2025-12-14T15:00:48.3298252Z [command]/usr/bin/git init /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:00:48.3417426Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-14T15:00:48.3419052Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-14T15:00:48.3420009Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-14T15:00:48.3420742Z hint: call:
+2025-12-14T15:00:48.3421157Z hint:
+2025-12-14T15:00:48.3421698Z hint: 	git config --global init.defaultBranch <name>
+2025-12-14T15:00:48.3422776Z hint:
+2025-12-14T15:00:48.3423577Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-14T15:00:48.3425047Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-14T15:00:48.3426430Z hint:
+2025-12-14T15:00:48.3427221Z hint: 	git branch -m <name>
+2025-12-14T15:00:48.3428101Z hint:
+2025-12-14T15:00:48.3429199Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-14T15:00:48.3431031Z Initialized empty Git repository in /home/runner/work/Goofy-Do/Goofy-Do/.git/
+2025-12-14T15:00:48.3438211Z [command]/usr/bin/git remote add origin https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:48.3473778Z ##[endgroup]
+2025-12-14T15:00:48.3475404Z ##[group]Disabling automatic garbage collection
+2025-12-14T15:00:48.3479572Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-14T15:00:48.3509325Z ##[endgroup]
+2025-12-14T15:00:48.3510626Z ##[group]Setting up auth
+2025-12-14T15:00:48.3517194Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-14T15:00:48.3549240Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-14T15:00:48.3916068Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-14T15:00:48.3945972Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-14T15:00:48.4170267Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-14T15:00:48.4210683Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-14T15:00:48.4441166Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-14T15:00:48.4477640Z ##[endgroup]
+2025-12-14T15:00:48.4479120Z ##[group]Fetching the repository
+2025-12-14T15:00:48.4487633Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9ce0e33c1e3f4230c0647678e31de658ccf80292:refs/remotes/origin/main
+2025-12-14T15:00:48.6706593Z From https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-14T15:00:48.6708198Z  * [new ref]         9ce0e33c1e3f4230c0647678e31de658ccf80292 -> origin/main
+2025-12-14T15:00:48.6738609Z ##[endgroup]
+2025-12-14T15:00:48.6739395Z ##[group]Determining the checkout info
+2025-12-14T15:00:48.6740610Z ##[endgroup]
+2025-12-14T15:00:48.6745658Z [command]/usr/bin/git sparse-checkout disable
+2025-12-14T15:00:48.6786304Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-14T15:00:48.6811368Z ##[group]Checking out the ref
+2025-12-14T15:00:48.6815182Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-14T15:00:48.6969456Z Switched to a new branch 'main'
+2025-12-14T15:00:48.6971469Z branch 'main' set up to track 'origin/main'.
+2025-12-14T15:00:48.6980252Z ##[endgroup]
+2025-12-14T15:00:48.7018109Z [command]/usr/bin/git log -1 --format=%H
+2025-12-14T15:00:48.7040040Z 9ce0e33c1e3f4230c0647678e31de658ccf80292

@@ -1,0 +1,35 @@
+﻿2025-12-14T15:00:46.5518469Z Current runner version: '2.329.0'
+2025-12-14T15:00:46.5547672Z ##[group]Runner Image Provisioner
+2025-12-14T15:00:46.5548467Z Hosted Compute Agent
+2025-12-14T15:00:46.5548984Z Version: 20251202.455
+2025-12-14T15:00:46.5549670Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-14T15:00:46.5550357Z Build Date: 2025-12-02T15:56:59Z
+2025-12-14T15:00:46.5550961Z Worker ID: {6c0d90b0-5921-4a1d-afe6-05bf812efec6}
+2025-12-14T15:00:46.5551711Z ##[endgroup]
+2025-12-14T15:00:46.5552203Z ##[group]Operating System
+2025-12-14T15:00:46.5552748Z Ubuntu
+2025-12-14T15:00:46.5553226Z 24.04.3
+2025-12-14T15:00:46.5553690Z LTS
+2025-12-14T15:00:46.5554100Z ##[endgroup]
+2025-12-14T15:00:46.5554673Z ##[group]Runner Image
+2025-12-14T15:00:46.5555379Z Image: ubuntu-24.04
+2025-12-14T15:00:46.5555845Z Version: 20251208.163.1
+2025-12-14T15:00:46.5556928Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-14T15:00:46.5558247Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-14T15:00:46.5559476Z ##[endgroup]
+2025-12-14T15:00:46.5560562Z ##[group]GITHUB_TOKEN Permissions
+2025-12-14T15:00:46.5562930Z Contents: read
+2025-12-14T15:00:46.5563534Z Metadata: read
+2025-12-14T15:00:46.5564005Z SecurityEvents: write
+2025-12-14T15:00:46.5564605Z ##[endgroup]
+2025-12-14T15:00:46.5567023Z Secret source: Actions
+2025-12-14T15:00:46.5568059Z Prepare workflow directory
+2025-12-14T15:00:46.5882506Z Prepare all required actions
+2025-12-14T15:00:46.5920561Z Getting action download info
+2025-12-14T15:00:46.9674165Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-14T15:00:47.0914201Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2025-12-14T15:00:47.3911884Z Download action repository 'gradle/gradle-build-action@v2' (SHA:a8f75513eafdebd8141bd1cd4e30fcd194af8dfa)
+2025-12-14T15:00:47.6818450Z Download action repository 'anchore/sbom-action@v0' (SHA:43a17d6e7add2b5535efe4dcae9952337c479a93)
+2025-12-14T15:00:48.0814360Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-14T15:00:48.1891785Z Download action repository 'github/codeql-action@v3' (SHA:f47c8e6a9bd05ef3ee422fc8d8663be7fe4bdc61)
+2025-12-14T15:00:48.8769062Z Complete job name: sbom_sca

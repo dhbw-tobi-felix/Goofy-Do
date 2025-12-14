@@ -1,0 +1,45 @@
+﻿2025-12-14T15:03:00.8798160Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:00.8798680Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:00.8799162Z [36;1mtrivy sbom sbom-backend-runtime.spdx.json \[0m
+2025-12-14T15:03:00.8799676Z [36;1m  --format json \[0m
+2025-12-14T15:03:00.8800079Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:00.8800470Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:00.8800905Z [36;1m  -o sca-backend.json[0m
+2025-12-14T15:03:00.8801281Z [36;1mjq -e '[0m
+2025-12-14T15:03:00.8801558Z [36;1m  [[0m
+2025-12-14T15:03:00.8801894Z [36;1m    .Results[]?.Vulnerabilities[]?[0m
+2025-12-14T15:03:00.8802318Z [36;1m    | select([0m
+2025-12-14T15:03:00.8802667Z [36;1m        (.Severity=="HIGH") or[0m
+2025-12-14T15:03:00.8803116Z [36;1m        (.Severity=="CRITICAL") or[0m
+2025-12-14T15:03:00.8803765Z [36;1m        ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)[0m
+2025-12-14T15:03:00.8804701Z [36;1m      )[0m
+2025-12-14T15:03:00.8805400Z [36;1m  ] | length == 0[0m
+2025-12-14T15:03:00.8805801Z [36;1m' sca-backend.json \[0m
+2025-12-14T15:03:00.8806358Z [36;1m|| { echo "SCA gate failed (backend): HIGH/CRITICAL oder CVSS>=7"; exit 1; }[0m
+2025-12-14T15:03:00.8853011Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:00.8853394Z env:
+2025-12-14T15:03:00.8853864Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.8854665Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:00.8855391Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:00.8855691Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:00.8855936Z ##[endgroup]
+2025-12-14T15:03:00.8909335Z + trivy sbom sbom-backend-runtime.spdx.json --format json --ignore-unfixed --exit-code 0 -o sca-backend.json
+2025-12-14T15:03:00.9462880Z 2025-12-14T15:03:00Z	INFO	[vulndb] Need to update DB
+2025-12-14T15:03:00.9463452Z 2025-12-14T15:03:00Z	INFO	[vulndb] Downloading vulnerability DB...
+2025-12-14T15:03:00.9463942Z 2025-12-14T15:03:00Z	INFO	[vulndb] Downloading artifact...	repo="ghcr.io/aquasecurity/trivy-db:2"
+2025-12-14T15:03:03.5809448Z 63.46 MiB / 77.82 MiB [------------------------------------------------->___________] 81.55% ? p/s ?77.82 MiB / 77.82 MiB [----------------------------------------------------------->] 100.00% ? p/s ?77.82 MiB / 77.82 MiB [----------------------------------------------------------->] 100.00% ? p/s ?77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 23.94 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 22.39 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [---------------------------------------------->] 100.00% 20.95 MiB p/s ETA 0s77.82 MiB / 77.82 MiB [-------------------------------------------------] 100.00% 33.61 MiB p/s 2.5s2025-12-14T15:03:03Z	INFO	[vulndb] Artifact successfully downloaded	repo="ghcr.io/aquasecurity/trivy-db:2"
+2025-12-14T15:03:03.5813974Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.6165985Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="spdx-json"
+2025-12-14T15:03:03.6894086Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=1
+2025-12-14T15:03:03.6894980Z 2025-12-14T15:03:03Z	INFO	[jar] Detecting vulnerabilities...
+2025-12-14T15:03:03.6997287Z + jq -e '
+2025-12-14T15:03:03.6999983Z   [
+2025-12-14T15:03:03.7000311Z     .Results[]?.Vulnerabilities[]?
+2025-12-14T15:03:03.7001054Z     | select(
+2025-12-14T15:03:03.7001354Z         (.Severity=="HIGH") or
+2025-12-14T15:03:03.7001735Z         (.Severity=="CRITICAL") or
+2025-12-14T15:03:03.7002305Z         ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+2025-12-14T15:03:03.7002890Z       )
+2025-12-14T15:03:03.7003138Z   ] | length == 0
+2025-12-14T15:03:03.7003439Z ' sca-backend.json
+2025-12-14T15:03:03.7032839Z true

@@ -1,0 +1,30 @@
+﻿2025-12-14T15:00:57.1802810Z ##[group]Run actions/upload-artifact@v4
+2025-12-14T15:00:57.1803136Z with:
+2025-12-14T15:00:57.1803311Z   name: secret-scan
+2025-12-14T15:00:57.1803749Z   path: reports/gitleaks.sarif
+2025-12-14T15:00:57.1804005Z   if-no-files-found: warn
+2025-12-14T15:00:57.1804215Z   compression-level: 6
+2025-12-14T15:00:57.1804399Z   overwrite: false
+2025-12-14T15:00:57.1804589Z   include-hidden-files: false
+2025-12-14T15:00:57.1804796Z env:
+2025-12-14T15:00:57.1804974Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:00:57.1805240Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:00:57.1805489Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:00:57.1805745Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:00:57.1805988Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:00:57.1806228Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:00:57.1806584Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/secret-scan.yml:gitleaks
+2025-12-14T15:00:57.1806964Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:00:50.840Z
+2025-12-14T15:00:57.1807371Z   CODEQL_UPLOAD_SARIF_GITLEAKS__GITLEAKS: CODEQL_UPLOAD_SARIF_GITLEAKS__GITLEAKS
+2025-12-14T15:00:57.1807745Z ##[endgroup]
+2025-12-14T15:00:57.3994351Z With the provided path, there will be 1 file uploaded
+2025-12-14T15:00:57.3997285Z Artifact name is valid!
+2025-12-14T15:00:57.3998661Z Root directory input is valid!
+2025-12-14T15:00:57.5214722Z Beginning upload of artifact content to blob storage
+2025-12-14T15:00:57.6668997Z Uploaded bytes 9202
+2025-12-14T15:00:57.7091991Z Finished uploading artifact content to blob storage!
+2025-12-14T15:00:57.7095983Z SHA256 digest of uploaded artifact zip is 2cabc558114feae813cd86806acc993ac75d763dbaf8237651918fff0c312fab
+2025-12-14T15:00:57.7097967Z Finalizing artifact upload
+2025-12-14T15:00:57.7934584Z Artifact secret-scan.zip successfully finalized. Artifact ID 4864156333
+2025-12-14T15:00:57.7935928Z Artifact secret-scan has been successfully uploaded! Final size is 9202 bytes. Artifact ID is 4864156333
+2025-12-14T15:00:57.7943783Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/20209777407/artifacts/4864156333
