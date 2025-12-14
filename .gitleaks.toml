@@ -1,0 +1,10 @@
+title = "gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore evidence directory"
+paths = [
+    '''evidence/.*'''
+]
