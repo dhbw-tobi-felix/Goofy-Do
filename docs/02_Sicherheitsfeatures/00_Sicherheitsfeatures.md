@@ -7,7 +7,7 @@ sondern im Rahmen der Entwicklung lokal ausgeführt. Damit fehlt die technische 
 DNS-seitige Integritätsmechanismen überhaupt korrekt zu konfigurieren und nachweisbar zu verifizieren. 
 Aus diesem Grund wurde das Risiko in der Frontend-Komponente akzeptiert. Als Baseline wurde dennoch 
 konsequentes HTTPS mit gültigen Zertifikaten als Zielzustand implementiert.
-### F02 Tampering: - Implementiert
+### F02 Tampering - Implementiert
 Dieses Risiko ist für Single-Page-Applications besonders relevant, da manipuliertes JavaScript unmittelbar zur 
 Token-Exfiltration, zu unautorisierten API-Aufrufen oder zur verdeckten Datenabgabe genutzt werden kann. Die Integrität
 der Auslieferung wird über eine abgesicherte Supply-Chain realisiert. 
@@ -111,7 +111,7 @@ produktive Netzwerktopologie und eine sorgfältige Konfiguration erfordert, die 
 eingeschränkt realisierbar war.
 ### DB02 Tampering - Implementiert
 Die Umsetzung erfolgt durch die Nutzung sicherer Datenbankzugriffe mittels parametrisierter Queries bzw. Prepared 
-Statements, sodass Benutzereingaben nicht als ausführbare Query-Bestandteile interpretiert werden können, sowie sowie 
+Statements, sodass Benutzereingaben nicht als ausführbare Query-Bestandteile interpretiert werden können, sowie 
 durch eine restriktive Rechtevergabe für den Applications-DB-User, sodass gefährliche Operationen wie DROP/ALTER nicht 
 durch den regulären Anwendungskontext ausgeführt werden können.
 ### DB03 Repudiation - Risiko akzeptiert
