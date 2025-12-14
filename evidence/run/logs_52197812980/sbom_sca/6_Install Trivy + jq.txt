@@ -1,0 +1,67 @@
+﻿2025-12-14T15:00:53.0709470Z ##[group]Run set -euxo pipefail
+2025-12-14T15:00:53.0709821Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:00:53.0710057Z [36;1msudo apt-get update -y[0m
+2025-12-14T15:00:53.0710325Z [36;1msudo apt-get install -y wget jq[0m
+2025-12-14T15:00:53.0710610Z [36;1mTRIVY_VERSION=0.56.1[0m
+2025-12-14T15:00:53.0711232Z [36;1mwget -qO- https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz | tar xz[0m
+2025-12-14T15:00:53.0711821Z [36;1msudo mv trivy /usr/local/bin/[0m
+2025-12-14T15:00:53.0747750Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:53.0747999Z env:
+2025-12-14T15:00:53.0748285Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:53.0748728Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:53.0749090Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:00:53.0749349Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:00:53.0749586Z ##[endgroup]
+2025-12-14T15:00:53.0821353Z + sudo apt-get update -y
+2025-12-14T15:00:53.2619004Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-12-14T15:00:53.3016186Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-12-14T15:00:53.3033381Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-12-14T15:00:53.3105229Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-12-14T15:00:53.3170646Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-12-14T15:00:53.4742333Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1675 kB]
+2025-12-14T15:00:53.4951408Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [309 kB]
+2025-12-14T15:00:53.4978532Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-12-14T15:00:53.4998773Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.8 kB]
+2025-12-14T15:00:53.5046332Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1501 kB]
+2025-12-14T15:00:53.5138366Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [304 kB]
+2025-12-14T15:00:53.5171677Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-12-14T15:00:53.5204682Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-12-14T15:00:53.5215381Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2404 kB]
+2025-12-14T15:00:53.5417239Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [549 kB]
+2025-12-14T15:00:53.5827812Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-12-14T15:00:53.5836767Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-12-14T15:00:53.5853983Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7140 B]
+2025-12-14T15:00:53.5866161Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-12-14T15:00:53.5874093Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-12-14T15:00:53.5885638Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-12-14T15:00:53.6005736Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1378 kB]
+2025-12-14T15:00:53.6017516Z Get:34 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2025-12-14T15:00:53.6078256Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [224 kB]
+2025-12-14T15:00:53.6097830Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-12-14T15:00:53.6146060Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9488 B]
+2025-12-14T15:00:53.6148329Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [916 kB]
+2025-12-14T15:00:53.6178611Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [207 kB]
+2025-12-14T15:00:53.6199777Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [71.5 kB]
+2025-12-14T15:00:53.6216899Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-12-14T15:00:53.6669151Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2266 kB]
+2025-12-14T15:00:53.6755223Z Get:35 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-12-14T15:00:53.6802186Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [518 kB]
+2025-12-14T15:00:53.6823052Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2025-12-14T15:00:53.6829388Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B]
+2025-12-14T15:00:53.7522224Z Get:36 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [1884 B]
+2025-12-14T15:00:53.8780966Z Get:37 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [75.5 kB]
+2025-12-14T15:00:54.0615998Z Get:38 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.4 kB]
+2025-12-14T15:00:54.1391977Z Get:39 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [56.9 kB]
+2025-12-14T15:01:04.5253629Z Fetched 13.5 MB in 2s (8410 kB/s)
+2025-12-14T15:01:05.2630944Z Reading package lists...
+2025-12-14T15:01:05.2733207Z + sudo apt-get install -y wget jq
+2025-12-14T15:01:05.2954124Z Reading package lists...
+2025-12-14T15:01:05.4586618Z Building dependency tree...
+2025-12-14T15:01:05.4594119Z Reading state information...
+2025-12-14T15:01:05.6388211Z wget is already the newest version (1.21.4-1ubuntu4.1).
+2025-12-14T15:01:05.6388905Z jq is already the newest version (1.7.1-3ubuntu0.24.04.1).
+2025-12-14T15:01:05.6389497Z 0 upgraded, 0 newly installed, 0 to remove and 54 not upgraded.
+2025-12-14T15:01:05.6405858Z + TRIVY_VERSION=0.56.1
+2025-12-14T15:01:05.6409059Z + wget -qO- https://github.com/aquasecurity/trivy/releases/download/v0.56.1/trivy_0.56.1_Linux-64bit.tar.gz
+2025-12-14T15:01:05.6410162Z + tar xz
+2025-12-14T15:01:06.6193818Z + sudo mv trivy /usr/local/bin/

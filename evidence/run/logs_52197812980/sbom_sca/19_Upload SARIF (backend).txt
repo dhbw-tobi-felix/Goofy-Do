@@ -1,0 +1,26 @@
+﻿2025-12-14T15:03:04.1204145Z ##[group]Run github/codeql-action/upload-sarif@v3
+2025-12-14T15:03:04.1204447Z with:
+2025-12-14T15:03:04.1204635Z   sarif_file: reports/sca-backend.sarif
+2025-12-14T15:03:04.1205181Z   category: trivy-backend
+2025-12-14T15:03:04.1205411Z   wait-for-processing: true
+2025-12-14T15:03:04.1205668Z   checkout_path: /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:04.1206133Z   token: ***
+2025-12-14T15:03:04.1206340Z   matrix: null
+2025-12-14T15:03:04.1206510Z env:
+2025-12-14T15:03:04.1206777Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1207225Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1207602Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.1207868Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.1208105Z ##[endgroup]
+2025-12-14T15:03:04.2694580Z ##[warning]CodeQL Action v3 will be deprecated in December 2026. Please update all occurrences of the CodeQL Action in your workflow files to v4. For more information, see https://github.blog/changelog/2025-10-28-upcoming-deprecation-of-codeql-action-v3/
+2025-12-14T15:03:04.6358458Z Post-processing sarif files: ["reports/sca-backend.sarif"]
+2025-12-14T15:03:04.6362301Z Validating reports/sca-backend.sarif
+2025-12-14T15:03:04.6756505Z Adding fingerprints to SARIF file. See https://docs.github.com/en/enterprise-cloud@latest/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#providing-data-to-track-code-scanning-alerts-across-runs for more information.
+2025-12-14T15:03:04.6762055Z ##[group]Uploading code scanning results
+2025-12-14T15:03:04.6871170Z Uploading results
+2025-12-14T15:03:04.9301148Z Successfully uploaded results
+2025-12-14T15:03:04.9302300Z ##[endgroup]
+2025-12-14T15:03:04.9306203Z ##[group]Waiting for processing to finish
+2025-12-14T15:03:05.0538142Z Analysis upload status is pending.
+2025-12-14T15:03:10.1909493Z Analysis upload status is complete.
+2025-12-14T15:03:10.1910264Z ##[endgroup]

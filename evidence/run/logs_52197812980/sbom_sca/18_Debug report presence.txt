@@ -1,0 +1,40 @@
+﻿2025-12-14T15:03:04.1039217Z ##[group]Run pwd
+2025-12-14T15:03:04.1039458Z [36;1mpwd[0m
+2025-12-14T15:03:04.1039633Z [36;1mls -la[0m
+2025-12-14T15:03:04.1039827Z [36;1mls -la reports || true[0m
+2025-12-14T15:03:04.1073162Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:04.1073397Z env:
+2025-12-14T15:03:04.1073671Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1074122Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.1074481Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.1074739Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.1075247Z ##[endgroup]
+2025-12-14T15:03:04.1127000Z /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-14T15:03:04.1141828Z total 1104
+2025-12-14T15:03:04.1142407Z drwxr-xr-x 13 runner runner   4096 Dec 14 15:03 .
+2025-12-14T15:03:04.1143072Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 ..
+2025-12-14T15:03:04.1144032Z drwxr-xr-x  7 runner runner   4096 Dec 14 15:00 .git
+2025-12-14T15:03:04.1145005Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 .github
+2025-12-14T15:03:04.1146435Z -rw-r--r--  1 runner runner    349 Dec 14 15:00 .gitignore
+2025-12-14T15:03:04.1147173Z -rw-r--r--  1 runner runner  11357 Oct  3  2024 LICENSE
+2025-12-14T15:03:04.1149555Z -rw-r--r--  1 runner runner   6005 Dec 14 15:00 Makefile
+2025-12-14T15:03:04.1150118Z -rw-r--r--  1 runner runner   5808 Oct  3  2024 README.md
+2025-12-14T15:03:04.1150661Z drwxr-xr-x  7 runner runner   4096 Dec 14 15:02 backend
+2025-12-14T15:03:04.1151171Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:01 contrib
+2025-12-14T15:03:04.1151709Z drwxr-xr-x  3 runner runner   4096 Dec 14 15:00 deployment
+2025-12-14T15:03:04.1152271Z drwxr-xr-x  4 runner runner   4096 Dec 14 15:00 development
+2025-12-14T15:03:04.1153055Z drwxr-xr-x  8 runner runner   4096 Dec 14 15:00 docs
+2025-12-14T15:03:04.1153573Z drwxr-xr-x  5 runner runner   4096 Dec 14 15:02 frontend
+2025-12-14T15:03:04.1154126Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:00 keycloak
+2025-12-14T15:03:04.1154688Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:03 reports
+2025-12-14T15:03:04.1155544Z -rw-r--r--  1 runner runner    886 Dec 14 15:02 sbom-backend-project.cdx.json
+2025-12-14T15:03:04.1156302Z -rw-r--r--  1 runner runner 953203 Dec 14 15:03 sbom-backend-runtime.spdx.json
+2025-12-14T15:03:04.1157023Z -rw-r--r--  1 runner runner  69961 Dec 14 15:03 sbom-frontend.cdx.json
+2025-12-14T15:03:04.1157675Z -rw-r--r--  1 runner runner   4847 Dec 14 15:03 sca-backend.json
+2025-12-14T15:03:04.1158282Z -rw-r--r--  1 runner runner    581 Dec 14 15:03 sca-frontend.json
+2025-12-14T15:03:04.1158862Z drwxr-xr-x  2 runner runner   4096 Dec 14 15:00 scripts
+2025-12-14T15:03:04.1159628Z total 20
+2025-12-14T15:03:04.1160104Z drwxr-xr-x  2 runner runner 4096 Dec 14 15:03 .
+2025-12-14T15:03:04.1160700Z drwxr-xr-x 13 runner runner 4096 Dec 14 15:03 ..
+2025-12-14T15:03:04.1161322Z -rw-r--r--  1 runner runner 7204 Dec 14 15:03 sca-backend.sarif
+2025-12-14T15:03:04.1162068Z -rw-r--r--  1 runner runner  584 Dec 14 15:03 sca-frontend.sarif

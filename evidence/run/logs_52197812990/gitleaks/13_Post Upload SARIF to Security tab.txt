@@ -1,0 +1,3 @@
+﻿2025-12-14T15:00:57.8062947Z Post job cleanup.
+2025-12-14T15:00:57.9915532Z ##[group]Uploading combined SARIF debug artifact
+2025-12-14T15:00:57.9917151Z ##[endgroup]

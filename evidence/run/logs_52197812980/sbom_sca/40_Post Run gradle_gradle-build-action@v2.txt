@@ -1,0 +1,37 @@
+﻿2025-12-14T15:03:17.6732666Z Post job cleanup.
+2025-12-14T15:03:17.8335134Z In final post-action step, saving state and writing summary
+2025-12-14T15:03:17.8343193Z Stopping all Gradle daemons before saving Gradle User Home state
+2025-12-14T15:03:17.8344168Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0
+2025-12-14T15:03:17.8362160Z [command]/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0/bin/gradle --stop
+2025-12-14T15:03:18.3993720Z 
+2025-12-14T15:03:18.3994638Z Welcome to Gradle 9.1.0!
+2025-12-14T15:03:18.3995359Z 
+2025-12-14T15:03:18.3995577Z Here are the highlights of this release:
+2025-12-14T15:03:18.3996032Z  - Full Java 25 support
+2025-12-14T15:03:18.3996408Z  - Native task graph visualization
+2025-12-14T15:03:18.3996696Z  - Enhanced console output
+2025-12-14T15:03:18.3996846Z 
+2025-12-14T15:03:18.3997043Z For more details see https://docs.gradle.org/9.1.0/release-notes.html
+2025-12-14T15:03:18.3997342Z 
+2025-12-14T15:03:18.4259396Z No Gradle daemons are running.
+2025-12-14T15:03:18.4367325Z ##[group]Caching Gradle state
+2025-12-14T15:03:18.4468212Z Caching generated-gradle-jars with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar' and cache key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3
+2025-12-14T15:03:18.4498646Z Caching wrapper-zips with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9' and cache key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2
+2025-12-14T15:03:18.4689721Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:18.4727541Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.4361143Z Caching dependencies with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and cache key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff
+2025-12-14T15:03:19.4511030Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*' and cache key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b
+2025-12-14T15:03:19.4792487Z Caching kotlin-dsl with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*' and cache key: kotlin-dsl-40559b115203537db5626e8e35a2bc91
+2025-12-14T15:03:19.5040729Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar,zstd-without-long,1.0' and key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAAAeSjwwnoOgSLoWFLmDe8OzUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:19.5471723Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.5625911Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:19.5754499Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*,zstd-without-long,1.0' and key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAAAd9OKGff4aS737HxzmNQxbUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:19.6328088Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*,zstd-without-long,1.0' and key: kotlin-dsl-40559b115203537db5626e8e35a2bc91: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0t9E+aQAAAADwBYVCz2MISrPcnrp+EWx2UEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:20.2795151Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:21.1932033Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*,zstd-without-long,1.0' and key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0udE+aQAAAAD9+a17EsrTT5gJcdf3qHFGUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:21.4474686Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9,zstd-without-long,1.0' and key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0udE+aQAAAACgC52pLVojRKg7VAbALHurUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:22.5098236Z Caching Gradle User Home with cache key: v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292
+2025-12-14T15:03:22.5183118Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-14T15:03:23.1157511Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.gradle-build-action,zstd-without-long,1.0' and key: v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0u9E+aQAAAACQE/Hrd1VrTKNYHr3g1piOUEhMMzBFREdFMDIxMwBFZGdl
+2025-12-14T15:03:23.1160720Z ##[endgroup]
+2025-12-14T15:03:23.1160932Z Writing job summary

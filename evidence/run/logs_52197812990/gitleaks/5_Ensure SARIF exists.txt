@@ -1,0 +1,4 @@
+﻿2025-12-14T15:00:50.6748026Z ##[group]Run test -s reports/gitleaks.sarif || { echo "no SARIF"; ls -la reports || true; exit 1; }
+2025-12-14T15:00:50.6748677Z [36;1mtest -s reports/gitleaks.sarif || { echo "no SARIF"; ls -la reports || true; exit 1; }[0m
+2025-12-14T15:00:50.6780747Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:00:50.6780993Z ##[endgroup]

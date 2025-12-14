@@ -1,0 +1,39 @@
+﻿2025-12-14T15:03:16.7730024Z ##[group]Run actions/upload-artifact@v4
+2025-12-14T15:03:16.7730302Z with:
+2025-12-14T15:03:16.7730470Z   name: sca-reports
+2025-12-14T15:03:16.7730700Z   path: sca-backend.json
+sca-frontend.json
+reports
+2025-12-14T15:03:16.7730993Z   if-no-files-found: warn
+2025-12-14T15:03:16.7731195Z   compression-level: 6
+2025-12-14T15:03:16.7731391Z   overwrite: false
+2025-12-14T15:03:16.7731580Z   include-hidden-files: false
+2025-12-14T15:03:16.7731782Z env:
+2025-12-14T15:03:16.7732052Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:16.7732488Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:16.7732844Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:16.7733108Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:16.7733370Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2025-12-14T15:03:16.7733628Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2025-12-14T15:03:16.7733877Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2025-12-14T15:03:16.7734159Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2025-12-14T15:03:16.7734404Z   CODEQL_ACTION_VERSION: 3.31.8
+2025-12-14T15:03:16.7734651Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2025-12-14T15:03:16.7735235Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/sbom-sca.yml:sbom_sca
+2025-12-14T15:03:16.7735582Z   CODEQL_WORKFLOW_STARTED_AT: 2025-12-14T15:03:04.263Z
+2025-12-14T15:03:16.7735967Z   CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_BACKEND__TRIVY
+2025-12-14T15:03:16.7736454Z   CODEQL_UPLOAD_SARIF_TRIVY_FRONTEND__TRIVY: CODEQL_UPLOAD_SARIF_TRIVY_FRONTEND__TRIVY
+2025-12-14T15:03:16.7736808Z ##[endgroup]
+2025-12-14T15:03:16.9855383Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-12-14T15:03:16.9858770Z The least common ancestor is /home/runner/work/Goofy-Do/Goofy-Do. This will be the root directory of the artifact
+2025-12-14T15:03:16.9859572Z With the provided path, there will be 4 files uploaded
+2025-12-14T15:03:16.9864194Z Artifact name is valid!
+2025-12-14T15:03:16.9865598Z Root directory input is valid!
+2025-12-14T15:03:17.0811248Z Beginning upload of artifact content to blob storage
+2025-12-14T15:03:17.1491453Z Uploaded bytes 3932
+2025-12-14T15:03:17.1674000Z Finished uploading artifact content to blob storage!
+2025-12-14T15:03:17.1677969Z SHA256 digest of uploaded artifact zip is adf521432b811d2f187d91f505441ce8f4891cbe01e7f11a307d77e15756485b
+2025-12-14T15:03:17.1680477Z Finalizing artifact upload
+2025-12-14T15:03:17.2716455Z Artifact sca-reports.zip successfully finalized. Artifact ID 4864163414
+2025-12-14T15:03:17.2717537Z Artifact sca-reports has been successfully uploaded! Final size is 3932 bytes. Artifact ID is 4864163414
+2025-12-14T15:03:17.2724439Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/20209777401/artifacts/4864163414

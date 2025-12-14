@@ -1,0 +1,22 @@
+﻿2025-12-14T15:03:04.0126768Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:04.0127075Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:04.0127338Z [36;1mtrivy sbom sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:04.0127610Z [36;1m  --format sarif \[0m
+2025-12-14T15:03:04.0127824Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:04.0128037Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:04.0128268Z [36;1m  -o reports/sca-frontend.sarif[0m
+2025-12-14T15:03:04.0128548Z [36;1mtest -s reports/sca-frontend.sarif[0m
+2025-12-14T15:03:04.0161370Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:04.0161598Z env:
+2025-12-14T15:03:04.0161872Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.0162322Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:04.0162689Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:04.0162950Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:04.0163183Z ##[endgroup]
+2025-12-14T15:03:04.0214113Z + trivy sbom sbom-frontend.cdx.json --format sarif --ignore-unfixed --exit-code 0 -o reports/sca-frontend.sarif
+2025-12-14T15:03:04.0831974Z 2025-12-14T15:03:04Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:04.0843359Z 2025-12-14T15:03:04Z	INFO	Detected SBOM format	format="cyclonedx-json"
+2025-12-14T15:03:04.0952303Z 2025-12-14T15:03:04Z	INFO	Number of language-specific files	num=2
+2025-12-14T15:03:04.0953018Z 2025-12-14T15:03:04Z	INFO	[npm] Detecting vulnerabilities...
+2025-12-14T15:03:04.0956607Z 2025-12-14T15:03:04Z	INFO	[node-pkg] Detecting vulnerabilities...
+2025-12-14T15:03:04.1013955Z + test -s reports/sca-frontend.sarif

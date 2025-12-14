@@ -1,0 +1,11 @@
+﻿2025-12-14T15:01:06.6300727Z ##[group]Run ./gradlew quarkusBuild --no-daemon --quiet
+2025-12-14T15:01:06.6301129Z [36;1m./gradlew quarkusBuild --no-daemon --quiet[0m
+2025-12-14T15:01:06.6333446Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:01:06.6333672Z env:
+2025-12-14T15:01:06.6333946Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:06.6334386Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:01:06.6334746Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:01:06.6335123Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:01:06.6335369Z ##[endgroup]
+2025-12-14T15:01:07.0377079Z Downloading https://services.gradle.org/distributions/gradle-9.1.0-all.zip
+2025-12-14T15:01:09.7287833Z ......................10%......................20%......................30%......................40%......................50%.......................60%......................70%......................80%......................90%......................100%

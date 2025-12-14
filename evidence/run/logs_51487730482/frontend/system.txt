@@ -1,0 +1,5 @@
+2025-12-05T00:15:59.6180000Z Requested labels: ubuntu-latest
+2025-12-05T00:15:59.6180000Z Job defined at: dhbw-tobi-felix/Goofy-Do/.github/workflows/build-frontend.yml@refs/heads/main
+2025-12-05T00:15:59.6180000Z Waiting for a runner to pick up this job...
+2025-12-05T00:16:01.6410000Z Job is waiting for a hosted runner to come online.
+2025-12-05T00:16:01.6410000Z Job is about to start running on the hosted runner: GitHub Actions 1000000312

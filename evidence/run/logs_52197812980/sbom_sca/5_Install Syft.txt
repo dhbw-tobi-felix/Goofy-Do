@@ -1,0 +1,21 @@
+﻿2025-12-14T15:00:51.1019530Z ##[group]Run anchore/sbom-action/download-syft@v0
+2025-12-14T15:00:51.1019843Z with:
+2025-12-14T15:00:51.1020018Z   syft-version: v1.16.0
+2025-12-14T15:00:51.1020234Z env:
+2025-12-14T15:00:51.1020501Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:51.1020948Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:51.1021320Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:00:51.1021589Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:00:51.1021825Z ##[endgroup]
+2025-12-14T15:00:51.3949497Z [command]/usr/bin/sh /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475 -d -b /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475_syft v1.16.0
+2025-12-14T15:00:51.4000634Z [info] checking github for release tag='v1.16.0' 
+2025-12-14T15:00:51.4039393Z [debug] http_download(url=https://github.com/anchore/syft/releases/v1.16.0) 
+2025-12-14T15:00:51.5774201Z [info] fetching release script for tag='v1.16.0' 
+2025-12-14T15:00:51.5800549Z [debug] http_download(url=https://get.anchore.io/syft/v1.16.0/install.sh) 
+2025-12-14T15:00:51.8979173Z [info] checking github for release tag='v1.16.0' 
+2025-12-14T15:00:51.9016079Z [debug] http_download(url=https://github.com/anchore/syft/releases/v1.16.0) 
+2025-12-14T15:00:51.9563277Z [info] using release tag='v1.16.0' version='1.16.0' os='linux' arch='amd64' 
+2025-12-14T15:00:51.9584422Z [debug] downloading files into /tmp/tmp.0F5aDFU4Rm 
+2025-12-14T15:00:51.9620990Z [debug] http_download(url=https://github.com/anchore/syft/releases/download/v1.16.0/syft_1.16.0_checksums.txt) 
+2025-12-14T15:00:52.1117804Z [debug] http_download(url=https://github.com/anchore/syft/releases/download/v1.16.0/syft_1.16.0_linux_amd64.tar.gz) 
+2025-12-14T15:00:53.0068358Z [info] installed /home/runner/work/_temp/cfb5b1d5-2cac-4aca-a501-a726af88d475_syft/syft 

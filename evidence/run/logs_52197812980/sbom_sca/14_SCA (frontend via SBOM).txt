@@ -1,0 +1,42 @@
+﻿2025-12-14T15:03:03.7082524Z ##[group]Run set -euxo pipefail
+2025-12-14T15:03:03.7083039Z [36;1mset -euxo pipefail[0m
+2025-12-14T15:03:03.7083474Z [36;1mtrivy sbom sbom-frontend.cdx.json \[0m
+2025-12-14T15:03:03.7083944Z [36;1m  --format json \[0m
+2025-12-14T15:03:03.7084338Z [36;1m  --ignore-unfixed \[0m
+2025-12-14T15:03:03.7084719Z [36;1m  --exit-code 0 \[0m
+2025-12-14T15:03:03.7085307Z [36;1m  -o sca-frontend.json[0m
+2025-12-14T15:03:03.7085967Z [36;1mjq -e '[0m
+2025-12-14T15:03:03.7086285Z [36;1m  [[0m
+2025-12-14T15:03:03.7086623Z [36;1m    .Results[]?.Vulnerabilities[]?[0m
+2025-12-14T15:03:03.7087063Z [36;1m    | select([0m
+2025-12-14T15:03:03.7087418Z [36;1m        (.Severity=="HIGH") or[0m
+2025-12-14T15:03:03.7087869Z [36;1m        (.Severity=="CRITICAL") or[0m
+2025-12-14T15:03:03.7088546Z [36;1m        ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)[0m
+2025-12-14T15:03:03.7089172Z [36;1m      )[0m
+2025-12-14T15:03:03.7089482Z [36;1m  ] | length == 0[0m
+2025-12-14T15:03:03.7091033Z [36;1m' sca-frontend.json \[0m
+2025-12-14T15:03:03.7091606Z [36;1m|| { echo "SCA gate failed (frontend): HIGH/CRITICAL oder CVSS>=7"; exit 1; }[0m
+2025-12-14T15:03:03.7138353Z shell: /usr/bin/bash -e {0}
+2025-12-14T15:03:03.7138718Z env:
+2025-12-14T15:03:03.7139180Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.7139963Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:03:03.7140608Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-14T15:03:03.7141064Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-14T15:03:03.7141488Z ##[endgroup]
+2025-12-14T15:03:03.7211511Z + trivy sbom sbom-frontend.cdx.json --format json --ignore-unfixed --exit-code 0 -o sca-frontend.json
+2025-12-14T15:03:03.7840823Z 2025-12-14T15:03:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2025-12-14T15:03:03.7846988Z 2025-12-14T15:03:03Z	INFO	Detected SBOM format	format="cyclonedx-json"
+2025-12-14T15:03:03.7937583Z 2025-12-14T15:03:03Z	INFO	Number of language-specific files	num=2
+2025-12-14T15:03:03.7938762Z 2025-12-14T15:03:03Z	INFO	[npm] Detecting vulnerabilities...
+2025-12-14T15:03:03.7940636Z 2025-12-14T15:03:03Z	INFO	[node-pkg] Detecting vulnerabilities...
+2025-12-14T15:03:03.8005668Z + jq -e '
+2025-12-14T15:03:03.8005944Z   [
+2025-12-14T15:03:03.8006215Z     .Results[]?.Vulnerabilities[]?
+2025-12-14T15:03:03.8006600Z     | select(
+2025-12-14T15:03:03.8006889Z         (.Severity=="HIGH") or
+2025-12-14T15:03:03.8007247Z         (.Severity=="CRITICAL") or
+2025-12-14T15:03:03.8007806Z         ((.CVSS.nvd.v3Score // .CVSS.redhat.v3Score // .CVSS.github.v3Score // 0) >= 7)
+2025-12-14T15:03:03.8008361Z       )
+2025-12-14T15:03:03.8008604Z   ] | length == 0
+2025-12-14T15:03:03.8008897Z ' sca-frontend.json
+2025-12-14T15:03:03.8032282Z true

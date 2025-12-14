@@ -1,0 +1,23 @@
+﻿2025-12-14T15:00:49.7308353Z ##[group]Run gradle/gradle-build-action@v2
+2025-12-14T15:00:49.7309366Z with:
+2025-12-14T15:00:49.7310054Z   cache-read-only: false
+2025-12-14T15:00:49.7310865Z   cache-disabled: false
+2025-12-14T15:00:49.7311675Z   cache-write-only: false
+2025-12-14T15:00:49.7312535Z   cache-overwrite-existing: false
+2025-12-14T15:00:49.7313579Z   gradle-home-cache-includes: caches
+notifications
+
+2025-12-14T15:00:49.7314704Z   gradle-home-cache-cleanup: false
+2025-12-14T15:00:49.7315779Z   generate-job-summary: true
+2025-12-14T15:00:49.7316645Z   dependency-graph: disabled
+2025-12-14T15:00:49.7317579Z   gradle-home-cache-strict-match: false
+2025-12-14T15:00:49.7318566Z   workflow-job-context: null
+2025-12-14T15:00:49.7319732Z   github-token: ***
+2025-12-14T15:00:49.7320447Z env:
+2025-12-14T15:00:49.7321448Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:49.7323085Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-14T15:00:49.7324362Z ##[endgroup]
+2025-12-14T15:00:50.9731116Z ##[group]Restore Gradle state from cache
+2025-12-14T15:00:51.0876482Z ##[warning]Failed to restore v8-gradle|Linux|sbom + sca-sbom_sca[37a6259cc0c1dae299a7866489dff0bd]-9ce0e33c1e3f4230c0647678e31de658ccf80292: Error: Cache service responded with 400
+2025-12-14T15:00:51.0904614Z Gradle User Home cache not found. Will initialize empty.
+2025-12-14T15:00:51.0905646Z ##[endgroup]

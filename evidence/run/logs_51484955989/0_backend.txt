@@ -1,0 +1,1291 @@
+﻿2025-12-04T23:21:56.9962083Z Current runner version: '2.329.0'
+2025-12-04T23:21:56.9985878Z ##[group]Runner Image Provisioner
+2025-12-04T23:21:56.9986655Z Hosted Compute Agent
+2025-12-04T23:21:56.9987417Z Version: 20251124.448
+2025-12-04T23:21:56.9987994Z Commit: fda5086b43ec66ade217e5fcd18146c879571177
+2025-12-04T23:21:56.9988704Z Build Date: 2025-11-24T21:16:26Z
+2025-12-04T23:21:56.9989532Z ##[endgroup]
+2025-12-04T23:21:56.9990072Z ##[group]Operating System
+2025-12-04T23:21:56.9990638Z Ubuntu
+2025-12-04T23:21:56.9991165Z 24.04.3
+2025-12-04T23:21:56.9991598Z LTS
+2025-12-04T23:21:56.9992091Z ##[endgroup]
+2025-12-04T23:21:56.9992627Z ##[group]Runner Image
+2025-12-04T23:21:56.9993162Z Image: ubuntu-24.04
+2025-12-04T23:21:56.9993676Z Version: 20251126.144.1
+2025-12-04T23:21:56.9995100Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251126.144/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-04T23:21:56.9996715Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251126.144
+2025-12-04T23:21:56.9997724Z ##[endgroup]
+2025-12-04T23:21:56.9998819Z ##[group]GITHUB_TOKEN Permissions
+2025-12-04T23:21:57.0001033Z Contents: read
+2025-12-04T23:21:57.0001577Z Metadata: read
+2025-12-04T23:21:57.0002086Z Packages: write
+2025-12-04T23:21:57.0003041Z ##[endgroup]
+2025-12-04T23:21:57.0006112Z Secret source: Actions
+2025-12-04T23:21:57.0006840Z Prepare workflow directory
+2025-12-04T23:21:57.0529657Z Prepare all required actions
+2025-12-04T23:21:57.0585168Z Getting action download info
+2025-12-04T23:21:57.5397602Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-04T23:21:57.8737773Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2025-12-04T23:21:58.1961988Z Download action repository 'gradle/wrapper-validation-action@v2' (SHA:b5418f5a58f5fd2eb486dd7efb368fe7be7eae45)
+2025-12-04T23:21:58.4787777Z Download action repository 'gradle/gradle-build-action@v2' (SHA:a8f75513eafdebd8141bd1cd4e30fcd194af8dfa)
+2025-12-04T23:21:58.7924479Z Download action repository 'docker/setup-buildx-action@v3' (SHA:e468171a9de216ec08956ac3ada2f0791b6bd435)
+2025-12-04T23:21:59.1496808Z Download action repository 'docker/build-push-action@v6' (SHA:263435318d21b8e681c14492fe198d362a7d2c83)
+2025-12-04T23:21:59.4854741Z Download action repository 'docker/login-action@v3' (SHA:5e57cd118135c172c3672efd75eb46360885c0ef)
+2025-12-04T23:21:59.8182609Z Download action repository 'sigstore/cosign-installer@v3' (SHA:398d4b0eeef1380460a10c8013a76f728fb906ac)
+2025-12-04T23:22:00.0091832Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-04T23:22:00.2809590Z Complete job name: backend
+2025-12-04T23:22:00.3584319Z ##[group]Run actions/checkout@v4
+2025-12-04T23:22:00.3585360Z with:
+2025-12-04T23:22:00.3585992Z   fetch-depth: 0
+2025-12-04T23:22:00.3586677Z   repository: dhbw-tobi-felix/Goofy-Do
+2025-12-04T23:22:00.3587594Z   token: ***
+2025-12-04T23:22:00.3588248Z   ssh-strict: true
+2025-12-04T23:22:00.3589102Z   ssh-user: git
+2025-12-04T23:22:00.3589771Z   persist-credentials: true
+2025-12-04T23:22:00.3590439Z   clean: true
+2025-12-04T23:22:00.3591106Z   sparse-checkout-cone-mode: true
+2025-12-04T23:22:00.3591807Z   fetch-tags: false
+2025-12-04T23:22:00.3592441Z   show-progress: true
+2025-12-04T23:22:00.3593079Z   lfs: false
+2025-12-04T23:22:00.3593687Z   submodules: false
+2025-12-04T23:22:00.3594332Z   set-safe-directory: true
+2025-12-04T23:22:00.3595249Z env:
+2025-12-04T23:22:00.3595981Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:22:00.3596746Z ##[endgroup]
+2025-12-04T23:22:00.4676186Z Syncing repository: dhbw-tobi-felix/Goofy-Do
+2025-12-04T23:22:00.4678312Z ##[group]Getting Git version info
+2025-12-04T23:22:00.4679555Z Working directory is '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-04T23:22:00.4680847Z [command]/usr/bin/git version
+2025-12-04T23:22:00.4761043Z git version 2.52.0
+2025-12-04T23:22:00.4790637Z ##[endgroup]
+2025-12-04T23:22:00.4803278Z Temporarily overriding HOME='/home/runner/work/_temp/fc1beef1-9d0a-426e-b029-2152e346b4c8' before making global git config changes
+2025-12-04T23:22:00.4805670Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-04T23:22:00.4816088Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-04T23:22:00.4854828Z Deleting the contents of '/home/runner/work/Goofy-Do/Goofy-Do'
+2025-12-04T23:22:00.4858482Z ##[group]Initializing the repository
+2025-12-04T23:22:00.4862642Z [command]/usr/bin/git init /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-04T23:22:00.4985325Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-04T23:22:00.4986754Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-04T23:22:00.4987800Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-04T23:22:00.4988749Z hint: call:
+2025-12-04T23:22:00.4989870Z hint:
+2025-12-04T23:22:00.4990803Z hint: 	git config --global init.defaultBranch <name>
+2025-12-04T23:22:00.4991582Z hint:
+2025-12-04T23:22:00.4992347Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-04T23:22:00.4993339Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-04T23:22:00.4994179Z hint:
+2025-12-04T23:22:00.4995007Z hint: 	git branch -m <name>
+2025-12-04T23:22:00.4995685Z hint:
+2025-12-04T23:22:00.4996475Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-04T23:22:00.4997525Z Initialized empty Git repository in /home/runner/work/Goofy-Do/Goofy-Do/.git/
+2025-12-04T23:22:00.5001393Z [command]/usr/bin/git remote add origin https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-04T23:22:00.5034176Z ##[endgroup]
+2025-12-04T23:22:00.5035272Z ##[group]Disabling automatic garbage collection
+2025-12-04T23:22:00.5038018Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-04T23:22:00.5065510Z ##[endgroup]
+2025-12-04T23:22:00.5066576Z ##[group]Setting up auth
+2025-12-04T23:22:00.5072405Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-04T23:22:00.5101496Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-04T23:22:00.5479735Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-04T23:22:00.5510754Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-04T23:22:00.5731913Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-04T23:22:00.5771346Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-04T23:22:00.5994515Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-04T23:22:00.6030374Z ##[endgroup]
+2025-12-04T23:22:00.6032341Z ##[group]Fetching the repository
+2025-12-04T23:22:00.6039636Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-12-04T23:22:00.8451119Z From https://github.com/dhbw-tobi-felix/Goofy-Do
+2025-12-04T23:22:00.8452146Z  * [new branch]      dev-backend    -> origin/dev-backend
+2025-12-04T23:22:00.8453036Z  * [new branch]      dev-deployment -> origin/dev-deployment
+2025-12-04T23:22:00.8453918Z  * [new branch]      main           -> origin/main
+2025-12-04T23:22:00.8491926Z [command]/usr/bin/git branch --list --remote origin/main
+2025-12-04T23:22:00.8515001Z   origin/main
+2025-12-04T23:22:00.8523558Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2025-12-04T23:22:00.8542792Z f099a82bb5cf1f6b9eb413accca5e2801631972d
+2025-12-04T23:22:00.8547668Z ##[endgroup]
+2025-12-04T23:22:00.8549590Z ##[group]Determining the checkout info
+2025-12-04T23:22:00.8550773Z ##[endgroup]
+2025-12-04T23:22:00.8552924Z [command]/usr/bin/git sparse-checkout disable
+2025-12-04T23:22:00.8591249Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-04T23:22:00.8616557Z ##[group]Checking out the ref
+2025-12-04T23:22:00.8620334Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-04T23:22:00.8720512Z Switched to a new branch 'main'
+2025-12-04T23:22:00.8723555Z branch 'main' set up to track 'origin/main'.
+2025-12-04T23:22:00.8730245Z ##[endgroup]
+2025-12-04T23:22:00.8766683Z [command]/usr/bin/git log -1 --format=%H
+2025-12-04T23:22:00.8790341Z f099a82bb5cf1f6b9eb413accca5e2801631972d
+2025-12-04T23:22:00.9045051Z ##[group]Run actions/setup-java@v4
+2025-12-04T23:22:00.9045783Z with:
+2025-12-04T23:22:00.9046401Z   distribution: temurin
+2025-12-04T23:22:00.9047043Z   java-version: 21
+2025-12-04T23:22:00.9047695Z   java-package: jdk
+2025-12-04T23:22:00.9048323Z   check-latest: false
+2025-12-04T23:22:00.9049105Z   server-id: github
+2025-12-04T23:22:00.9049801Z   server-username: GITHUB_ACTOR
+2025-12-04T23:22:00.9050513Z   server-password: GITHUB_TOKEN
+2025-12-04T23:22:00.9051210Z   overwrite-settings: true
+2025-12-04T23:22:00.9051874Z   job-status: success
+2025-12-04T23:22:00.9052675Z   token: ***
+2025-12-04T23:22:00.9053275Z env:
+2025-12-04T23:22:00.9053985Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:22:00.9054748Z ##[endgroup]
+2025-12-04T23:22:01.1217787Z ##[group]Installed distributions
+2025-12-04T23:22:01.1288236Z Resolved Java 21.0.9+10 from tool-cache
+2025-12-04T23:22:01.1289796Z Setting Java 21.0.9+10 as the default
+2025-12-04T23:22:01.1303008Z Creating toolchains.xml for JDK version 21 from temurin
+2025-12-04T23:22:01.1382260Z Writing to /home/runner/.m2/toolchains.xml
+2025-12-04T23:22:01.1383128Z 
+2025-12-04T23:22:01.1383778Z Java configuration:
+2025-12-04T23:22:01.1384908Z   Distribution: temurin
+2025-12-04T23:22:01.1385985Z   Version: 21.0.9+10
+2025-12-04T23:22:01.1387187Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:01.1387773Z 
+2025-12-04T23:22:01.1389158Z ##[endgroup]
+2025-12-04T23:22:01.1404421Z Creating settings.xml with server-id: github
+2025-12-04T23:22:01.1428775Z Writing to /home/runner/.m2/settings.xml
+2025-12-04T23:22:01.1550615Z ##[group]Run gradle/wrapper-validation-action@v2
+2025-12-04T23:22:01.1551421Z with:
+2025-12-04T23:22:01.1552027Z   min-wrapper-count: 1
+2025-12-04T23:22:01.1552674Z   allow-snapshots: false
+2025-12-04T23:22:01.1553317Z env:
+2025-12-04T23:22:01.1554021Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:22:01.1554953Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:01.1555954Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:01.1556753Z ##[endgroup]
+2025-12-04T23:22:01.2501314Z ✓ Found known Gradle Wrapper JAR files:
+2025-12-04T23:22:01.2502510Z   ed2c26eba7cfb93cc2b7785d05e534f07b5b48b5e7fc941921cd098628abca58 backend/gradle/wrapper/gradle-wrapper.jar
+2025-12-04T23:22:01.2668823Z ##[group]Run gradle/gradle-build-action@v2
+2025-12-04T23:22:01.2669814Z with:
+2025-12-04T23:22:01.2670428Z   cache-read-only: false
+2025-12-04T23:22:01.2671076Z   cache-disabled: false
+2025-12-04T23:22:01.2671710Z   cache-write-only: false
+2025-12-04T23:22:01.2672448Z   cache-overwrite-existing: false
+2025-12-04T23:22:01.2673376Z   gradle-home-cache-includes: caches
+notifications
+
+2025-12-04T23:22:01.2674213Z   gradle-home-cache-cleanup: false
+2025-12-04T23:22:01.2675022Z   generate-job-summary: true
+2025-12-04T23:22:01.2675839Z   dependency-graph: disabled
+2025-12-04T23:22:01.2676587Z   gradle-home-cache-strict-match: false
+2025-12-04T23:22:01.2677426Z   workflow-job-context: null
+2025-12-04T23:22:01.2678363Z   github-token: ***
+2025-12-04T23:22:01.2679204Z env:
+2025-12-04T23:22:01.2679965Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:22:01.2681232Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:01.2682395Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:01.2683276Z ##[endgroup]
+2025-12-04T23:22:02.3346974Z ##[group]Restore Gradle state from cache
+2025-12-04T23:22:02.4468329Z ##[warning]Failed to restore v8-gradle|Linux|build publish & sign backend-backend[37a6259cc0c1dae299a7866489dff0bd]-f099a82bb5cf1f6b9eb413accca5e2801631972d: Error: Cache service responded with 400
+2025-12-04T23:22:02.4500111Z Gradle User Home cache not found. Will initialize empty.
+2025-12-04T23:22:02.4500857Z ##[endgroup]
+2025-12-04T23:22:02.4616830Z ##[group]Run ./gradlew quarkusBuild -x test --no-daemon
+2025-12-04T23:22:02.4617270Z [36;1m./gradlew quarkusBuild -x test --no-daemon[0m
+2025-12-04T23:22:02.4652650Z shell: /usr/bin/bash -e {0}
+2025-12-04T23:22:02.4652915Z env:
+2025-12-04T23:22:02.4653166Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:22:02.4653612Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:02.4654071Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:22:02.4654457Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:22:02.4654735Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:22:02.4654970Z ##[endgroup]
+2025-12-04T23:22:02.7947207Z Downloading https://services.gradle.org/distributions/gradle-9.1.0-all.zip
+2025-12-04T23:22:05.7393328Z ......................10%......................20%......................30%......................40%......................50%.......................60%......................70%......................80%......................90%......................100%
+2025-12-04T23:22:09.5381902Z 
+2025-12-04T23:22:09.5390119Z Welcome to Gradle 9.1.0!
+2025-12-04T23:22:09.5390731Z 
+2025-12-04T23:22:09.5391318Z Here are the highlights of this release:
+2025-12-04T23:22:09.5392184Z  - Full Java 25 support
+2025-12-04T23:22:09.5400656Z  - Native task graph visualization
+2025-12-04T23:22:09.5401269Z  - Enhanced console output
+2025-12-04T23:22:09.5401536Z 
+2025-12-04T23:22:09.5401886Z For more details see https://docs.gradle.org/9.1.0/release-notes.html
+2025-12-04T23:22:09.5402370Z 
+2025-12-04T23:22:09.6384208Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.1.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2025-12-04T23:22:11.0387589Z Daemon will be stopped at the end of the build 
+2025-12-04T23:23:24.0442827Z > Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+2025-12-04T23:23:24.1379412Z > Task :processResources
+2025-12-04T23:23:33.4377686Z > Task :quarkusGenerateAppModel
+2025-12-04T23:23:35.3402388Z > Task :quarkusGenerateCode
+2025-12-04T23:23:48.8376609Z > Task :compileKotlin
+2025-12-04T23:23:48.8405487Z > Task :compileJava NO-SOURCE
+2025-12-04T23:23:48.8406396Z > Task :classes
+2025-12-04T23:23:48.8407021Z > Task :jar
+2025-12-04T23:23:49.0373400Z > Task :quarkusBuildAppModel
+2025-12-04T23:23:54.9388331Z > Task :quarkusAppPartsBuild
+2025-12-04T23:23:55.1373453Z > Task :quarkusDependenciesBuild
+2025-12-04T23:23:55.5383050Z > Task :quarkusBuild
+2025-12-04T23:23:55.5386013Z 
+2025-12-04T23:23:55.5386208Z BUILD SUCCESSFUL in 1m 53s
+2025-12-04T23:23:55.5386630Z 9 actionable tasks: 9 executed
+2025-12-04T23:23:55.5387627Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.1.0/userguide/configuration_cache_enabling.html
+2025-12-04T23:23:55.9314274Z ##[group]Run docker/setup-buildx-action@v3
+2025-12-04T23:23:55.9314552Z with:
+2025-12-04T23:23:55.9314725Z   driver: docker-container
+2025-12-04T23:23:55.9314923Z   install: false
+2025-12-04T23:23:55.9315093Z   use: true
+2025-12-04T23:23:55.9315248Z   keep-state: false
+2025-12-04T23:23:55.9315423Z   cache-binary: true
+2025-12-04T23:23:55.9315592Z   cleanup: true
+2025-12-04T23:23:55.9315924Z env:
+2025-12-04T23:23:55.9316152Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:23:55.9316559Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:23:55.9316991Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:23:55.9317343Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:23:55.9317602Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:23:55.9317829Z ##[endgroup]
+2025-12-04T23:23:56.2222984Z ##[group]Docker info
+2025-12-04T23:23:56.2249792Z [command]/usr/bin/docker version
+2025-12-04T23:23:57.0861241Z Client: Docker Engine - Community
+2025-12-04T23:23:57.0864152Z  Version:           28.0.4
+2025-12-04T23:23:57.0864492Z  API version:       1.48
+2025-12-04T23:23:57.0865114Z  Go version:        go1.23.7
+2025-12-04T23:23:57.0865443Z  Git commit:        b8034c0
+2025-12-04T23:23:57.0865780Z  Built:             Tue Mar 25 15:07:16 2025
+2025-12-04T23:23:57.0866202Z  OS/Arch:           linux/amd64
+2025-12-04T23:23:57.0866530Z  Context:           default
+2025-12-04T23:23:57.0866732Z 
+2025-12-04T23:23:57.0866889Z Server: Docker Engine - Community
+2025-12-04T23:23:57.0867234Z  Engine:
+2025-12-04T23:23:57.0867481Z   Version:          28.0.4
+2025-12-04T23:23:57.0867837Z   API version:      1.48 (minimum version 1.24)
+2025-12-04T23:23:57.0868235Z   Go version:       go1.23.7
+2025-12-04T23:23:57.0868562Z   Git commit:       6430e49
+2025-12-04T23:23:57.0869100Z   Built:            Tue Mar 25 15:07:16 2025
+2025-12-04T23:23:57.0869485Z   OS/Arch:          linux/amd64
+2025-12-04T23:23:57.0869845Z   Experimental:     false
+2025-12-04T23:23:57.0870151Z  containerd:
+2025-12-04T23:23:57.0870413Z   Version:          v2.1.5
+2025-12-04T23:23:57.0870814Z   GitCommit:        fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-04T23:23:57.0871265Z  runc:
+2025-12-04T23:23:57.0871554Z   Version:          1.3.3
+2025-12-04T23:23:57.0871882Z   GitCommit:        v1.3.3-0-gd842d771
+2025-12-04T23:23:57.0872250Z  docker-init:
+2025-12-04T23:23:57.0872533Z   Version:          0.19.0
+2025-12-04T23:23:57.0872861Z   GitCommit:        de40ad0
+2025-12-04T23:23:57.0917380Z [command]/usr/bin/docker info
+2025-12-04T23:23:58.9686568Z Client: Docker Engine - Community
+2025-12-04T23:23:58.9687400Z  Version:    28.0.4
+2025-12-04T23:23:58.9687754Z  Context:    default
+2025-12-04T23:23:58.9688021Z  Debug Mode: false
+2025-12-04T23:23:58.9688279Z  Plugins:
+2025-12-04T23:23:58.9688556Z   buildx: Docker Buildx (Docker Inc.)
+2025-12-04T23:23:58.9689181Z     Version:  v0.30.1
+2025-12-04T23:23:58.9689621Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-12-04T23:23:58.9690115Z   compose: Docker Compose (Docker Inc.)
+2025-12-04T23:23:58.9690489Z     Version:  v2.38.2
+2025-12-04T23:23:58.9690865Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-12-04T23:23:58.9691181Z 
+2025-12-04T23:23:58.9691281Z Server:
+2025-12-04T23:23:58.9691573Z  Containers: 0
+2025-12-04T23:23:58.9691818Z   Running: 0
+2025-12-04T23:23:58.9692189Z   Paused: 0
+2025-12-04T23:23:58.9692476Z   Stopped: 0
+2025-12-04T23:23:58.9692737Z  Images: 0
+2025-12-04T23:23:58.9693026Z  Server Version: 28.0.4
+2025-12-04T23:23:58.9693408Z  Storage Driver: overlay2
+2025-12-04T23:23:58.9693817Z   Backing Filesystem: extfs
+2025-12-04T23:23:58.9694231Z   Supports d_type: true
+2025-12-04T23:23:58.9694619Z   Using metacopy: false
+2025-12-04T23:23:58.9695028Z   Native Overlay Diff: false
+2025-12-04T23:23:58.9695443Z   userxattr: false
+2025-12-04T23:23:58.9695815Z  Logging Driver: json-file
+2025-12-04T23:23:58.9696224Z  Cgroup Driver: systemd
+2025-12-04T23:23:58.9697053Z  Cgroup Version: 2
+2025-12-04T23:23:58.9697446Z  Plugins:
+2025-12-04T23:23:58.9697730Z   Volume: local
+2025-12-04T23:23:58.9698121Z   Network: bridge host ipvlan macvlan null overlay
+2025-12-04T23:23:58.9698814Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-12-04T23:23:58.9699613Z  Swarm: inactive
+2025-12-04T23:23:58.9699934Z  Runtimes: io.containerd.runc.v2 runc
+2025-12-04T23:23:58.9700631Z  Default Runtime: runc
+2025-12-04T23:23:58.9700976Z  Init Binary: docker-init
+2025-12-04T23:23:58.9701463Z  containerd version: fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-04T23:23:58.9702003Z  runc version: v1.3.3-0-gd842d771
+2025-12-04T23:23:58.9702397Z  init version: de40ad0
+2025-12-04T23:23:58.9702727Z  Security Options:
+2025-12-04T23:23:58.9703034Z   apparmor
+2025-12-04T23:23:58.9703321Z   seccomp
+2025-12-04T23:23:58.9703495Z    Profile: builtin
+2025-12-04T23:23:58.9703668Z   cgroupns
+2025-12-04T23:23:58.9703842Z  Kernel Version: 6.11.0-1018-azure
+2025-12-04T23:23:58.9704093Z  Operating System: Ubuntu 24.04.3 LTS
+2025-12-04T23:23:58.9704337Z  OSType: linux
+2025-12-04T23:23:58.9704651Z  Architecture: x86_64
+2025-12-04T23:23:58.9704901Z  CPUs: 4
+2025-12-04T23:23:58.9705061Z  Total Memory: 15.62GiB
+2025-12-04T23:23:58.9705242Z  Name: runnervmoqczp
+2025-12-04T23:23:58.9705442Z  ID: 4ce6fa60-2f23-4ac2-b56a-0440c85af90a
+2025-12-04T23:23:58.9705680Z  Docker Root Dir: /var/lib/docker
+2025-12-04T23:23:58.9705905Z  Debug Mode: false
+2025-12-04T23:23:58.9706096Z  Username: githubactions
+2025-12-04T23:23:58.9706294Z  Experimental: false
+2025-12-04T23:23:58.9706486Z  Insecure Registries:
+2025-12-04T23:23:58.9706712Z   ::1/128
+2025-12-04T23:23:58.9706859Z   127.0.0.0/8
+2025-12-04T23:23:58.9707029Z  Live Restore Enabled: false
+2025-12-04T23:23:58.9707177Z 
+2025-12-04T23:23:58.9707536Z ##[endgroup]
+2025-12-04T23:23:59.0595651Z ##[group]Buildx version
+2025-12-04T23:23:59.0620362Z [command]/usr/bin/docker buildx version
+2025-12-04T23:23:59.1193565Z github.com/docker/buildx v0.30.1 9e66234aa13328a5e75b75aa5574e1ca6d6d9c01
+2025-12-04T23:23:59.1226506Z ##[endgroup]
+2025-12-04T23:23:59.1386829Z ##[group]Inspecting default docker context
+2025-12-04T23:23:59.1532158Z [
+2025-12-04T23:23:59.1532481Z   {
+2025-12-04T23:23:59.1532756Z     "Name": "default",
+2025-12-04T23:23:59.1533108Z     "Metadata": {},
+2025-12-04T23:23:59.1533436Z     "Endpoints": {
+2025-12-04T23:23:59.1533748Z       "docker": {
+2025-12-04T23:23:59.1534143Z         "Host": "unix:///var/run/docker.sock",
+2025-12-04T23:23:59.1534609Z         "SkipTLSVerify": false
+2025-12-04T23:23:59.1534976Z       }
+2025-12-04T23:23:59.1535247Z     },
+2025-12-04T23:23:59.1535546Z     "TLSMaterial": {},
+2025-12-04T23:23:59.1535889Z     "Storage": {
+2025-12-04T23:23:59.1536217Z       "MetadataPath": "<IN MEMORY>",
+2025-12-04T23:23:59.1536657Z       "TLSPath": "<IN MEMORY>"
+2025-12-04T23:23:59.1537013Z     }
+2025-12-04T23:23:59.1537290Z   }
+2025-12-04T23:23:59.1537547Z ]
+2025-12-04T23:23:59.1538156Z ##[endgroup]
+2025-12-04T23:23:59.1538773Z ##[group]Creating a new builder instance
+2025-12-04T23:23:59.2845140Z [command]/usr/bin/docker buildx create --name builder-1688db2a-390d-4929-84d1-bfb369da5de9 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2025-12-04T23:23:59.3776187Z builder-1688db2a-390d-4929-84d1-bfb369da5de9
+2025-12-04T23:23:59.3815050Z ##[endgroup]
+2025-12-04T23:23:59.3815724Z ##[group]Booting builder
+2025-12-04T23:23:59.3848224Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-1688db2a-390d-4929-84d1-bfb369da5de9
+2025-12-04T23:23:59.4512830Z #1 [internal] booting buildkit
+2025-12-04T23:23:59.6018075Z #1 pulling image moby/buildkit:buildx-stable-1
+2025-12-04T23:24:01.8574834Z #1 pulling image moby/buildkit:buildx-stable-1 2.4s done
+2025-12-04T23:24:02.0079595Z #1 creating container buildx_buildkit_builder-1688db2a-390d-4929-84d1-bfb369da5de90
+2025-12-04T23:24:02.4777867Z #1 creating container buildx_buildkit_builder-1688db2a-390d-4929-84d1-bfb369da5de90 0.6s done
+2025-12-04T23:24:02.4796949Z #1 DONE 3.0s
+2025-12-04T23:24:02.5077376Z Name:          builder-1688db2a-390d-4929-84d1-bfb369da5de9
+2025-12-04T23:24:02.5077935Z Driver:        docker-container
+2025-12-04T23:24:02.5078337Z Last Activity: 2025-12-04 23:23:59 +0000 UTC
+2025-12-04T23:24:02.5078627Z 
+2025-12-04T23:24:02.5078730Z Nodes:
+2025-12-04T23:24:02.5079322Z Name:                  builder-1688db2a-390d-4929-84d1-bfb369da5de90
+2025-12-04T23:24:02.5080381Z Endpoint:              unix:///var/run/docker.sock
+2025-12-04T23:24:02.5080899Z Status:                running
+2025-12-04T23:24:02.5081705Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2025-12-04T23:24:02.5082518Z BuildKit version:      v0.26.2
+2025-12-04T23:24:02.5083018Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+2025-12-04T23:24:02.5083517Z Labels:
+2025-12-04T23:24:02.5083884Z  org.mobyproject.buildkit.worker.executor:         oci
+2025-12-04T23:24:02.5084518Z  org.mobyproject.buildkit.worker.hostname:         cc38adeed1fd
+2025-12-04T23:24:02.5085155Z  org.mobyproject.buildkit.worker.network:          host
+2025-12-04T23:24:02.5085763Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2025-12-04T23:24:02.5086400Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2025-12-04T23:24:02.5087034Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2025-12-04T23:24:02.5087550Z GC Policy rule#0:
+2025-12-04T23:24:02.5087830Z  All:            false
+2025-12-04T23:24:02.5088325Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+2025-12-04T23:24:02.5089068Z  Keep Duration:  48h0m0s
+2025-12-04T23:24:02.5089394Z  Max Used Space: 488.3MiB
+2025-12-04T23:24:02.5089708Z GC Policy rule#1:
+2025-12-04T23:24:02.5089976Z  All:            false
+2025-12-04T23:24:02.5090275Z  Keep Duration:  1440h0m0s
+2025-12-04T23:24:02.5090602Z  Reserved Space: 7.451GiB
+2025-12-04T23:24:02.5090904Z  Max Used Space: 54.02GiB
+2025-12-04T23:24:02.5091226Z  Min Free Space: 13.97GiB
+2025-12-04T23:24:02.5091532Z GC Policy rule#2:
+2025-12-04T23:24:02.5091802Z  All:            false
+2025-12-04T23:24:02.5092088Z  Reserved Space: 7.451GiB
+2025-12-04T23:24:02.5092399Z  Max Used Space: 54.02GiB
+2025-12-04T23:24:02.5092700Z  Min Free Space: 13.97GiB
+2025-12-04T23:24:02.5093001Z GC Policy rule#3:
+2025-12-04T23:24:02.5093271Z  All:            true
+2025-12-04T23:24:02.5093561Z  Reserved Space: 7.451GiB
+2025-12-04T23:24:02.5093873Z  Max Used Space: 54.02GiB
+2025-12-04T23:24:02.5094176Z  Min Free Space: 13.97GiB
+2025-12-04T23:24:02.5138434Z ##[endgroup]
+2025-12-04T23:24:02.6056381Z ##[group]Inspect builder
+2025-12-04T23:24:02.6058155Z {
+2025-12-04T23:24:02.6058544Z   "nodes": [
+2025-12-04T23:24:02.6059712Z     {
+2025-12-04T23:24:02.6060428Z       "name": "builder-1688db2a-390d-4929-84d1-bfb369da5de90",
+2025-12-04T23:24:02.6060866Z       "endpoint": "unix:///var/run/docker.sock",
+2025-12-04T23:24:02.6061306Z       "status": "running",
+2025-12-04T23:24:02.6062186Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2025-12-04T23:24:02.6062955Z       "buildkit": "v0.26.2",
+2025-12-04T23:24:02.6063429Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2025-12-04T23:24:02.6063965Z       "features": {
+2025-12-04T23:24:02.6064425Z         "Automatically load images to the Docker Engine image store": true,
+2025-12-04T23:24:02.6065085Z         "Cache export": true,
+2025-12-04T23:24:02.6065471Z         "Direct push": true,
+2025-12-04T23:24:02.6065856Z         "Docker exporter": true,
+2025-12-04T23:24:02.6066297Z         "Multi-platform build": true,
+2025-12-04T23:24:02.6066718Z         "OCI exporter": true
+2025-12-04T23:24:02.6067054Z       },
+2025-12-04T23:24:02.6067291Z       "labels": {
+2025-12-04T23:24:02.6067689Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2025-12-04T23:24:02.6068319Z         "org.mobyproject.buildkit.worker.hostname": "cc38adeed1fd",
+2025-12-04T23:24:02.6069430Z         "org.mobyproject.buildkit.worker.network": "host",
+2025-12-04T23:24:02.6070124Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2025-12-04T23:24:02.6070826Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2025-12-04T23:24:02.6071635Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2025-12-04T23:24:02.6072428Z       },
+2025-12-04T23:24:02.6072686Z       "gcPolicy": [
+2025-12-04T23:24:02.6072969Z         {
+2025-12-04T23:24:02.6073210Z           "all": false,
+2025-12-04T23:24:02.6073522Z           "filter": [
+2025-12-04T23:24:02.6073822Z             "type==source.local",
+2025-12-04T23:24:02.6074199Z             "type==exec.cachemount",
+2025-12-04T23:24:02.6074633Z             "type==source.git.checkout"
+2025-12-04T23:24:02.6075058Z           ],
+2025-12-04T23:24:02.6075382Z           "keepDuration": "48h0m0s",
+2025-12-04T23:24:02.6075812Z           "maxUsedSpace": "488.3MiB"
+2025-12-04T23:24:02.6076204Z         },
+2025-12-04T23:24:02.6076490Z         {
+2025-12-04T23:24:02.6076775Z           "all": false,
+2025-12-04T23:24:02.6077262Z           "keepDuration": "1440h0m0s",
+2025-12-04T23:24:02.6077692Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:02.6078137Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:02.6078550Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:02.6079128Z         },
+2025-12-04T23:24:02.6079400Z         {
+2025-12-04T23:24:02.6079651Z           "all": false,
+2025-12-04T23:24:02.6079852Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:02.6080080Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:02.6080303Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:02.6080502Z         },
+2025-12-04T23:24:02.6080651Z         {
+2025-12-04T23:24:02.6080795Z           "all": true,
+2025-12-04T23:24:02.6080985Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:02.6081205Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:02.6081424Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:02.6081631Z         }
+2025-12-04T23:24:02.6081770Z       ]
+2025-12-04T23:24:02.6081912Z     }
+2025-12-04T23:24:02.6082047Z   ],
+2025-12-04T23:24:02.6082257Z   "name": "builder-1688db2a-390d-4929-84d1-bfb369da5de9",
+2025-12-04T23:24:02.6082540Z   "driver": "docker-container",
+2025-12-04T23:24:02.6082773Z   "lastActivity": "2025-12-04T23:23:59.000Z"
+2025-12-04T23:24:02.6082999Z }
+2025-12-04T23:24:02.6083301Z ##[endgroup]
+2025-12-04T23:24:02.6083597Z ##[group]BuildKit version
+2025-12-04T23:24:02.6083865Z builder-1688db2a-390d-4929-84d1-bfb369da5de90: v0.26.2
+2025-12-04T23:24:02.6084245Z ##[endgroup]
+2025-12-04T23:24:02.6204730Z ##[group]Run docker/login-action@v3
+2025-12-04T23:24:02.6204990Z with:
+2025-12-04T23:24:02.6205151Z   registry: ghcr.io
+2025-12-04T23:24:02.6205340Z   username: fpuhlig
+2025-12-04T23:24:02.6205884Z   password: ***
+2025-12-04T23:24:02.6206079Z   logout: true
+2025-12-04T23:24:02.6206243Z env:
+2025-12-04T23:24:02.6206473Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:02.6206881Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:02.6207312Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:02.6207670Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:02.6207928Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:02.6208170Z ##[endgroup]
+2025-12-04T23:24:02.9129779Z Logging into ghcr.io...
+2025-12-04T23:24:03.0634437Z Login Succeeded!
+2025-12-04T23:24:03.0772390Z ##[group]Run SHA_TAG=${GITHUB_SHA::12}
+2025-12-04T23:24:03.0772690Z [36;1mSHA_TAG=${GITHUB_SHA::12}[0m
+2025-12-04T23:24:03.0773305Z [36;1mecho "tags=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:${SHA_TAG}" >> $GITHUB_OUTPUT[0m
+2025-12-04T23:24:03.0774105Z [36;1mecho "primary_tag=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest" >> $GITHUB_OUTPUT[0m
+2025-12-04T23:24:03.0805860Z shell: /usr/bin/bash -e {0}
+2025-12-04T23:24:03.0806080Z env:
+2025-12-04T23:24:03.0806333Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:03.0806750Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:03.0807206Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:03.0807577Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:03.0808009Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:03.0808266Z ##[endgroup]
+2025-12-04T23:24:03.0925715Z ##[group]Run docker/build-push-action@v6
+2025-12-04T23:24:03.0925983Z with:
+2025-12-04T23:24:03.0926140Z   context: backend
+2025-12-04T23:24:03.0926349Z   file: backend/src/main/docker/Dockerfile.jvm
+2025-12-04T23:24:03.0926593Z   push: true
+2025-12-04T23:24:03.0927045Z   tags: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf
+2025-12-04T23:24:03.0927548Z   platforms: linux/amd64,linux/arm64
+2025-12-04T23:24:03.0927929Z   cache-from: type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:buildcache
+2025-12-04T23:24:03.0928479Z   cache-to: type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:buildcache,mode=max
+2025-12-04T23:24:03.0929010Z   load: false
+2025-12-04T23:24:03.0929178Z   no-cache: false
+2025-12-04T23:24:03.0929342Z   pull: false
+2025-12-04T23:24:03.0929628Z   github-token: ***
+2025-12-04T23:24:03.0929798Z env:
+2025-12-04T23:24:03.0930046Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:03.0930439Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:03.0930871Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:03.0931232Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:03.0931485Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:03.0931715Z ##[endgroup]
+2025-12-04T23:24:03.3778584Z ##[group]GitHub Actions runtime token ACs
+2025-12-04T23:24:03.3792270Z refs/heads/main: read/write
+2025-12-04T23:24:03.3793130Z ##[endgroup]
+2025-12-04T23:24:03.3794617Z ##[group]Docker info
+2025-12-04T23:24:03.3849766Z [command]/usr/bin/docker version
+2025-12-04T23:24:03.4030738Z Client: Docker Engine - Community
+2025-12-04T23:24:03.4031214Z  Version:           28.0.4
+2025-12-04T23:24:03.4033951Z  API version:       1.48
+2025-12-04T23:24:03.4034584Z  Go version:        go1.23.7
+2025-12-04T23:24:03.4035809Z  Git commit:        b8034c0
+2025-12-04T23:24:03.4036221Z  Built:             Tue Mar 25 15:07:16 2025
+2025-12-04T23:24:03.4036770Z  OS/Arch:           linux/amd64
+2025-12-04T23:24:03.4037370Z  Context:           default
+2025-12-04T23:24:03.4037608Z 
+2025-12-04T23:24:03.4037763Z Server: Docker Engine - Community
+2025-12-04T23:24:03.4038118Z  Engine:
+2025-12-04T23:24:03.4038335Z   Version:          28.0.4
+2025-12-04T23:24:03.4038576Z   API version:      1.48 (minimum version 1.24)
+2025-12-04T23:24:03.4039026Z   Go version:       go1.23.7
+2025-12-04T23:24:03.4039318Z   Git commit:       6430e49
+2025-12-04T23:24:03.4039541Z   Built:            Tue Mar 25 15:07:16 2025
+2025-12-04T23:24:03.4039788Z   OS/Arch:          linux/amd64
+2025-12-04T23:24:03.4039997Z   Experimental:     false
+2025-12-04T23:24:03.4040192Z  containerd:
+2025-12-04T23:24:03.4040356Z   Version:          v2.1.5
+2025-12-04T23:24:03.4040611Z   GitCommit:        fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-04T23:24:03.4040895Z  runc:
+2025-12-04T23:24:03.4041053Z   Version:          1.3.3
+2025-12-04T23:24:03.4041260Z   GitCommit:        v1.3.3-0-gd842d771
+2025-12-04T23:24:03.4041492Z  docker-init:
+2025-12-04T23:24:03.4041664Z   Version:          0.19.0
+2025-12-04T23:24:03.4041851Z   GitCommit:        de40ad0
+2025-12-04T23:24:03.4082789Z [command]/usr/bin/docker info
+2025-12-04T23:24:03.4738440Z Client: Docker Engine - Community
+2025-12-04T23:24:03.4739084Z  Version:    28.0.4
+2025-12-04T23:24:03.4739409Z  Context:    default
+2025-12-04T23:24:03.4739720Z  Debug Mode: false
+2025-12-04T23:24:03.4740004Z  Plugins:
+2025-12-04T23:24:03.4740299Z   buildx: Docker Buildx (Docker Inc.)
+2025-12-04T23:24:03.4740686Z     Version:  v0.30.1
+2025-12-04T23:24:03.4741089Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-12-04T23:24:03.4741593Z   compose: Docker Compose (Docker Inc.)
+2025-12-04T23:24:03.4741979Z     Version:  v2.38.2
+2025-12-04T23:24:03.4742370Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-12-04T23:24:03.4743046Z 
+2025-12-04T23:24:03.4743155Z Server:
+2025-12-04T23:24:03.4743641Z  Containers: 1
+2025-12-04T23:24:03.4743923Z   Running: 1
+2025-12-04T23:24:03.4744175Z   Paused: 0
+2025-12-04T23:24:03.4744428Z   Stopped: 0
+2025-12-04T23:24:03.4744675Z  Images: 1
+2025-12-04T23:24:03.4744935Z  Server Version: 28.0.4
+2025-12-04T23:24:03.4745252Z  Storage Driver: overlay2
+2025-12-04T23:24:03.4745589Z   Backing Filesystem: extfs
+2025-12-04T23:24:03.4745925Z   Supports d_type: true
+2025-12-04T23:24:03.4746234Z   Using metacopy: false
+2025-12-04T23:24:03.4746558Z   Native Overlay Diff: false
+2025-12-04T23:24:03.4746886Z   userxattr: false
+2025-12-04T23:24:03.4747182Z  Logging Driver: json-file
+2025-12-04T23:24:03.4747507Z  Cgroup Driver: systemd
+2025-12-04T23:24:03.4747819Z  Cgroup Version: 2
+2025-12-04T23:24:03.4748104Z  Plugins:
+2025-12-04T23:24:03.4748368Z   Volume: local
+2025-12-04T23:24:03.4748708Z   Network: bridge host ipvlan macvlan null overlay
+2025-12-04T23:24:03.4749503Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-12-04T23:24:03.4750058Z  Swarm: inactive
+2025-12-04T23:24:03.4750366Z  Runtimes: runc io.containerd.runc.v2
+2025-12-04T23:24:03.4750760Z  Default Runtime: runc
+2025-12-04T23:24:03.4751073Z  Init Binary: docker-init
+2025-12-04T23:24:03.4751526Z  containerd version: fcd43222d6b07379a4be9786bda52438f0dd16a1
+2025-12-04T23:24:03.4752052Z  runc version: v1.3.3-0-gd842d771
+2025-12-04T23:24:03.4752419Z  init version: de40ad0
+2025-12-04T23:24:03.4752727Z  Security Options:
+2025-12-04T23:24:03.4753004Z   apparmor
+2025-12-04T23:24:03.4753259Z   seccomp
+2025-12-04T23:24:03.4753517Z    Profile: builtin
+2025-12-04T23:24:03.4753807Z   cgroupns
+2025-12-04T23:24:03.4754088Z  Kernel Version: 6.11.0-1018-azure
+2025-12-04T23:24:03.4754488Z  Operating System: Ubuntu 24.04.3 LTS
+2025-12-04T23:24:03.4754870Z  OSType: linux
+2025-12-04T23:24:03.4755168Z  Architecture: x86_64
+2025-12-04T23:24:03.4755470Z  CPUs: 4
+2025-12-04T23:24:03.4755740Z  Total Memory: 15.62GiB
+2025-12-04T23:24:03.4756065Z  Name: runnervmoqczp
+2025-12-04T23:24:03.4756414Z  ID: 4ce6fa60-2f23-4ac2-b56a-0440c85af90a
+2025-12-04T23:24:03.4756827Z  Docker Root Dir: /var/lib/docker
+2025-12-04T23:24:03.4757204Z  Debug Mode: false
+2025-12-04T23:24:03.4757533Z  Username: githubactions
+2025-12-04T23:24:03.4757749Z  Experimental: false
+2025-12-04T23:24:03.4757940Z  Insecure Registries:
+2025-12-04T23:24:03.4758181Z   ::1/128
+2025-12-04T23:24:03.4758401Z   127.0.0.0/8
+2025-12-04T23:24:03.4758579Z  Live Restore Enabled: false
+2025-12-04T23:24:03.4758723Z 
+2025-12-04T23:24:03.4762153Z ##[endgroup]
+2025-12-04T23:24:03.4762690Z ##[group]Proxy configuration
+2025-12-04T23:24:03.4765817Z No proxy configuration found
+2025-12-04T23:24:03.4766383Z ##[endgroup]
+2025-12-04T23:24:03.5335601Z ##[group]Buildx version
+2025-12-04T23:24:03.5358605Z [command]/usr/bin/docker buildx version
+2025-12-04T23:24:03.5839258Z github.com/docker/buildx v0.30.1 9e66234aa13328a5e75b75aa5574e1ca6d6d9c01
+2025-12-04T23:24:03.5873780Z ##[endgroup]
+2025-12-04T23:24:03.5874146Z ##[group]Builder info
+2025-12-04T23:24:03.6705183Z {
+2025-12-04T23:24:03.6705493Z   "nodes": [
+2025-12-04T23:24:03.6705775Z     {
+2025-12-04T23:24:03.6706117Z       "name": "builder-1688db2a-390d-4929-84d1-bfb369da5de90",
+2025-12-04T23:24:03.6706474Z       "endpoint": "unix:///var/run/docker.sock",
+2025-12-04T23:24:03.6706744Z       "status": "running",
+2025-12-04T23:24:03.6707211Z       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+2025-12-04T23:24:03.6707692Z       "buildkit": "v0.26.2",
+2025-12-04T23:24:03.6707998Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2025-12-04T23:24:03.6708313Z       "features": {
+2025-12-04T23:24:03.6708585Z         "Automatically load images to the Docker Engine image store": true,
+2025-12-04T23:24:03.6709091Z         "Cache export": true,
+2025-12-04T23:24:03.6709378Z         "Direct push": true,
+2025-12-04T23:24:03.6709597Z         "Docker exporter": true,
+2025-12-04T23:24:03.6710086Z         "Multi-platform build": true,
+2025-12-04T23:24:03.6710480Z         "OCI exporter": true
+2025-12-04T23:24:03.6710677Z       },
+2025-12-04T23:24:03.6710837Z       "labels": {
+2025-12-04T23:24:03.6711066Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2025-12-04T23:24:03.6711435Z         "org.mobyproject.buildkit.worker.hostname": "cc38adeed1fd",
+2025-12-04T23:24:03.6711796Z         "org.mobyproject.buildkit.worker.network": "host",
+2025-12-04T23:24:03.6712164Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2025-12-04T23:24:03.6712596Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2025-12-04T23:24:03.6712991Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2025-12-04T23:24:03.6713283Z       },
+2025-12-04T23:24:03.6713442Z       "gcPolicy": [
+2025-12-04T23:24:03.6713610Z         {
+2025-12-04T23:24:03.6713767Z           "all": false,
+2025-12-04T23:24:03.6713943Z           "filter": [
+2025-12-04T23:24:03.6714143Z             "type==source.local",
+2025-12-04T23:24:03.6714376Z             "type==exec.cachemount",
+2025-12-04T23:24:03.6714638Z             "type==source.git.checkout"
+2025-12-04T23:24:03.6714853Z           ],
+2025-12-04T23:24:03.6715024Z           "keepDuration": "48h0m0s",
+2025-12-04T23:24:03.6715240Z           "maxUsedSpace": "488.3MiB"
+2025-12-04T23:24:03.6715442Z         },
+2025-12-04T23:24:03.6715589Z         {
+2025-12-04T23:24:03.6715740Z           "all": false,
+2025-12-04T23:24:03.6715928Z           "keepDuration": "1440h0m0s",
+2025-12-04T23:24:03.6716156Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:03.6716381Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:03.6716597Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:03.6716798Z         },
+2025-12-04T23:24:03.6716939Z         {
+2025-12-04T23:24:03.6717087Z           "all": false,
+2025-12-04T23:24:03.6717268Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:03.6717492Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:03.6717710Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:03.6717916Z         },
+2025-12-04T23:24:03.6718055Z         {
+2025-12-04T23:24:03.6718202Z           "all": true,
+2025-12-04T23:24:03.6718384Z           "reservedSpace": "7.451GiB",
+2025-12-04T23:24:03.6718607Z           "maxUsedSpace": "54.02GiB",
+2025-12-04T23:24:03.6718827Z           "minFreeSpace": "13.97GiB"
+2025-12-04T23:24:03.6719603Z         }
+2025-12-04T23:24:03.6719757Z       ]
+2025-12-04T23:24:03.6719896Z     }
+2025-12-04T23:24:03.6720036Z   ],
+2025-12-04T23:24:03.6720242Z   "name": "builder-1688db2a-390d-4929-84d1-bfb369da5de9",
+2025-12-04T23:24:03.6720535Z   "driver": "docker-container",
+2025-12-04T23:24:03.6720767Z   "lastActivity": "2025-12-04T23:23:59.000Z"
+2025-12-04T23:24:03.6720992Z }
+2025-12-04T23:24:03.6721340Z ##[endgroup]
+2025-12-04T23:24:03.8461522Z [command]/usr/bin/docker buildx build --cache-from type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:buildcache --cache-to type=registry,ref=ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:buildcache,mode=max --file backend/src/main/docker/Dockerfile.jvm --iidfile /home/runner/work/_temp/docker-actions-toolkit-eFKdV7/build-iidfile-a850aa5abc.txt --platform linux/amd64,linux/arm64 --attest type=provenance,mode=max,builder-id=https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19947180508/attempts/1 --tag ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest --tag ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf --metadata-file /home/runner/work/_temp/docker-actions-toolkit-eFKdV7/build-metadata-f22d1e1cdc.json --push backend
+2025-12-04T23:24:04.1326081Z #0 building with "builder-1688db2a-390d-4929-84d1-bfb369da5de9" instance using docker-container driver
+2025-12-04T23:24:04.1327102Z 
+2025-12-04T23:24:04.1327397Z #1 [internal] load build definition from Dockerfile.jvm
+2025-12-04T23:24:04.1328127Z #1 transferring dockerfile: 5.55kB done
+2025-12-04T23:24:04.1328711Z #1 DONE 0.0s
+2025-12-04T23:24:04.1329630Z 
+2025-12-04T23:24:04.1330279Z #2 [linux/amd64 internal] load metadata for registry.access.redhat.com/ubi9/openjdk-21:1.23
+2025-12-04T23:24:04.3884137Z #2 DONE 0.4s
+2025-12-04T23:24:04.3884442Z 
+2025-12-04T23:24:04.3885160Z #3 [linux/arm64 internal] load metadata for registry.access.redhat.com/ubi9/openjdk-21:1.23
+2025-12-04T23:24:04.6364630Z #3 DONE 0.4s
+2025-12-04T23:24:04.6364845Z 
+2025-12-04T23:24:04.6365008Z #4 [internal] load .dockerignore
+2025-12-04T23:24:04.6365464Z #4 transferring context: 111B done
+2025-12-04T23:24:04.6366028Z #4 DONE 0.0s
+2025-12-04T23:24:04.6366230Z 
+2025-12-04T23:24:04.6366340Z #5 [internal] load build context
+2025-12-04T23:24:04.6366612Z #5 DONE 0.0s
+2025-12-04T23:24:04.6366736Z 
+2025-12-04T23:24:04.6367257Z #6 [linux/arm64 1/5] FROM registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52
+2025-12-04T23:24:04.6368339Z #6 resolve registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52 done
+2025-12-04T23:24:04.6369265Z #6 DONE 0.0s
+2025-12-04T23:24:04.6369382Z 
+2025-12-04T23:24:04.6369893Z #7 [linux/amd64 1/5] FROM registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52
+2025-12-04T23:24:04.6370946Z #7 resolve registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52 done
+2025-12-04T23:24:04.6371608Z #7 DONE 0.0s
+2025-12-04T23:24:04.6371725Z 
+2025-12-04T23:24:04.6371951Z #8 [auth] dhbw-tobi-felix/goofy-do/goofydo-backend:pull token for ghcr.io
+2025-12-04T23:24:04.6372368Z #8 DONE 0.0s
+2025-12-04T23:24:04.6372487Z 
+2025-12-04T23:24:04.6372784Z #9 importing cache manifest from ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:buildcache
+2025-12-04T23:24:04.8626557Z #9 inferred cache manifest type: application/vnd.oci.image.manifest.v1+json done
+2025-12-04T23:24:05.0825417Z #9 DONE 0.6s
+2025-12-04T23:24:05.2015905Z 
+2025-12-04T23:24:05.2017499Z #7 [linux/amd64 1/5] FROM registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52
+2025-12-04T23:24:05.3017060Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 0B / 119.48MB 0.2s
+2025-12-04T23:24:05.3025373Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 0B / 40.06MB 0.2s
+2025-12-04T23:24:05.7019030Z #7 ...
+2025-12-04T23:24:05.7019518Z 
+2025-12-04T23:24:05.7019678Z #5 [internal] load build context
+2025-12-04T23:24:05.7020262Z #5 transferring context: 64.75MB 0.5s done
+2025-12-04T23:24:05.7020699Z #5 DONE 0.5s
+2025-12-04T23:24:05.7020856Z 
+2025-12-04T23:24:05.7021524Z #7 [linux/amd64 1/5] FROM registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52
+2025-12-04T23:24:05.7022511Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 6.29MB / 119.48MB 0.5s
+2025-12-04T23:24:05.7023324Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 4.19MB / 40.06MB 0.5s
+2025-12-04T23:24:05.8515776Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 8.39MB / 40.06MB 0.6s
+2025-12-04T23:24:06.0017699Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 12.58MB / 119.48MB 0.8s
+2025-12-04T23:24:06.0019108Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 12.58MB / 40.06MB 0.8s
+2025-12-04T23:24:06.1516706Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 26.21MB / 40.06MB 0.9s
+2025-12-04T23:24:06.3017753Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 18.87MB / 119.48MB 1.1s
+2025-12-04T23:24:06.3020642Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 36.70MB / 40.06MB 1.1s
+2025-12-04T23:24:06.6021576Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 27.26MB / 119.48MB 1.4s
+2025-12-04T23:24:06.6022791Z #7 sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 40.06MB / 40.06MB 1.4s done
+2025-12-04T23:24:06.6024389Z #7 extracting sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14
+2025-12-04T23:24:06.7519587Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 33.55MB / 119.48MB 1.5s
+2025-12-04T23:24:06.9021184Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 39.85MB / 119.48MB 1.7s
+2025-12-04T23:24:07.2023197Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 48.23MB / 119.48MB 2.0s
+2025-12-04T23:24:07.3521960Z #7 extracting sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 0.7s done
+2025-12-04T23:24:07.5022905Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 56.62MB / 119.48MB 2.3s
+2025-12-04T23:24:07.8015825Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 62.91MB / 119.48MB 2.6s
+2025-12-04T23:24:08.1018343Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 71.30MB / 119.48MB 2.9s
+2025-12-04T23:24:08.2523425Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 77.59MB / 119.48MB 3.0s
+2025-12-04T23:24:08.4020856Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 84.93MB / 119.48MB 3.2s
+2025-12-04T23:24:08.7025901Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 96.47MB / 119.48MB 3.5s
+2025-12-04T23:24:08.8526335Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 104.86MB / 119.48MB 3.6s
+2025-12-04T23:24:09.1519312Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 111.15MB / 119.48MB 3.9s
+2025-12-04T23:24:09.4518676Z #7 sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 119.48MB / 119.48MB 4.3s done
+2025-12-04T23:24:09.4519740Z #7 extracting sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2
+2025-12-04T23:24:11.5522124Z #7 extracting sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 2.2s done
+2025-12-04T23:24:11.5523577Z #7 DONE 6.5s
+2025-12-04T23:24:11.5523888Z 
+2025-12-04T23:24:11.5524657Z #6 [linux/arm64 1/5] FROM registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:9e4cb47cf225679260d2df665e52269fa18fbf360b456177e501d15140df5c52
+2025-12-04T23:24:11.5526101Z #6 sha256:a8dcc60b165f451bf5ac7c109d8420d95c21b3afdd07b5500994b351218676a0 118.49MB / 118.49MB 5.3s done
+2025-12-04T23:24:11.5527317Z #6 sha256:5d370c98466d77730a45c481c659eee378fb6d25b3653f86e4a911a2f0ed0a0b 38.18MB / 38.18MB 0.8s done
+2025-12-04T23:24:11.5528448Z #6 extracting sha256:5d370c98466d77730a45c481c659eee378fb6d25b3653f86e4a911a2f0ed0a0b 0.7s done
+2025-12-04T23:24:11.5529662Z #6 extracting sha256:a8dcc60b165f451bf5ac7c109d8420d95c21b3afdd07b5500994b351218676a0
+2025-12-04T23:24:13.2468760Z #6 extracting sha256:a8dcc60b165f451bf5ac7c109d8420d95c21b3afdd07b5500994b351218676a0 2.8s done
+2025-12-04T23:24:13.2469967Z #6 DONE 8.2s
+2025-12-04T23:24:13.2470150Z 
+2025-12-04T23:24:13.2470499Z #10 [linux/amd64 2/5] COPY --chown=185 build/quarkus-app/lib/ /deployments/lib/
+2025-12-04T23:24:13.7914959Z #10 DONE 2.2s
+2025-12-04T23:24:13.7915399Z 
+2025-12-04T23:24:13.7915769Z #11 [linux/arm64 2/5] COPY --chown=185 build/quarkus-app/lib/ /deployments/lib/
+2025-12-04T23:24:14.0503588Z #11 DONE 0.8s
+2025-12-04T23:24:14.0503848Z 
+2025-12-04T23:24:14.0504191Z #12 [linux/amd64 3/5] COPY --chown=185 build/quarkus-app/*.jar /deployments/
+2025-12-04T23:24:14.2799848Z #12 DONE 0.3s
+2025-12-04T23:24:14.2800629Z 
+2025-12-04T23:24:14.2801071Z #13 [linux/amd64 4/5] COPY --chown=185 build/quarkus-app/app/ /deployments/app/
+2025-12-04T23:24:14.2801654Z #13 DONE 0.0s
+2025-12-04T23:24:14.2801839Z 
+2025-12-04T23:24:14.2802155Z #14 [linux/arm64 3/5] COPY --chown=185 build/quarkus-app/*.jar /deployments/
+2025-12-04T23:24:14.2802698Z #14 DONE 0.0s
+2025-12-04T23:24:14.2802867Z 
+2025-12-04T23:24:14.2803187Z #15 [linux/arm64 4/5] COPY --chown=185 build/quarkus-app/app/ /deployments/app/
+2025-12-04T23:24:14.2803711Z #15 DONE 0.0s
+2025-12-04T23:24:14.2804192Z 
+2025-12-04T23:24:14.2804705Z #16 [linux/amd64 5/5] COPY --chown=185 build/quarkus-app/quarkus/ /deployments/quarkus/
+2025-12-04T23:24:14.2805273Z #16 DONE 0.0s
+2025-12-04T23:24:14.2805431Z 
+2025-12-04T23:24:14.2805748Z #17 [linux/arm64 5/5] COPY --chown=185 build/quarkus-app/quarkus/ /deployments/quarkus/
+2025-12-04T23:24:14.2806331Z #17 DONE 0.0s
+2025-12-04T23:24:14.2806489Z 
+2025-12-04T23:24:14.2806610Z #18 exporting to image
+2025-12-04T23:24:14.2806922Z #18 exporting layers
+2025-12-04T23:24:16.0476280Z #18 exporting layers 1.9s done
+2025-12-04T23:24:16.2472907Z #18 ...
+2025-12-04T23:24:16.2473112Z 
+2025-12-04T23:24:16.2473489Z #19 [auth] dhbw-tobi-felix/goofy-do/goofydo-backend:pull,push token for ghcr.io
+2025-12-04T23:24:16.2474099Z #19 DONE 0.0s
+2025-12-04T23:24:16.2474222Z 
+2025-12-04T23:24:16.2474309Z #18 exporting to image
+2025-12-04T23:24:16.2474796Z #18 exporting manifest sha256:d5c04e29ed773df2e89842dd96456a038a5d8bc96f813420111905b7ee5c8ffa done
+2025-12-04T23:24:16.2475603Z #18 exporting config sha256:700216a6d8dda997b4e7f90a1f3e9964f238487c89cce0ca6e6ca0b2e33a6e2c done
+2025-12-04T23:24:16.2476421Z #18 exporting attestation manifest sha256:8f593f72b416c2fae06297ba5d8857b3e3d42cbbadfe7d1349846bdb7e33ed2d done
+2025-12-04T23:24:16.2477245Z #18 exporting manifest sha256:8ff750fe0dd175eef3cff20f49c3ca8e2f0e3f026f8f4f02e7c2cac7e92a16cf done
+2025-12-04T23:24:16.2477997Z #18 exporting config sha256:1c2519f2e2da84cac94ec47b92f29015e5bbedb50f8132e5b0b76f8f68a1f2a6 done
+2025-12-04T23:24:16.2478796Z #18 exporting attestation manifest sha256:40b605b6e6e197ebc07fa4ecaf1b5066b668a94163459144a0c53d8899afa17e done
+2025-12-04T23:24:16.2479820Z #18 exporting manifest list sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c done
+2025-12-04T23:24:16.2480351Z #18 pushing layers
+2025-12-04T23:24:20.4698205Z #18 pushing layers 4.4s done
+2025-12-04T23:24:20.4699545Z #18 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest@sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c
+2025-12-04T23:24:22.3472577Z #18 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest@sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c 1.9s done
+2025-12-04T23:24:22.6988801Z #18 pushing layers 0.4s done
+2025-12-04T23:24:22.6990260Z #18 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf@sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c
+2025-12-04T23:24:23.4896204Z #18 pushing manifest for ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf@sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c 0.8s done
+2025-12-04T23:24:23.4897512Z #18 DONE 9.4s
+2025-12-04T23:24:23.4897724Z 
+2025-12-04T23:24:23.4897899Z #20 exporting cache to registry
+2025-12-04T23:24:23.4898419Z #20 preparing build cache for export
+2025-12-04T23:24:23.6745900Z #20 writing layer sha256:06003736ea959548aa2b9bfcdd7483448c44c0d0426486b73e14ca463b55902f 0.1s done
+2025-12-04T23:24:23.6747447Z #20 writing layer sha256:11c99c694ed000989c1199a7f7dc6c5484f71f9a05ebe2002585e5a52937f0e0 0.1s done
+2025-12-04T23:24:23.6748483Z #20 writing layer sha256:38e9455300b3cad3d3c5c4618716a28d398d5c369d0810947837b3b54f5f76a0
+2025-12-04T23:24:23.8509829Z #20 writing layer sha256:38e9455300b3cad3d3c5c4618716a28d398d5c369d0810947837b3b54f5f76a0 0.1s done
+2025-12-04T23:24:23.8511004Z #20 writing layer sha256:5d370c98466d77730a45c481c659eee378fb6d25b3653f86e4a911a2f0ed0a0b 0.1s done
+2025-12-04T23:24:23.8511843Z #20 writing layer sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14
+2025-12-04T23:24:24.0857328Z #20 writing layer sha256:667f1b476a80dca7f5ab7b8a8b2fb0681789cd07d58ce759c5d84e7c42624a14 0.1s done
+2025-12-04T23:24:24.0858268Z #20 writing layer sha256:7e053ac0f42b1b099d24d7d94885e3f837be6440444bb3bd64e69280e1cb7bae
+2025-12-04T23:24:24.0961333Z #20 writing layer sha256:7e053ac0f42b1b099d24d7d94885e3f837be6440444bb3bd64e69280e1cb7bae 0.2s done
+2025-12-04T23:24:24.0962469Z #20 writing layer sha256:a8dcc60b165f451bf5ac7c109d8420d95c21b3afdd07b5500994b351218676a0
+2025-12-04T23:24:24.2858576Z #20 writing layer sha256:a8dcc60b165f451bf5ac7c109d8420d95c21b3afdd07b5500994b351218676a0 0.1s done
+2025-12-04T23:24:24.2860368Z #20 writing layer sha256:beae2d900bf9dcbf6431e654170e5cdbdc4cdb84d76cf186224c0b1b60a69092 done
+2025-12-04T23:24:24.2861570Z #20 writing layer sha256:c9a58092390f9f78b589f277b8b26f3f5e6e9562721158fce1b33f720730caeb
+2025-12-04T23:24:24.4409162Z #20 writing layer sha256:c9a58092390f9f78b589f277b8b26f3f5e6e9562721158fce1b33f720730caeb done
+2025-12-04T23:24:24.4410874Z #20 writing layer sha256:f1f1603695f07bf46d5dd7435dba25b34f3ce6bfbaa1b97e7391a21ef244cbd2 0.1s done
+2025-12-04T23:24:24.4412097Z #20 writing config sha256:a304e2b1e6fd0906feba5ea19bfbc85ce1c819e423f6d39c0bfb5fe752f4a1fe
+2025-12-04T23:24:25.4557941Z #20 writing config sha256:a304e2b1e6fd0906feba5ea19bfbc85ce1c819e423f6d39c0bfb5fe752f4a1fe 1.0s done
+2025-12-04T23:24:25.4559241Z #20 writing cache image manifest sha256:dd8decd95a99496ec8db519b60df8965a8080ff6283b1370203ac3b2141af55b
+2025-12-04T23:24:25.8535603Z #20 preparing build cache for export 2.4s done
+2025-12-04T23:24:25.8537878Z #20 writing cache image manifest sha256:dd8decd95a99496ec8db519b60df8965a8080ff6283b1370203ac3b2141af55b 0.4s done
+2025-12-04T23:24:25.8538735Z #20 DONE 2.4s
+2025-12-04T23:24:25.8806549Z 
+2025-12-04T23:24:25.8807118Z #21 resolving provenance for metadata file
+2025-12-04T23:24:25.8807585Z #21 DONE 0.0s
+2025-12-04T23:24:25.8882381Z ##[group]ImageID
+2025-12-04T23:24:25.8882912Z sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c
+2025-12-04T23:24:25.8884574Z ##[endgroup]
+2025-12-04T23:24:25.8885087Z ##[group]Digest
+2025-12-04T23:24:25.8885664Z sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c
+2025-12-04T23:24:25.8886628Z ##[endgroup]
+2025-12-04T23:24:25.8887105Z ##[group]Metadata
+2025-12-04T23:24:25.8887401Z {
+2025-12-04T23:24:25.8888447Z   "buildx.build.ref": "builder-1688db2a-390d-4929-84d1-bfb369da5de9/builder-1688db2a-390d-4929-84d1-bfb369da5de90/th7vatlawj5r20j97l2a8cxbt",
+2025-12-04T23:24:25.8889996Z   "cache.manifest": "{\"mediaType\":\"application/vnd.oci.image.manifest.v1+json\",\"digest\":\"sha256:dd8decd95a99496ec8db519b60df8965a8080ff6283b1370203ac3b2141af55b\",\"size\":4215}",
+2025-12-04T23:24:25.8890687Z   "containerimage.descriptor": {
+2025-12-04T23:24:25.8890979Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-12-04T23:24:25.8891587Z     "digest": "sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c",
+2025-12-04T23:24:25.8892048Z     "size": 1609
+2025-12-04T23:24:25.8892211Z   },
+2025-12-04T23:24:25.8892669Z   "containerimage.digest": "sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c",
+2025-12-04T23:24:25.8893401Z   "image.name": "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf"
+2025-12-04T23:24:25.8894091Z }
+2025-12-04T23:24:25.8894378Z ##[endgroup]
+2025-12-04T23:24:25.8894670Z ##[group]Reference
+2025-12-04T23:24:25.8895132Z builder-1688db2a-390d-4929-84d1-bfb369da5de9/builder-1688db2a-390d-4929-84d1-bfb369da5de90/th7vatlawj5r20j97l2a8cxbt
+2025-12-04T23:24:25.8895737Z ##[endgroup]
+2025-12-04T23:24:25.8896027Z ##[group]Check build summary support
+2025-12-04T23:24:25.8898297Z Build summary supported!
+2025-12-04T23:24:25.8900732Z ##[endgroup]
+2025-12-04T23:24:25.9074674Z ##[group]Run sigstore/cosign-installer@v3
+2025-12-04T23:24:25.9074945Z with:
+2025-12-04T23:24:25.9075119Z   cosign-release: v2.5.2
+2025-12-04T23:24:25.9075323Z   install-dir: $HOME/.cosign
+2025-12-04T23:24:25.9075530Z   use-sudo: false
+2025-12-04T23:24:25.9075695Z env:
+2025-12-04T23:24:25.9075923Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:25.9076326Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:25.9076751Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:25.9077111Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:25.9077554Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:25.9077789Z ##[endgroup]
+2025-12-04T23:24:25.9173724Z ##[group]Run #!/bin/bash
+2025-12-04T23:24:25.9174340Z [36;1m#!/bin/bash[0m
+2025-12-04T23:24:25.9174536Z [36;1m# cosign install script[0m
+2025-12-04T23:24:25.9174766Z [36;1mshopt -s expand_aliases[0m
+2025-12-04T23:24:25.9175023Z [36;1mif [ -z "$NO_COLOR" ]; then[0m
+2025-12-04T23:24:25.9175303Z [36;1m  alias log_info="echo -e \"\033[1;32mINFO\033[0m:\""[0m
+2025-12-04T23:24:25.9175633Z [36;1m  alias log_error="echo -e \"\033[1;31mERROR\033[0m:\""[0m
+2025-12-04T23:24:25.9175897Z [36;1melse[0m
+2025-12-04T23:24:25.9176085Z [36;1m  alias log_info="echo \"INFO:\""[0m
+2025-12-04T23:24:25.9176338Z [36;1m  alias log_error="echo \"ERROR:\""[0m
+2025-12-04T23:24:25.9176562Z [36;1mfi[0m
+2025-12-04T23:24:25.9176722Z [36;1mset -e[0m
+2025-12-04T23:24:25.9176881Z [36;1m[0m
+2025-12-04T23:24:25.9177049Z [36;1mmkdir -p $HOME/.cosign[0m
+2025-12-04T23:24:25.9177257Z [36;1m[0m
+2025-12-04T23:24:25.9177421Z [36;1mif [[ v2.5.2 == "main" ]]; then[0m
+2025-12-04T23:24:25.9177745Z [36;1m  log_info "installing cosign via 'go install' from its main version"[0m
+2025-12-04T23:24:25.9178081Z [36;1m  GOBIN=$(go env GOPATH)/bin[0m
+2025-12-04T23:24:25.9178383Z [36;1m  go install github.com/sigstore/cosign/v2/cmd/cosign@main[0m
+2025-12-04T23:24:25.9178707Z [36;1m  ln -s $GOBIN/cosign $HOME/.cosign/cosign[0m
+2025-12-04T23:24:25.9179096Z [36;1m  exit 0[0m
+2025-12-04T23:24:25.9179253Z [36;1mfi[0m
+2025-12-04T23:24:25.9179402Z [36;1m[0m
+2025-12-04T23:24:25.9179546Z [36;1mshaprog() {[0m
+2025-12-04T23:24:25.9179729Z [36;1m  case Linux in[0m
+2025-12-04T23:24:25.9179913Z [36;1m    Linux|linux)[0m
+2025-12-04T23:24:25.9180125Z [36;1m      sha256sum $1 | cut -d' ' -f1[0m
+2025-12-04T23:24:25.9180354Z [36;1m      ;;[0m
+2025-12-04T23:24:25.9180515Z [36;1m    macOS|macos)[0m
+2025-12-04T23:24:25.9180723Z [36;1m      shasum -a256 $1 | cut -d' ' -f1[0m
+2025-12-04T23:24:25.9180948Z [36;1m      ;;[0m
+2025-12-04T23:24:25.9181119Z [36;1m    Windows|windows)[0m
+2025-12-04T23:24:25.9181550Z [36;1m      powershell -command "(Get-FileHash $1 -Algorithm SHA256 | Select-Object -ExpandProperty Hash).ToLower()"[0m
+2025-12-04T23:24:25.9181989Z [36;1m      ;;[0m
+2025-12-04T23:24:25.9182142Z [36;1m    *)[0m
+2025-12-04T23:24:25.9182332Z [36;1m      log_error "unsupported OS Linux"[0m
+2025-12-04T23:24:25.9182572Z [36;1m      exit 1[0m
+2025-12-04T23:24:25.9182740Z [36;1m      ;;[0m
+2025-12-04T23:24:25.9182897Z [36;1m  esac[0m
+2025-12-04T23:24:25.9183046Z [36;1m}[0m
+2025-12-04T23:24:25.9183196Z [36;1m[0m
+2025-12-04T23:24:25.9183357Z [36;1mbootstrap_version='v2.5.2'[0m
+2025-12-04T23:24:25.9183781Z [36;1mbootstrap_linux_amd64_sha='bcfeae05557a9f313ee4392d2f335d0ff69ebbfd232019e3736fb04999fe1734'[0m
+2025-12-04T23:24:25.9184384Z [36;1mbootstrap_linux_arm_sha='ecb5b9d8b6d7c8cec98363f0827456fa3207279e5f4690db6b4e6c77b10e45f9'[0m
+2025-12-04T23:24:25.9184979Z [36;1mbootstrap_linux_arm64_sha='2cbcea1873ad76274c3f241ef175d204654e3aac3e73e6ec4504e5227015cb0a'[0m
+2025-12-04T23:24:25.9185587Z [36;1mbootstrap_darwin_amd64_sha='0681abe20a482f4b9b3ed65b3debb8c6346591f2dc484b6bfa79609ff1318de4'[0m
+2025-12-04T23:24:25.9186378Z [36;1mbootstrap_darwin_arm64_sha='51fdc6d8da8310d72df10065a52247b6bebfe990d4c946dd9f71e17588256011'[0m
+2025-12-04T23:24:25.9187002Z [36;1mbootstrap_windows_amd64_sha='fef1c4731da9112d4cf2f6d93ae2a1551c73116a4f73fab7b0c15b38e95ff688'[0m
+2025-12-04T23:24:25.9187437Z [36;1mcosign_executable_name=cosign[0m
+2025-12-04T23:24:25.9187655Z [36;1m[0m
+2025-12-04T23:24:25.9187827Z [36;1mtrap "popd >/dev/null" EXIT[0m
+2025-12-04T23:24:25.9188039Z [36;1m[0m
+2025-12-04T23:24:25.9188207Z [36;1mpushd $HOME/.cosign > /dev/null[0m
+2025-12-04T23:24:25.9188423Z [36;1m[0m
+2025-12-04T23:24:25.9188576Z [36;1mcase Linux in[0m
+2025-12-04T23:24:25.9188762Z [36;1m  Linux|linux)[0m
+2025-12-04T23:24:25.9189220Z [36;1m    case X64 in[0m
+2025-12-04T23:24:25.9189598Z [36;1m      X64|amd64)[0m
+2025-12-04T23:24:25.9189827Z [36;1m        bootstrap_filename='cosign-linux-amd64'[0m
+2025-12-04T23:24:25.9190138Z [36;1m        bootstrap_sha=${bootstrap_linux_amd64_sha}[0m
+2025-12-04T23:24:25.9190446Z [36;1m        desired_cosign_filename='cosign-linux-amd64'[0m
+2025-12-04T23:24:25.9190814Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-04T23:24:25.9191147Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9191473Z [36;1m          desired_cosign_filename='cosign_linux_amd64_0.6.0_linux_amd64'[0m
+2025-12-04T23:24:25.9191906Z [36;1m          desired_cosign_v060_signature='cosign_linux_amd64_0.6.0_linux_amd64.sig'[0m
+2025-12-04T23:24:25.9192237Z [36;1m        fi[0m
+2025-12-04T23:24:25.9192406Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9192567Z [36;1m[0m
+2025-12-04T23:24:25.9192720Z [36;1m      ARM|arm)[0m
+2025-12-04T23:24:25.9192937Z [36;1m        bootstrap_filename='cosign-linux-arm'[0m
+2025-12-04T23:24:25.9193233Z [36;1m        bootstrap_sha=${bootstrap_linux_arm_sha}[0m
+2025-12-04T23:24:25.9193534Z [36;1m        desired_cosign_filename='cosign-linux-arm'[0m
+2025-12-04T23:24:25.9193805Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9194097Z [36;1m          log_error "linux-arm build not available at v0.6.0"[0m
+2025-12-04T23:24:25.9194373Z [36;1m          exit 1[0m
+2025-12-04T23:24:25.9194555Z [36;1m        fi[0m
+2025-12-04T23:24:25.9194715Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9194876Z [36;1m[0m
+2025-12-04T23:24:25.9195028Z [36;1m      ARM64|arm64)[0m
+2025-12-04T23:24:25.9195261Z [36;1m        bootstrap_filename='cosign-linux-arm64'[0m
+2025-12-04T23:24:25.9195564Z [36;1m        bootstrap_sha=${bootstrap_linux_arm64_sha}[0m
+2025-12-04T23:24:25.9195864Z [36;1m        desired_cosign_filename='cosign-linux-arm64'[0m
+2025-12-04T23:24:25.9196146Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9196439Z [36;1m          log_error "linux-arm64 build not available at v0.6.0"[0m
+2025-12-04T23:24:25.9196720Z [36;1m          exit 1[0m
+2025-12-04T23:24:25.9196896Z [36;1m        fi[0m
+2025-12-04T23:24:25.9197062Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9197254Z [36;1m[0m
+2025-12-04T23:24:25.9197406Z [36;1m      *)[0m
+2025-12-04T23:24:25.9197609Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-04T23:24:25.9197863Z [36;1m        exit 1[0m
+2025-12-04T23:24:25.9198036Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9198200Z [36;1m    esac[0m
+2025-12-04T23:24:25.9198354Z [36;1m    ;;[0m
+2025-12-04T23:24:25.9198511Z [36;1m[0m
+2025-12-04T23:24:25.9198658Z [36;1m  macOS|macos)[0m
+2025-12-04T23:24:25.9198842Z [36;1m    case X64 in[0m
+2025-12-04T23:24:25.9199185Z [36;1m      X64|amd64)[0m
+2025-12-04T23:24:25.9199407Z [36;1m        bootstrap_filename='cosign-darwin-amd64'[0m
+2025-12-04T23:24:25.9199712Z [36;1m        bootstrap_sha=${bootstrap_darwin_amd64_sha}[0m
+2025-12-04T23:24:25.9200027Z [36;1m        desired_cosign_filename='cosign-darwin-amd64'[0m
+2025-12-04T23:24:25.9200388Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-04T23:24:25.9200711Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9201163Z [36;1m          desired_cosign_filename='cosign_darwin_amd64_0.6.0_darwin_amd64'[0m
+2025-12-04T23:24:25.9201605Z [36;1m          desired_cosign_v060_signature='cosign_darwin_amd64_0.6.0_darwin_amd64.sig'[0m
+2025-12-04T23:24:25.9201944Z [36;1m        fi[0m
+2025-12-04T23:24:25.9202111Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9202266Z [36;1m[0m
+2025-12-04T23:24:25.9202422Z [36;1m      ARM64|arm64)[0m
+2025-12-04T23:24:25.9202649Z [36;1m        bootstrap_filename='cosign-darwin-arm64'[0m
+2025-12-04T23:24:25.9202951Z [36;1m        bootstrap_sha=${bootstrap_darwin_arm64_sha}[0m
+2025-12-04T23:24:25.9203261Z [36;1m        desired_cosign_filename='cosign-darwin-arm64'[0m
+2025-12-04T23:24:25.9203608Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-04T23:24:25.9204111Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9204427Z [36;1m          desired_cosign_filename='cosign_darwin_arm64_0.6.0_darwin_arm64'[0m
+2025-12-04T23:24:25.9204865Z [36;1m          desired_cosign_v060_signature='cosign_darwin_arm64_0.6.0_darwin_arm64.sig'[0m
+2025-12-04T23:24:25.9205209Z [36;1m        fi[0m
+2025-12-04T23:24:25.9205372Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9205537Z [36;1m[0m
+2025-12-04T23:24:25.9205681Z [36;1m      *)[0m
+2025-12-04T23:24:25.9205887Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-04T23:24:25.9206141Z [36;1m        exit 1[0m
+2025-12-04T23:24:25.9206319Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9206478Z [36;1m    esac[0m
+2025-12-04T23:24:25.9206638Z [36;1m    ;;[0m
+2025-12-04T23:24:25.9206790Z [36;1m[0m
+2025-12-04T23:24:25.9206948Z [36;1m  Windows|windows)[0m
+2025-12-04T23:24:25.9207145Z [36;1m    case X64 in[0m
+2025-12-04T23:24:25.9207334Z [36;1m      X64|amd64)[0m
+2025-12-04T23:24:25.9207591Z [36;1m        bootstrap_filename='cosign-windows-amd64.exe'[0m
+2025-12-04T23:24:25.9207906Z [36;1m        bootstrap_sha=${bootstrap_windows_amd64_sha}[0m
+2025-12-04T23:24:25.9208233Z [36;1m        desired_cosign_filename='cosign-windows-amd64.exe'[0m
+2025-12-04T23:24:25.9208544Z [36;1m        cosign_executable_name=cosign.exe[0m
+2025-12-04T23:24:25.9208978Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-12-04T23:24:25.9209312Z [36;1m        if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9209648Z [36;1m          desired_cosign_filename='cosign_windows_amd64_0.6.0_windows_amd64.exe'[0m
+2025-12-04T23:24:25.9210119Z [36;1m          desired_cosign_v060_signature='cosign_windows_amd64_0.6.0_windows_amd64.exe.sig'[0m
+2025-12-04T23:24:25.9210474Z [36;1m        fi[0m
+2025-12-04T23:24:25.9210640Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9210810Z [36;1m      *)[0m
+2025-12-04T23:24:25.9211012Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-12-04T23:24:25.9211269Z [36;1m        exit 1[0m
+2025-12-04T23:24:25.9211443Z [36;1m        ;;[0m
+2025-12-04T23:24:25.9211606Z [36;1m    esac[0m
+2025-12-04T23:24:25.9211759Z [36;1m    ;;[0m
+2025-12-04T23:24:25.9211916Z [36;1m  *)[0m
+2025-12-04T23:24:25.9212099Z [36;1m    log_error "unsupported os Linux"[0m
+2025-12-04T23:24:25.9212335Z [36;1m    exit 1[0m
+2025-12-04T23:24:25.9212496Z [36;1m    ;;[0m
+2025-12-04T23:24:25.9212656Z [36;1mesac[0m
+2025-12-04T23:24:25.9212809Z [36;1m[0m
+2025-12-04T23:24:25.9212952Z [36;1mSUDO=[0m
+2025-12-04T23:24:25.9213187Z [36;1mif [[ "false" == "true" ]] && command -v sudo >/dev/null; then[0m
+2025-12-04T23:24:25.9213470Z [36;1m  SUDO=sudo[0m
+2025-12-04T23:24:25.9213640Z [36;1mfi[0m
+2025-12-04T23:24:25.9213787Z [36;1m[0m
+2025-12-04T23:24:25.9214007Z [36;1mexpected_bootstrap_version_digest=${bootstrap_sha}[0m
+2025-12-04T23:24:25.9214837Z [36;1mlog_info "Downloading bootstrap version '${bootstrap_version}' of cosign to verify version to be installed...\n      https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename}"[0m
+2025-12-04T23:24:25.9216084Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename} -o ${cosign_executable_name}[0m
+2025-12-04T23:24:25.9216724Z [36;1mshaBootstrap=$(shaprog ${cosign_executable_name});[0m
+2025-12-04T23:24:25.9217096Z [36;1mif [[ $shaBootstrap != ${expected_bootstrap_version_digest} ]]; then[0m
+2025-12-04T23:24:25.9217488Z [36;1m  log_error "Unable to validate cosign version: 'v2.5.2'"[0m
+2025-12-04T23:24:25.9217772Z [36;1m  exit 1[0m
+2025-12-04T23:24:25.9217928Z [36;1mfi[0m
+2025-12-04T23:24:25.9218115Z [36;1m$SUDO chmod +x ${cosign_executable_name}[0m
+2025-12-04T23:24:25.9218352Z [36;1m[0m
+2025-12-04T23:24:25.9218622Z [36;1m# If the bootstrap and specified `cosign` releases are the same, we're done.[0m
+2025-12-04T23:24:25.9219217Z [36;1mif [[ v2.5.2 == ${bootstrap_version} ]]; then[0m
+2025-12-04T23:24:25.9219685Z [36;1m  log_info "bootstrap version successfully verified and matches requested version so nothing else to do"[0m
+2025-12-04T23:24:25.9220116Z [36;1m  exit 0[0m
+2025-12-04T23:24:25.9220271Z [36;1mfi[0m
+2025-12-04T23:24:25.9220421Z [36;1m[0m
+2025-12-04T23:24:25.9220629Z [36;1msemver='^v([0-9]+\.){0,2}(\*|[0-9]+)(-?r?c?)(\.[0-9]+)$'[0m
+2025-12-04T23:24:25.9220909Z [36;1mif [[ v2.5.2 =~ $semver ]]; then[0m
+2025-12-04T23:24:25.9221182Z [36;1m  log_info "Custom cosign version 'v2.5.2' requested"[0m
+2025-12-04T23:24:25.9221444Z [36;1melse[0m
+2025-12-04T23:24:25.9221692Z [36;1m  log_error "Unable to validate requested cosign version: 'v2.5.2'"[0m
+2025-12-04T23:24:25.9222003Z [36;1m  exit 1[0m
+2025-12-04T23:24:25.9222164Z [36;1mfi[0m
+2025-12-04T23:24:25.9222306Z [36;1m[0m
+2025-12-04T23:24:25.9222469Z [36;1m# Download custom cosign[0m
+2025-12-04T23:24:25.9223093Z [36;1mlog_info "Downloading platform-specific version 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}"[0m
+2025-12-04T23:24:25.9223992Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename} -o cosign_v2.5.2[0m
+2025-12-04T23:24:25.9224521Z [36;1mshaCustom=$(shaprog cosign_v2.5.2);[0m
+2025-12-04T23:24:25.9224752Z [36;1m[0m
+2025-12-04T23:24:25.9224925Z [36;1m# same hash means it is the same release[0m
+2025-12-04T23:24:25.9225207Z [36;1mif [[ $shaCustom != $shaBootstrap ]]; then[0m
+2025-12-04T23:24:25.9225491Z [36;1m  if [[ v2.5.2 == 'v0.6.0' && Linux == 'Linux' ]]; then[0m
+2025-12-04T23:24:25.9225818Z [36;1m    # v0.6.0's linux release has a dependency on `libpcsclite1`[0m
+2025-12-04T23:24:25.9226183Z [36;1m    log_info "Installing libpcsclite1 package if necessary..."[0m
+2025-12-04T23:24:25.9226479Z [36;1m    set +e[0m
+2025-12-04T23:24:25.9226671Z [36;1m    sudo dpkg -s libpcsclite1[0m
+2025-12-04T23:24:25.9226903Z [36;1m    if [ $? -eq 0 ]; then[0m
+2025-12-04T23:24:25.9227177Z [36;1m        log_info "libpcsclite1 package is already installed"[0m
+2025-12-04T23:24:25.9227450Z [36;1m    else[0m
+2025-12-04T23:24:25.9227726Z [36;1m         log_info "libpcsclite1 package is not installed, installing it now."[0m
+2025-12-04T23:24:25.9228081Z [36;1m         sudo apt-get update -q -q[0m
+2025-12-04T23:24:25.9228349Z [36;1m         sudo apt-get install -yq libpcsclite1[0m
+2025-12-04T23:24:25.9228595Z [36;1m    fi[0m
+2025-12-04T23:24:25.9228754Z [36;1m    set -e[0m
+2025-12-04T23:24:25.9229144Z [36;1m  fi[0m
+2025-12-04T23:24:25.9229338Z [36;1m[0m
+2025-12-04T23:24:25.9229511Z [36;1m  if [[ v2.5.2 == 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9230200Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_v060_signature}"[0m
+2025-12-04T23:24:25.9231213Z [36;1m    $SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_v060_signature} -o ${desired_cosign_filename}.sig[0m
+2025-12-04T23:24:25.9231767Z [36;1m  else[0m
+2025-12-04T23:24:25.9232490Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.5.2' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}.sig"[0m
+2025-12-04T23:24:25.9233406Z [36;1m    $SUDO curl -fsLO https://github.com/sigstore/cosign/releases/download/v2.5.2/${desired_cosign_filename}.sig[0m
+2025-12-04T23:24:25.9233859Z [36;1m  fi[0m
+2025-12-04T23:24:25.9234010Z [36;1m[0m
+2025-12-04T23:24:25.9234177Z [36;1m  if [[ v2.5.2 < 'v0.6.0' ]]; then[0m
+2025-12-04T23:24:25.9234750Z [36;1m    log_info "Downloading cosign public key 'v2.5.2' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/.github/workflows/cosign.pub"[0m
+2025-12-04T23:24:25.9235556Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/.github/workflows/cosign.pub[0m
+2025-12-04T23:24:25.9236351Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='4aa4bd19530a4929d758a9896255aef2c82f1a3a9f4b000034c6df4307c14f9e'[0m
+2025-12-04T23:24:25.9236747Z [36;1m  else[0m
+2025-12-04T23:24:25.9237254Z [36;1m    log_info "Downloading cosign public key 'v2.5.2' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/release/release-cosign.pub"[0m
+2025-12-04T23:24:25.9238040Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.5.2/release/release-cosign.pub[0m
+2025-12-04T23:24:25.9238680Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='f4cea466e5e887a45da5031757fa1d32655d83420639dc1758749b744179f126'[0m
+2025-12-04T23:24:25.9239192Z [36;1m  fi[0m
+2025-12-04T23:24:25.9239342Z [36;1m[0m
+2025-12-04T23:24:25.9239571Z [36;1m  log_info "Verifying public key matches expected value"[0m
+2025-12-04T23:24:25.9239924Z [36;1m  $SUDO curl -fsL $RELEASE_COSIGN_PUB_KEY -o public.key[0m
+2025-12-04T23:24:25.9240242Z [36;1m  sha_fetched_key=$(shaprog public.key)[0m
+2025-12-04T23:24:25.9240556Z [36;1m  if [[ $sha_fetched_key != $RELEASE_COSIGN_PUB_KEY_SHA ]]; then[0m
+2025-12-04T23:24:25.9240951Z [36;1m    log_error "Fetched public key does not match expected digest, exiting"[0m
+2025-12-04T23:24:25.9241281Z [36;1m    exit 1[0m
+2025-12-04T23:24:25.9241449Z [36;1m  fi[0m
+2025-12-04T23:24:25.9241602Z [36;1m[0m
+2025-12-04T23:24:25.9241930Z [36;1m  log_info "Using bootstrap cosign to verify signature of desired cosign version"[0m
+2025-12-04T23:24:25.9242469Z [36;1m  ./cosign verify-blob --key public.key --signature ${desired_cosign_filename}.sig cosign_v2.5.2[0m
+2025-12-04T23:24:25.9242867Z [36;1m[0m
+2025-12-04T23:24:25.9243024Z [36;1m  $SUDO rm cosign[0m
+2025-12-04T23:24:25.9243266Z [36;1m  $SUDO mv cosign_v2.5.2 ${cosign_executable_name}[0m
+2025-12-04T23:24:25.9243554Z [36;1m  $SUDO chmod +x ${cosign_executable_name}[0m
+2025-12-04T23:24:25.9243828Z [36;1m  log_info "Installation complete!"[0m
+2025-12-04T23:24:25.9244060Z [36;1mfi[0m
+2025-12-04T23:24:25.9277348Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-04T23:24:25.9277648Z env:
+2025-12-04T23:24:25.9277888Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:25.9278292Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:25.9278733Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:25.9279255Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:25.9279518Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:25.9279740Z ##[endgroup]
+2025-12-04T23:24:25.9347943Z [1;32mINFO[0m: Downloading bootstrap version 'v2.5.2' of cosign to verify version to be installed...
+2025-12-04T23:24:25.9348550Z       https://github.com/sigstore/cosign/releases/download/v2.5.2/cosign-linux-amd64
+2025-12-04T23:24:26.8840094Z [1;32mINFO[0m: bootstrap version successfully verified and matches requested version so nothing else to do
+2025-12-04T23:24:26.8869483Z ##[group]Run echo "$HOME/.cosign" >> $GITHUB_PATH
+2025-12-04T23:24:26.8869800Z [36;1mecho "$HOME/.cosign" >> $GITHUB_PATH[0m
+2025-12-04T23:24:26.8902034Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-04T23:24:26.8902349Z env:
+2025-12-04T23:24:26.8902751Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:26.8903186Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:26.8903628Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:26.8903988Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:26.8904254Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:26.8904483Z ##[endgroup]
+2025-12-04T23:24:26.8988565Z ##[group]Run DIGEST="sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c"
+2025-12-04T23:24:26.8989429Z [36;1mDIGEST="sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c"[0m
+2025-12-04T23:24:26.8990347Z [36;1mIFS=',' read -ra TAGS <<< "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest,ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:f099a82bb5cf"[0m
+2025-12-04T23:24:26.8990976Z [36;1mfor T in "${TAGS[@]}"; do cosign sign "${T%@*}@${DIGEST}"; done[0m
+2025-12-04T23:24:26.9019551Z shell: /usr/bin/bash -e {0}
+2025-12-04T23:24:26.9019763Z env:
+2025-12-04T23:24:26.9020000Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:26.9020411Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:26.9020844Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:26.9021194Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:26.9021476Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:26.9021715Z   COSIGN_EXPERIMENTAL: true
+2025-12-04T23:24:26.9021913Z   COSIGN_YES: true
+2025-12-04T23:24:26.9022079Z ##[endgroup]
+2025-12-04T23:24:27.1009883Z Generating ephemeral keys...
+2025-12-04T23:24:27.1652069Z Retrieving signed certificate...
+2025-12-04T23:24:27.4693618Z Successfully verified SCT...
+2025-12-04T23:24:27.6944837Z 
+2025-12-04T23:24:27.6946416Z 	The sigstore service, hosted by sigstore a Series of LF Projects, LLC, is provided pursuant to the Hosted Project Tools Terms of Use, available at https://lfprojects.org/policies/hosted-project-tools-terms-of-use/.
+2025-12-04T23:24:27.6948589Z 	Note that if your submission includes personal data associated with this signed artifact, it will be part of an immutable record.
+2025-12-04T23:24:27.6950562Z 	This may include the email address associated with the account with which you authenticate your contractual Agreement.
+2025-12-04T23:24:27.6952490Z 	This information will be used for signing this artifact and will be stored in public transparency logs and cannot be removed later, and is subject to the Immutable Record notice at https://lfprojects.org/policies/hosted-project-tools-immutable-records/.
+2025-12-04T23:24:27.6953877Z 
+2025-12-04T23:24:27.6954718Z By typing 'y', you attest that (1) you are not submitting the personal data of any other person; and (2) you understand and agree to the statement and the Agreement terms at the URLs listed above.
+2025-12-04T23:24:28.1972747Z tlog entry created with index: 742067044
+2025-12-04T23:24:28.1973631Z Pushing signature to: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:30.0411295Z Generating ephemeral keys...
+2025-12-04T23:24:30.1491709Z Retrieving signed certificate...
+2025-12-04T23:24:30.2899296Z Successfully verified SCT...
+2025-12-04T23:24:30.4740580Z 
+2025-12-04T23:24:30.4742133Z 	The sigstore service, hosted by sigstore a Series of LF Projects, LLC, is provided pursuant to the Hosted Project Tools Terms of Use, available at https://lfprojects.org/policies/hosted-project-tools-terms-of-use/.
+2025-12-04T23:24:30.4743865Z 	Note that if your submission includes personal data associated with this signed artifact, it will be part of an immutable record.
+2025-12-04T23:24:30.4745728Z 	This may include the email address associated with the account with which you authenticate your contractual Agreement.
+2025-12-04T23:24:30.4747646Z 	This information will be used for signing this artifact and will be stored in public transparency logs and cannot be removed later, and is subject to the Immutable Record notice at https://lfprojects.org/policies/hosted-project-tools-immutable-records/.
+2025-12-04T23:24:30.4749084Z 
+2025-12-04T23:24:30.4749759Z By typing 'y', you attest that (1) you are not submitting the personal data of any other person; and (2) you understand and agree to the statement and the Agreement terms at the URLs listed above.
+2025-12-04T23:24:30.8689261Z tlog entry created with index: 742067191
+2025-12-04T23:24:30.8690437Z Pushing signature to: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:32.8765184Z ##[group]Run echo "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest" > image-ref.txt
+2025-12-04T23:24:32.8765836Z [36;1mecho "ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend:latest" > image-ref.txt[0m
+2025-12-04T23:24:32.8766610Z [36;1mecho "sha256:2073f6191edc6251f18886ff05d73addae6e137c16adee6a8575d5f7a93bc97c" > digest.txt[0m
+2025-12-04T23:24:32.8800410Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-12-04T23:24:32.8800715Z env:
+2025-12-04T23:24:32.8800951Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:32.8801355Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:32.8801790Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:32.8802150Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:32.8802417Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:32.8802643Z ##[endgroup]
+2025-12-04T23:24:32.8887853Z ##[group]Run actions/upload-artifact@v4
+2025-12-04T23:24:32.8888095Z with:
+2025-12-04T23:24:32.8888299Z   name: backend-image-refs
+2025-12-04T23:24:32.8888510Z   path: image-ref.txt
+digest.txt
+2025-12-04T23:24:32.8888744Z   if-no-files-found: warn
+2025-12-04T23:24:32.8889157Z   compression-level: 6
+2025-12-04T23:24:32.8889343Z   overwrite: false
+2025-12-04T23:24:32.8889527Z   include-hidden-files: false
+2025-12-04T23:24:32.8889722Z env:
+2025-12-04T23:24:32.8889947Z   IMAGE_REF: ghcr.io/dhbw-tobi-felix/goofy-do/goofydo-backend
+2025-12-04T23:24:32.8890341Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:32.8890769Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.9-10/x64
+2025-12-04T23:24:32.8891116Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2025-12-04T23:24:32.8891375Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2025-12-04T23:24:32.8891610Z ##[endgroup]
+2025-12-04T23:24:33.0977826Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-12-04T23:24:33.0981706Z The least common ancestor is /home/runner/work/Goofy-Do/Goofy-Do. This will be the root directory of the artifact
+2025-12-04T23:24:33.0982772Z With the provided path, there will be 2 files uploaded
+2025-12-04T23:24:33.0988371Z Artifact name is valid!
+2025-12-04T23:24:33.0989819Z Root directory input is valid!
+2025-12-04T23:24:33.1921621Z Beginning upload of artifact content to blob storage
+2025-12-04T23:24:33.2338482Z Uploaded bytes 365
+2025-12-04T23:24:33.2504126Z Finished uploading artifact content to blob storage!
+2025-12-04T23:24:33.2507527Z SHA256 digest of uploaded artifact zip is 1482fe70f13942fa4d5e85ce3a7dfb4db845687cee116d014c758fb4808d1760
+2025-12-04T23:24:33.2509491Z Finalizing artifact upload
+2025-12-04T23:24:33.3323203Z Artifact backend-image-refs.zip successfully finalized. Artifact ID 4771137023
+2025-12-04T23:24:33.3324791Z Artifact backend-image-refs has been successfully uploaded! Final size is 365 bytes. Artifact ID is 4771137023
+2025-12-04T23:24:33.3331766Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19947180508/artifacts/4771137023
+2025-12-04T23:24:33.3460619Z Post job cleanup.
+2025-12-04T23:24:33.6094543Z ##[group]Generating build summary
+2025-12-04T23:24:33.6100061Z exporting build record to /home/runner/work/_temp/docker-actions-toolkit-ChzZTM/export
+2025-12-04T23:24:33.7985351Z [command]/usr/bin/docker buildx history export --builder builder-1688db2a-390d-4929-84d1-bfb369da5de9 --output /home/runner/work/_temp/docker-actions-toolkit-ChzZTM/export/dhbw-tobi-felix~Goofy-Do~TH7VAT.dockerbuild th7vatlawj5r20j97l2a8cxbt --finalize
+2025-12-04T23:24:34.0695154Z Build record written to /home/runner/work/_temp/docker-actions-toolkit-ChzZTM/export/dhbw-tobi-felix~Goofy-Do~TH7VAT.dockerbuild (75.44 KB)
+2025-12-04T23:24:34.0722291Z Uploading dhbw-tobi-felix~Goofy-Do~TH7VAT.dockerbuild to blob storage
+2025-12-04T23:24:34.1497048Z Beginning upload of artifact content to blob storage
+2025-12-04T23:24:34.1596597Z Uploaded bytes 65536
+2025-12-04T23:24:34.1598738Z Uploaded bytes 77251
+2025-12-04T23:24:34.1836352Z Finished uploading artifact content to blob storage!
+2025-12-04T23:24:34.1842663Z SHA256 hash of uploaded artifact is e313d366a2005123b5ff658aa297b74d0474952e139c102725bbf3192dec1b0b
+2025-12-04T23:24:34.1844256Z Finalizing artifact upload
+2025-12-04T23:24:34.2951231Z Artifact successfully finalized (4771137157)
+2025-12-04T23:24:34.2952814Z Artifact download URL: https://github.com/dhbw-tobi-felix/Goofy-Do/actions/runs/19947180508/artifacts/4771137157
+2025-12-04T23:24:34.2978007Z Writing summary
+2025-12-04T23:24:34.2990115Z ##[endgroup]
+2025-12-04T23:24:34.2990982Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-eFKdV7
+2025-12-04T23:24:34.3000631Z ##[endgroup]
+2025-12-04T23:24:34.3001224Z ##[group]Post cache
+2025-12-04T23:24:34.3002755Z State not set
+2025-12-04T23:24:34.3003371Z ##[endgroup]
+2025-12-04T23:24:34.3125455Z Post job cleanup.
+2025-12-04T23:24:34.6106875Z [command]/usr/bin/docker logout ghcr.io
+2025-12-04T23:24:34.6230555Z Removing login credentials for ghcr.io
+2025-12-04T23:24:34.6263169Z ##[group]Post cache
+2025-12-04T23:24:34.6264741Z State not set
+2025-12-04T23:24:34.6265986Z ##[endgroup]
+2025-12-04T23:24:34.6386999Z Post job cleanup.
+2025-12-04T23:24:34.9089388Z ##[group]Removing builder
+2025-12-04T23:24:35.0016531Z [command]/usr/bin/docker buildx rm builder-1688db2a-390d-4929-84d1-bfb369da5de9
+2025-12-04T23:24:35.8572768Z builder-1688db2a-390d-4929-84d1-bfb369da5de9 removed
+2025-12-04T23:24:35.8616395Z ##[endgroup]
+2025-12-04T23:24:35.8616979Z ##[group]Cleaning up certificates
+2025-12-04T23:24:35.8623469Z ##[endgroup]
+2025-12-04T23:24:35.8624074Z ##[group]Post cache
+2025-12-04T23:24:35.8626023Z State not set
+2025-12-04T23:24:35.8626753Z ##[endgroup]
+2025-12-04T23:24:35.8744215Z Post job cleanup.
+2025-12-04T23:24:36.0357326Z In final post-action step, saving state and writing summary
+2025-12-04T23:24:36.0366543Z Stopping all Gradle daemons before saving Gradle User Home state
+2025-12-04T23:24:36.0367712Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0
+2025-12-04T23:24:36.0386888Z [command]/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0/bin/gradle --stop
+2025-12-04T23:24:36.6028098Z No Gradle daemons are running.
+2025-12-04T23:24:36.6136185Z ##[group]Caching Gradle state
+2025-12-04T23:24:36.6235205Z Caching generated-gradle-jars with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar' and cache key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3
+2025-12-04T23:24:36.6266901Z Caching wrapper-zips with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9' and cache key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2
+2025-12-04T23:24:36.6455163Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:36.6489952Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:37.5777522Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/9.1.0/generated-gradle-jars/gradle-api-9.1.0.jar,zstd-without-long,1.0' and key: generated-gradle-jars-8ae09625009e808ae7ed926e39624fd3: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0NRgyaQAAAAC6deY3J/9UQ49IayMTh204UEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:37.6893232Z Caching dependencies with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and cache key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff
+2025-12-04T23:24:37.7010592Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*' and cache key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b
+2025-12-04T23:24:37.7147563Z Caching kotlin-dsl with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*' and cache key: kotlin-dsl-40559b115203537db5626e8e35a2bc91
+2025-12-04T23:24:37.7317345Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:37.7526633Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:37.7587532Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*,zstd-without-long,1.0' and key: instrumented-jars-ee3fb1e3d2517a90370134f35c5f1d6b: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0NRgyaQAAAAD/GXcPjMCkRJnR7TAkNTdnUEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:37.8293522Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*,zstd-without-long,1.0' and key: kotlin-dsl-40559b115203537db5626e8e35a2bc91: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0NRgyaQAAAAD9HNB7Z6cxQYeUhawyom7sUEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:38.4722104Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:39.3805478Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*,zstd-without-long,1.0' and key: dependencies-ef9a8c20b812a5be57bd8b9135e080ff: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0NxgyaQAAAAC8vVmznrGbRr0b79eC8h2eUEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:39.6320814Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9,zstd-without-long,1.0' and key: wrapper-zips-9e724e7fceba527c4fc0c9fb63fb70f2: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0NxgyaQAAAADo6IbzZ55JSL7ChC0kirt/UEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:40.7045447Z Caching Gradle User Home with cache key: v8-gradle|Linux|build publish & sign backend-backend[37a6259cc0c1dae299a7866489dff0bd]-f099a82bb5cf1f6b9eb413accca5e2801631972d
+2025-12-04T23:24:40.7132282Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Goofy-Do/Goofy-Do --files-from manifest.txt --use-compress-program zstdmt
+2025-12-04T23:24:41.3101533Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.gradle-build-action,zstd-without-long,1.0' and key: v8-gradle|Linux|build publish & sign backend-backend[37a6259cc0c1dae299a7866489dff0bd]-f099a82bb5cf1f6b9eb413accca5e2801631972d: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0ORgyaQAAAADMfvxT5zYSS7CssQVqgWRgUEhMMzBFREdFMDIwNgBFZGdl
+2025-12-04T23:24:41.3107416Z ##[endgroup]
+2025-12-04T23:24:41.3107828Z Writing job summary
+2025-12-04T23:24:41.3339202Z Post job cleanup.
+2025-12-04T23:24:41.5082980Z Post job cleanup.
+2025-12-04T23:24:41.6017358Z [command]/usr/bin/git version
+2025-12-04T23:24:41.6053829Z git version 2.52.0
+2025-12-04T23:24:41.6098715Z Temporarily overriding HOME='/home/runner/work/_temp/99c30c05-ecb7-4b77-ae05-a947c51a5f0b' before making global git config changes
+2025-12-04T23:24:41.6100242Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-04T23:24:41.6105360Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Goofy-Do/Goofy-Do
+2025-12-04T23:24:41.6141348Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-04T23:24:41.6174089Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-04T23:24:41.6400005Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-04T23:24:41.6420261Z http.https://github.com/.extraheader
+2025-12-04T23:24:41.6432586Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-04T23:24:41.6462468Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-04T23:24:41.6680675Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-04T23:24:41.6710453Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-04T23:24:41.7030688Z Cleaning up orphan processes
