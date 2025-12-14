@@ -1,3 +1,10 @@
+## Security by Design
+Projekt von:
+| Name | Matrikelnummer | E-Mail |
+|---|---|---|
+| Felix Paul Uhlig | 4419060 | inf23173@lehre.dhbw-stuttgart.de |
+| Tobias Wiedemann | 8556196 | inf23183@lehre.dhbw-stuttgart.de |
+
 ## 📋 Voraussetzungen
 
 * [Docker](https://www.docker.com/) (Runtime)
